@@ -273,10 +273,10 @@ input, select, textarea {
 		text-transform: uppercase;
 			letter-spacing: 0.10em;
 			font-size: 2em;
-			line-height: 1.25em;
 			position: relative;
-			/* background-color: #ee573a;/ */
 		}
+
+
 
 		/* .project-title::before {
 			content: "";
@@ -361,6 +361,8 @@ input, select, textarea {
 			top: calc(3em);
 		  }
 
+
+
 		@media screen and (max-width: 960px) {
 			.ribbon-vertical {
 				top: 0;
@@ -380,6 +382,12 @@ input, select, textarea {
 			{
 			  top: 0;
 			  margin-bottom: 0;
+			}
+		}
+
+		@media screen and (min-width: 960px) {
+			.project-title {
+			line-height: 1.25em;
 			}
 		}
 
@@ -439,6 +447,7 @@ input, select, textarea {
 			
 			perspective: 10px;
 			margin:0;
+
 		}
 
 		#fixed {background:green; 
@@ -463,23 +472,53 @@ input, select, textarea {
 				transform-style: preserve-3d;
 				z-index: -100;
 				transform: translateZ(-30px) scale(4);
+
+			background-color:#121213;
+
 		}
 
 			.work-experience-header {
 				font-family:'A-OTF Shin Go Pro H';
-				position: relative;
+				position: absolute;
 				writing-mode: vertical-lr;
 				text-transform: uppercase;
 				letter-spacing: 0.10em;
 				font-size: 2em;
-				position: absolute;
-				right: -4%;
+				right: -3.5%;
 				top: 50%;
 				transform: translateY(-50%);
 				white-space: nowrap;
 				/* background-color: black; */
 
 							color: #372f57;
+			}
+
+			@media screen and (max-width: 1080px) {
+				.work-experience-header {
+					/* position: relative; */
+					writing-mode:horizontal-tb;
+						transform: none;
+						padding: 0.5em;
+						top: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						
+				text-align: center;
+					}
+
+					.projects-header {
+						display: none;
+						}
+		}
+
+			@media screen and (max-width: 960px) {
+				.work-experience-header {
+				position: relative;
+				writing-mode:horizontal-tb;
+					transform: none;
+					padding: 0.5em;
+					left: 0;
+				}
 			}
 
 	.project-category {
@@ -2679,15 +2718,16 @@ input, select, textarea {
 				/* transform: scale(-1, -1); */
 			}
 
-		.spotlights > section:nth-child(even) .split > :nth-child(2n - 1) {
+		/* .spotlights > section:nth-child(even) .split > :nth-child(2n - 1) {
 			display: flex;
+			background-color: #2b475d;
 			gap: 1.5em;
 		}
 
 		.spotlights > section:nth-child(odd) .split > :nth-child(2n) {
 			display: flex;
 			gap: 1.5em;
-		}
+		} */
 
 		.spotlights > section:nth-child(odd) ul.project-tech-list {
 			text-align: right;
@@ -2869,6 +2909,10 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 			.spotlights > section:nth-child(even) .project-title {
 				transform: scale(1, 1);
+			}
+
+			.spotlights {
+				left: -2em;
 			}
 		}
 
@@ -4169,7 +4213,7 @@ input, select, textarea {
 
 			#featured {
 				padding: 3em 2em 2em 2em;
-				text-align: center;
+				/* text-align: center; */
 			}
 
 				#featured h3 {

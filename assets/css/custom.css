@@ -123,7 +123,7 @@
   }
 
   .project-bg{
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .project-bg video:hover {
@@ -151,12 +151,38 @@ ul.tech li {
 
 ul.tech li img {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width:40px;
+  height:40px;
   margin: 0 0px;
   cursor: pointer;
 
   animation: spin 5s linear infinite;
+}
+
+@media screen and (max-width: 736px) {
+  ul.tech {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+  
+  ul.tech li {
+    list-style: none;
+    /* width: calc((100% - 20px) / 3); */
+
+    box-sizing: border-box;
+  }
+  
+  ul.tech li img {
+    position: relative;
+    cursor: pointer;
+    animation: spin 5s linear infinite;
+    /* width:35px; */
+  }
 }
 
   ul.tech li.spin {
@@ -428,11 +454,14 @@ body {
 
 .ribbon {
   position: relative;
+  display: inline-block;
   background-color: #D4A87A;
   text-align: center;
-  max-width: 50%;
-  margin: 0 auto;
   padding: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  /* width: 50%; */
 }
 
 .ribbon::before, .ribbon::after {
@@ -473,6 +502,13 @@ body {
   border-color: #815628 transparent transparent transparent;
 }
 
+@media screen and (max-width: 736px) {
+
+  .ribbon {
+    width: 70%;
+  }
+}
+
 
 /* Project Content */
 
@@ -505,7 +541,6 @@ body {
 		.project-content {
 			width: 100%;
 		}
-
 	}
 
   #lockdowneer{
@@ -582,7 +617,8 @@ body {
 .code-bg{
   position: relative;
   opacity: 20%;
-  max-width: 600px;
+  /* max-width: 600px; */
+  max-width: 75%;
   margin-top: -5em;
   margin-bottom: -10em;
   pointer-events: none;
@@ -591,16 +627,22 @@ body {
 
 .contact
 {
-  width: 25px;
   position: fixed;
+  display: flex;
+
+    width: 25px;
   bottom: 0;
   z-index: 10;
   right: 70px;
-  display: flex;
   justify-content: end;
   align-items: end;
   right: 20px;
   padding-right: 10px;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  right: 30px;
 }
 
 /* .contact-social
@@ -652,7 +694,8 @@ body {
   -webkit-box-align: center;
   align-items: center;
   writing-mode: vertical-lr;
-  bottom: 165px;
+  /* bottom: 165px; */
+  bottom: 22.5px;
   /* margin: 0 auto; */
   /* background:#1A191D; */
   padding-top: 0.4em;
@@ -664,7 +707,11 @@ body {
   text-decoration: none;
 }
 
-.contact-email a::after
+.contact-email:hover
+{
+  transform: scale(1.1);
+}
+/* .contact-email a::after
 {
   content: "";
   position: absolute;
@@ -676,7 +723,7 @@ body {
   background-color: #D4A87A;
 
   box-sizing: inherit;
-}
+} */
 
 @media screen and (max-width: 1080px) {
 
@@ -687,16 +734,16 @@ body {
   }
 
   .contact-social{
-    bottom: 165px;
+    /* bottom: 165px; */
   }
 }
 
-@media screen and (max-width: 736px) {
+/* @media screen and (max-width: 736px) {
   .contact
  {
     display: none;
   }
-}
+} */
 
 
 .a{
