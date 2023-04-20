@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:510880bb9b0e17026fdf610637f8616cf7c6c9b9b9a686125ffc57adafe559ca
-size 605
+const tabs = document.querySelectorAll('[data-tab-target]');
+const tabContents = document.querySelectorAll('[data-tab-content]');
+
+let currentTab;
+tabs.forEach(tab =>
+    {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.tabTarget);
+
+            if(currentTab != null)
+                currentTab.classList.remove('active');
+
+            if(target != currentTab)
+            {
+                target.classList.add('active');
+                currentTab = target;
+            }
+            else
+                currentTab = null;
+        })
+    })

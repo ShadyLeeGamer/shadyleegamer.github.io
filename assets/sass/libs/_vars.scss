@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b5eae32116e0fd7905a0ca75644789a340bc95c8eeccc1f2f21f6f3892b87e3b
-size 234
+// Misc.
+	$misc: (
+		z-index-base:	10000
+	);
+
+// Duration.
+	$duration: (
+		navPanel: 0.5s
+	);
+
+// Size.
+	$size: (
+		navPanel: 275px,
+		element-margin: 2em
+	);
+
+// Font.
+	$font: (
+	);
+
+// Palette.
+	$palette: (
+	);

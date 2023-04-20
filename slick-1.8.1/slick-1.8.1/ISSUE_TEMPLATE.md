@@ -1,3 +1,50 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:685a2558f2d3b96d7ab760175b3504aaaeaed6267550ff0dc36b3cba2591dc9b
-size 883
+
+> short description of the bug / issue, provide more detail below.
+
+====================================================================
+
+
+###### `[  paste your jsfiddle link here  ]`  
+
+use this jsfiddle to reproduce your bug: 
+http://jsfiddle.net/simeydotme/fmo50w7n/ 
+we will likely close your issue without it.
+
+
+====================================================================
+
+
+#### Steps to reproduce the problem
+
+1. ...  
+2. ...  
+
+
+====================================================================
+
+
+#### What is the expected behaviour?
+
+...  
+
+
+====================================================================
+
+
+#### What is observed behaviour?
+
+...  
+
+
+====================================================================
+
+
+#### More Details
+
+- Which browsers/versions does it happen on?
+- Which jQuery/Slick version are you using?
+- Did this work before?
+
+
+
+

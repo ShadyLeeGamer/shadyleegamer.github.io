@@ -1,3 +1,378 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7493d7782ce0db482acd0d854308e11ab2f588e7b7147123744679b381baf43c
-size 14705
+<!DOCTYPE HTML>
+<!--
+	Axiom by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Untitled</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
+
+		<link rel="stylesheet" href="assets/css/slick.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+
+		<link rel="stylesheet" href="assets/css/game-jams.css" />
+
+		<link rel="stylesheet" href="highlight/styles/base16/material-palenight.min.css" />
+		<script src="highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+					<div class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<div>
+									<h1><a href="#">Ariya Bayat</a></h1>
+									<span>Game Programmer Portfolio</span>
+								</div>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="two-sidebar.html">Two Sidebar</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</div>
+				<!-- <div class="slider template">
+					<div class="slider-item">
+						<video src="videos/okainos/Turns_in_action.mp4"></video>
+					</div>
+					<div class="slider-item">
+						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
+					</div>
+					<div class="slider-item">
+						<img src="images/okainos/okainos-logo.png">
+					</div>
+					<div class="slider-item">
+						<img src="images/okainos/card-data-asset-firebase-json.png">
+					</div>
+					<div class="slider-item">
+						<img src="images/okainos/okainos-logo.png">
+					</div>
+				</div> -->
+
+				<div class="popup-image">
+					<img src="images/okainos/back-end-user.png" alt="">
+				</div>
+
+			<!-- Main -->
+				<div id="main" class="project-content">
+
+					<div class="row">
+						<div class="col-12">
+							<article id="content">
+								<header>
+									<h2 class="project-header">Game Jams</h2>
+									<span class="byline">MONTH 20XX - PRESENT</span>
+								</header>
+
+								<ul class="tabs">
+									<li data-tab-target="#mini-jam-83-dread" class="tab"><img src="images/game-jams/swords-and-fangs/icon.png" alt=""></li>
+									<li data-tab-target="#swords-and-fangs" class="tab"><img src="images/game-jams/swords-and-fangs/icon.png" alt=""></li>
+									<li data-tab-target="#disaster-is-coming" class="tab"><img src="images/game-jams/disaster-is-coming/icon.png" alt=""></li>
+									<li class="tab"><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/ui/icons/itch-io.png" alt=""></a></li>
+								</ul>
+
+								<div class="tab-content">
+									<div id="mini-jam-83-dread" data-tab-content>
+										<h1 class="project-header">Mini Jam 83 - Dread</h1>
+								<p>An endless survival game where you play as a Dracula killing knights to satisfy your endless thirst for blood before you’re drained of it. Blood is used as a currency to upgrade stats and unlock new abilities in between waves.</p>
+								<div class="image-center">
+									<div class="aspect-ratio">
+										<iframe src="https://www.youtube.com/embed/mxaEOxUM8s0"></iframe>
+									</div>
+								</div>
+								
+								<button class="accordion">Dungeon Level Generator</button>
+								<div class="panel">
+									<p>In this project, I worked as lead programmer with two other programmers. We broke down the game system into 3 seperate modules: player controller, enemy AI and level generator which I implemented.</p>
+									
+									<div class="image-and-text-container left">
+										<div class="image-container">
+											<img src="images/game-jams/mini-jam-83-dread/level-generation-sequence-flowchart.png">
+										</div>
+										<div class="text-container">
+											<p>The level generator sequence was inspired by the one in the Spelunky games, which goes like this:</p>
+										</div>
+									</div>
+
+									<p>This system was suitable for the game since we wanted unique level patterns with props to hide from enemies which chase you.</p>
+									<p>I gave the generator a downward bias to encourage more of a straight path from start to end.</p>
+								
+									<button class="accordion">(C#) CODE SNIPPET | Level Generator </button>
+									<div class="panel">
+										<p>This function is called upon pressing submit in the register page.</p>
+										<pre><code class="language-csharp hljs">public void Generate()
+{
+	Rooms = new List<Room>();
+	map = new bool[levelSizeX, levelSizeZ];
+
+	// Create entrance from top
+	int roomPosX = Random.Range(0, levelSizeX);
+	int roomPosZ = 0;
+	CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
+
+	// Create rooms middle to exit
+	while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
+			roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
+	{
+		// Left, right or down (more downs to encorage more of a linear shape)
+		int randomDirIndex = Random.Range(0, directions.Length);
+		Vector3Int randomDir = directions[randomDirIndex];
+
+		int newPosX = roomPosX + randomDir.x;
+		int newPosZ = roomPosZ + randomDir.z;
+
+		// Check if we're hitting the edge of the map
+		if (newPosX < 0 || newPosX > levelSizeX - 1 ||
+			newPosZ > 0 || newPosZ < -levelSizeZ + 1)
+		{
+			// If we're not hitting bottom edge, then move down and create a new middle room
+			if (roomPosZ > -levelSizeZ + 1)
+			{
+				randomDir = directions[2];
+				roomPosX += randomDir.x;
+				roomPosZ += randomDir.z;
+
+				CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+				continue;
+			}
+			// If we are on bottom edge, then mark new room as exit and end generation
+			else if (roomPosZ == -levelSizeZ + 1)
+			{
+				Room exitRoom = Rooms[Rooms.Count - 1];
+				exitRoom.ApplyType(RoomType.Exit);
+
+				CreateHallway(exitRoom, directions[2], PassType.Exit);
+				CreateDoor(exitRoom, directions[2], PassType.Exit);
+				break;
+			}
+		}
+
+		// If chosen direction is blocked by another room, then pick another
+		if (map[newPosX, -newPosZ] == true)
+			continue; 
+
+		// If we are just within the map, then create a middle room
+		roomPosX = newPosX;
+		roomPosZ = newPosZ;
+
+		CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+	}
+
+	// Create path nodes for enemy AI
+	mapHolder.CreateNodes();
+}</code></pre>
+									</div>
+								</div>
+									</div>
+									<div id="swords-and-fangs" data-tab-content>
+										<h1 class="project-header">Swords & Fangs</h1>
+										<p>An endless survival game where you play as a Dracula killing knights to satisfy your endless thirst for blood before you’re drained of it. Blood is used as a currency to upgrade stats and unlock new abilities in between waves.</p>
+										<div class="image-center">
+											<div class="aspect-ratio">
+												<iframe src="https://www.youtube.com/embed/mxaEOxUM8s0"></iframe>
+											</div>
+										</div>
+										<button class="accordion">Object pooling</button>
+										<div class="panel">
+											<p>In this game jam, one of the biggest challenges we faced was low performance when gameplay gets more intense later on.</p>
+											<p>In order to maintain performance while many objects of different types are present in the scene, I implemented some methods including object pooling. The object pooler recycles many types of objects including: enemies, projectiles, combat text, particle effects and audio players. This greatly boosted performance during gameplay.</p>
+											
+											<button class="accordion">(C#) CODE SNIPPET | Object Pooler </button>
+											<div class="panel">
+												<pre><code class="language-csharp hljs">T Get<T>(T prefab, Dictionary<int, Queue<T>> poolDictionary, int id, Vector3 pos, Quaternion rot,
+		ObjectData objectData) where T : MonoBehaviour, IPooledObject
+{
+	if (!poolDictionary.ContainsKey(id))
+	{
+		Debug.LogWarning("There is no existing " + prefab.name + " pool with id " + id);
+		return null;
+	}
+	Queue<T> pool = poolDictionary[id];
+	return Get(prefab, pool, pos, rot, objectData);
+}
+
+T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
+	ObjectData objectData) where T : MonoBehaviour, IPooledObject
+{
+	T objectToGet = (pool.Count == 0 || !recycle)
+					? Instantiate(prefab, pos, rot)
+					: pool.Dequeue();
+	objectToGet.transform.rotation = rot;
+	objectToGet.gameObject.SetActive(true);
+	objectToGet.transform.position = pos;
+
+	objectToGet.Initialise(objectData);
+
+	return objectToGet;
+}</code></pre>
+											</div>
+										</div>
+										<button class="accordion">Wave Spawner</button>
+										<div class="panel">
+											<p>For the endless game loop we needed a wave system that progressively gets harder as more new enemies are introduced.</p>
+											<p>The system makes creative use of the gradient component for editing and visualising the spawn probability of different enemies per wave. Enemies are spawned at a random position on the nav mesh.</p>
+											<div class="image-center">
+												<img src="images/game-jams/swords-and-fangs/wave-system-probability-gradients.png">
+												<img src="images/game-jams/swords-and-fangs/wave-system-probability-gradient-editor.png">
+											</div>
+										</div>
+										<button class="accordion">Combo System</button>
+										<div class="panel">
+											<div class="image-and-text-container left">
+												<div class="image-container">
+													<img src="images/game-jams/swords-and-fangs/in-between-waves.png">
+												</div>
+												<div class="text-container">
+													<p>The combo system features a range of attacks, from basic attacks to special charge burst and projectile attacks by stacking single taps and holding inputs. It's also compatible with PC, controller and mobile.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="disaster-is-coming" data-tab-content>
+										<h1 class="project-header">Disaster is Coming</h1>
+										<p>A turn-based escape game where you need to carefully make your move before you run out of actions to evacuate all the people out of the building that’s on fire.</p>
+										<div class="image-center">
+											<div class="aspect-ratio">
+												<iframe src="https://www.youtube.com/embed/7aTj0fQxigs"></iframe>
+												<iframe src="https://www.youtube.com/embed/7aTj0fQxigs"></iframe>
+											</div>
+										</div>
+										<button class="accordion">Isometric grid movement</button>
+										<div class="panel">
+											<p>I implemented isometric grid-based movement for the avatars. On selecting a avatar, available path tiles appear, with detection of moveable and immovable objects.</p>
+		
+											<button class="accordion">(C#) CODE SNIPPET | Level Generator </button>
+											<div class="panel">
+												<p>This function is called upon pressing submit in the register page.</p>
+												<pre><code class="language-csharp hljs">public void Generate()
+{
+	Rooms = new List<Room>();
+	map = new bool[levelSizeX, levelSizeZ];
+
+	// Create entrance from top
+	int roomPosX = Random.Range(0, levelSizeX);
+	int roomPosZ = 0;
+	CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
+
+	// Create rooms middle to exit
+	while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
+			roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
+	{
+		// Left, right or down (more downs to encorage more of a linear shape)
+		int randomDirIndex = Random.Range(0, directions.Length);
+		Vector3Int randomDir = directions[randomDirIndex];
+
+		int newPosX = roomPosX + randomDir.x;
+		int newPosZ = roomPosZ + randomDir.z;
+
+		// Check if we're hitting the edge of the map
+		if (newPosX < 0 || newPosX > levelSizeX - 1 ||
+			newPosZ > 0 || newPosZ < -levelSizeZ + 1)
+		{
+			// If we're not hitting bottom edge, then move down and create a new middle room
+			if (roomPosZ > -levelSizeZ + 1)
+			{
+				randomDir = directions[2];
+				roomPosX += randomDir.x;
+				roomPosZ += randomDir.z;
+
+				CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+				continue;
+			}
+			// If we are on bottom edge, then mark new room as exit and end generation
+			else if (roomPosZ == -levelSizeZ + 1)
+			{
+				Room exitRoom = Rooms[Rooms.Count - 1];
+				exitRoom.ApplyType(RoomType.Exit);
+
+				CreateHallway(exitRoom, directions[2], PassType.Exit);
+				CreateDoor(exitRoom, directions[2], PassType.Exit);
+				break;
+			}
+		}
+
+		// If chosen direction is blocked by another room, then pick another
+		if (map[newPosX, -newPosZ] == true)
+			continue; 
+
+		// If we are just within the map, then create a middle room
+		roomPosX = newPosX;
+		roomPosZ = newPosZ;
+
+		CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+	}
+
+	// Create path nodes for enemy AI
+	mapHolder.CreateNodes();
+}</code></pre>
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer" class="container">
+
+					<div class="row">
+						<div class="col-6 col-12-narrower">
+							<span class="copyright">&copy; Untitled. All rights reserved.</span>
+						</div>
+						<div class="col-6 col-12-narrower">
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-facebook-f"><span>Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-twitter"><span>Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-google-plus-g"><span>Google+</span></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.slidertron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/slideshow.js"></script>
+		
+		<script src="assets/js/popup-image.js"></script>
+		<script src="assets/js/tabs.js"
+		
+		<script src="assets/js/image-slider.js"></script>
+		
+		<script src="assets/js/slick.min.js"></script>
+		</body>
+</html>

@@ -1,3 +1,859 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1165a4583325407a6c2805ec2075b53c2eb0a79d50531b874ad1e4df2bedd24d
-size 15030
+@media screen and (min-width: 980px) {
+  .project-bg {
+    position: relative;
+    /* width: 481px; */
+    width: 481px; /*1924*/
+    height: 270px; /*1080px*/
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transition: all 300ms ease-in;
+    cursor: pointer;
+    /* top: 50%; */
+    /* margin-top: 25%; */
+  
+     /* background:white;  */
+
+
+  }
+
+  .project-bg video {
+    position: relative;
+
+    width: 481px;
+  
+    /* transform:translateZ(20px); */
+    
+    filter: sepia(100%) hue-rotate(-80deg);
+    transition: filter 500ms ease-out;
+  
+    border-radius:1em;
+
+    box-shadow: 0 0 12px 8px #ffffff2a;
+    background: #ffffff2a;
+  }
+
+  .bg-perspective-left {
+    transform: perspective(800px) rotateY(40deg) rotateX(20deg) /*translateY(-50%)*/;
+    transform-origin: center;
+    float: left;
+    clear: both; /* Add this to avoid wrapping */
+}
+
+.bg-perspective-right {
+  transform: perspective(800px) rotateY(-40deg) rotateX(20deg) /*translateY(-50%)*/;
+  float: right;
+  clear: both; /* Add this to avoid wrapping */
+} 
+
+  .project-bg:hover {
+    transition: all 300ms ease-in;
+    /* transform: perspective(800px) rotateY(220deg) rotateX(-20deg); */
+    width: 481px; /*1924*/
+  }
+
+  .open-project-page-icon {
+    position: absolute;
+    
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(0, 0);
+
+    width: 100px;
+
+    transition: transform 300ms ease-in;
+  }
+
+  .project-bg:hover .open-project-page-icon {
+    transform: translateX(-50%) translateY(-50%) scale(1.1, 1.1);
+
+    transition: transform 300ms ease-in;
+  }
+
+  .project-bg:hover video {
+    transition: all 500ms ease-in;
+    /* opacity: 0; */
+  }
+
+  .bg-perspective-left:hover {
+    transform: perspective(500px) rotateY(-20deg) rotateX(20deg) translateX(-60px) scale(1.05);
+  }
+
+  .bg-perspective-right:hover {
+    transform: perspective(500px) rotateY(20deg) rotateX(20deg) translateX(60px) scale(1.05);
+  }
+
+  .project-bg video:hover {
+    filter:none;
+  }
+}
+
+
+@media screen and (max-width: 980px) {
+  .project-bg {
+    position: relative;
+    transition: all 300ms ease-in;
+    /* width: 100%;
+    height: 500px;*/
+
+    height: auto;
+    grid-area: 1/-1;
+    cursor: pointer;
+
+  }
+
+  .open-project-page-icon {
+    display: none;
+  }
+/* 
+  .bg-container{
+
+    grid-area: 1/-1;
+  } */
+  
+
+  .project-bg video {
+    filter: sepia(100%) hue-rotate(-20deg) brightness(25%);
+    transition: 500ms ease-out;
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video fills the container while maintaining its aspect ratio */
+
+    border-radius: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .project-bg{
+    overflow: hidden;
+  }
+
+  .project-bg video:hover {
+    transition: 500ms ease-out;
+    transform: scale(1.1);
+  }
+
+  .project-bg video:hover {
+    filter:none;
+  }
+}
+
+ul.tech {
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+ul.tech li {
+  list-style: none;
+}
+
+ul.tech li img {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 0px;
+  cursor: pointer;
+
+  animation: spin 5s linear infinite;
+}
+
+  ul.tech li.spin {
+    animation: spin 1s ease-out;
+    }
+
+ul.tech li:hover img {
+      animation:none;
+      transform: scale(1.25);
+      /* background: #86ff3b;
+  box-shadow: 0 0 0 4px #333,
+              0 0 0 6px #86ff3b; */
+  }
+
+  /* ul.tech li .tooltip {
+    position: absolute;
+    bottom: 75px;
+    width: 250px;
+    left: 25px;
+    background: #fff;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius:  4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translateX(-50%) translateY(-50px);
+  } */
+
+  ul.tech li .tooltip {
+    position: absolute;
+    top: 75px;
+    width: 250px;
+    left: 25px;
+    background: #fff;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius:  4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translateX(-50%) translateY(50px);
+  }
+
+  ul.tech li .tooltip h2 {
+    color: black;
+		font-family: 'A-OTF Shin Go Pro M';
+    text-align: center;
+		font-size: 7.5pt;
+  }
+
+  ul.tech li .tooltip p {
+    color: black;
+		font-family: 'A-OTF Shin Go Pro R';
+    text-align: left;
+		font-size: 7.5pt;
+  }
+
+  ul.tech li:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px);
+  }
+
+  ul.tech li .tooltip:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    top: -12.5px;
+    left: 112.5px;
+    transform: rotate(45deg);
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotateY(0deg);
+  }
+    to {
+      transform: rotateY(360deg);
+    }
+/* 
+    0% {
+      transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(-1, 1);
+  }
+    100% {
+      transform: scale(1, 1);
+    } */
+    }
+
+    /* ul.tech li {
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      width: 4em;
+      vertical-align: middle;
+  
+  
+  
+      animation: spin 5s linear infinite;
+    }
+    ul.tech li.spin {
+      animation: spin 1s ease-out;
+      }
+
+    ul.tech li:hover {
+      animation:none;
+      }
+
+      ul.tech li::before{
+        content:'';
+        float: left;
+        width: auto;
+        padding-bottom: 100%;    
+      }
+
+      .tooltip {
+        position: relative;
+      }
+      
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        position: absolute;
+        z-index: 1;
+      }
+      
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      } */
+
+
+  /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #565B6B;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+
+  text-transform: uppercase;
+
+  /* margin-bottom: 18px; */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion.active, .accordion:hover {
+  background-color: #E56E59;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  /*background-color: white;*/
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/*Box*/
+
+.box {
+  border-radius: 0.375em;
+  border: solid 1px rgba(210, 215, 217, 0.75);
+  margin-bottom: 2em;
+  padding: 1.5em;
+}
+
+video {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  /* height: 100%;  */
+  overflow: hidden;
+}
+
+/* Canvas */
+
+div.canvas {
+  display:           table-cell;
+  width:             1280px;
+  height:            800px;
+  background:        black;
+  vertical-align:    middle;
+}
+
+div.canvas > video {
+  display:           block;
+  margin:            auto;
+}
+
+div.canvas > img {
+  display:           block;
+  margin:            auto;
+}
+
+
+.youtubevideo {
+  width: 100%;
+  height: 490px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* iframe {
+  width: 100%;
+  height: 100%;
+} */
+
+
+
+/* a.project-title {
+  text-decoration: none;
+  position: relative;
+}
+
+a.project-title::before {
+  content: '';
+  background-color: #E56E59;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 100%;
+  height: 8px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+a.project-title:hover::before {
+  bottom: 0;
+  height: 100%;
+} */
+
+
+
+/* Presentational Styles */
+body {
+  line-height: 1.5;
+  /* height: 100vh; */
+  place-items: center;
+}
+
+.ribbon {
+  position: relative;
+  background-color: #D4A87A;
+  text-align: center;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+
+.ribbon::before, .ribbon::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  border: 25px solid #a1784d;
+  z-index: -1;
+  height: 100%;
+}
+
+.ribbon::before {
+  left: -30px;
+  border-left-color: transparent;
+}
+
+.ribbon::after {
+  right: -30px;
+  border-right-color: transparent;
+}
+
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  bottom: -20px;
+}
+
+.ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 0 20px 20px 0; /* top | right | bottom | left */
+  border-color: transparent #815628 transparent transparent;
+}
+
+.ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 20px 20px 0 0;
+  border-color: #815628 transparent transparent transparent;
+}
+
+
+/* Project Content */
+
+.project-content {
+	margin: 0 auto;
+	/*width: 1200px;*/
+	/* width: 1000px; */
+	width: 1100px;
+  position: relative;
+}
+
+	@media screen and (max-width: 1280px) {
+
+		.project-content {
+			width: 90%;
+		}
+
+	}
+
+	@media screen and (max-width: 1080px) {
+
+		.project-content {
+			width: 95%;
+		}
+
+	}
+
+	@media screen and (max-width: 960px) {
+
+		.project-content {
+			width: 100%;
+		}
+
+	}
+
+  #lockdowneer{
+    text-align: center;
+    width: calc(64px/2);
+    height: 32px;
+    transform: scale(2);
+    background: url(../../images/2020-survival-game/lockdowneer-idle.png);
+    image-rendering: pixelated;
+    cursor: pointer;
+
+    animation: animateIdle 2s steps(2) infinite;
+  }
+
+  #lockdowneer:hover{
+    position: relative;
+    width: calc(64px/2);
+    height: 32px;
+    transform: scale(2);
+    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
+    image-rendering: pixelated;
+    cursor: pointer;
+    
+    animation: none;
+  }
+
+  #lockdowneer-shooting{
+    position: relative;
+    width: calc(64px/2);
+    height: 32px;
+      background-position: 64px;
+      transform: scale(2);
+    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
+    image-rendering: pixelated;
+    cursor: pointer;
+
+    animation: animateIdle 0.2s steps(2) reverse;
+  }
+
+  @keyframes animateIdle
+  {
+    from
+    {
+      background-position: 0;
+    }
+    to
+    {
+      background-position: 64px;
+    }
+  }
+  @keyframes animateShoot
+  {
+    from
+    {
+      background-position: 0;
+    }
+    to
+    {
+      background-position: 64px;
+    }
+  }
+
+.code-bg1{
+  background-image: url("../../images/hello-world-html-code-768x384.webp");
+  opacity: 10%;
+  width: 30%;
+  padding-bottom:  100%;
+  margin-top: -5em;
+  margin-bottom: -100%;
+  pointer-events: none;
+}
+
+
+.code-bg{
+  position: relative;
+  opacity: 20%;
+  max-width: 600px;
+  margin-top: -5em;
+  margin-bottom: -10em;
+  pointer-events: none;
+  z-index: -10;
+}
+
+.contact
+{
+  width: 25px;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  right: 70px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  right: 20px;
+  padding-right: 10px;
+}
+
+/* .contact-social
+{
+  position: relative;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.contact-social {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0;
+}
+
+.contact-social li{
+  display: block;
+  position: relative;
+  top: 0;
+  padding: 10px;
+  /* transform: rotateZ(90deg); */
+  animation: spin 5s linear infinite;
+}
+
+.contact-social li:hover{
+  animation:none;
+  transform: scale(1.25);
+}
+
+.contact-social img{
+  height: 35px;
+  max-width: 35px;
+  object-fit: contain;
+}
+
+.contact-email a
+{
+  position: relative;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+  bottom: 165px;
+  /* margin: 0 auto; */
+  /* background:#1A191D; */
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em;
+  color:#1A191D;
+  font-family:'A-OTF Shin Go Pro H';
+  background-color: #D4A87A;
+  text-decoration: none;
+}
+
+.contact-email a::after
+{
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -165px;
+  height: 150px;
+  width: 2px;
+  margin-left: -1px;
+  background-color: #D4A87A;
+
+  box-sizing: inherit;
+}
+
+@media screen and (max-width: 1080px) {
+
+  .contact
+  {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-social{
+    bottom: 165px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .contact
+ {
+    display: none;
+  }
+}
+
+
+.a{
+  margin: 0;
+  padding: 0;
+  min-height: 75vh;
+  background: #333;
+  background:#16202B;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.education-container {
+  width: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-container .unit-card
+{
+  position: relative;
+}
+
+.education-container .unit-card .face
+{
+  width: 300px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.education-container .unit-card .face.face1
+{
+  position: relative;
+  background-color: #333;
+  background:#16202B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+.education-container .unit-card:hover .face.face1
+{
+  background-color: #D4A87A;
+  transform: translateY(0);
+}
+
+.education-container .unit-card .face.face2
+{
+  position: relative;
+  background-color: #333;
+  background:#16202B;
+  /* background-color: #ffffff;
+  color: #333; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgb(0, 0, 0, 0.8);
+  transform: translateY(-100px);
+}
+.education-container .unit-card:hover .face.face2
+{
+  transform: translateY(0px);
+}
+
+.education-container .unit-card .face.face2 .unit-content p
+{
+  margin: 0;
+  padding: 0;
+}
+
+.education-container .unit-card .face.face2 .unit-content a
+{
+  margin: 15px 0 0;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  color: #333;
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+.education-container .unit-card .face.face2 .unit-content a:hover
+{
+  background: #333;
+  color: #fff;
+}
+
+.education-container .unit-card .face.face1 .unit-content
+{
+  opacity: 0.2;
+  transform: 0.5s;
+}
+
+.education-container .unit-card:hover .face.face1 .unit-content
+{
+  opacity: 1;
+}
+.education-container .unit-card .face.face1 .unit-content img
+{
+  max-width: 100px;
+}
+.education-container .unit-card .face.face1 .unit-content h3
+{
+  margin: 10px 0 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+img{
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+
+.popup-image
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #16202ba6;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: none;
+
+  cursor: pointer;
+}
+
+/* .popup-image span
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  cursor: pointer;
+  z-index: inherit;
+} */
+
+.popup-image img
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  max-height: 80%;
+  max-width: 80%;
+  /* width: 750px; */
+  object-fit: contain;
+}
+

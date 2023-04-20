@@ -1,3 +1,98 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:66ebb01e11fa8243b5a0727e40f7089f6e5c27de47829d485e57fe60a1eeb538
-size 1459
+/* .slider-container {
+  overflow: hidden; 
+  height: 320px;
+
+  cursor: grab;
+}
+
+.slider {
+  display: flex;
+  position: absolute;
+
+  left: 0;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  column-gap: 2rem;
+  pointer-events: none;
+}
+
+.slider-item img {
+  height: 300px;
+  object-fit: contain;
+}
+
+.slider-item iframe {
+  height: 300px;
+   width: 500px;
+   object-fit: contain;
+   pointer-events:all;
+  }
+
+.slider-item video {
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+  pointer-events:all;
+} */
+
+.slider {
+  /* display: flex;
+  width: 100%; */
+
+  position: relative;
+
+  display: block;
+  box-sizing: border-box;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  width: 100%;
+  margin: 0 auto;
+
+  position: absolute;
+  width: calc(95vw - 20px);
+  margin-left: calc(-47.5vw + 50% + 10px);
+}
+
+.slider .slider-item {
+  /* width: 350px;
+  height: 250px;
+  margin: 25px; */
+}
+
+.slider-item img {
+  height: 300px;
+  object-fit: contain;
+
+
+}
+
+.slider-item video  {
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+}
+
+.slider-item iframe {
+   height: 300px;
+   width: 520px;
+   object-fit: contain;
+  }
+
+.slick-slide:not(.slick-current) {
+  opacity: 40%;
+}
+
+.slick-current {
+  opacity: 100%;
+}
