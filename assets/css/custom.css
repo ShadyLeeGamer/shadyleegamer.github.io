@@ -618,7 +618,8 @@ body {
   position: relative;
   opacity: 20%;
   /* max-width: 600px; */
-  max-width: 75%;
+  width: 700px;
+  width: 100%;
   margin-top: -5em;
   margin-bottom: -10em;
   pointer-events: none;
@@ -627,24 +628,31 @@ body {
 
 .contact
 {
-  position: fixed;
   display: flex;
 
-    width: 25px;
-  bottom: 0;
-  z-index: 10;
-  right: 70px;
-  justify-content: end;
-  align-items: end;
-  padding-right: 10px;
-
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+
   gap: 1em;
+  padding: 2em;
 
-  left: auto;
-  right: 20px;
 
+}
+.contact.fixed
+{
+  position: fixed;
+
+  bottom: -2em;
+  z-index: 10;
+
+  right: 0px;
+
+}
+.contact.footer
+{
+  position: relative;
+
+  display: none;
 }
 
 /* .contact-social
@@ -660,13 +668,20 @@ body {
   flex-direction: column;
 } */
 
-.contact-social {
+.contact .contact-social {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
 
   padding: 0;
+}
+
+.contact.fixed .contact-social {
+  flex-direction: column;
+}
+
+.contact.footer .contact-social {
+  flex-direction: row;
 }
 
 .contact-social li{
@@ -674,11 +689,13 @@ body {
   position: relative;
   top: 0;
   padding: 10px;
-  /* transform: rotateZ(90deg); */
+}
+
+.contact-social li img{
   animation: spin 5s linear infinite;
 }
 
-.contact-social li:hover{
+.contact-social li:hover img{
   animation:none;
   transform: scale(1.25);
 }
@@ -689,7 +706,25 @@ body {
   object-fit: contain;
 }
 
-.contact-email a
+.contact .contact-email a
+{
+  position: relative;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  /* bottom: 165px; */
+  bottom: 22.5px;
+  /* margin: 0 auto; */
+  /* background:#1A191D; */
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em;
+  color:#1A191D;
+  font-family:'A-OTF Shin Go Pro H';
+  background-color: #D4A87A;
+  text-decoration: none;
+}
+.contact.fixed .contact-email a
 {
   position: relative;
   flex-direction: column;
@@ -707,6 +742,11 @@ body {
   font-family:'A-OTF Shin Go Pro H';
   background-color: #D4A87A;
   text-decoration: none;
+}
+.contact.footer .contact-email a
+{
+  padding-right: 0.4em;
+
 }
 
 .contact-email:hover
@@ -727,16 +767,19 @@ body {
   box-sizing: inherit;
 } */
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 736px) {
 
-  .contact
+  .contact.fixed
   {
-    flex-direction: column;
-    align-items: center;
+    display: none;
   }
 
   .contact-social{
     /* bottom: 165px; */
+  }
+
+  .contact.footer {
+    display: flex;
   }
 }
 

@@ -368,7 +368,7 @@ input, select, textarea {
 		@media screen and (max-width: 960px) {
 			.ribbon-vertical {
 				top: 0;
-				background:none
+				background:none;
 			}
 
 			.ribbon-vertical .ribbon-vertical-content {
@@ -377,7 +377,7 @@ input, select, textarea {
 
 			.ribbon-vertical::before,
 			.ribbon-vertical::after{
-				border:none
+				border:none;
 			}
 
 			.ribbon-vertical-content
@@ -442,7 +442,8 @@ input, select, textarea {
 
 		.projects-header-wrapper {
 			height: 100vh;
-			width: 100vw;
+			/* width: 100vw; */
+			width: 100%;
 
 			overflow-y: none;
 			overflow-x: hidden;
@@ -466,7 +467,7 @@ input, select, textarea {
 				letter-spacing: 0.10em;
 				font-size: 4em;
 				left: -142.5%;
-				top: 200%;
+				top: 225%;
 				transform: translateY(-50%);
 				white-space: nowrap;
 				color: rgba(255, 255, 255, 0.5);
@@ -2131,6 +2132,7 @@ input, select, textarea {
 			bottom: 0;
 			padding: 1em 0em 1em 0em;
 
+
 			align-self: flex-end;
 			margin: 0;
 			left: 0;
@@ -2479,6 +2481,7 @@ input, select, textarea {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
+
 	}
 
 		.split > * {
@@ -2486,11 +2489,13 @@ input, select, textarea {
 			width: 50%;
 			
 			margin-bottom: 0px;
+			
 		}
 
 		.split > :nth-child(2n - 1) {
 			padding-right: 1em;
 			border-right: solid 3px rgba(255, 255, 255, 0.15);
+			
 		}
 
 		.split > :nth-child(2n) {
@@ -2502,6 +2507,7 @@ input, select, textarea {
 		{ 
 			.split {
 				display: block;
+
 			}
 
 				.split > * {
@@ -2509,15 +2515,18 @@ input, select, textarea {
 					padding-top: 1em;
 
 					width: 100% !important;
+
 				}
 
 				.split > :nth-child(2n - 1) {
 					border-right: 0;
 					padding-right: 0;
-				}
+
+		}
 
 				.split > :nth-child(2n) {
 					padding-left: 0;
+					
 				}
 
 				.split > :first-child {
@@ -2553,6 +2562,7 @@ input, select, textarea {
 		justify-self: start;
 	
 		padding: 20px;
+		
 
 		pointer-events:none;
 
@@ -2565,7 +2575,7 @@ input, select, textarea {
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 
-		/* font-family:'A-OTF Shin Go Pro H'; */
+		font-family:'A-OTF Shin Go Pro R';
 	}
 
 	.description .project-tech-list,
@@ -2617,6 +2627,7 @@ input, select, textarea {
 
 		margin-bottom: 50px;
 		/* margin-bottom: 80px; */
+
 	}
 
 	/* .spotlights > section::before {
@@ -2648,6 +2659,7 @@ input, select, textarea {
 
 	.spotlights > section:nth-child(2) {
 		background-color: #1f1d27;	
+
 	}
 
 	.spotlights > section:nth-child(1) .project-bg video {
@@ -2696,6 +2708,7 @@ input, select, textarea {
 			flex-direction: row;
 			gap: 2em;
 			padding: 4em 4em 4em 4em ;
+			
 		}
 
 			.spotlights > section > .content > .inner {
@@ -2779,14 +2792,19 @@ input, select, textarea {
 				display: block;
 				/* display: flex; */
 				background: none;
+				
+				
 			}
 
 			.spotlights > section > .content {
 				padding: 3em 2em 1em 2em ;
 				padding: 0;
+
+
 				margin-left: auto;
 				margin-right: auto;
 				width: 90%;
+				
 			}
 
 			.spotlights > section:nth-child(odd) .split section:nth-child(2) {
@@ -2826,6 +2844,7 @@ input, select, textarea {
 				.spotlights > section > .content {
 					/* width: 100%; */
 					z-index: 1;
+					
 				}
 
 				.spotlights > section.inactive > .content > .inner,
@@ -2880,7 +2899,7 @@ input, select, textarea {
 			.spotlights > section:nth-child(odd) .split {
 				display: flex;
 				flex-direction: column;
-				margin-top: -2em;
+				
 			}
 
 			.spotlights > section:nth-child(odd) .split section:nth-child(2) {
@@ -2892,6 +2911,7 @@ input, select, textarea {
 				padding-right: 0em;
 				margin-right: 0em;
 				border-right: none;
+				
 			}
 
 			.spotlights > section:nth-child(odd) .split > :nth-child(2n - 1) {
@@ -2914,7 +2934,7 @@ input, select, textarea {
 			}
 
 			.spotlights {
-				left: -2em;
+				/* left: -2em; */
 			}
 		}
 
@@ -3429,10 +3449,10 @@ input, select, textarea {
 
 	#footer {
 		position: relative;
-		padding: 2em 5em 1.5em 5em;
-		background: #41475C;
+		width: 100%;
+		/* height: 100px; */
+		/* background: #41475C; */
 		color: #FFF;
-		margin-bottom: 5em;
 	}
 
 		#footer .copyright {
@@ -3777,6 +3797,7 @@ input, select, textarea {
 
 				#featured section {
 					/* margin-bottom: 3em; */
+					
 				}
 
 				#featured h3 {
@@ -3997,7 +4018,6 @@ input, select, textarea {
 		/* Footer */
 
 			#footer {
-				padding: 2em 2em 1.5em 2em;
 				text-align: center;
 			}
 
@@ -4107,8 +4127,7 @@ input, select, textarea {
 
 			section, article {
 				clear: both;
-				margin: 2em 0 2em 0 !important;
-				/* margin-top: 2em; */
+				/* margin: 2em 0 2em 0 !important; */
 			}
 
 				section > :first-child, section:first-child, article > :first-child, article:first-child {
@@ -4161,6 +4180,8 @@ input, select, textarea {
 					font-size: 1.1em;
 				}
 
+
+
 		/* about-me */
 
 			#about-me {
@@ -4170,6 +4191,7 @@ input, select, textarea {
 
 				#about-me section {
 					margin: 0 !important;
+					
 				}
 
 				#about-me header {
@@ -4362,4 +4384,25 @@ input, select, textarea {
 	z-index: -10;
 	height: 100%;
 	pointer-events: none;
+}
+
+/* .spotlights {
+	margin: -2em !important;
+	padding: -2em !important;
+}
+
+section {
+	margin: -2em !important;
+	padding: -2em !important;
+} */
+
+body {
+	/* height: 100vh;
+	width: 100vw;
+
+	overflow-y: none;
+	overflow-x: hidden;
+	
+	perspective: 10px;
+	margin:0; */
 }
