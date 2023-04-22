@@ -767,8 +767,8 @@ body {
   box-sizing: inherit;
 } */
 
-@media screen and (max-width: 736px) {
-
+@media screen and (max-width: 736px),
+       screen and (max-height: 485px) {
   .contact.fixed
   {
     display: none;

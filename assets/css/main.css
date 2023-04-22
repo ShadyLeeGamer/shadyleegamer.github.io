@@ -460,24 +460,36 @@ input, select, textarea {
 
 		.projects-header {
 				font-family:'A-OTF Shin Go Pro H';
-				position: absolute;
-				writing-mode: vertical-lr;
-				text-transform: uppercase;
-				text-orientation: upright;
 				letter-spacing: 0.10em;
 				font-size: 4em;
-				left: -142.5%;
-				top: 225%;
-				transform: translateY(-50%);
 				white-space: nowrap;
-				color: rgba(255, 255, 255, 0.5);
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.5);
 
-				transform-style: preserve-3d;
-				z-index: -100;
-				transform: translateZ(-30px) scale(4);
 
 			/* background-color:#121213; */
+		}
+		.projects-header.perspective {
+			position: absolute;
+			writing-mode: vertical-lr;
+			text-orientation: upright;
+			left: -142.5%;
+			top: 225%;
+			transform: translateY(-50%);
 
+			transform-style: preserve-3d;
+			z-index: -100;
+			transform: translateZ(-30px) scale(4);
+
+			display: block;
+		}
+		.projects-header.mobile {
+			position: relative;
+			font-size: 2.5em;
+			text-align: center;
+			padding-bottom: 0.5em;
+
+			display: none;
 		}
 
 			.work-experience-header {
@@ -509,20 +521,16 @@ input, select, textarea {
 				text-align: center;
 					}
 
-					.projects-header {
+					.projects-header.perspective {
 						display: none;
+						}
+
+					.projects-header.mobile {
+						display: block;
 						}
 		}
 
-			@media screen and (max-width: 960px) {
-				.work-experience-header {
-				position: relative;
-				writing-mode:horizontal-tb;
-					transform: none;
-					padding: 0.5em;
-					left: 0;
-				}
-			}
+
 
 	.project-category {
 		font-family:'A-OTF Shin Go Pro M';
@@ -542,16 +550,35 @@ input, select, textarea {
 		font-family:'A-OTF Shin Go Pro H';
 		position: relative;
 		writing-mode: vertical-lr;
-		text-orientation: upright;
 		text-transform: uppercase;
 		font-size: 1em;
-		color: rgba(255, 255, 255, 0.5);
+		color: rgba(255, 255, 255, 0.255);
+		/* background-color: #000000; */
+		position: absolute;
+		left: -2em;
+		top: 50%;
+		transform: translateY(-50%);
+		white-space: nowrap;
 	}
 
 	.project-header{
 		text-align: center;
 		font-size: 7.5em;
 		font-family:'A-OTF Shin Go Pro EL';
+	}
+
+	@media screen and (max-width: 960px) {
+		.work-experience-header {
+		position: relative;
+		writing-mode:horizontal-tb;
+			transform: none;
+			padding: 0.5em;
+			left: 0;
+		}
+
+		.project-date {
+			left: -1em;
+		}
 	}
 
 
@@ -2658,7 +2685,7 @@ input, select, textarea {
 	} */
 
 	.spotlights > section:nth-child(2) {
-		background-color: #1f1d27;	
+		/* background-color: #1f1d27;	 */
 
 	}
 
