@@ -14,18 +14,21 @@ let timeSinceLastShot = 0;
 
 
 var lockdowneerElement = document.getElementById("lockdowneer");
-var isMouseDown = false;
-lockdowneerElement.addEventListener('mousedown', function (event) {
-  isMouseDown = true;
-});
+var shootInput = false;
 
-lockdowneerElement.addEventListener('mouseup', handleMouseUp);
-lockdowneerElement.addEventListener('mouseleave', handleMouseUp);
+lockdowneerElement.addEventListener('mousedown', handleShootInputEnter);
+lockdowneerElement.addEventListener('touchstart', handleShootInputEnter);
+lockdowneerElement.addEventListener('mouseup', handleShootInputExit);
+lockdowneerElement.addEventListener('touchend', handleShootInputExit);
+lockdowneerElement.addEventListener('mouseleave', handleShootInputExit);
+lockdowneerElement.addEventListener('touchcancel', handleShootInputExit);
 
-function handleMouseUp(event) {
-  isMouseDown = false;
+function handleShootInputEnter(event) {
+  shootInput = true;
 }
-
+function handleShootInputExit(event) {
+  shootInput = false;
+}
 
 // Unity's framerate
 const TARGET_FPS = 60;
@@ -41,7 +44,7 @@ function update(currentTime) {
 
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
-    if(isMouseDown && timeSinceLastShot >= 1000 / FIRE_RATE) {
+    if(shootInput && timeSinceLastShot >= 1000 / FIRE_RATE) {
       timeSinceLastShot = 0;
 
       shoot();
