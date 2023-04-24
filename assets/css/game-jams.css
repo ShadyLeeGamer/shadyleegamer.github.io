@@ -27,5 +27,14 @@
     transition: 0.5s;
     cursor: pointer;
   
+    /* animation: spin 5s linear infinite; */
+}
+
+.tabs li.tab.spin img{
     animation: spin 5s linear infinite;
+    background-color: aqua;
+}
+
+.tabs li.tab.spin:hover img{
+    animation: none;
 }

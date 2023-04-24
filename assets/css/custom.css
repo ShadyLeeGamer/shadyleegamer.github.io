@@ -24,7 +24,7 @@
     /* transform:translateZ(20px); */
     
     filter: sepia(100%) hue-rotate(-80deg);
-    transition: filter 500ms ease-out;
+    transition: 500ms ease-out;
   
     border-radius:1em;
 
@@ -112,7 +112,7 @@
 
   .project-bg video {
     filter: sepia(100%) hue-rotate(-20deg) brightness(25%);
-    transition: 500ms ease-out;
+    transition: 0.25s ease-out;
     
     width: 100%;
     height: 100%;
@@ -543,66 +543,6 @@ body {
 		}
 	}
 
-  #lockdowneer{
-    text-align: center;
-    width: calc(64px/2);
-    height: 32px;
-    transform: scale(2);
-    background: url(../../images/2020-survival-game/lockdowneer-idle.png);
-    image-rendering: pixelated;
-    cursor: pointer;
-
-    animation: animateIdle 2s steps(2) infinite;
-  }
-
-  #lockdowneer:hover{
-    position: relative;
-    width: calc(64px/2);
-    height: 32px;
-    transform: scale(2);
-    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
-    image-rendering: pixelated;
-    cursor: pointer;
-    
-    animation: none;
-  }
-
-  #lockdowneer-shooting{
-    position: relative;
-    width: calc(64px/2);
-    height: 32px;
-      background-position: 64px;
-      transform: scale(2);
-    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
-    image-rendering: pixelated;
-    cursor: pointer;
-
-    animation: animateIdle 0.2s steps(2) reverse;
-  }
-
-  @keyframes animateIdle
-  {
-    from
-    {
-      background-position: 0;
-    }
-    to
-    {
-      background-position: 64px;
-    }
-  }
-  @keyframes animateShoot
-  {
-    from
-    {
-      background-position: 0;
-    }
-    to
-    {
-      background-position: 64px;
-    }
-  }
-
 .code-bg1{
   background-image: url("../../images/hello-world-html-code-768x384.webp");
   opacity: 10%;
@@ -632,10 +572,8 @@ body {
 
   align-items: center;
   flex-direction: column;
-
   gap: 1em;
-  padding: 2em;
-
+  margin: 2em;
 
 }
 .contact.fixed
@@ -767,7 +705,7 @@ body {
   box-sizing: inherit;
 } */
 
-@media screen and (max-width: 736px),
+@media screen and (max-width: 746px), /*1080px*/
        screen and (max-height: 485px) {
   .contact.fixed
   {
@@ -949,3 +887,70 @@ img{
   object-fit: contain;
 }
 
+.project-bg.scroll-transition video{
+  transform: scale(0, 1);
+}
+
+.project-bg.scroll-transition.end video {
+  transform: scale(1, 1);
+}
+
+.description.scroll-transition {
+  opacity: 0;
+}
+
+.description.scroll-transition.end {
+  opacity: 1;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+@media screen and (min-width: 980px) {
+  .spotlights > section:nth-child(odd) .description.scroll-transition {
+    transform: translateX(60px);
+  }
+  .spotlights > section:nth-child(even) .description.scroll-transition {
+    transform: translateX(-60px);
+  }
+
+  .spotlights > section:nth-child(odd) .description.scroll-transition.end {
+    transform: translateX(0px);
+  }
+  .spotlights > section:nth-child(even) .description.scroll-transition.end {
+    transform: translateX(0px);
+  }
+}
+
+@media screen and (max-width: 980px) {
+
+  .spotlights > section:nth-child(odd) .description.scroll-transition {
+    transform: translateX(60px) translateY(-50%);
+  }
+  .spotlights > section:nth-child(even) .description.scroll-transition {
+    transform: translateX(-60px) translateY(-50%);
+  }
+
+  .spotlights > section:nth-child(odd) .description.scroll-transition.end {
+    transform: translateX(0px) translateY(-50%);
+  }
+  .spotlights > section:nth-child(even) .description.scroll-transition.end {
+    transform: translateX(0px) translateY(-50%);
+  }
+}
+
+.spotlights > section.scroll-transition {
+  background-color: #17161900;
+  transition: background-color 0.25s ease-out;
+}
+
+.spotlights > section.scroll-transition.end {
+  background-color: #171619;
+}
+
+.project-date.scroll-transition {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.project-date.scroll-transition.end {
+  opacity: 1;
+}

@@ -104,29 +104,29 @@
 								</header>
 
 								<ul class="tabs">
-									<li data-tab-target="#mini-jam-83-dread" class="tab"><img src="images/game-jams/swords-and-fangs/icon.png" alt=""></li>
-									<li data-tab-target="#swords-and-fangs" class="tab"><img src="images/game-jams/swords-and-fangs/icon.png" alt=""></li>
-									<li data-tab-target="#disaster-is-coming" class="tab"><img src="images/game-jams/disaster-is-coming/icon.png" alt=""></li>
-									<li class="tab"><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/ui/icons/itch-io.png" alt=""></a></li>
+									<li data-tab-target="#mini-jam-83-dread" class="tab spin"><img src="images/game-jams/mini-jam-83-dread/icon.png" alt=""></li>
+									<li data-tab-target="#swords-and-fangs" class="tab spin"><img src="images/game-jams/swords-and-fangs/icon.png" alt=""></li>
+									<li data-tab-target="#disaster-is-coming" class="tab spin"><img src="images/game-jams/disaster-is-coming/icon.png" alt=""></li>
+									<li class="tab spin"><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/ui/icons/itch-io.png" alt=""></a></li>
 								</ul>
 
 								<div class="tab-content">
 									<div id="mini-jam-83-dread" data-tab-content>
 										<h1 class="project-header">Mini Jam 83 - Dread</h1>
-								<p>An endless survival game where you play as a Dracula killing knights to satisfy your endless thirst for blood before you’re drained of it. Blood is used as a currency to upgrade stats and unlock new abilities in between waves.</p>
+								<p>A horror game where you have to avoid monsters while finding keys hidden in rooms to exit the level.</p>
 								<div class="image-center">
-									<div class="aspect-ratio">
-										<iframe src="https://www.youtube.com/embed/mxaEOxUM8s0"></iframe>
-									</div>
-								</div>
+									<video src="videos/game-jams/mini-jam-83-dread/level-generation-1.mp4" autoplay muted loop></video>
+									<img src="images/game-jams/mini-jam-83-dread/game-design-sketch.png">
+									<video src="videos/game-jams/mini-jam-83-dread/level-generation-2.mp4" autoplay muted loop></video>
+										</div>
+
+								<p>In this project, I worked as lead programmer with two other programmers. We broke down the game system into 3 seperate modules: player controller, enemy AI and level generator which I implemented.</p>
 								
-								<button class="accordion">Dungeon Level Generator</button>
-								<div class="panel">
-									<p>In this project, I worked as lead programmer with two other programmers. We broke down the game system into 3 seperate modules: player controller, enemy AI and level generator which I implemented.</p>
+								<h1>Dungeon Level Generator</h1>
 									
 									<div class="image-and-text-container left">
 										<div class="image-container">
-											<img src="images/game-jams/mini-jam-83-dread/level-generation-sequence-flowchart.png">
+											<img src="images/game-jams/mini-jam-83-dread/generation-sequence.png">
 										</div>
 										<div class="text-container">
 											<p>The level generator sequence was inspired by the one in the Spelunky games, which goes like this:</p>
@@ -134,8 +134,22 @@
 									</div>
 
 									<p>This system was suitable for the game since we wanted unique level patterns with props to hide from enemies which chase you.</p>
-									<p>I gave the generator a downward bias to encourage more of a straight path from start to end.</p>
+									
+									<div class="image-and-text-container right">
+										<div class="image-container">
+											<img src="images/game-jams/mini-jam-83-dread/room-layouts.png">
+										</div>
+										<div class="text-container">
+											<p>To further achieve this, there are several room layouts with different arrangements of props, which is randomly rotated in 90 degrees for more variety.</p>
+										</div>
+									</div>
 								
+									<p>I applied more downward bias to encourage more of a straight path from start to end to have similar length for each randomly generated level. The level on the right is created with the bias.</p>
+									<div class="image-center">
+									<img src="images/game-jams/mini-jam-83-dread/generate-without-downard-bias.png">
+									<img src="images/game-jams/mini-jam-83-dread/generate-with-downard-bias.png">
+								</div>
+
 									<button class="accordion">(C#) CODE SNIPPET | Level Generator </button>
 									<div class="panel">
 										<p>This function is called upon pressing submit in the register page.</p>
@@ -201,7 +215,6 @@
 	mapHolder.CreateNodes();
 }</code></pre>
 									</div>
-								</div>
 									</div>
 									<div id="swords-and-fangs" data-tab-content>
 										<h1 class="project-header">Swords & Fangs</h1>

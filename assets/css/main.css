@@ -500,6 +500,8 @@ input, select, textarea {
 				letter-spacing: 0.10em;
 				font-size: 2em;
 				right: -3.5%;
+				/* left: -2em; */
+
 				top: 50%;
 				transform: translateY(-50%);
 				white-space: nowrap;
@@ -556,6 +558,8 @@ input, select, textarea {
 		/* background-color: #000000; */
 		position: absolute;
 		left: -2em;
+		/* right: -2em; */
+
 		top: 50%;
 		transform: translateY(-50%);
 		white-space: nowrap;
@@ -578,6 +582,7 @@ input, select, textarea {
 
 		.project-date {
 			left: -1em;
+			/* right: -1em; */
 		}
 	}
 
@@ -2606,7 +2611,9 @@ input, select, textarea {
 	}
 
 	.description .project-tech-list,
-	.description .project-title {
+	.description .project-title,
+	#lockdowneer,
+	#lockdowneer-shooting {
 		pointer-events:all;
 	}
 	
@@ -2647,10 +2654,12 @@ input, select, textarea {
 		/* min-height: 22.5em; */
 		
 		background-color: #00000020;
-		background-color: #171619;	
+		background-color: #171619;
 		border-radius: 2em;
 		
 		position: relative;
+
+		
 
 		margin-bottom: 50px;
 		/* margin-bottom: 80px; */
@@ -2743,10 +2752,10 @@ input, select, textarea {
 				-webkit-transform: translateX(0) translateY(0);
 				-ms-transform: translateX(0) translateY(0);
 				transform: translateX(0) translateY(0);
-				-moz-transition: opacity 1s ease, -moz-transform 1s ease;
+				/* -moz-transition: opacity 1s ease, -moz-transform 1s ease;
 				-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
 				-ms-transition: opacity 1s ease, -ms-transform 1s ease;
-				transition: opacity 1s ease, transform 1s ease;
+				transition: opacity 1s ease, transform 1s ease; */
 				opacity: 1;
 				
 				display: flex;
@@ -3247,6 +3256,8 @@ input, select, textarea {
   		color: #fff;
 		width: 100%;
 		font-size: 1em;
+
+		padding-bottom: 25em;
 	}
 
 	#about-me h2
@@ -4408,9 +4419,10 @@ input, select, textarea {
 	position: absolute;
 	top: 0;
 	width: 100%;
+	height: 165%;
 	z-index: -10;
-	height: 100%;
 	pointer-events: none;
+	
 }
 
 /* .spotlights {

@@ -1,0 +1,74 @@
+/* .blue {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+}
+
+.blue:hover {
+    cursor: pointer;
+} */
+
+#survival-game-2020-canvas {
+    position: relative;
+    pointer-events: none;
+    /* width: 200px;
+    height: 64px; */
+    /* border: 1px solid white; */
+}
+
+#lockdowneer{
+    position: absolute;
+    width: calc(64px/2);
+    width: 32px;
+    height: 32px;
+    transform: scale(2) translateY(9px);
+    background: url(../../images/2020-survival-game/lockdowneer-idle.png);
+    image-rendering: pixelated;
+    cursor: pointer;
+
+    animation: animateIdle 2s steps(2) infinite;
+  }
+
+  #lockdowneer:hover{
+    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
+    
+    animation: none;
+  }
+
+  #lockdowneer-shooting{
+    position: absolute;
+    width: calc(64px/2);
+    width: 32px;
+    height: 32px;
+      background-position: 64px;
+      transform: scale(2) translateY(9px);
+    background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
+    image-rendering: pixelated;
+    cursor: pointer;
+
+    animation: animateIdle 0.2s steps(2) reverse;
+  }
+
+  @keyframes animateIdle
+  {
+    from
+    {
+      background-position: 0;
+    }
+    to
+    {
+      background-position: 64px;
+    }
+  }
+  @keyframes animateShoot
+  {
+    from
+    {
+      background-position: 0;
+    }
+    to
+    {
+      background-position: 64px;
+    }
+  }
