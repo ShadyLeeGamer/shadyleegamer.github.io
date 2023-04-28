@@ -15,8 +15,10 @@
 
 		<link rel="stylesheet" href="assets/css/interactables.css"/>
 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/2.0.1/smooth-scrollbar.css"/>
+
 		<style>
-			::-webkit-scrollbar {
+			/* ::-webkit-scrollbar {
 				width: 2em;
 			}
 
@@ -37,20 +39,6 @@
 					scrollbar-color: red blue;
 					scrollbar-width: auto;
 				}
-			}
-
-			/* ::-webkit-scrollbar {
-				width: 8px;
-				-webkit-appearance: none;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background: #7e7e7e;
-				border-radius: 20px;
-			}
-
-			::-webkit-scrollbar-track {
-				background-color: none;
 			} */
 		</style>
 	</head>
@@ -188,7 +176,7 @@
 				</div>
 			</nav>
 
-			<div class="projects-header-wrapper">
+			<div class="projects-header-wrapper" id="my-scrollbar" data-scrollbar>
 
 			<h1 class="projects-header perspective">Projects</h1>
 			<div id="page-wrapper">
@@ -751,6 +739,12 @@
 			<script src="assets/js/interactables.js"></script>
 
 			<script src="assets/js/observers.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/2.0.1/smooth-scrollbar.js"></script>
+			<script>
+				var Scrollbar = window.Scrollbar;
+			  
+				Scrollbar.init(document.querySelector('#my-scrollbar'));
+			  </script>
 		</div>
 
 	</body>

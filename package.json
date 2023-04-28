@@ -1,0 +1,23 @@
+{
+  "name": "shadyleegamer.github.io",
+  "version": "1.0.0",
+  "description": "The source code for my portfolio website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShadyLeeGamer/shadyleegamer.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShadyLeeGamer/shadyleegamer.github.io/issues"
+  },
+  "homepage": "https://github.com/ShadyLeeGamer/shadyleegamer.github.io#readme",
+  "dependencies": {
+    "smooth-scrollbar": "^8.8.3"
+  }
+}
