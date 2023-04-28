@@ -11,7 +11,8 @@ tabs.forEach(tab =>
             if(currentTabContent != null)
             {
                 currentTabContent.classList.remove('active');
-                currentTab.classList.add('spin');
+                // currentTab.classList.add('spin');
+                currentTab.firstElementChild.classList.add('spinner');
             }
 
             if(target != currentTabContent)
@@ -20,7 +21,8 @@ tabs.forEach(tab =>
                 currentTabContent.classList.add('active');
 
                 currentTab = tab;
-                currentTab.classList.remove('spin');
+                // currentTab.classList.remove('spin');
+                currentTabContent.firstElementChild.classList.remove('spinner');
             }
             else
             {
@@ -30,11 +32,15 @@ tabs.forEach(tab =>
         });
 
         tab.addEventListener("mouseenter", () => {
-            tab.classList.remove('spin');
+            // tab.classList.remove('spin');
+            tab.firstElementChild.classList.remove('spinner');
         });
 
         tab.addEventListener("mouseleave", () => {
             if (tab != currentTab)
-                tab.classList.add('spin');
+            {
+                tab.firstElementChild.classList.add('spinner');
+                // tab.classList.add('spin');
+            }
         });
     })

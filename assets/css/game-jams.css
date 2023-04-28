@@ -19,22 +19,24 @@
 .tabs li img{
     position: relative;
     list-style: none;
-    width: 100px;
-    height: 100px;
-    /* background: #777; */
+    /* width: 100px;
+    height: 100px; */
+    width: 100%;
+    height: 100%;
+
     margin: 0 0px;
     border-radius: 50%;
     transition: 0.5s;
-    cursor: pointer;
   
     /* animation: spin 5s linear infinite; */
 }
 
-.tabs li.tab.spin img{
-    animation: spin 5s linear infinite;
-    background-color: aqua;
+.tab{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
 }
 
-.tabs li.tab.spin:hover img{
+/* .tabs li.tab:hover img{
     animation: none;
-}
+} */

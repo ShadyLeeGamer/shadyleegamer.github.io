@@ -16,10 +16,27 @@
 		<link rel="stylesheet" href="assets/css/interactables.css"/>
 
 		<style>
-			body{
-				scrollbar-width: normal;
-				scrollbar-color: red green;
-				/* overflow-y:hidden; */
+			::-webkit-scrollbar {
+				width: 2em;
+			}
+
+			::-webkit-scrollbar-track {
+				background: hsl(120 75% 50% / 1);
+				border-radius: 100vw;
+				margin-block: .5em;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: hsl(120 100% 20% / 1);
+				border: .25em solid hsl(120 75% 50% / 1);
+				border-radius: 100vw;
+			}
+
+			@supports (scrollbar-color: red blue) {
+				* {
+					scrollbar-color: red blue;
+					scrollbar-width: auto;
+				}
 			}
 
 			/* ::-webkit-scrollbar {
@@ -39,28 +56,136 @@
 	</head>
 	<body class="homepage is-preload">  
 
-		<div class="contact fixed">
+		<!-- <div class="contact fixed scroll-transition">
 			<ul class="contact-social">
-				<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-				<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-				<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-				<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
+				<li>
+					<a href="https://github.com/ShadyLeeGamer" target="_blank">
+						<div class="spinner" style="width: 40px; height: 40px;">
+							<img src="images/icons/github.png">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/ariyabayat/" target="_blank">
+						<div class="spinner" style="width: 40px; height: 40px;">
+							<img src="images/icons/linkedin.png">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="https://shadyleegamer.itch.io/" target="_blank">
+						<div class="spinner" style="width: 40px; height: 40px;">
+							<img src="images/icons/itch-io.png">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.youtube.com/@shadyleegamer" target="_blank">
+						<div class="spinner" style="width: 40px; height: 40px;">
+							<img src="images/icons/youtube.png">
+						</div>
+					</a>
+				</li>
+				<li class="contact-email">
+					<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
+				</li>
 			</ul>
-			<div class="contact-email">
-				<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-			</div>
-		</div>
+		</div> -->
 
 			<!-- Nav -->
 			<nav id="nav">
+				<div >
+					<div>
+						<h1><a href="#">Ariya Bayat</a></h1>
+						<span>Game Dev, Programmer Portfolio</span>
+					</div>
+					<div class="right">
+						<a class="resumeBtn"><img src="images/icons/resume-cv.png"></a>
+						<div class="contact fixed scroll-transition">
+							<ul class="contact-social">
+								<li>
+									<a href="https://github.com/ShadyLeeGamer" target="_blank">
+										<div class="spinner" style="width: 40px; height: 40px;">
+											<img src="images/icons/github.png">
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/in/ariyabayat/" target="_blank">
+										<div class="spinner" style="width: 40px; height: 40px;">
+											<img src="images/icons/linkedin.png">
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="https://shadyleegamer.itch.io/" target="_blank">
+										<div class="spinner" style="width: 40px; height: 40px;">
+											<img src="images/icons/itch-io.png">
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.youtube.com/@shadyleegamer" target="_blank">
+										<div class="spinner" style="width: 40px; height: 40px;">
+											<img src="images/icons/youtube.png">
+										</div>
+									</a>
+								</li>
+							</ul>
+							<div class="contact-email">
+								<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
+							</div>
+						</div>
+						<div class="hamburger-menu-container">
+							<label class="hamburger-menu">
+								<input type="checkbox" />
+							</label>
+							<div class="sidebar">
+								<nav>
+									<a class="resumeBtn"><img src="images/icons/resume-cv.png"></a>
+									<div class="contact mobile scroll-transition">
+										<ul class="contact-social">
+											<li>
+												<a href="https://github.com/ShadyLeeGamer" target="_blank">
+													<div class="spinner" style="width: 40px; height: 40px;">
+														<img src="images/icons/github.png">
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="https://www.linkedin.com/in/ariyabayat/" target="_blank">
+													<div class="spinner" style="width: 40px; height: 40px;">
+														<img src="images/icons/linkedin.png">
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="https://shadyleegamer.itch.io/" target="_blank">
+													<div class="spinner" style="width: 40px; height: 40px;">
+														<img src="images/icons/itch-io.png">
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="https://www.youtube.com/@shadyleegamer" target="_blank">
+													<div class="spinner" style="width: 40px; height: 40px;">
+														<img src="images/icons/youtube.png">
+													</div>
+												</a>
+											</li>
+										</ul>
+										<div class="contact-email">
+											<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
+										</div>
+									</div>
+								</nav>
+								</div>
+						</div>
+						
+						
+					</div>
 
-				<ul>
-					<li class="current_page_item"><a href="index.html">About</a></li>
-					<li><a href="left-sidebar.html">Projects</a></li>
-					<li><a href="assets/docs/Resume.pdf">Resume</a></li>
-					<li><a href="no-sidebar.html">Education</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
+				</div>
 			</nav>
 
 			<div class="projects-header-wrapper">
@@ -68,16 +193,11 @@
 			<h1 class="projects-header perspective">Projects</h1>
 			<div id="page-wrapper">
 			<!-- Header -->
+			
 				<div id="header">
 					<div class="container">
 
-						<!-- Logo -->
-							<div id="logo">
-								<div>
-									<h1><a href="#">Ariya Bayat</a></h1>
-									<span>Game Dev, Programmer Portfolio</span>
-								</div>
-							</div>
+
 
 
 
@@ -91,69 +211,92 @@
 				<div id="about-me" class="container">
 					<section>
 							<div class="about-text">
-							<p>Game programmer with a passion for game development since the age of 12. Recently published a PC game on Steam showcasing complex gravity-bending physics. Collaborated with teams in multiple game jams and driven to create immersive and engaging experiences.</p>
+							<p>Game developer with a passion for making games since the age of 10. Recently published a high-speed anime platformer on Steam showcasing complex gravity-bending physics. Collaborated with teams in 12 game jams and driven to create engaging experiences through problem solving and elegant solutions.</p>
 						</div>
 							<h2>Technical Experience</h2>
 
 							<div class="ribbon">
 								<div class="ribbon-content">
-								<ul class="tech">
+								<ul class="tech scroll-transition">
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"/>
-										<div class="tooltip">
-											<h2>Unity</h2>
-											<!-- <p>Proficient in Unity Engine with many years of experience creating games for various platforms including PC and mobile while designing custom scripts to streamline development.</p> -->
-									</div></li>
+										<div class="spinner" style="background: #bfbfbf;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" style="right: 2.5px;"/>
+											<div class="tooltip">
+												<h2>Unity</h2>
+												<!-- <p>Proficient in Unity Engine with many years of experience creating games for various platforms including PC and mobile while designing custom scripts to streamline development.</p> -->
+											</div>
+										</div>
+									</li>
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/>
+										<div class="spinner" style="background: #dc7cff;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/>
 										<div class="tooltip">
 											<h2>C Sharp</h2>
 											<!-- <p>Used C Sharp </p> -->
-									</div></li>
+									</div></div>
+								</li>
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
+										<div class="spinner" style="background: #ff9578;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
 										<div class="tooltip">
 											<h2>Git</h2>
 											<!-- <p>Git was used for vers.</p> -->
-									</div></li>
+									</div></div>
+								</li>
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"/>
+										<div class="spinner" style="background: #ffb778;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"/>
 										<div class="tooltip">
 											<h2>Firebase</h2>
 											<!-- <p>Made extensive use of Firebase services. including: Realtime Database, Authentication, Web Hosting, Cloud Storage.</p> -->
-										</div></li>
+										</div></div>
+									</li>
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+										<div class="spinner"  style="background: #fff47a;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
 										<div class="tooltip">
 											<h2>JavaScript</h2>
 											<!-- <p>Used JaveScript for projects before the option was removed from Unity. Continuing to use it for creating websites like this one.</p> -->
-										</div></li>
+										</div></div>
+									</li>
 									<!-- <li>
+										<div class="spinner">
 										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
 										<div class="tooltip">
 											<h2>Java</h2>
 										</div></li> -->
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+										<div class="spinner"  style="background: #ff7878;">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
 										<div class="tooltip">
 											<h2>HTML</h2>
-										</div></li>
+										</div></div>
+									</li>
 									<!-- <li>
+										<div class="spinner">
 										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" />
 										<div class="tooltip">
 											<h2>Visual Studio</h2>
-										</div></li> -->
+										</div>
+									</div>
+								</li> -->
 									<!-- <li>
+										<div class="spinner">
 										<img src="images/icons/json.png" />
 										<div class="tooltip">
 											<h2>JSON</h2>
-										</div></li> -->
+										</div>
+									</div>
+									</li> -->
 									<li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-										<div class="tooltip">
-											<h2>CSS</h2>
-										</div></li>
-									<!-- <li>
+										<div class="spinner" style="background: #78c5ff;" >
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+											<div class="tooltip">
+												<h2>CSS</h2>
+											</div>
+										</div>
+									</li>
+										<!-- <li>
 										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" />
 										<div class="tooltip">
 											<h2>Trello</h2>
@@ -184,7 +327,7 @@
 
 									<h2 class="work-experience-header">Work Experience</h2>
 									<div class="content">
-								<p class="project-date scroll-transition">Jan 2019 — Present (7 Mo)</p>
+								<p class="project-date scroll-transition">Aug 2021 — Oct 2021</p>
 							<!-- <div class="ribbon-vertical"></div> -->
 								<div class="inner">
 									<a href="okainos.html" class="project-bg bg-perspective-left scroll-transition">
@@ -211,7 +354,7 @@
 												</section>
 											</div>
 	
-											<ul class="project-tech-list">
+											<ul class="project-tech-list scroll-transition">
 												<li>Rest API</li>
 												<li>Git</li>
 												<li>Firebase</li>
@@ -238,7 +381,7 @@
 
 						<section class="scroll-transition">
 								<div class="content">
-								<p class="project-date scroll-transition">Jan 2019 — Present (7 Mo)</p>
+								<p class="project-date scroll-transition">June 2020 — Present</p>
 								<div class="inner">
 
 									<div class="description scroll-transition">
@@ -266,7 +409,7 @@
 												</ul>
 											</section>
 										</div>
-										<ul class="project-tech-list">
+										<ul class="project-tech-list scroll-transition">
 											<li>C#</li>
 											<li>Unity</li>
 											<li>Git</li>
@@ -287,7 +430,7 @@
 
 						<section class="scroll-transition">
 							<div class="content">
-								<p class="project-date scroll-transition">Jan 2019 — Present (7 Mo)</p>
+								<p class="project-date scroll-transition">Sept 2020 — May 2022</p>
 								<div class="inner">
 									<a href="game-jams.html" class="project-bg bg-perspective-left scroll-transition">
 										<video src="videos/game-jams/reel.mp4" autoplay loop muted></video>
@@ -314,7 +457,7 @@
 											</section>
 										</div>
 
-										<ul class="project-tech-list">
+										<ul class="project-tech-list scroll-transition">
 											<li>C#</li>
 											<li>Unity</li>
 											<li>Unity Teams</li>
@@ -342,7 +485,7 @@
 
 						<section class="scroll-transition">
 							<div class="content">
-								<p class="project-date scroll-transition">Jan 2019 — Present (7 Mo)</p>
+								<p class="project-date scroll-transition">Apr 2020 — Aug 2020</p>
 								<div class="inner">
 									<div class="description scroll-transition">
 											<span>
@@ -372,7 +515,7 @@
 												</ul>
 											</section>
 										</div>
-										<ul class="project-tech-list">
+										<ul class="project-tech-list scroll-transition">
 											<li>Git</li>
 											<li>C#</li>
 											<li>Unity</li>
@@ -395,7 +538,7 @@
 
 						<section class="scroll-transition">
 							<div class="content">
-								<p class="project-date scroll-transition">Jan 2019 — Present (7 Mo)</p>
+								<p class="project-date scroll-transition">Sept 2016 — Jul 2017</p>
 								<div class="inner">
 									<a href="tap-fever.html" class="project-bg bg-perspective-left scroll-transition">
 										<video src="videos/tap-fever/reel.mp4" autoplay loop muted></video>
@@ -420,7 +563,7 @@
 											</section>
 										</div>
 
-										<ul class="project-tech-list">
+										<ul class="project-tech-list scroll-transition">
 											<li>C#</li>
 											<li>Unity</li>
 											<li>Gimp</li>
@@ -545,17 +688,40 @@
 				</div> -->
 
 			<!-- Footer -->
-				<div id="footer" class="container">
+				<!-- <div id="footer" class="container">
 
 					<div class="row">
 						<div class="col-12">
-							<!-- <span class="copyright">&copy; Untitled. All rights reserved.</span> -->
-							<div class="contact footer">
+							<div class="contact footer scroll-transition">
 								<ul class="contact-social">
-									<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-									<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-									<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-									<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
+									<li>
+										<a href="https://github.com/ShadyLeeGamer" target="_blank">
+											<div class="spinner" style="width: 40px; height: 40px;">
+												<img src="images/icons/github.png">
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="https://www.linkedin.com/in/ariyabayat/" target="_blank">
+											<div class="spinner" style="width: 40px; height: 40px;">
+												<img src="images/icons/linkedin.png">
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="https://shadyleegamer.itch.io/" target="_blank">
+											<div class="spinner" style="width: 40px; height: 40px;">
+												<img src="images/icons/itch-io.png">
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/@shadyleegamer" target="_blank">
+											<div class="spinner" style="width: 40px; height: 40px;">
+												<img src="images/icons/youtube.png">
+											</div>
+										</a>
+									</li>
 								</ul>
 								<div class="contact-email">
 									<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
@@ -565,7 +731,7 @@
 						</div>
 					</div>
 
-				</div>
+				</div> -->
 
 
 		<!-- Scripts -->
@@ -580,45 +746,11 @@
 			<script src="assets/js/custom.js"></script>
 
 			<script src="assets/js/project-bg.js"></script>
+			<script src="assets/js/project-tech-list.js"></script>
 
 			<script src="assets/js/interactables.js"></script>
 
 			<script src="assets/js/observers.js"></script>
-
-			<script>
-				const projectTechLists = document.querySelectorAll('ul.project-tech-list');
-
-				projectTechLists.forEach((list) => {
-				const elements = list.querySelectorAll('li');
-				
-				elements.forEach((element) => {
-					let isAnimating = false;
-
-					element.addEventListener('mouseenter', () => {
-						if(!isAnimating)
-						{
-							if(!element.classList.contains('spin') && !isAnimating)
-								{
-									element.classList.remove('spin-reverse');
-									element.classList.add('spin');
-									isAnimating = true;
-								}
-
-							if (element.classList.contains('spin') && !isAnimating)
-							{
-								element.classList.remove('spin');
-								element.classList.add('spin-reverse');
-								isAnimating = true;
-							}
-						}
-					});
-				
-					element.addEventListener('animationend', () => {
-						isAnimating = false;
-					});
-				});
-				});
-			  </script>
 		</div>
 
 	</body>
