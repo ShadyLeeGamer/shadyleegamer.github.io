@@ -209,7 +209,8 @@ class ParticleSystem {
   draw(context) {
     this.particles.forEach(particle => {
       // context.globalAlpha = particle.lifetime;
-      context.fillStyle = '#BBFFCE';
+      // context.fillStyle = '#BBFFCE';
+      context.fillStyle = '#52a469';
       context.fillRect(particle.x, particle.y, particle.size * 2, particle.size * 2);
     });
   }
