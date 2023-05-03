@@ -62,6 +62,7 @@
   position: absolute;
   width: calc(95vw - 20px);
   margin-left: calc(-47.5vw + 50% + 10px);
+
 }
 
 .slider .slider-item {

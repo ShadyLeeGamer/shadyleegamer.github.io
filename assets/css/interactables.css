@@ -9,11 +9,20 @@
     cursor: pointer;
 } */
 
-#survival-game-2020-canvas {
+.interactable {
     position: relative;
+    width: max-content;
+    height: 64px;
+
+    /* border: 1px solid rgb(255, 0, 0); */
+}
+
+#survival-game-2020-canvas {
+    position: absolute;
     pointer-events: none;
     /* width: 200px;
     height: 64px; */
+    
     /* border: 1px solid white; */
 }
 
