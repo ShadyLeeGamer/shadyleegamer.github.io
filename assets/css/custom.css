@@ -7,8 +7,9 @@ ul.tech {
   padding: 0;
   display: flex;
 
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
+  margin: 1em 0em 1em 0em;
 }
 
 ul.tech li {
@@ -18,6 +19,7 @@ ul.tech li {
   cursor: pointer;
   
   /* border-radius: 11em; */
+  transform: scale(1);
 }
 
 
@@ -33,18 +35,52 @@ ul.tech li {
   padding: 0.75em;
   position: relative;
   overflow: hidden;
+  
   animation: spin 5s linear infinite;
 }
 
-/* .spinner::before {
-  content: '';
+ul.tech li::after,
+ul.contact-social li::after{
+  content: "";
+  display: block;
   position: absolute;
-  top: 150px;
-  left: 225px;
-  height: 50px;
-  width: 50px;
-  background: red;
-} */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 100%;
+  box-shadow: 0 20px 10px -5px rgba(0, 0, 0, 0.5);
+
+  animation: spin 5s linear infinite;
+
+    width: 100%;
+  height: 100%;
+}
+
+ul.tabs li:has(div.spinner)::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 100%;
+  box-shadow: 0 20px 10px -5px rgba(0, 0, 0, 0.5);
+
+  animation: spin 5s linear infinite;
+
+    width: 100%;
+  height: 100%;
+}
+
+ul.tech li::after {
+  top: 40px;
+}
+
+
+ul.contact-social li::after
+{
+  top: 20px;
+}
 
 ul.tech li img {
   position: relative;
@@ -95,13 +131,16 @@ ul.tabs li .spinner::after{
 }
 @media screen and (max-width: 736px) {
   ul.tech {
-    margin: 0;
+
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
+}
+
+.ribbon ul.tech {
+  justify-content: center;
+  align-items: center;
 }
 
 ul.tech .spinner {
@@ -129,7 +168,15 @@ ul.tech .spinner {
 
 ul.tech li:hover .spinner,
 ul.contact-social li:hover .spinner,
-ul.tabs li:hover .spinner
+ul.tabs li:hover .spinner,
+
+ul.tech li:hover .spinner::after,
+ul.contact-social li:hover .spinner::after,
+ul.tabs li:hover .spinner::after,
+
+ul.tech li:hover::after,
+ul.contact-social li:hover::after,
+ul.tabs li:hover::after
  {
       animation:none;
       transform: scale(1.25);
@@ -138,9 +185,7 @@ ul.tabs li:hover .spinner
               0 0 0 6px #86ff3b; */
   }
 
-  ul.tech li:hover .spinner::after{
-    animation:none;
-  }
+
 
   /* ul.tech li .tooltip {
     position: absolute;
@@ -424,7 +469,7 @@ body {
 }
 
 
-.a{
+/* .a{
   margin: 0;
   padding: 0;
   min-height: 75vh;
@@ -433,7 +478,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; 
-}
+} */
 
 .education-container {
   width: 1000px;

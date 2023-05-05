@@ -1132,11 +1132,32 @@
             _.slideOffset += _.slideWidth * Math.floor(_.options.slidesToShow / 2);
         }
 
+        // if (_.options.vertical === false) {
+        //     targetLeft = ((slideIndex * _.slideWidth) * -1) + _.slideOffset;
+        // } else {
+        //     targetLeft = ((slideIndex * verticalHeight) * -1) + verticalOffset;
+        // }
+
         if (_.options.vertical === false) {
             targetLeft = ((slideIndex * _.slideWidth) * -1) + _.slideOffset;
-        } else {
-            targetLeft = ((slideIndex * verticalHeight) * -1) + verticalOffset;
-        }
+          } else {
+            verticalOffset = 0;
+          
+            for (let i = 0; i < slideIndex; i++) {
+              verticalOffset += _.$slides.eq(i).outerHeight(true);
+            }
+          
+            if (_.options.infinite === true) {
+              var $slideCounts = Array.prototype.slice.call( _.$slideTrack[0].children );
+              for (var i = 0; i < $slideCounts.length; i++) {
+                if ($slideCounts[i].dataset.slickIndex < 0) {
+                  verticalOffset += $($slideCounts[i]).outerHeight(true);
+                }
+              }
+            }
+          
+            targetLeft = (verticalOffset * -1);
+          }
 
         if (_.options.variableWidth === true) {
 
@@ -2042,7 +2063,6 @@
                 });
             }
         }
-
         _.listWidth = _.$list.width();
         _.listHeight = _.$list.height();
 

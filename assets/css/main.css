@@ -268,20 +268,10 @@ input, select, textarea {
 		--background-1:#456678 ;
 		--background-2:#E4DED5 ;
 
-		--project-panel-1: #f3eee6;
-		--project-panel-2: #f3eee6;
-		/* --project-panel-2: #D5CCC5; */
-
-		--work-project-panel-1: #85AAAD;
-		--work-project-panel-2: #468797;
+		--project-tech-reversed-bg: #f3eee6;
 
 		--text-light:#ffffff ;
 		--text-dark:#000000 ;
-		--project-text-special:#ADACAA;
-		--work-project-text-special:#468797 ;
-
-		--description-split:#adacaa89;
-		--highlights-split:#adacaa47;
 
 		--nav-header: #E4DED5;
 		--nav-span: #85AAAD;
@@ -303,6 +293,60 @@ input, select, textarea {
 		--colour-3-bright: #CF5270;
 		--colour-4-bright: #2F5683;
 	}
+
+	:root #work-projects .spotlights > section {
+		--project-panel-1: #468797;
+		--project-panel-2: #85AAAD;
+
+		--project-description-split:#468797cc;
+		--project-highlights-split:#46879789;
+
+		--project-text-special:#468797;
+
+		--project-tech-item-colour-bright: var(--skills-ribbon-1);
+		--project-tech-item-colour-dark: var(--skills-ribbon-1);
+		--project-reel-filter-shift: -60deg;
+	}
+	@media screen and (max-width: 960px) {
+		:root #work-projects .spotlights > section {
+			--project-description-split:#1A5F4A;
+			--project-highlights-split:#1A5F4A;
+		}
+	}
+
+	:root #projects .spotlights > section {
+		--project-panel-1: #f3eee6;
+		--project-panel-2: #f3eee6;
+		/* --project-panel-2: #D5CCC5; */
+
+		--project-description-split:#adacaa89;
+		--project-highlights-split:#adacaa89;
+
+		--project-text-special:#ADACAA;
+	}
+	#projects .spotlights > section:nth-child(1)
+	{
+		--project-tech-item-colour-bright: var(--colour-1-bright);
+		--project-tech-item-colour-dark: var(--colour-1-dark);
+		--project-reel-filter-shift: 60deg;
+	}
+	:root #projects .spotlights > section:nth-child(2) {
+		--project-tech-item-colour-bright: var(--colour-2-bright);
+		--project-tech-item-colour-dark: var(--colour-2-dark);
+		--project-reel-filter-shift: 0deg;
+	}
+	:root #projects .spotlights > section:nth-child(3),
+	:root #project-top {
+		--project-tech-item-colour-bright: var(--colour-3-bright);
+		--project-tech-item-colour-dark: var(--colour-3-dark);
+		--project-reel-filter-shift: -70deg;
+	}
+	:root #projects .spotlights > section:nth-child(4) {
+		--project-tech-item-colour-bright: var(--colour-4-bright);
+		--project-tech-item-colour-dark: var(--colour-4-dark);
+		--project-reel-filter-shift: -170deg;
+	}
+
 
 @media screen and (min-width: 980px) {
   .project-bg {
@@ -448,7 +492,7 @@ input, select, textarea {
 
 
 /* Basic */
-	.project-title {
+	.spotlights .project-title {
 		font-family:'A-OTF Shin Go Pro M';
 		writing-mode: vertical-lr;
 
@@ -471,6 +515,11 @@ input, select, textarea {
 					padding: 0.5em;
 					padding-left: 1em;
 					padding-right: 1em;
+
+					margin: 4em;
+					margin-top: 1em;
+					margin-bottom: 2.5em;
+
 				  }
 				  
 				  .ribbon::before, .ribbon::after {
@@ -521,7 +570,7 @@ input, select, textarea {
 
 
 		.ribbon-vertical {
-			background: #D4A87A;
+			background: var(--project-tech-item-colour-bright);
 
 			position: relative;
 			padding: 0.5em;
@@ -537,16 +586,16 @@ input, select, textarea {
 
 			top: 0;
 			border-top: 5px solid transparent;
-			border-bottom: 5px solid #815628;
+			border-bottom: 5px solid var(--project-tech-item-colour-dark);
 		}
 		  .ribbon-vertical.left::before{
 			left: -9px;
 			border-left: 5px solid transparent;
-			border-right: 5px solid #815628;
+			border-right: 5px solid var(--project-tech-item-colour-dark);
 		  }
 		  .ribbon-vertical.right::before{
 			right: -9px;
-			border-left: 5px solid #815628;
+			border-left: 5px solid var(--project-tech-item-colour-dark);
 			border-right: 5px solid transparent;
 		  }
 		  
@@ -556,7 +605,7 @@ input, select, textarea {
 			position: absolute;
 
 			left: 0;
-			border: 23px solid #D4A87A;
+			border: 23px solid var(--project-tech-item-colour-bright);
 			border-bottom: 23px solid transparent;
 
 			width: 100%;
@@ -607,62 +656,10 @@ input, select, textarea {
 		}
 
 		@media screen and (min-width: 960px) {
-			.project-title {
+			.spotlights .project-title {
 			line-height: 1.25em;
 			}
 		}
-
-		  /* .ribbon-vertical::after{
-			z-index: -2;
-			content: '';
-			position: absolute;
-
-			bottom: -30px;
-			border: 25px solid #a1784d;
-			border-bottom: 25px solid transparent;
-
-			width: 100%;
-		  }
-		  .ribbon-vertical.left::after{
-			right: 20px;
-		  }
-		  .ribbon-vertical.right::after{
-			left: 20px;
-		  }
-
-
-		  
-		.ribbon-vertical.left .ribbon-vertical-content::after {
-			z-index: 1;
-			content: '';
-			position: absolute;
-
-			right: 40px;
-			bottom: -6px;
-
-			border-top: 10px solid #815628;
-			border-bottom: 10px solid transparent;
-			border-left: 10px solid transparent;
-			border-right: 10px solid #815628;
-		}
-		.ribbon-vertical.right .ribbon-vertical-content::after {
-			z-index: 1;
-			content: '';
-			position: absolute;
-
-			left: 40px;
-			bottom: -6px;
-
-			border-top: 10px solid #815628;
-			border-bottom: 10px solid transparent;
-			border-left: 10px solid #815628;
-			border-right: 10px solid transparent;
-		} */
-
-		#fixed {background:green; 
-			width:100%; height:40px; position:fixed; z-index:1; top: 0; left: 0;
-		   }
-
 
 		.side-title {
 				font-family:'A-OTF Shin Go Pro H';
@@ -741,50 +738,40 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	#work-projects .project-category
+	/* #work-projects .project-category
 	{
-		color: var(--work-project-text-special);
-	}
+		color: var(--project-text-special);
+	} */
 	#projects .project-category
 	{
 		color: var(--project-text-special);
 	}
 
-	.project-date1 {
-		font-family:'A-OTF Shin Go Pro EL';
-		color: rgba(255, 255, 255, 0.5);
-		font-style: italic;
+	.project-date {
+		font-size: 1em;
+		white-space: nowrap;
 	}
 
-	.project-date {
+	.spotlights .project-date {
 		font-family:'A-OTF Shin Go Pro H';
-		position: relative;
 		writing-mode: vertical-lr;
 		text-transform: uppercase;
-		font-size: 1em;
-		color: var(--text-mid);
 
 		position: absolute;
 		right: -2em;
 
 		top: 50%;
 		transform: translateY(-50%);
-		white-space: nowrap;
 	}
 
-	#work-projects .project-date
+	#work-projects .project-date,
+	#project-top .project-date
 	{
-		color: var(--work-project-text-special);
+		color: var(--nav-span);
 	}
 	#projects .project-date
 	{
 		color: var(--project-text-special);
-	}
-
-	.project-header{
-		text-align: center;
-		font-size: 7.5em;
-		font-family:'A-OTF Shin Go Pro EL';
 	}
 
 	@media screen and (max-width: 960px) {
@@ -797,7 +784,7 @@ input, select, textarea {
 			transform: translateY(100%);
 		}
 
-		.project-date {
+		.spotlights .project-date {
 			right: -1em;
 		}
 	}
@@ -2153,13 +2140,14 @@ input, select, textarea {
     display: flex;
 	gap: 1em;
 	justify-content: center;
+	width: 100%
 }
 
-.aspect-ratio
+.image-center .aspect-ratio
 {
 	position: relative;
 	width: 100%;
-	height: 0;
+	height: 100%;
 	padding-bottom: 56%; 
 }
 
@@ -2173,7 +2161,7 @@ input, select, textarea {
 	transition: transform 0.2s ease-in;
 }
 
-.image-center iframe {
+.image-center .aspect-ratio iframe {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -2236,7 +2224,7 @@ input, select, textarea {
 		max-width: 450px;
 	}
 
-	@media screen and (max-width: 736px)
+	@media screen and (max-width: 960px)
 	{
 		.image-center{
 			flex-direction: column;
@@ -2249,8 +2237,14 @@ input, select, textarea {
 			max-height: 450px;
 	}
 
-		.image-and-text-container {
-			display: inline-block;
+	/* .image-and-text-container {
+		display: inline-block;
+	} */
+		.image-and-text-container.left {
+			flex-direction: column-reverse;
+		}
+		.image-and-text-container.right {
+			flex-direction: column;
 		}
 
 		.image-container {
@@ -2297,7 +2291,7 @@ input, select, textarea {
 			ul.highlights li {
 				display: block;
 				padding: 0.6em 0em;
-				border-top: 2px solid var(--highlights-split);
+				border-top: 2px solid var(--project-highlights-split);
 				margin-inline-end: 1ch;
 			}
 
@@ -2336,29 +2330,6 @@ input, select, textarea {
 		ol li {
 			padding-left: 0.25em;
 		}
-
-		:root #work-projects .spotlights > section {
-			--project-tech-item-colour-bright: var(--skills-ribbon-1);
-			--project-tech-item-colour-dark: var(--skills-ribbon-1);
-		}
-
-		:root #projects .spotlights > section:nth-child(1) {
-			--project-tech-item-colour-bright: var(--colour-1-bright);
-			--project-tech-item-colour-dark: var(--colour-1-dark);
-		}
-		:root #projects .spotlights > section:nth-child(2) {
-			--project-tech-item-colour-bright: var(--colour-2-bright);
-			--project-tech-item-colour-dark: var(--colour-2-dark);
-		}
-		:root #projects .spotlights > section:nth-child(3),
-		:root #project-top {
-			--project-tech-item-colour-bright: var(--colour-3-bright);
-			--project-tech-item-colour-dark: var(--colour-3-dark);
-		}
-		:root #projects .spotlights > section:nth-child(4) {
-			--project-tech-item-colour-bright: var(--colour-4-bright);
-			--project-tech-item-colour-dark: var(--colour-4-dark);
-		}
 		
 		ul.project-tech-list {
 			bottom: 0;
@@ -2367,10 +2338,11 @@ input, select, textarea {
 			align-self: flex-end;
 			margin: 0;
 			left: 0;
+			/* background-color: #000000; */
 		}
 
 			ul.project-tech-list li {
-				font-family:'A-OTF Shin Go Pro H';
+			font-family:'A-OTF Shin Go Pro H';
 				border-radius: 0.75em;
 				display: inline-block;
 				font-size: 0.6em;
@@ -2390,7 +2362,7 @@ input, select, textarea {
 			ul.project-tech-list li.spin {
 				animation: project-tech-list-spin 1s ease-out;
 
-				background: var(--project-panel-1);
+				background: var(--project-tech-reversed-bg);
 				border: solid var(--project-tech-item-colour-bright);
 				color: var(--project-tech-item-colour-bright);
 			}
@@ -2734,7 +2706,7 @@ input, select, textarea {
 
 		.split > :nth-child(2n - 1) {
 			padding-right: 1em;
-			border-right: solid 3px var(--description-split);
+			border-right: solid 3px var(--project-description-split);
 			
 		}
 
@@ -2752,7 +2724,7 @@ input, select, textarea {
 
 				.split > * {
 					border-top: solid 3px;
-					border-color: var(--description-split);
+					border-color: var(--project-description-split);
 					padding-top: 1em;
 
 					width: 100% !important;
@@ -2781,11 +2753,13 @@ input, select, textarea {
 		}
 
 
-		.description{
+		.spotlights .description p {
+			text-align: justify;
+		}
+		.spotlights .description{
 			display: flex;
 			gap: 1em;
 			justify-content: space-between;
-			text-align: justify;
 			height: 100%;
 		}
 		#work-projects .description{
@@ -2798,7 +2772,7 @@ input, select, textarea {
 
 
 @media screen and (max-width: 980px) {
-	.description {
+	.spotlights .description {
 		display: flex;
 		grid-area: 1/-1;
 
@@ -2824,8 +2798,8 @@ input, select, textarea {
 		font-family:'A-OTF Shin Go Pro R';
 	}
 
-	.description p,
-	.description .project-title {
+	.spotlights .description p,
+	.spotlights .description .project-title {
 		text-shadow: 3px 3px 6px #000000;
 	}
 
@@ -2833,17 +2807,17 @@ input, select, textarea {
 		color: var(--text-light);
 	}
 
-	.description .project-tech-list,
-	.description .project-title,
-	#lockdowneer,
-	#lockdowneer-shooting {
+	.spotlights .description .project-tech-list,
+	.spotlights .description .project-title,
+	.interactable,
+	.tech {
 		pointer-events:all;
 	}
 	
 }
 
 @media screen and (max-width: 736px) { 
-	.description {
+	.spotlights .description {
 		align-items: start;
 	}
 }
@@ -2874,10 +2848,10 @@ input, select, textarea {
 
 	}
 	#work-projects .spotlights > section.left {
-		background: linear-gradient(90deg,var(--work-project-panel-2), var(--work-project-panel-1));
+		background: linear-gradient(90deg,var(--project-panel-2), var(--project-panel-1));
 	}
 	#work-projects .spotlights > section.right {
-		background: linear-gradient(90deg,var(--work-project-panel-1), var(--work-project-panel-2));
+		background: linear-gradient(90deg,var(--project-panel-1), var(--project-panel-2));
 	}
 	#projects .spotlights > section.left {
 		background: linear-gradient(90deg,var(--project-panel-2), var(--project-panel-1));
@@ -2886,121 +2860,17 @@ input, select, textarea {
 		background: linear-gradient(90deg,var(--project-panel-1), var(--project-panel-2));
 	}
 
-	  #work-projects .spotlights > section .project-bg video {
-		filter: sepia(100%) hue-rotate(-60deg);
+	  .spotlights > section .project-bg video {
+		filter: sepia(100%) hue-rotate(var(--project-reel-filter-shift));
 	  }
 
 	  .spotlights > section .project-bg video  {
 		box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.4);
 	  }
 
-	  #work-projects .spotlights > section .ribbon-vertical
-	{
-		background-color: var(--skills-ribbon-1);
-	}
-	#work-projects .spotlights > section .ribbon-vertical::before{
-		border-bottom: 5px solid var(--skills-ribbon-1);
-	}
-	#work-projects .spotlights > section .ribbon-vertical.left::before{
-		border-right: 5px solid var(--skills-ribbon-1);
-	  }
-	  #work-projects .spotlights > section .ribbon-vertical.right::before{
-		border-left: 5px solid var(--skills-ribbon-1);
-	  }
-	  #work-projects  .spotlights > section .ribbon-vertical::after{
-		border: 23px solid var(--skills-ribbon-1);
-		border-bottom: 23px solid transparent;
-	  }
-
-
-	 #projects .spotlights > section:nth-child(1) .project-bg video {
-		filter: sepia(100%) hue-rotate(60deg);
-	  }
-	  #projects .spotlights > section:nth-child(2) .project-bg video {
-		filter: sepia(100%) hue-rotate(0deg);
-	  }
-	  #projects .spotlights > section:nth-child(3) .project-bg video {
-		filter: sepia(100%) hue-rotate(-70deg);
-	  }
-	  #projects .spotlights > section:nth-child(4) .project-bg video {
-		filter: sepia(100%) hue-rotate(-170deg);
-	  }
-
-	  #projects .spotlights > section .project-bg video:hover {
+	  .spotlights > section .project-bg video:hover {
 		filter: none;
 	  }
-
-	  #projects .spotlights > section:nth-child(1) .ribbon-vertical
-	{
-		background-color: var(--colour-1-bright);
-	}
-	#projects .spotlights > section:nth-child(1) .ribbon-vertical::before{
-		border-bottom: 5px solid var(--colour-1-dark);
-	}
-	#projects .spotlights > section:nth-child(1) .ribbon-vertical.left::before{
-		border-right: 5px solid var(--colour-1-dark);
-	  }
-	  #projects .spotlights > section:nth-child(1) .ribbon-vertical.right::before{
-		border-left: 5px solid var(--colour-1-dark);
-	  }
-	  #projects  .spotlights > section:nth-child(1) .ribbon-vertical::after{
-		border: 23px solid var(--colour-1-bright);
-		border-bottom: 23px solid transparent;
-	  }
-
-	  #projects .spotlights > section:nth-child(2) .ribbon-vertical
-	  {
-		  background-color: var(--colour-2-bright);
-	  }
-	  #projects  .spotlights > section:nth-child(2) .ribbon-vertical::before{
-		  border-bottom: 5px solid var(--colour-2-dark);
-	  }
-	  #projects  .spotlights > section:nth-child(2) .ribbon-vertical.left::before{
-		  border-right: 5px solid var(--colour-2-dark);
-		}
-		#projects	.spotlights > section:nth-child(2) .ribbon-vertical.right::before{
-		  border-left: 5px solid var(--colour-2-dark);
-		}
-		#projects	.spotlights > section:nth-child(2) .ribbon-vertical::after{
-		  border: 23px solid var(--colour-2-bright);
-		  border-bottom: 23px solid transparent;
-		}
-
-		  #projects	.spotlights > section:nth-child(3) .ribbon-vertical
-		{
-			background-color: var(--colour-3-bright);
-		}
-		#projects	.spotlights > section:nth-child(3) .ribbon-vertical::before{
-			border-bottom: 5px solid var(--colour-3-dark);
-		}
-		#projects	.spotlights > section:nth-child(3) .ribbon-vertical.left::before{
-			border-right: 5px solid var(--colour-3-dark);
-		  }
-		  #projects  .spotlights > section:nth-child(3) .ribbon-vertical.right::before{
-			border-left: 5px solid var(--colour-3-dark);
-		  }
-		  #projects	  .spotlights > section:nth-child(3) .ribbon-vertical::after{
-			border: 23px solid var(--colour-3-bright);
-			border-bottom: 23px solid transparent;
-		  }
-
-		  #projects  .spotlights > section:nth-child(4) .ribbon-vertical
-		  {
-			  background-color: var(--colour-4-bright);
-		  }
-		  #projects .spotlights > section:nth-child(4) .ribbon-vertical::before{
-			  border-bottom: 5px solid var(--colour-4-dark);
-		  }
-		  #projects .spotlights > section:nth-child(4) .ribbon-vertical.left::before{
-			  border-right: 5px solid var(--colour-4-dark);
-			}
-			#projects	.spotlights > section:nth-child(4) .ribbon-vertical.right::before{
-			  border-left: 5px solid var(--colour-4-dark);
-			}
-			#projects	.spotlights > section:nth-child(4) .ribbon-vertical::after{
-			  border: 23px solid var(--colour-4-bright);
-			  border-bottom: 23px solid transparent;
-			}
 
 		body.is-ie .spotlights > section {
 			min-height: 0;
@@ -3049,16 +2919,20 @@ input, select, textarea {
 
 			}
 
-			.spotlights > section.right .project-title {
+		    .spotlights > section.right .project-title {
 				/* transform: scale(-1, -1); */
 			}
 
-		.spotlights > section.left ul.project-tech-list {
+		.spotlights > section.left ul.project-tech-list,
+		.spotlights > section.left ul.tech {
 			text-align: right;
+			justify-content: right;
 		}
 
-		.spotlights > section.right ul.project-tech-list {
+		.spotlights > section.right ul.project-tech-list,
+		.spotlights > section.right ul.tech {
 			text-align: left;
+			justify-content: left;
 		}
 
 
@@ -3076,7 +2950,6 @@ input, select, textarea {
 			opacity: 0;
 			
 		}
-
 
 
 		@media screen and (max-width: 980px) {
@@ -3151,7 +3024,7 @@ input, select, textarea {
 
 			.spotlights > section.left .split section:nth-child(2) {
 				order: -1; /* move the second odd to the top */
-				border-right: solid 3px var(--description-split);
+				border-right: solid 3px var(--project-description-split);
 				margin-right: 1em;
 				padding-right: 1em;
 				padding-left: 0em;
@@ -3162,21 +3035,8 @@ input, select, textarea {
 				border-right: none;
 			}
 
-			#work-projects .spotlights > section .project-bg video {
-				filter: sepia(100%) hue-rotate(-60deg) brightness(25%);
-			  }
-
-			#projects .spotlights > section:nth-child(1) .project-bg video {
-				filter: sepia(100%) hue-rotate(60deg) brightness(25%);
-			  }
-			  #projects .spotlights > section:nth-child(2) .project-bg video {
-				filter: sepia(100%) hue-rotate(0deg) brightness(25%);
-			  }
-			  #projects  .spotlights > section:nth-child(3) .project-bg video {
-				filter: sepia(100%) hue-rotate(-70deg) brightness(25%);
-			  }
-			  #projects  .spotlights > section:nth-child(4) .project-bg video {
-				filter: sepia(100%) hue-rotate(-170deg) brightness(25%);
+			.spotlights > section .project-bg video {
+				filter: sepia(100%) hue-rotate(var(--project-reel-filter-shift)) brightness(25%);
 			  }
 	
 				.spotlights > section > .content {
@@ -3226,7 +3086,7 @@ input, select, textarea {
 			}
 
 			  .spotlights > section.left .split > :first-child {
-				border-top: solid 3px var(--description-split);
+				border-top: solid 3px var(--project-description-split);
 			}
 
 			.spotlights > section.left .split > * {
@@ -3702,7 +3562,8 @@ input, select, textarea {
 		  display: block;
 		  position: relative;
 		  top: 0;
-		  padding: 10px;
+		  margin: 10px;
+		  cursor: pointer;
 		}
 		
 		/* .contact-social li img{
@@ -3924,24 +3785,16 @@ input, select, textarea {
 			position: relative;
 			padding: 2em 5em;
 			text-align: center;
+			align-items: center;
 			  color: #fff;
 			width: 100%;
-			height: 100vh;
 			font-size: 1em;
 	
-			padding-top: 20em;
-			padding-bottom: 55em;
+			padding-top: 10em;
 	
 			background-color: var(--background-1);
 			z-index: 2;
 		}
-
-		#project-top .interactable
-		{
-			right: -50%;
-			transform: translateX(-32px);
-		}
-
 		#project-top::after {
 			position: absolute;
 			content: "";
@@ -3952,7 +3805,92 @@ input, select, textarea {
 			left: 0;
 			transform: translateY(99%);
 		}
+		#project-top .project-title{
+			position: relative;
+			text-align: center;
+			font-size: 7.5em;
+			font-family:'A-OTF Shin Go Pro EL';
+			/* white-space: nowrap; */
+			/* padding: 0.2em; */
+			
+			/* background-color: #000000; */
+		}
+		#project-top .project-date {
+			/* background-color: #000000; */
+			padding: 0;
+			font-family:'A-OTF Shin Go Pro M';
+			font-size: 1.5em;
+	}
 
+		#project-top .interactable{
+			right: -50%;
+			transform: translateX(-50%);
+		}
+
+		#project-top .tech {
+			justify-content: center;
+		}
+
+		#project-top .description {
+			/* background-color: #113C69; */
+			width: 90%;
+			align-items: center;
+			margin: 0 auto;
+			width: 1100px;
+			/* padding: 5em 5em; */
+		}
+
+		#project-top .description {
+			/* background-color: #113C69; */
+			width: 90%;
+			align-items: center;
+			margin: 0 auto;
+			width: 1100px;
+			/* padding: 5em 5em; */
+		}
+
+			  @media screen and (min-width: 960px) {
+		  
+				#project-top .image-and-text-container {
+					text-align: left;
+				  }
+		  
+			  }
+		  
+			  @media screen and (max-width: 1080px) {
+		  
+				#project-top .description {
+					  width: 95%;
+				  }
+		  
+			  }
+		  
+			  @media screen and (max-width: 960px) {
+		  
+				#project-top .description {
+					  width: 100%;
+				  }
+			  }
+
+		
+		
+
+		@media screen and (max-width: 960px) {
+			#project-top .project-title {
+			font-size: 6em;
+			}
+			#project-top .project-date {
+			font-size: 1.2em;
+			}
+		}
+		@media screen and (max-width: 736px) {
+			#project-top .project-title {
+			font-size: 4.5em;
+			}
+			#project-top .project-date {
+				font-size: 1em;
+			}
+		}
 
 		#work-projects {
 			background-color: var(--background-1);

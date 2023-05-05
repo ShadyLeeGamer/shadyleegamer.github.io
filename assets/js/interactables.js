@@ -1,5 +1,5 @@
 const CANVAS = document.getElementById("survival-game-2020-canvas");
-CANVAS.width = 200;
+CANVAS.width = 160;
 CANVAS.height = 64;
 const CONTEXT = CANVAS.getContext("2d");
 CONTEXT.imageSmoothingEnabled = false;

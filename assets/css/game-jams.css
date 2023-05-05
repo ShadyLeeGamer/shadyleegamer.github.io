@@ -7,13 +7,13 @@
 }
 
 .tabs{
+    position: relative;
     display: flex;
     justify-content: center;
     list-style-type: none;
     margin: 0;
     padding: 10px;
-    border-bottom: 2px solid rgb(255, 255, 255);
-    
+    gap: 3em;
 }
 
 .tabs li img{
@@ -35,6 +35,10 @@
     width: 80px;
     height: 80px;
     cursor: pointer;
+}
+
+.tabs .spinner{
+    padding: 0;
 }
 
 /* .tabs li.tab:hover img{
