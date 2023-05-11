@@ -14,31 +14,6 @@
 		<link rel="stylesheet" href="assets/css/custom.css"/>
 
 		<link rel="stylesheet" href="assets/css/interactables.css"/>
-
-		<style>
-			/* ::-webkit-scrollbar {
-				width: 2em;
-			}
-
-			::-webkit-scrollbar-track {
-				background: hsl(120 75% 50% / 1);
-				border-radius: 100vw;
-				margin-block: .5em;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background: hsl(120 100% 20% / 1);
-				border: .25em solid hsl(120 75% 50% / 1);
-				border-radius: 100vw;
-			}
-
-			@supports (scrollbar-color: red blue) {
-				* {
-					scrollbar-color: red blue;
-					scrollbar-width: auto;
-				}
-			} */
-		</style>
 	</head>
 	<body class="homepage is-preload">  
 
@@ -50,6 +25,9 @@
 
 				<!-- <img src="images/chrome_1YR5JYWZ6o1.png" class="banner"> -->
 
+				<div id="big-reel">
+					<video src="videos/reel.mp4" autoplay muted></video>
+				</div>
 				
 			<!-- Banner -->
 				<div id="about-me" class="container">
@@ -57,13 +35,13 @@
 							<div class="about-text">
 							<p>Game developer with a passion for making games since the age of 10. Recently published a high-speed anime platformer on Steam showcasing complex gravity-bending physics. Collaborated with teams in 12 game jams and driven to create engaging experiences through problem solving and elegant solutions.</p>
 						</div>
-							<h2>Technical Experience</h2>
+							<!-- <h2>Technical Experience</h2> -->
 
 							<div class="ribbon">
 								<div class="ribbon-content">
 								<ul class="tech scroll-transition">
-									<li>
-										<div class="spinner" style="background: #bfbfbf;">
+									<li id="unity">
+										<div class="spinner">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" style="right: 2.5px;"/>
 											<div class="tooltip">
 												<h2>Unity</h2>
@@ -71,85 +49,104 @@
 											</div>
 										</div>
 									</li>
-									<li>
-										<div class="spinner" style="background: #dc7cff;">
+									<li id="c-sharp">
+										<div class="spinner">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/>
 										<div class="tooltip">
 											<h2>C Sharp</h2>
 											<!-- <p>Used C Sharp </p> -->
-									</div></div>
+									</div>
+								</div>
 								</li>
-									<li>
-										<div class="spinner" style="background: #ff9578;">
+									<li id="git">
+										<div class="spinner">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
 										<div class="tooltip">
 											<h2>Git</h2>
 											<!-- <p>Git was used for vers.</p> -->
 									</div></div>
 								</li>
-									<li>
-										<div class="spinner" style="background: #ffb778;">
+									<li id="firebase">
+										<div class="spinner">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"/>
 										<div class="tooltip">
 											<h2>Firebase</h2>
 											<!-- <p>Made extensive use of Firebase services. including: Realtime Database, Authentication, Web Hosting, Cloud Storage.</p> -->
 										</div></div>
 									</li>
-									<li>
-										<div class="spinner"  style="background: #fff47a;">
+									<li id="js">
+										<div class="spinner">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
 										<div class="tooltip">
 											<h2>JavaScript</h2>
 											<!-- <p>Used JaveScript for projects before the option was removed from Unity. Continuing to use it for creating websites like this one.</p> -->
 										</div></div>
 									</li>
-									<!-- <li>
+
+									<li id="html">
 										<div class="spinner">
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-										<div class="tooltip">
-											<h2>Java</h2>
-										</div></li> -->
-									<li>
-										<div class="spinner"  style="background: #ff7878;">
 											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
 										<div class="tooltip">
 											<h2>HTML</h2>
 										</div></div>
 									</li>
-									<!-- <li>
+									<li id="css">
+										<div class="spinner">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+										</div>
+										<div class="tooltip">
+											<h2>CSS</h2>
+										</div>
+									</li>
+									<li id="java">
+										<div class="spinner">
+										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+										<div class="tooltip">
+											<h2>Java</h2>
+										</div>
+									</li>
+									<li id="visual-studio">
 										<div class="spinner">
 										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" />
 										<div class="tooltip">
 											<h2>Visual Studio</h2>
 										</div>
 									</div>
-								</li> -->
-									<!-- <li>
+								</li>
+									<li id="json">
 										<div class="spinner">
 										<img src="images/icons/json.png" />
 										<div class="tooltip">
 											<h2>JSON</h2>
 										</div>
 									</div>
-									</li> -->
-									<li>
-										<div class="spinner" style="background: #78c5ff;" >
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-											<div class="tooltip">
-												<h2>CSS</h2>
-											</div>
-										</div>
 									</li>
-										<!-- <li>
-										<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" />
+										<li id="trello">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" />
 										<div class="tooltip">
 											<h2>Trello</h2>
-										</div></li>
-									<li>
-										<img src="images/icons/notion.png" />
+										</div>
+											</div>
+									</li>
+									<li id="notion">
+										<div class="spinner">
+
+										<img src="images/icons/notion.png" />\gh\devicons\devicon\icons\python\python-original.svg
 										<div class="tooltip">
 											<h2>Notion</h2>
-										</div></li> -->
+										</div>
+										</div>
+									</li>
+									<li id="python">
+										<div class="spinner">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
+											<div class="tooltip">
+											<h2>Python</h2>
+											<!-- <p>Used C Sharp </p> -->
+									</div>
+								</div>
+								</li>
 								</ul>
 							</div>
 						</div>
@@ -168,7 +165,7 @@
 
 								<h2 class="work-experience-header">Work Experience</h2>
 								<div class="content">
-							<p class="project-date scroll-transition">Aug 2021 — Oct 2021</p>
+							<p id="okainos" class="project-date scroll-transition"></p>
 						<!-- <div class="ribbon-vertical"></div> -->
 							<div class="inner">
 								<a href="okainos.html" class="project-bg bg-perspective-left scroll-transition">
@@ -189,23 +186,13 @@
 											</section>
 											<section>
 												<span>
-													<p class="project-category">Multiplayer collectable card game</p>
+													<p id="okainos" class="project-category"></p>
 													<p>Recruited by an artist to help making an online multiplayer card game inspired by Hearthstone.</p>
 												</span>
 											</section>
 										</div>
 
-										<ul class="project-tech-list scroll-transition">
-											<li>Rest API</li>
-											<li>Git</li>
-											<li>Firebase</li>
-											<li>JSON</li>
-											<li>JavaScript</li>
-											<li>HTML</li>
-											<li>C#</li>
-											<li>Unity</li>
-											<li>Trello</li>
-									</ul>
+										<ul id="okainos" class="project-tech-list scroll-transition"></ul>
 								</span>
 								<span>
 									<div class="ribbon-vertical right">
@@ -224,16 +211,17 @@
 
 				<div id="projects" class="container">
 					
-					<h1 id="projects-header" class="side-title perspective">Projects</h1>
+					<!-- <h1 id="projects-header" class="side-title perspective">Projects</h1> -->
 
 					<section id="featured">
 
+						<h1 id="projects-header" class="side-title perspective">Projects</h1>
 						<h1 id="projects-header" class="side-title mobile"><span>Projects<span></h1>
 
 						<section class="spotlights">
 								<section class="right scroll-transition">
 										<div class="content">
-										<p class="project-date scroll-transition">June 2020 — Present</p>
+										<p id="edge-runner" class="project-date scroll-transition"></p>
 										<div class="inner">
 		
 											<div class="description scroll-transition">
@@ -249,7 +237,7 @@
 												<div class="split">
 													<section>
 														<span>
-															<p class="project-category">HIGH-SPEED ANIME PLATFORMER</p>
+															<p id="edge-runner"  class="project-category"></p>
 															<p>Recently published a fast-paced runner game on Steam. The game features complex gravity-bending physics with open levels and mechanics that encourages fast-paced gameplay.</p>
 														</span>
 													</section>
@@ -258,18 +246,16 @@
 															<li>Raycast and engine physics character controller</li>
 															<li>Custom extension script for Unity's Sprite Shape API</li>
 															<li>Player input assist system</li>
+															<li>Camera mechanics</li>
 														</ul>
 													</section>
 												</div>
-												<ul class="project-tech-list scroll-transition">
-													<li>C#</li>
-													<li>Unity</li>
-													<li>Git</li>
-													<li>Sprite Shape API</li>
-													<li>Notion</li>
-												</ul>
 
+												<ul id="edge-runner" class="project-tech-list scroll-transition"></ul>
 
+												<!-- <div class="interactable">
+													<img id="edge-runner" src="images/edge-runner/side-view/1.PNG">
+												</div> -->
 										</span>
 									</div>
 									<a href="edge-runner.html" class="project-bg bg-perspective-right scroll-transition">
@@ -284,7 +270,7 @@
 		
 								<section class="left scroll-transition">
 									<div class="content">
-										<p class="project-date scroll-transition">Sept 2020 — May 2022</p>
+										<p id="game-jams" class="project-date scroll-transition"></p>
 										<div class="inner">
 											<a href="game-jams.html" class="project-bg bg-perspective-left scroll-transition">
 												<video src="videos/game-jams/reel.mp4" autoplay loop muted></video>
@@ -304,19 +290,13 @@
 													</section>
 													<section>
 														<span>
-															<p class="project-category">High-speed platformer</p>
+															<p id="game-jams" class="project-category"></p>
 															<p>Collaborated with teams on 12 game jams including one ranked 15th place out of 158 entries!</p>
 														</span>
 													</section>
 												</div>
 		
-												<ul class="project-tech-list scroll-transition">
-													<li>C#</li>
-													<li>Unity</li>
-													<li>Unity Teams</li>
-													<li>GitHub</li>
-												</ul>
-		
+												<ul id="game-jams" class="project-tech-list scroll-transition"></ul>
 											</span>
 										<div>
 		
@@ -337,7 +317,7 @@
 		
 								<section class="right scroll-transition">
 									<div class="content">
-										<p class="project-date scroll-transition">Apr 2020 — Aug 2020</p>
+										<p id="survival-2020" class="project-date scroll-transition"></p>
 										<div class="inner">
 											<div class="description scroll-transition">
 													<span>
@@ -352,7 +332,7 @@
 													<section>
 														<span>
 		
-															<p class="project-category">Endless survival game</p>
+															<p id="survival-2020" class="project-category"></p>
 														<p>Made and published a silly game on Google Play during BTEC course and quarantine about surviving the lockdown, collecting toilet papers and shooting soap at the infected!</p>
 															<!-- <p class="project-date1">— Jan 2019-Present</p> -->
 														</span>
@@ -367,13 +347,7 @@
 														</ul>
 													</section>
 												</div>
-												<ul class="project-tech-list scroll-transition">
-													<li>Git</li>
-													<li>C#</li>
-													<li>Unity</li>
-													<li>Shadergraph</li>
-													<li>Photoshop</li>
-												</ul>
+												<ul id="survival-2020" class="project-tech-list scroll-transition"></ul>
 
 												<div class="interactable">
 													<div id="lockdowneer"></div>
@@ -395,7 +369,7 @@
 		
 								<section class="left scroll-transition">
 									<div class="content">
-										<p class="project-date scroll-transition">Sept 2016 — Jul 2017</p>
+										<p  id="tap-fever" class="project-date scroll-transition"></p>
 										<div class="inner">
 											<a href="tap-fever.html" class="project-bg bg-perspective-left scroll-transition">
 												<video src="videos/tap-fever/reel.mp4" autoplay loop muted></video>
@@ -413,18 +387,14 @@
 													</section>
 													<section>
 														<span>
-															<p class="project-category">Arcade</p>
+															<p  id="tap-fever" class="project-category"></p>
 															<p>Published my first arcade mobile game on Google Play at the age of 14.</p>
 															<!-- <p class="project-date1">— Jan 2019-Present</p> -->
 														</span>
 													</section>
 												</div>
 		
-												<ul class="project-tech-list scroll-transition">
-													<li>C#</li>
-													<li>Unity</li>
-													<li>Gimp</li>
-												</ul>
+												<ul id="tap-fever" class="project-tech-list scroll-transition"></ul>
 											</span>
 											<span>
 												<div class="ribbon-vertical right">
@@ -571,9 +541,10 @@
 			<script src="assets/js/custom.js"></script>
 
 			<script src="assets/js/project-bg.js"></script>
-			<script src="assets/js/project-tech-list.js"></script>
+			<script src="assets/js/project-elements.js"></script>
 
-			<script src="assets/js/interactables.js"></script>
+			<script src="assets/js/survival-2020.js"></script>
+			<script src="assets/js/edge-runner.js"></script>
 
 			<script src="assets/js/navbar.js"></script>
 			<script src="assets/js/parallax-scrolling.js"></script>

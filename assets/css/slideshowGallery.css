@@ -110,6 +110,7 @@
   .slick-slide img,
   .slick-slide video {
     height: auto;
+    max-height: 500px;
     width: 100%;
   }
 

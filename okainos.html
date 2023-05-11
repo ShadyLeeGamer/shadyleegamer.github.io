@@ -10,8 +10,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-
 		<link rel="stylesheet" href="assets/css/custom.css" />
+		
 		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
 
 		<link rel="stylesheet" href="assets/css/slick.css" />
@@ -26,61 +26,52 @@
 	</head>
 	<body class="no-sidebar is-preload">
 
-		<div class="contact fixed">
-			<ul class="contact-social">
-				<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-				<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-				<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-				<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-			</ul>
-			<div class="contact-email">
-				<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-			</div>
-		</div>
 
-					<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="left-sidebar.html">Left Sidebar</a></li>
-							<li><a href="right-sidebar.html">Right Sidebar</a></li>
-							<li><a href="two-sidebar.html">Two Sidebar</a></li>
-						</ul>
-					</nav>
-
-		<div class="popup-image">
-			<img src="images/okainos/back-end-user.png" alt="">
-		</div>
 
 		<div class="projects-header-wrapper">
+			<nav id="nav"></nav>
 
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
-					<div class="container">
+			<div id="project-top" class="container">
+				<header>
+					<h2 class="project-title">Okainos</h2>
+					<h2 class="project-title">DO SOMETHING ABOUT THE DATABSE URL IN VIDEOS</h2>
+				</header>
+				<p id="okainos" class="project-date scroll-transition"></p>
 
-						<!-- Logo -->
-							<div id="logo">
-								<div>
-									<h1><a href="#">Ariya Bayat</a></h1>
-									<span>Game Programmer Portfolio</span>
-								</div>
-							</div>
-
-						<!-- Nav -->
-							<!-- <nav id="nav">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="two-sidebar.html">Two Sidebar</a></li>
-								</ul>
-							</nav> -->
-
+				<div class="slick-slider template">
+					<div class="slick-slide">
+						<video src="videos/okainos/Turns_in_action.mp4"></video>
+					</div>
+					<div class="slick-slide">
+						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/okainos-logo.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/card-data-asset-firebase-json.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/okainos-logo.png">
 					</div>
 				</div>
 
+				<div class="description">
+					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as the lead developer by an artist i met in a game jam to help transition the game from alpha to closed beta.</p>
+					<p>I built and integrated game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
+					<h3>Alpha Testers!</h3>
+					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and improving the testing process.</p>
+					<a href="https://okainos-b8c7b.web.app/">Okainos Website</a>
+				</div>
+			</div>
+
+			<div class="popup-image">
+				<img src="images/okainos/back-end-user.png" alt="">
+			</div>
+
+			<h1 id="project-name" class="side-title perspective">Okainos</h1>
 
 
 			<!-- Main -->
@@ -88,41 +79,11 @@
 
 					<div class="row">
 						<div class="col-12">
-							<article id="content">
-								<header>
-									<h2 class="project-header">Okainos</h2>
-									<span class="byline">MONTH 20XX - PRESENT</span>
-								</header>
 
-								<div class="slider template">
-									<div class="slider-item">
-										<video src="videos/okainos/Turns_in_action.mp4"></video>
-									</div>
-									<div class="slider-item">
-										<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
-									</div>
-									<div class="slider-item">
-										<img src="images/okainos/okainos-logo.png">
-									</div>
-									<div class="slider-item">
-										<img src="images/okainos/card-data-asset-firebase-json.png">
-									</div>
-									<div class="slider-item">
-										<img src="images/okainos/okainos-logo.png">
-									</div>
-								</div>
-
-								<h3>About</h3>
-								<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as the lead developer by an artist i met in a game jam to help transition the game from alpha to closed beta.</p>
-								<p>I built and integrated game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
-								<h3>Alpha Testers!</h3>
-								<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and improving the testing process.</p>
-								<a href="https://okainos-b8c7b.web.app/">Okainos Website</a>
-
-								<button class="accordion">Card Deck Builder (Encoding & Decoding)</button>
-								<div class="panel">
-									<!-- <p><span class="image left">
-										<img src="images/okainos/card-decks.png" style="object-fit:contain;width:300px; height:100px;"/></span> -->
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header">Card Deck Builder (Encoding & Decoding)</div>
+									<div class="accordion-content">
 										<p>In order to store the card decks created by players, a card deck code containing the details of the deck is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing.</p>
 										
 										<div class="realtime-function">
@@ -132,145 +93,149 @@
 											</div>
 											<div class="display">
 												<h2>BACK-END</h2>
-												<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
 												<video src="videos/okainos/card-deck-builder-back-end.mp4" autoplay loop muted></video>
 											</div>
 										</div>
 
 										<p>Of course, before a card deck code is created and stored, the game compares the card deck against the player's card collection to see if all selected cards is available.</p>
-
-									<button class="accordion">(C#) CODE SNIPPET - Card Deck Code Processing</button>
-										<div class="panel">
-											<pre><code class="language-csharp hljs">/// <summary>
+									
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">(C#) CODE SNIPPET - Card Deck Code Processing</div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">/// <summary>
 /// Convert card deck code to list of cards through validation
 /// </summary>
 /// <returns>A list of deck cards</returns>
 public string GetCardDeckCode()
 {
-	string cardDeckCode = "";
-	if (cardItems.Count > 0)
-	{
-		foreach (CardInDeckItem cardItem in cardItems)
-			cardDeckCode += new CardInGroup(cardItem.CardData.id, cardItem.CardQuantity).ToString(); // Returns id and quantity seperated by "*" and ","
-		cardDeckCode.Remove(cardDeckCode.Length - 1, 1);
-	}
-	return cardDeckCode;
+string cardDeckCode = "";
+if (cardItems.Count > 0)
+{
+foreach (CardInDeckItem cardItem in cardItems)
+cardDeckCode += new CardInGroup(cardItem.CardData.id, cardItem.CardQuantity).ToString(); // Returns id and quantity seperated by "*" and ","
+cardDeckCode.Remove(cardDeckCode.Length - 1, 1);
+}
+return cardDeckCode;
 }</code></pre>
 <p>Card Deck Decoder</p>
-									<pre><code class="language-csharp hljs">/// <summary>
+						<pre><code class="language-csharp hljs">/// <summary>
 /// Convert card deck code to list of cards through validation
 /// </summary>
 /// <returns>A list of deck cards</returns>
 public CardInGroup[] DecodeCardDeckCode()
 {
-	// array of cards
-	string[] cardIdsAndQuantities = code.Split(',', '*');
-	var qseudoDeckCards = new CardInGroup[cardIdsAndQuantities.Length / 2];
-	// Validation process
-	for (int i = 0; i < qseudoDeckCards.Length; i++)
-	{
-		int quantity;
-		// Get the quantity from text
-		if (int.TryParse(cardIdsAndQuantities[(i * 2) + 1], out quantity))
-			// 20 is max quantity
-			if (quantity <= 20)
-				qseudoDeckCards[i] = new CardInGroup(cardIdsAndQuantities[i * 2], quantity);
-	}
-	return qseudoDeckCards;
+// array of cards
+string[] cardIdsAndQuantities = code.Split(',', '*');
+var qseudoDeckCards = new CardInGroup[cardIdsAndQuantities.Length / 2];
+// Validation process
+for (int i = 0; i < qseudoDeckCards.Length; i++)
+{
+int quantity;
+// Get the quantity from text
+if (int.TryParse(cardIdsAndQuantities[(i * 2) + 1], out quantity))
+// 20 is max quantity
+if (quantity <= 20)
+	qseudoDeckCards[i] = new CardInGroup(cardIdsAndQuantities[i * 2], quantity);
+}
+return qseudoDeckCards;
 }</code></pre>
-Card deck code validation is checked before
+<p>Card deck code validation is checked before</p>
 <pre><code class="language-csharp hljs">struct CardDeckCodeValidationResponse
 {
-	public CardInGroup[] DeckCards { get; private set; }
-	public CardAsset.Data[] CardData { get; private set; }
-	public string[] EvaluationLogs { get; private set; }
+public CardInGroup[] DeckCards { get; private set; }
+public CardAsset.Data[] CardData { get; private set; }
+public string[] EvaluationLogs { get; private set; }
 
-	public CardDeckCodeValidationResponse(CardInGroup[] deckCards, CardAsset.Data[] cardData, string[] evaluationLogs)
-	{
-		DeckCards = deckCards;
-		CardData = cardData;
-		EvaluationLogs = evaluationLogs;
-	}
+public CardDeckCodeValidationResponse(CardInGroup[] deckCards, CardAsset.Data[] cardData, string[] evaluationLogs)
+{
+DeckCards = deckCards;
+CardData = cardData;
+EvaluationLogs = evaluationLogs;
+}
 }
 void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidationResponse> response)
 {
-	List<CardInGroup> validDeckCards = new List<CardInGroup>();
-	List<CardAsset.Data> validDeckCardDatas = new List<CardAsset.Data>();
-	List<string> evaluationLog = new List<string>();
+List<CardInGroup> validDeckCards = new List<CardInGroup>();
+List<CardAsset.Data> validDeckCardDatas = new List<CardAsset.Data>();
+List<string> evaluationLog = new List<string>();
 
-	int totalDeckCardsNo = 0;
-	// Validation check for each card
-	foreach (CardInGroup pseudoDeckCard in pseudoDeckCards)
-	{
-		// Ignore errors
-		if (pseudoDeckCard == null ||
-			pseudoDeckCard.quantity == 0)
-			continue;
+int totalDeckCardsNo = 0;
+// Validation check for each card
+foreach (CardInGroup pseudoDeckCard in pseudoDeckCards)
+{
+// Ignore errors
+if (pseudoDeckCard == null ||
+pseudoDeckCard.quantity == 0)
+continue;
 
-		// Compare player's card collection against chosen deck cards
-		foreach (CardInGroup collectionCard in PersistentData.user.cardCollection)
-			if (pseudoDeckCard.id == collectionCard.id)
-				foreach (CardAsset.Data cardData in PersistentData.cardDatas)
-					if (pseudoDeckCard.id == cardData.id) // Check if the deck card exists in the player's collection
+// Compare player's card collection against chosen deck cards
+foreach (CardInGroup collectionCard in PersistentData.user.cardCollection)
+if (pseudoDeckCard.id == collectionCard.id)
+	foreach (CardAsset.Data cardData in PersistentData.cardDatas)
+		if (pseudoDeckCard.id == cardData.id) // Check if the deck card exists in the player's collection
+		{
+			bool quantityIsEnough = true;
+			// Check if player has enough of the deck card
+			foreach (CardInCollectionItem cardinCollecitonItem in cardCollectionManager.GetCardItems())
+				if (cardinCollecitonItem.CardData.id == pseudoDeckCard.id)
+					if (cardinCollecitonItem.CardQuantity < pseudoDeckCard.quantity)
 					{
-						bool quantityIsEnough = true;
-						// Check if player has enough of the deck card
-						foreach (CardInCollectionItem cardinCollecitonItem in cardCollectionManager.GetCardItems())
-							if (cardinCollecitonItem.CardData.id == pseudoDeckCard.id)
-								if (cardinCollecitonItem.CardQuantity < pseudoDeckCard.quantity)
-								{
-									int quantityDiff = pseudoDeckCard.quantity - cardinCollecitonItem.CardQuantity;
-									pseudoDeckCard.quantity = pseudoDeckCard.quantity - quantityDiff;
-									evaluationLog.Add("You don't have enough " + pseudoDeckCard.id + " cards! You're missing " + quantityDiff + ".");
-									quantityIsEnough = false;
-									break;
-								}
-						// If player has enough of deck card, then check if there is too much of the same card
-						if (quantityIsEnough)
-						{
-							totalDeckCardsNo += pseudoDeckCard.quantity;
-							if (totalDeckCardsNo > CARDS_IN_DECK_QUANTITY_MAX) // 20
-							{
-								// Failed validation
-								validDeckCards = null;
-								validDeckCardDatas = null;
-								evaluationLog.Add("Total number of cards exceeds the max allowed of " + CARDS_IN_DECK_QUANTITY_MAX + ".");
-								response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
-								return;
-							}
-
-							// Add valid card
-							validDeckCards.Add(pseudoDeckCard);
-							validDeckCardDatas.Add(cardData);
-						}
+						int quantityDiff = pseudoDeckCard.quantity - cardinCollecitonItem.CardQuantity;
+						pseudoDeckCard.quantity = pseudoDeckCard.quantity - quantityDiff;
+						evaluationLog.Add("You don't have enough " + pseudoDeckCard.id + " cards! You're missing " + quantityDiff + ".");
+						quantityIsEnough = false;
 						break;
 					}
-
-		// Check if card is missing from their collection or does not exist in the database
-		if (!validDeckCards.Contains(pseudoDeckCard))
-		{
-			bool cardDoesNotExist = true;
-			// Card is missing
-			foreach (CardAsset.Data cardData in PersistentData.cardDatas)
-				if (pseudoDeckCard.id == cardData.id)
+			// If player has enough of deck card, then check if there is too much of the same card
+			if (quantityIsEnough)
+			{
+				totalDeckCardsNo += pseudoDeckCard.quantity;
+				if (totalDeckCardsNo > CARDS_IN_DECK_QUANTITY_MAX) // 20
 				{
-					evaluationLog.Add("You don't have a " + pseudoDeckCard.id + " card in your collection!");
-					cardDoesNotExist = false;
-					break;
+					// Failed validation
+					validDeckCards = null;
+					validDeckCardDatas = null;
+					evaluationLog.Add("Total number of cards exceeds the max allowed of " + CARDS_IN_DECK_QUANTITY_MAX + ".");
+					response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
+					return;
 				}
-			// Card does not exist
-			if (cardDoesNotExist)
-				evaluationLog.Add("Card \"" + pseudoDeckCard.id + "\" does not exist.");
-		}
-	}
-	response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
-}</code></pre>
-						</div>
-								</div>
 
-								<button class="accordion">Card Data Assets and Launcher</button>
-								<div class="panel">
-									
+				// Add valid card
+				validDeckCards.Add(pseudoDeckCard);
+				validDeckCardDatas.Add(cardData);
+			}
+			break;
+		}
+
+// Check if card is missing from their collection or does not exist in the database
+if (!validDeckCards.Contains(pseudoDeckCard))
+{
+bool cardDoesNotExist = true;
+// Card is missing
+foreach (CardAsset.Data cardData in PersistentData.cardDatas)
+	if (pseudoDeckCard.id == cardData.id)
+	{
+		evaluationLog.Add("You don't have a " + pseudoDeckCard.id + " card in your collection!");
+		cardDoesNotExist = false;
+		break;
+	}
+// Card does not exist
+if (cardDoesNotExist)
+	evaluationLog.Add("Card \"" + pseudoDeckCard.id + "\" does not exist.");
+}
+}
+response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Card Data Assets and Launcher</div>
+									<div class="accordion-content">
 										<p>Since the game was in development, we had to find ways to reduce the amount of updates the alpha testers had to do from the game page.</p>
 										<!--<h3>Left &amp; Right</h3>-->
 								<h3>Card Data Asset</h3>
@@ -303,66 +268,67 @@ void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidati
 										<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
 									</div>
 								</div>
-							</div>
 
-							
-							<button class="accordion">Booster Opening</button>
-							<div class="panel">
-								<p>Boosters give you more cards and can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
-								<div class="realtime-function">
-									<div class="display">
-										<h2>FRONT-END</h2>
-										<video src="videos/okainos/booster-opening-front-end.mp4" autoplay loop muted></video>
-									</div>
-									<div class="display">
-										<h2>BACK-END</h2>
-										<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
-										<video src="videos/okainos/booster-opening-back-end-.mp4" autoplay loop muted></video>
 									</div>
 								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Booster Opening</div>
+									<div class="accordion-content">
 
-								<div class="image-and-text-container left">
-									<div class="image-container">
-										<img src="images/okainos/booster-probability-gradient.png"></span>
-									</div>
-									<div class="text-container">
-										<p>Creative use of the Gradient component is made for visualising and editing the card rarity possibility allowing for unique chances for each booster chest type.</p>
+										<p>Boosters give you more cards and can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
+										<div class="realtime-function">
+											<div class="display">
+												<h2>FRONT-END</h2>
+												<video src="videos/okainos/booster-opening-front-end.mp4" autoplay loop muted></video>
+											</div>
+											<div class="display">
+												<h2>BACK-END</h2>
+												<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
+												<video src="videos/okainos/booster-opening-back-end-.mp4" autoplay loop muted></video>
+											</div>
+										</div>
+		
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<img src="images/okainos/booster-probability-gradient.png"></span>
+											</div>
+											<div class="text-container">
+												<p>Creative use of the Gradient component is made for visualising and editing the card rarity possibility allowing for unique chances for each booster chest type.</p>
+											</div>
+										</div>
+
 									</div>
 								</div>
-							</div>
-
-								<button class="accordion">Authentication with Firebase and Itch.io Integration</button>
-								<div class="panel">
-								
-									<!-- <div class="image-center">
-										<img src="images/okainos/back-end-user.png"></span>
-									</div> -->
-
-									<div class="image-and-text-container left">
-										<div class="image-container">
-											<img src="images/okainos/back-end-user.png"></span>
+								<div class="accordion-item">
+									<div class="accordion-header">Authentication with Firebase and Itch.io Integration</div>
+									<div class="accordion-content">
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<img src="images/okainos/back-end-user.png"></span>
+											</div>
+											<div class="text-container">
+												<p>An essential system I had to implement for the website was authentication. This was linked to the same database allowing people to login with the same account created on the website or the game!</p>
+											</div>
 										</div>
-										<div class="text-container">
-											<p>An essential system I had to implement for the website was authentication. This was linked to the same database allowing people to login with the same account created on the website or the game!</p>
+	
+										<div class="image-and-text-container right">
+											<div class="image-container">
+												<img src="images/okainos/closed-beta-tester-key-group.png"></span>
+											</div>
+											<div class="text-container">
+												<p>This system was also linked to Itch.io in order to private the game's access to only testers using Itch io’s key group feature. I generated a max of 100 keys and stored them in Firebase Cloud Storage. For every account created on the website, a key URL is pulled and stored in the user’s account for them to claim and access the game page via it from their profile page.</p>
+											</div>
 										</div>
-									</div>
+	
+										<p><span class="image left">
+											<img src="images/okainos/closed-beta-tester-key-group.png" style="object-fit:contain;width:300px; height:400px;"/></span>
 
-									<div class="image-and-text-container right">
-										<div class="image-container">
-											<img src="images/okainos/closed-beta-tester-key-group.png"></span>
-										</div>
-										<div class="text-container">
-											<p>This system was also linked to Itch.io in order to private the game's access to only testers using Itch io’s key group feature. I generated a max of 100 keys and stored them in Firebase Cloud Storage. For every account created on the website, a key URL is pulled and stored in the user’s account for them to claim and access the game page via it from their profile page.</p>
-										</div>
-									</div>
-
-									<p><span class="image left">
-										<img src="images/okainos/closed-beta-tester-key-group.png" style="object-fit:contain;width:300px; height:400px;"/></span>
-								
-									<button class="accordion">(JS) CODE SNIPPET | Authentication Process</button>
-									<div class="panel">
-										<p>This function is called upon pressing submit in the register page.</p>
-										<pre><code class="language-js hljs">function OnRegisterInput()
+											<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">(JS) CODE SNIPPET | Authentication Process</div>
+												<div class="accordion-content">
+													<p>This function is called upon pressing submit in the register page.</p>
+													<pre><code class="language-js hljs">function OnRegisterInput()
 {
 	if (registerFormStep == 1) // Sign in mode
 	{
@@ -405,51 +371,53 @@ void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidati
 
 <pre><code class="language-js hljs">function GetClosedBetaTesterKey()
 {
-    const userClosedBetaTesterItchIoKeyURLRef = refDB(database, "users/" + auth.currentUser.uid + "/closedBetaTesterItchIoKeyURL");
-    get(userClosedBetaTesterItchIoKeyURLRef)
-        .then(userClosedBetaTesterKeyResponse =>
-            {
-                var urlKey = userClosedBetaTesterKeyResponse.val();
-                // Check if user already has a key, if so then assign them one, else refresh the game page button with the key url
-                if (urlKey == "")
-                {
-                    // Add user to mail list
-                    SubscribeEmailToList(user.email);
+	const userClosedBetaTesterItchIoKeyURLRef = refDB(database, "users/" + auth.currentUser.uid + "/closedBetaTesterItchIoKeyURL");
+	get(userClosedBetaTesterItchIoKeyURLRef)
+		.then(userClosedBetaTesterKeyResponse =>
+			{
+				var urlKey = userClosedBetaTesterKeyResponse.val();
+				// Check if user already has a key, if so then assign them one, else refresh the game page button with the key url
+				if (urlKey == "")
+				{
+					// Add user to mail list
+					SubscribeEmailToList(user.email);
 
-                    // Get keys list from Firebase Cloud Storage
-                    const closedBetaTesterKeysRef = refGS(storage, 'closed-beta-tester-keys.txt');
-                    getDownloadURL(closedBetaTesterKeysRef).then((url) =>
-                        {
-                            fetch(url).then(keysResponse =>
-                                {
-                                    keysResponse.text().then(keysText =>
-                                        {
-                                            // Grab first key
-                                            var nextKey = keysText.split('\n')[0];
-                                            // Exclude the key from the list
-                                            keysText = keysText.substring(nextKey.length + 1)
-                                            uploadString(closedBetaTesterKeysRef, keysText);
-                                            // Assign player with key
-                                            set(userClosedBetaTesterItchIoKeyURLRef, nextKey)
-                                                .then((response) =>
-                                                {
-                                                    urlKey = nextKey
-                                                    RefreshSendClosedBetaTesterKeyButton(urlKey);
-                                                });
-                                        });
-                                });
-                        });
-                }
-                else
-                    RefreshSendClosedBetaTesterKeyButton(urlKey);
-            });
+					// Get keys list from Firebase Cloud Storage
+					const closedBetaTesterKeysRef = refGS(storage, 'closed-beta-tester-keys.txt');
+					getDownloadURL(closedBetaTesterKeysRef).then((url) =>
+						{
+							fetch(url).then(keysResponse =>
+								{
+									keysResponse.text().then(keysText =>
+										{
+											// Grab first key
+											var nextKey = keysText.split('\n')[0];
+											// Exclude the key from the list
+											keysText = keysText.substring(nextKey.length + 1)
+											uploadString(closedBetaTesterKeysRef, keysText);
+											// Assign player with key
+											set(userClosedBetaTesterItchIoKeyURLRef, nextKey)
+												.then((response) =>
+												{
+													urlKey = nextKey
+													RefreshSendClosedBetaTesterKeyButton(urlKey);
+												});
+										});
+								});
+						});
+				}
+				else
+					RefreshSendClosedBetaTesterKeyButton(urlKey);
+			});
 }</code></pre>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-
-								<button class="accordion">Card Collection Filter Tool</button>
-								<div class="panel">
-									
+								<div class="accordion-item">
+									<div class="accordion-header">Card Collection Filter Tool</div>
+									<div class="accordion-content">
 										<p>To help players strategize, I created a team planner with a filtering system that can sort cards by tribe, rarity, strength, price, draw. For further filtering, you can also check to only see cards owned in your collection or search by name.</p>
 										<div class="image-center">
 											<video src="videos/okainos/card-collection-filter-tool.mp4" autoplay loop controls></video>
@@ -468,29 +436,27 @@ void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidati
 											<video src="videos/okainos/trading-back-end.mp4" autoplay loop muted></video>
 										</div>
 									</div>
-									
-									<!--<h3>Left &amp; Right</h3>-->
-
-
-								</div>
-
-
-								<button class="accordion">Card Resources Manager</button>
-								<div class="panel">
-									<div class="image-and-text-container left">
-										<div class="image-container">
-											<img src="images/okainos/card-data-asset-firebase-json.png"></span>
-										</div>
-										<div class="text-container">
-											<p>A big issue we faced when testing a build of the game was that it would fail to load card resources like materials, sprites, and prefabs. This was due to the old method of storing the GUID of the assets on the database and using it to load the assets at runtime. Since this uses the UnityEditor namespace it does not work in a build.</p>
-										</div>
 									</div>
-
-									<p>The solution I implemented was a resources manager which uses Unity’s persisting resources folder which is loaded for retrieving card resources. The correct resources are fetched by card id. This will also save space in the database</p>
-
-									<button class="accordion">(C#) CODE SNIPPET - Card Deck Code Processing</button>
-										<div class="panel">
-											<pre><code class="language-csharp hljs">public static class CardResourcesManager 
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Card Resources Manager</div>
+									<div class="accordion-content">
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<img src="images/okainos/card-data-asset-firebase-json.png"></span>
+											</div>
+											<div class="text-container">
+												<p>A big issue we faced when testing a build of the game was that it would fail to load card resources like materials, sprites, and prefabs. This was due to the old method of storing the GUID of the assets on the database and using it to load the assets at runtime. Since this uses the UnityEditor namespace it does not work in a build.</p>
+											</div>
+										</div>
+	
+										<p>The solution I implemented was a resources manager which uses Unity’s persisting resources folder which is loaded for retrieving card resources. The correct resources are fetched by card id. This will also save space in the database</p>
+										
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">(C#) CODE SNIPPET - Card Deck Code Processing</div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">public static class CardResourcesManager 
 {
 	public static Dictionary<string, CardResources> cardResourcesDictionary;
 	public static void LoadCardResources()
@@ -567,40 +533,21 @@ void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidati
 		return cardResourcesDictionary[cardId];
 	}
 }</code></pre>
-								</div>
-							</article>
-						</div>
-					</div>
-				</div>
-
-			<!-- Footer -->
-				<div id="footer" class="container">
-
-					<div class="row">
-						<div class="col-12">
-							<!-- <span class="copyright">&copy; Untitled. All rights reserved.</span> -->
-							<div class="contact footer">
-								<ul class="contact-social">
-									<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-									<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-									<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-									<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-								</ul>
-								<div class="contact-email">
-									<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						
 						</div>
 					</div>
-
 				</div>
 
 		</div>
 	</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+			<!-- <script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/jquery.slidertron.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
@@ -615,6 +562,32 @@ void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidati
 			
 			<script src="assets/js/image-slider.js"></script>
 			
+			<script src="assets/js/slick.min.js"></script> -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.slidertron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	
+			<script src="assets/js/custom.js"></script>
+			<script src="assets/js/project-elements.js"></script>
+			<script src="assets/js/slideshow.js"></script>
+			
+			<script src="assets/js/popup-image.js"></script>
+			<script src="assets/js/tabs.js"></script>
+			
+			<script src="assets/js/image-slider.js"></script>
+			
 			<script src="assets/js/slick.min.js"></script>
+	
+			
+			<script src="assets/js/navbar.js"></script>
+			<script src="assets/js/parallax-scrolling.js"></script>
+	
+			<script src="assets/js/observers.js"></script>
+	
+			<script src="assets/js/accordion-single.js"></script>
 		</body>
 </html>

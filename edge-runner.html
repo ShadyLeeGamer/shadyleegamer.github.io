@@ -10,9 +10,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-
 		<link rel="stylesheet" href="assets/css/custom.css" />
+
 		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
+
+		<link rel="stylesheet" href="assets/css/slick.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
 
 		<link rel="stylesheet" href="highlight/styles/base16/material-palenight.min.css" />
 		<script src="highlight/highlight.min.js"></script>
@@ -20,463 +23,170 @@
 	</head>
 	<body class="no-sidebar is-preload">
 
-		<div class="contact fixed">
-			<ul class="contact-social">
-				<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-				<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-				<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-				<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-			</ul>
-			<div class="contact-email">
-				<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-			</div>
-		</div>
-
-		<div class="popup-image">
-			<img src="images/okainos/back-end-user.png" alt="">
-		</div>
-
 		<div class="projects-header-wrapper">
+			<nav id="nav"></nav>
 
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
-					<div class="container">
+			<div id="project-top" class="container">
+				<header>
+					<h2 class="project-title">Edge Runner</h2>
+				</header>
+				<p id="okainos" class="project-date scroll-transition"></p>
 
-						<!-- Logo -->
-							<div id="logo">
-								<div>
-									<h1><a href="#">Ariya Bayat</a></h1>
-									<span>Game Programmer Portfolio</span>
-								</div>
-							</div>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li>
-										<a href="#">Dropdown</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<span>Phasellus consequat</span>
-												<ul>
-													<li><a href="#">Lorem ipsum dolor</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Veroeros feugiat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="two-sidebar.html">Two Sidebar</a></li>
-									<li class="current_page_item"><a href="no-sidebar.html">No Sidebar</a></li>
-									<li><a href="contact.html">Contact</a></li>
-								</ul>
-							</nav>
-
+				<div class="slick-slider template">
+					<div class="slick-slide">
+						<video src="videos/okainos/Turns_in_action.mp4"></video>
+					</div>
+					<div class="slick-slide">
+						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/okainos-logo.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/card-data-asset-firebase-json.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/okainos-logo.png">
 					</div>
 				</div>
 
+				<div class="description">
+					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourages fast-paced gameplay.</p>
+					<p>The biggest technical challenge for me was developing the raycast and engine physics character controller which functions on a variety of mechanics during gameplay.</p>
+				</div>
+			</div>
+
+			<div class="popup-image">
+				<img src="images/okainos/back-end-user.png" alt="">
+			</div>
+
+			<h1 id="project-name" class="side-title perspective">Edge Runner</h1>
+
 			<!-- Main -->
-				<div id="main" class="container">
+				<div id="main" class="project-content">
 
 					<div class="row">
 						<div class="col-12">
-							<article id="content">
-								<header>
-									<h2>Okainos</h2>
-									<span class="byline">MONTH 20XX - PRESENT</span>
-								</header>
 
-								<img src="images/Unity_14gdv4Ojbp.png">
+							<h2>Raycast & Engine Physics Character Controller</h2>
 
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header">Collision</div>
+									<div class="accordion-content">
+										<p>Collision is handled by raycasting a circle collider onto surfaces.</p>
 
-								<!-- Container for the image gallery -->
-								<div class="slideshowcontainer">
-
-									<!-- Full-width images with number text -->
-									<div class="mySlides">
-									<div class="numbertext">1 / 6</div>
-									<p><video src="videos/okainos/Turns_in_action.mp4" controls></video></p>
-									</div>
-								
-									<div class="mySlides">
-									<div class="numbertext">2 / 6</div>
-									<div class style="width:100%;height: 490px;">
-									<iframe
-									src="https://www.youtube.com/embed/I4HunMIyDJw">
-									</iframe>
-								</div>
-									</div>
-									<div class="mySlides">
-									<div class="numbertext">3 / 6</div>
-									<img src="images/okainos/okainos-logo.png" style="width:100%">
-									</div>
-								
-									<div class="mySlides">
-									<div class="numbertext">4 / 6</div>
-									<img src="images/okainos/okainos-logo.png" style="width:100%">
-									</div>
-								
-									<div class="mySlides">
-									<div class="numbertext">5 / 6</div>
-									<img src="images/okainos/okainos-logo.png" style="width:100%">
-									</div>
-								
-									<div class="mySlides">
-									<div class="numbertext">6 / 6</div>
-									<img src="images/okainos/okainos-logo.png" style="width:100%">
-									</div>
-								
-									<!-- Next and previous buttons -->
-									<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-									<a class="next" onclick="plusSlides(1)">&#10095;</a>
-								
-									<!-- Image text -->
-									<div class="caption-container">
-									<p id="caption"></p>
-									</div>
-								
-									<!-- Thumbnail images -->
-									<div class="row">
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(1)" alt="Turns in action">
-									</div>
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-									</div>
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-									</div>
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-									</div>
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
-									</div>
-									<div class="column">
-										<img class="demo cursor" src="images/okainos/okainos-logo.png" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
-									</div>
+										<p>This method was inspired by the use of spheres as hitboxes in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
+										<p>I found this to be more suitable than sensor rays as used in the classic Sonic games due to the bugs that occur when standing on slanted ledges and pointy terrain. This is demonstrated in the clip below of the WIP classic Sonic physics prototype of I was making.</p>
 									</div>
 								</div>
-
-								<h3>About</h3>
-								<p>Okainos was an online multiplayer card game inspired by Hearthstone. I was recruited by an artist I met in a game jam to help developing the game transitioning from alpha to closed beta. I took the role of programmer, implementing game systems as well as networking systems with Rest API and Firebase.</p>
-								<h3>Alpha Testers!</h3>
-								<p>One problem we had during development was lack of testing to see how all the systems performed in action.</p>
-								<p>The solution we came up with was to build a website to attract alpha testers. Firebase offered free hosting, so we made use of that for the okainos.net website.</p>
-								<p>This project taught me how to use back-end technologies such as RestAPI, JavaScript, JSON and extensive use of Firebase including: Realtime Database, Authentication, Web Hosting, Cloud Storage. It also taught me how to make networking editor tools to automate processes.</p>
-
-								<button class="accordion">Card Data Assets and Launcher</button>
-								<div class="panel">
+								<div class="accordion-item">
+									<div class="accordion-header">Edge Running</div>
+									<div class="accordion-content">
+										<p>While wall running, when the player reaches the edge of a wall, they will perform an ‘edge run’. where they drift off at a constant velocity. This stunt can also be used to seamlessly cross over small gaps.</p>
+										<p>Edge run is executed when there is no surface underneath the player or a steep slope angle threshold has been reached.</p>
+										<p>This is made possible by the CONTROL LOCK DISTANCE mechanic.</p>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Wall jumping & Ricocheting</div>
+									<div class="accordion-content">
+										<p>Wall jump is achieved by reflecting the player’s velocity off the surface as well as initiating a CONTROL LOCK.</p>
+										<p>The reflected velocity is then normalised with some of the surface normal to bounce further away from the wall. This adjustment was made to more easily wall jump over spikes while wall running more effectively.</p>
+										
+										<p>One secret mechanic I really wanted to include was the ability to ricochet in tunnels. Like external forces, doing so allows you to gain instant momentum by exceeding the normal speed capacity.</p>
+										<p>However, this did not work well with the adjustment added as it causes the player to eventually ricochet in place.</p>
+										<p>To overcome this, I excluded the normal vector if the player was ricocheting, which is defined by if they were constantly wall jumping without spamming the input and without unlocking the control lock distance. This was the result:</p>
 									
-									<!--<h3>Left &amp; Right</h3>-->
-									<h3>Card Data Asset</h3>
-										<p><span class="image left">
-											<img src="images/okainos/card-data-asset-firebase-json.png" style="object-fit:contain;width:200px; height:250px;"/>
-											<p>Since the game was in development, we had to find ways to reduce the amount of updates the alpha testers had to do from the game page.</p>
-											<p>The solution I implemented were card assets, which were used to store the data of cards including stats, effects, description, etc. The data was written and read in JSON between the editor and database and custom editor tools were used to automate the process.</p>
-											<p>This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
-										</span></p>
-
-										<p><span class="image left"><img src="images/okainos/card-asset-inspector.png" style="object-fit:contain;width:200px; height:250px;"/></span></p>
-
-										<h3>Launcher App</h3>
-										<p><span class="image right">
-											<img src="images/okainos/launcher-firebase-download-exceeded.png" style="object-fit:contain;width:350px; height:225px;"/>
-										</span>
-											<p>However, this excluded card resources like materials as they were stored locally in the game.</p>
-											<p>The solution we came up was to instead put a launcher app on the game page which would automatically retrieve updated versions of the game build from the Firebase Cloud Storage.</p>
-											<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
-										</p>
-
-								
-
-
+									</div>
 								</div>
-								<button class="accordion">Authentication & Download Key URLs!</button>
-								<div class="panel">
-									<p><span class="image left">
-										<img src="images/okainos/closed-beta-tester-key-group.png" style="object-fit:contain;width:300px; height:400px;"/></span>
-										<p>One problem we had was lack of testing to see how all the systems performed in action.</p>
-									<p>The solution we came up with was to make a website to sign up alpha testers. Firebase also offered free hosting, which we also made use of for the okainos.net website.</p>
-									<p>An essential system I had implemented here was authentication. This was linked to the same database allowing people to sign in to the game with the same account they created on the website (or the other way around around)!</p>
-									<p>This system was also linked to Itch.io in order to private the game's access only to the testers using Itch it's download keys feature. I generated a max of 100 keys and also displayed the number of seats available on the site to enduce urgency.</p>
-								
-									<button class="accordion">CODE SNIPPET - Authentication Process</button>
-									<div class="panel">
-										<p>This function is called upon pressing submit in the register page.</p>
-										<pre><code class="language-js hljs">function OnRegisterInput()
-{
-	if (registerFormStep == 1) // Sign in mode
-	{
-		// Get user input
-		email = registerForm['emailInput'].value;
-		password = registerForm['passwordInput'].value;
+								<div class="accordion-item">
+									<div class="accordion-header">Control Lock Distance</div>
+									<div class="accordion-content">
+										<p>The control lock distance is used to prevents directional input from influencing the player’s speed until they reach a certain amount of distance from lock point.</p>
 
-		// Check if user already exists in the database, if so sign in, else sign up new account
-		get(refDB(database, 'users/')).then(dataSnapshots =>
-			{
-				const users = keyfullObjectSnapshotToArray(dataSnapshots);
-				users.forEach(user =>
-					{
-						if (email == user.email)
-						{
-							if(ValidateSignIn(email, password, users)) // Check if details are valid
-								SignIn(email, password);
-							return;
-						}
-					});
+										<p>This system was made flexible for use and is what ties all the other mechanics together such as edge running, wall jumping and hitting a launch pad.</p>
+										<p>In older solutions, the control lock timer concept was used, however it wasn’t suitable as the amount of distance covered during control lock was inconsistent due to speed always changing, which conflicted level design.</p>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Assist System (inspired by Celeste)</div>
+									<div class="accordion-content">
+										<p>The game aids player inputs to better achieve desired actions through assists like snapping to missed nearby environments, dash distance extension, input buffering, etc.</p>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Momentum-based movement</div>
+									<div class="accordion-content">
+										<p>The player’s momentum is influenced by activity like player mechanics (running along slopes, edge running, wall jumping) and external forces (launch pads, and moving or rotating platforms).</p>
+									</div>
+								</div>
+							</div>
 
-				if (ValidateSignUpEmailPassword(email, password, users)) // Check if details are valid
-					setupRegisterFormInputs(registerFormStep = 2); // Setup register for sign up
-			});
-	}
-	else if (registerFormStep == 2) // Sign up mode
-	{
-		get(refDB(database, 'users/')).then(dataSnapshots =>
-			{
-				const users = keyfullObjectSnapshotToArray(dataSnapshots);
+							<h2>Other</h2>
 
-				const username = registerForm['usernameInput'].value;
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header">Pushing Splines to Limits!</div>
+									<div class="accordion-content">
+										<p>With the world being built entirely out of splines, I developed an extension for Unity's Sprite Shape API that breaks splines down to segments and points for full control and flexibility.</p>
+										<p>It is used for entity movement movement on splines like player grinding on rails, hazards moving on walls.</p>
+										<p>It is also used to aid level design by displaying paths and point within a spline.</p>
 
-				if (ValidateSignUpUsername(username, users)) // Check if username already exists
-					SignUp(email, password, username);
-			});
-	}
-}</code></pre>
-<p>This function is called after the player verified their account</p>
+										<p>Here we can see the script being used to break down the grind rail spline into evenly spaced points to allow the player to move along the rail.</p>
 
-<pre><code class="language-js hljs">function GetClosedBetaTesterKey()
-{
-    const userClosedBetaTesterItchIoKeyURLRef = refDB(database, "users/" + auth.currentUser.uid + "/closedBetaTesterItchIoKeyURL");
-    get(userClosedBetaTesterItchIoKeyURLRef)
-        .then(userClosedBetaTesterKeyResponse =>
-            {
-                var urlKey = userClosedBetaTesterKeyResponse.val();
-                // Check if user already has a key, if so then assign them one, else refresh the game page button with the key url
-                if (urlKey == "")
-                {
-                    // Add user to mail list
-                    SubscribeEmailToList(user.email);
-
-                    // Get keys list from Firebase Cloud Storage
-                    const closedBetaTesterKeysRef = refGS(storage, 'closed-beta-tester-keys.txt');
-                    getDownloadURL(closedBetaTesterKeysRef).then((url) =>
-                        {
-                            fetch(url).then(keysResponse =>
-                                {
-                                    keysResponse.text().then(keysText =>
-                                        {
-                                            // Grab first key
-                                            var nextKey = keysText.split('\n')[0];
-                                            // Exclude the key from the list
-                                            keysText = keysText.substring(nextKey.length + 1)
-                                            uploadString(closedBetaTesterKeysRef, keysText);
-                                            // Assign player with key
-                                            set(userClosedBetaTesterItchIoKeyURLRef, nextKey)
-                                                .then((response) =>
-                                                {
-                                                    urlKey = nextKey
-                                                    RefreshSendClosedBetaTesterKeyButton(urlKey);
-                                                });
-                                        });
-                                });
-                        });
-                }
-                else
-                    RefreshSendClosedBetaTesterKeyButton(urlKey);
-            });
-}</code></pre></div>
-</div>
-
-
-<button class="accordion">Card Deck Language Coder</button>
-								<div class="panel">
-									<p><span class="image left">
-										<img src="images/okainos/card-decks.png" style="object-fit:contain;width:300px; height:100px;"/></span>
-										<p>In order to store the card decks created by players, I made a card deck code containing the details of the deck. This code is imported and exported by the game. The code language was designed with simplicity in mind clearly showing the card name along with quantity.</p>
-
-									<p><video src="videos/okainos/Card Deck Builder.mp4" autoplay loop></video></p>
-
-									<button class="accordion">CODE SNIPPET - Card Deck Code Processing</button>
-										<div class="panel">
-											<pre><code class="language-csharp hljs">/// <summary>
-/// Convert card deck code to list of cards through validation
-/// </summary>
-/// <returns>A list of deck cards</returns>
-public string GetCardDeckCode()
-{
-	string cardDeckCode = "";
-	if (cardItems.Count > 0)
-	{
-		foreach (CardInDeckItem cardItem in cardItems)
-			cardDeckCode += new CardInGroup(cardItem.CardData.id, cardItem.CardQuantity).ToString(); // Returns id and quantity seperated by "*" and ","
-		cardDeckCode.Remove(cardDeckCode.Length - 1, 1);
-	}
-	return cardDeckCode;
-}</code></pre>
-<p>Card Deck Decoder</p>
-									<pre><code class="language-csharp hljs">/// <summary>
-/// Convert card deck code to list of cards through validation
-/// </summary>
-/// <returns>A list of deck cards</returns>
-public CardInGroup[] DecodeCardDeckCode()
-{
-	// array of cards
-	string[] cardIdsAndQuantities = code.Split(',', '*');
-	var qseudoDeckCards = new CardInGroup[cardIdsAndQuantities.Length / 2];
-	// Validation process
-	for (int i = 0; i < qseudoDeckCards.Length; i++)
-	{
-		int quantity;
-		// Get the quantity from text
-		if (int.TryParse(cardIdsAndQuantities[(i * 2) + 1], out quantity))
-			// 20 is max quantity
-			if (quantity <= 20)
-				qseudoDeckCards[i] = new CardInGroup(cardIdsAndQuantities[i * 2], quantity);
-	}
-	return qseudoDeckCards;
-}</code></pre>
-Card deck code validation is checked before
-<pre><code class="language-csharp hljs">struct CardDeckCodeValidationResponse
-{
-	public CardInGroup[] DeckCards { get; private set; }
-	public CardAsset.Data[] CardData { get; private set; }
-	public string[] EvaluationLogs { get; private set; }
-
-	public CardDeckCodeValidationResponse(CardInGroup[] deckCards, CardAsset.Data[] cardData, string[] evaluationLogs)
-	{
-		DeckCards = deckCards;
-		CardData = cardData;
-		EvaluationLogs = evaluationLogs;
-	}
-}
-void ValidateCardDeck(CardInGroup[] pseudoDeckCards, Action<CardDeckCodeValidationResponse> response)
-{
-	List<CardInGroup> validDeckCards = new List<CardInGroup>();
-	List<CardAsset.Data> validDeckCardDatas = new List<CardAsset.Data>();
-	List<string> evaluationLog = new List<string>();
-
-	int totalDeckCardsNo = 0;
-	// Validation check for each card
-	foreach (CardInGroup pseudoDeckCard in pseudoDeckCards)
-	{
-		// Ignore errors
-		if (pseudoDeckCard == null ||
-			pseudoDeckCard.quantity == 0)
-			continue;
-
-		// Compare player's card collection against chosen deck cards
-		foreach (CardInGroup collectionCard in PersistentData.user.cardCollection)
-			if (pseudoDeckCard.id == collectionCard.id)
-				foreach (CardAsset.Data cardData in PersistentData.cardDatas)
-					if (pseudoDeckCard.id == cardData.id) // Check if the deck card exists in the player's collection
-					{
-						bool quantityIsEnough = true;
-						// Check if player has enough of the deck card
-						foreach (CardInCollectionItem cardinCollecitonItem in cardCollectionManager.GetCardItems())
-							if (cardinCollecitonItem.CardData.id == pseudoDeckCard.id)
-								if (cardinCollecitonItem.CardQuantity < pseudoDeckCard.quantity)
-								{
-									int quantityDiff = pseudoDeckCard.quantity - cardinCollecitonItem.CardQuantity;
-									pseudoDeckCard.quantity = pseudoDeckCard.quantity - quantityDiff;
-									evaluationLog.Add("You don't have enough " + pseudoDeckCard.id + " cards! You're missing " + quantityDiff + ".");
-									quantityIsEnough = false;
-									break;
-								}
-						// If player has enough of deck card, then check if there is too much of the same card
-						if (quantityIsEnough)
-						{
-							totalDeckCardsNo += pseudoDeckCard.quantity;
-							if (totalDeckCardsNo > CARDS_IN_DECK_QUANTITY_MAX) // 20
-							{
-								// Failed validation
-								validDeckCards = null;
-								validDeckCardDatas = null;
-								evaluationLog.Add("Total number of cards exceeds the max allowed of " + CARDS_IN_DECK_QUANTITY_MAX + ".");
-								response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
-								return;
-							}
-
-							// Add valid card
-							validDeckCards.Add(pseudoDeckCard);
-							validDeckCardDatas.Add(cardData);
-						}
-						break;
-					}
-
-		// Check if card is missing from their collection or does not exist in the database
-		if (!validDeckCards.Contains(pseudoDeckCard))
-		{
-			bool cardDoesNotExist = true;
-			// Card is missing
-			foreach (CardAsset.Data cardData in PersistentData.cardDatas)
-				if (pseudoDeckCard.id == cardData.id)
-				{
-					evaluationLog.Add("You don't have a " + pseudoDeckCard.id + " card in your collection!");
-					cardDoesNotExist = false;
-					break;
-				}
-			// Card does not exist
-			if (cardDoesNotExist)
-				evaluationLog.Add("Card \"" + pseudoDeckCard.id + "\" does not exist.");
-		}
-	}
-	response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckCardDatas.ToArray(), evaluationLog.ToArray()));
-}</code></pre>
-						</div>
-							</article>
-						</div>
-					</div>
-
-				</div>
-
-			<!-- Footer -->
-			<div id="footer" class="container">
-
-				<div class="row">
-					<div class="col-12">
-						<!-- <span class="copyright">&copy; Untitled. All rights reserved.</span> -->
-						<div class="contact footer">
-							<ul class="contact-social">
-								<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-								<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-								<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-								<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-							</ul>
-							<div class="contact-email">
-								<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
+										<p>It is used similarly here for hazards moving along a path inside a wall. The spline path and points are visualised with an additional custom level editor tool.</p>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Camera</div>
+									<div class="accordion-content">
+										
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Motion Platforms</div>
+									<div class="accordion-content">
+										<p>The moving and rotating platforms give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					
 					</div>
-				</div>
 
-			</div>
+				</div>
 
 		</div>
 	</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.slidertron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.slidertron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-			<script src="assets/js/custom.js"></script>
-			<script src="assets/js/slideshow.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<script src="assets/js/project-elements.js"></script>
+		<script src="assets/js/slideshow.js"></script>
+		
+		<script src="assets/js/popup-image.js"></script>
+		<script src="assets/js/tabs.js"></script>
+		
+		<script src="assets/js/image-slider.js"></script>
+		
+		<script src="assets/js/slick.min.js"></script>
+
+		
+		<script src="assets/js/navbar.js"></script>
+		<script src="assets/js/parallax-scrolling.js"></script>
+
+		<script src="assets/js/observers.js"></script>
+
+		<script src="assets/js/accordion-single.js"></script>
 		</body>
 </html>

@@ -15,6 +15,12 @@
     width: max-content;
     clear: both;
     /* border: 1px solid rgb(255, 0, 0); */
+
+    height: 64px;
+    width: 64px;
+    /* width: 64px; */
+    /* background-color: aqua; */
+    /* border: 1px solid rgb(255, 0, 0); */
 }
 
 #survival-game-2020-canvas {
@@ -31,7 +37,7 @@
     width: calc(64px/2);
     width: 32px;
     height: 32px;
-    transform: scale(2) translateY(9px);
+    transform: scale(2.275) translateX(1.5px) translateY(6.75px);
     background: url(../../images/2020-survival-game/lockdowneer-idle.png);
     image-rendering: pixelated;
     cursor: pointer;
@@ -51,7 +57,8 @@
     width: 32px;
     height: 32px;
       background-position: 64px;
-      transform: scale(2) translateY(9px);
+      transform: scale(2.275) translateX(1.5px) translateY(6.75px);
+    /* transform: scale(2) translateY(9px); */
     background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
     image-rendering: pixelated;
     cursor: pointer;
@@ -81,3 +88,13 @@
       background-position: 64px;
     }
   }
+
+  .interactable #edge-runner {
+    position: absolute;
+    height: 64px;
+    transform: scale(4, 4) translateX(-9px) translateY(-18px);
+    /* background: url(../../images/edge-runner/right-side-view/1.PNG); */
+    /* image-rendering: pixelated; */
+    /* pointer-events: none; */
+  }
+

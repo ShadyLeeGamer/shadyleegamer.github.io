@@ -265,6 +265,7 @@ input, select, textarea {
 	:root {
 		--nav-background: #456678;
 
+		--about-me-bg:#456678c0 ;
 		--background-1:#456678 ;
 		--background-2:#E4DED5 ;
 
@@ -280,8 +281,8 @@ input, select, textarea {
 		--work-experience: #85AAAD;
 
 		--skills-ribbon-1: #C25056;
-		--skills-ribbon-2: #C25056;
-		--skills-ribbon-3: #C25056;
+		--skills-ribbon-2: #a93b41;
+		--skills-ribbon-3: #92292e;
 
 		--colour-1-dark: #1A5F4A;
 		--colour-2-dark: #C59847;
@@ -292,9 +293,13 @@ input, select, textarea {
 		--colour-2-bright: #C9A871;
 		--colour-3-bright: #CF5270;
 		--colour-4-bright: #2F5683;
+
+		--secondary-1: #87A9AD;
+		--secondary-2: #468797;
 	}
 
-	:root #work-projects .spotlights > section {
+	:root #work-projects .spotlights > section,
+	#project-top #okainos {
 		--project-panel-1: #468797;
 		--project-panel-2: #85AAAD;
 
@@ -303,14 +308,14 @@ input, select, textarea {
 
 		--project-text-special:#468797;
 
-		--project-tech-item-colour-bright: var(--skills-ribbon-1);
-		--project-tech-item-colour-dark: var(--skills-ribbon-1);
+		--colour-bright: var(--skills-ribbon-1);
+		--colour-dark: var(--skills-ribbon-3);
 		--project-reel-filter-shift: -60deg;
 	}
 	@media screen and (max-width: 960px) {
 		:root #work-projects .spotlights > section {
-			--project-description-split:#1A5F4A;
-			--project-highlights-split:#1A5F4A;
+			--project-description-split:#adacaa89;
+			--project-highlights-split:#adacaa89;
 		}
 	}
 
@@ -324,27 +329,45 @@ input, select, textarea {
 
 		--project-text-special:#ADACAA;
 	}
-	#projects .spotlights > section:nth-child(1)
+	#projects .spotlights > section:nth-child(n),
+	.accordion > .accordion-item:nth-child(n),
+	#project-top #edge-runner
 	{
-		--project-tech-item-colour-bright: var(--colour-1-bright);
-		--project-tech-item-colour-dark: var(--colour-1-dark);
+		--colour-bright: var(--colour-1-bright);
+		--colour-dark: var(--colour-1-dark);
 		--project-reel-filter-shift: 60deg;
 	}
-	:root #projects .spotlights > section:nth-child(2) {
-		--project-tech-item-colour-bright: var(--colour-2-bright);
-		--project-tech-item-colour-dark: var(--colour-2-dark);
+	:root #projects .spotlights > section:nth-child(2n),
+	.accordion > .accordion-item:nth-child(2n),
+	#project-top #game-jams {
+		--colour-bright: var(--colour-2-bright);
+		--colour-dark: var(--colour-2-dark);
 		--project-reel-filter-shift: 0deg;
 	}
-	:root #projects .spotlights > section:nth-child(3),
-	:root #project-top {
-		--project-tech-item-colour-bright: var(--colour-3-bright);
-		--project-tech-item-colour-dark: var(--colour-3-dark);
+	:root #projects .spotlights > section:nth-child(3n),
+	.accordion > .accordion-item:nth-child(3n),
+	#project-top #survival-2020 {
+		--colour-bright: var(--colour-3-bright);
+		--colour-dark: var(--colour-3-dark);
 		--project-reel-filter-shift: -70deg;
 	}
-	:root #projects .spotlights > section:nth-child(4) {
-		--project-tech-item-colour-bright: var(--colour-4-bright);
-		--project-tech-item-colour-dark: var(--colour-4-dark);
+	:root #projects .spotlights > section:nth-child(4n),
+	.accordion > .accordion-item:nth-child(4n),
+	#project-top #tap-fever {
+		--colour-bright: var(--colour-4-bright);
+		--colour-dark: var(--colour-4-dark);
 		--project-reel-filter-shift: -170deg;
+	}
+
+	.accordion .accordion > .accordion-item:nth-child(1n)
+	{
+		--colour-bright: var(--secondary-1);
+		--colour-dark: var(--nav-background);
+	}
+	.accordion .accordion > .accordion-item:nth-child(2n)
+	{
+		--colour-bright: var(--secondary-2);
+		--colour-dark: var(--nav-background);
 	}
 
 
@@ -557,7 +580,7 @@ input, select, textarea {
 				  .ribbon .ribbon-content:after {
 					right: 0;
 					border-width: 20px 20px 0 0;
-					border-color: var(--skills-ribbon-1) transparent transparent transparent;
+					border-color: var(--skills-ribbon-3) transparent transparent transparent;
 				  }
 				  
 				  @media screen and (max-width: 736px) {
@@ -570,7 +593,7 @@ input, select, textarea {
 
 
 		.ribbon-vertical {
-			background: var(--project-tech-item-colour-bright);
+			background: var(--colour-bright);
 
 			position: relative;
 			padding: 0.5em;
@@ -586,16 +609,16 @@ input, select, textarea {
 
 			top: 0;
 			border-top: 5px solid transparent;
-			border-bottom: 5px solid var(--project-tech-item-colour-dark);
+			border-bottom: 5px solid var(--colour-dark);
 		}
 		  .ribbon-vertical.left::before{
 			left: -9px;
 			border-left: 5px solid transparent;
-			border-right: 5px solid var(--project-tech-item-colour-dark);
+			border-right: 5px solid var(--colour-dark);
 		  }
 		  .ribbon-vertical.right::before{
 			right: -9px;
-			border-left: 5px solid var(--project-tech-item-colour-dark);
+			border-left: 5px solid var(--colour-dark);
 			border-right: 5px solid transparent;
 		  }
 		  
@@ -605,7 +628,7 @@ input, select, textarea {
 			position: absolute;
 
 			left: 0;
-			border: 23px solid var(--project-tech-item-colour-bright);
+			border: 23px solid var(--colour-bright);
 			border-bottom: 23px solid transparent;
 
 			width: 100%;
@@ -678,6 +701,7 @@ input, select, textarea {
 			z-index: 1;
 
 			display: block;
+			transform: translateX(-300%);
 		}
 		.side-title.mobile {
 			position: relative;
@@ -685,7 +709,8 @@ input, select, textarea {
 			text-align: center;
 			padding-bottom: 0.5em;
 			display: none;
-			transform: translateY(100%);
+			transform: translateX(50%) translateY(100%);
+			left: -50%;
 		}
 
 			.work-experience-header {
@@ -704,6 +729,12 @@ input, select, textarea {
 				/* background-color: black; */
 				color: var(--work-experience);
 
+			}
+
+			@media screen and (max-width: 1460px) {
+				.side-title {
+					left: 2.5em;
+				}
 			}
 
 			@media screen and (max-width: 1080px) {
@@ -2082,8 +2113,8 @@ input, select, textarea {
 		height: auto;
 		width: auto;
 		/* gap: 1em; */
-		justify-content: center;
-		background: #393447;
+		justify-content:space-evenly;
+		background: var(--nav-background);
 		border-radius: 1.5em;
 
 		align-items: center;
@@ -2354,8 +2385,8 @@ input, select, textarea {
 				text-decoration: none;
 				text-transform: uppercase;
 
-				background: var(--project-tech-item-colour-bright);
-				border: solid var(--project-tech-item-colour-dark);
+				background: var(--colour-bright);
+				border: solid var(--colour-dark);
 				color: var(--text-light);
 			}
 
@@ -2363,15 +2394,15 @@ input, select, textarea {
 				animation: project-tech-list-spin 1s ease-out;
 
 				background: var(--project-tech-reversed-bg);
-				border: solid var(--project-tech-item-colour-bright);
-				color: var(--project-tech-item-colour-bright);
+				border: solid var(--colour-bright);
+				color: var(--colour-bright);
 			}
 
 			ul.project-tech-list li.spin-reverse {
 				animation: project-tech-list-spin-reverse 1s ease-out;
 
-				background: var(--project-tech-item-colour-bright);
-				border: solid var(--project-tech-item-colour-dark);
+				background: var(--colour-bright);
+				border: solid var(--colour-dark);
 				color: var(--text-light);
 			}
 			  
@@ -2688,12 +2719,37 @@ input, select, textarea {
 		} */
 	/* Split */
 
-	.split {
+	.game-jam-info {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
 
+		text-align: left;
+		justify-content: center;
+		padding: 2em;
+	}
+
+		.game-jam-info > * {
+			margin-bottom: 0px;
+		}
+
+		.game-jam-info > :nth-child(2n - 1) {
+			padding-right: 1em;
+			text-transform: uppercase;
+			font-family:'A-OTF Shin Go Pro R';
+	}
+
+		.game-jam-info > :nth-child(2n) {
+			padding-left: 1em;
+		}
+
+
+	.split {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
 	}
 
 		.split > * {
@@ -3669,7 +3725,40 @@ input, select, textarea {
 		} */
 
 
-	
+		#big-reel{
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 600px;
+			height: 750px;
+			/* height: 80vh; */
+			height: 100vh;
+			/* z-index: 10; */
+			pointer-events: none;
+			padding-bottom: 5em;
+			background-color: var(--background-1);
+			z-index: 2;
+		}
+		#big-reel::before {
+			position: absolute;
+			content: "";
+			bottom: 0;
+			background: linear-gradient(#00000000, var(--background-1));
+			height: 100px;
+			width: 100%;
+			left: 0;
+			transform: translateY(calc(101% - 5em - 100px));
+			z-index: 1;
+			pointer-events: none;
+			}
+		
+		#big-reel video {
+			position: relative;
+			height: 100%;
+			/* object-fit: cover; */
+			object-fit: fill;
+			/* filter: sepia(100%) hue-rotate(150deg); */
+		}
 
 	#about-me {
 		position: relative;
@@ -3679,34 +3768,40 @@ input, select, textarea {
 		width: 100%;
 		height: 100vh;
 		font-size: 1em;
+		padding-top: 0;
 
-		padding-top: 20em;
-		padding-bottom: 25em;
-
-		background-color: var(--background-1);
-		z-index: 2;
+		background-color: var(--about-me-bg);
+		z-index: 3;
 		}
 
 	#about-me h2
 	{
 		font-family:'A-OTF Shin Go Pro M';
-
-		/* text-transform: uppercase; */
 			letter-spacing: 0.10em;
 			font-size: 2em;
 			line-height: 1.25em;
 			position: relative;
-		/* writing-mode: vertical-rl;
-		text-transform: uppercase; */
 		padding: 10px;
 	}
 
 	.about-text {
+		position: absolute;
+		top: 0;
+		transform: translateX(-50%) translateY(-50%);
+		left: 50%;
+		top: 50%;
+
 		max-width: 50%;
-		margin: 0 auto;
-		padding-bottom: 4em;
+
 		text-align: center;
 		color: var(--text-light);
+		text-shadow: 6px 3px 6px #000000;
+	}
+
+	#about-me .ribbon {
+		position: relative;
+		margin: 0 auto;
+		margin-top: 100vh;
 	}
 
 	  @media screen and (max-width: 960px) {
@@ -3804,6 +3899,7 @@ input, select, textarea {
 			width: 100%;
 			left: 0;
 			transform: translateY(99%);
+			pointer-events: none;
 		}
 		#project-top .project-title{
 			position: relative;
@@ -3910,40 +4006,6 @@ input, select, textarea {
 		}
 
 /* Main */
-
-/* Content */
-
-	#content {
-	}
-
-	#content header {
-		margin-bottom: 2.5em;
-	}
-
-		#content header h2 {
-			/*color: #373C4E;*/
-			color: white;
-		}
-
-		#content header .byline {
-			letter-spacing: 0.05em;
-			font-size: 1.2em;
-			text-align: center;
-		}
-
-	#content h3 {
-		/* display: block;
-		padding: 1.5em 0em 1em 0em;
-		letter-spacing: 0.05em;
-		line-height: 1.5em;
-		font-size: 1.4em;
-		color: #373C4E;
-		color: white; */
-	}
-
-	.contact #content header {
-		margin-bottom: 2.5em;
-	}
 
 /* Newsletter */
 
@@ -4966,13 +5028,3 @@ input, select, textarea {
 
 	}
 
-.banner{
-	position: absolute;
-	top: 0;
-	height: 250vh;
-	width: 100%;
-	z-index: -10;
-	pointer-events: none;
-
-	display: none;
-}

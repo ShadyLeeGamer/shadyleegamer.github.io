@@ -1,6 +1,55 @@
-
-
-
+:root ul.tech li#unity {
+  --tech-spinner-bg: #bfbfbf;
+  --tech-tooltip: 'Unity';
+}
+:root ul.tech li#c-sharp {
+  --tech-spinner-bg: #dc7cff;
+  --tech-tooltip: 'C#';
+}
+:root ul.tech li#git {
+  --tech-spinner-bg: #ff9578;
+  --tech-tooltip: 'Git';
+}
+:root ul.tech li#firebase {
+  --tech-spinner-bg: #ffb778;
+  --tech-tooltip: 'Firebase';
+}
+:root ul.tech li#js {
+  --tech-spinner-bg: #fff47a;
+  --tech-tooltip: 'JavaScript';
+}
+:root ul.tech li#html {
+  --tech-spinner-bg: #FABC4F;
+  --tech-tooltip: 'HTML';
+}
+:root ul.tech li#css {
+  --tech-spinner-bg: #38ADDE;
+  --tech-tooltip: 'CSS';
+}
+:root ul.tech li#java {
+  --tech-spinner-bg: #F2F2F2;
+  --tech-tooltip: 'Java';
+}
+:root ul.tech li#visual-studio {
+  --tech-spinner-bg: #F2F2F2;
+  --tech-tooltip: 'Visual Studio';
+}
+:root ul.tech li#json {
+  --tech-spinner-bg: #858585;
+  --tech-tooltip: 'JSON';
+}
+:root ul.tech li#trello {
+  --tech-spinner-bg: #F2F2F2;
+  --tech-tooltip: 'Trello';
+}
+:root ul.tech li#notion {
+  --tech-spinner-bg: #000000;
+  --tech-tooltip: 'Notion';
+}
+:root ul.tech li#python {
+  --tech-spinner-bg: #F2F2F2;
+  --tech-tooltip: 'Python';
+}
 
 ul.tech {
   margin: 0;
@@ -22,16 +71,12 @@ ul.tech li {
   transform: scale(1);
 }
 
-
-
-
-
 .spinner {
   width: 60px;
   height: 60px;
   margin: 0 0px;
   border-radius: 100%;
-  background: #6d7283;
+  background: var(--tech-spinner-bg);
   padding: 0.75em;
   position: relative;
   overflow: hidden;
@@ -72,14 +117,42 @@ ul.tabs li:has(div.spinner)::after {
   height: 100%;
 }
 
-ul.tech li::after {
-  top: 40px;
+ul.tech li::before {
+  position: absolute;
+  content: '+ ' var(--tech-tooltip);
+  color: var(--tech-spinner-bg);
+  font-family: 'A-OTF Shin Go Pro R';
+  top: 0px;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius:  4px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  transform: translateX(-50%);
+  left: 50%;
+  white-space: nowrap;
 }
 
+ul.tech li .tooltip {
+  position: absolute;
+  content: '+ ' var(--tech-tooltip);
+  color: var(--tech-spinner-bg);
+  font-family: 'A-OTF Shin Go Pro R';
+  top: 0px;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius:  4px;
+  transition: 0.5s;
+  transform: translateY(50px);
+  left: 50%;
+  white-space: nowrap;
+}
 
-ul.contact-social li::after
-{
-  top: 20px;
+ul.tech li:hover::before {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-45px);
 }
 
 ul.tech li img {
@@ -96,8 +169,8 @@ ul.tabs li .spinner::after{
   height: 100%;
   top: 0;
   width: 30px;
-  background: #ffffff75;
-  box-shadow: 0  0 10px #ffffff7c;
+  background: #ffffff80;
+  box-shadow: 0  0 10px #ffffffba;
   filter: blur(5px);
   opacity: 0.9;
   transition: 0.7s;
@@ -125,9 +198,6 @@ ul.tabs li .spinner::after{
       transform: translateX(-100px);
       }
 
-}
-@media screen and (max-width: 980px) {
-  
 }
 @media screen and (max-width: 736px) {
   ul.tech {
@@ -179,73 +249,12 @@ ul.contact-social li:hover::after,
 ul.tabs li:hover::after
  {
       animation:none;
+      background: none;
       transform: scale(1.25);
-      /* background: #86ff3b;
+      box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.5);
+  /* background: #86ff3b;
   box-shadow: 0 0 0 4px #333,
               0 0 0 6px #86ff3b; */
-  }
-
-
-
-  /* ul.tech li .tooltip {
-    position: absolute;
-    bottom: 75px;
-    width: 250px;
-    left: 25px;
-    background: #fff;
-    padding: 25px;
-    box-sizing: border-box;
-    border-radius:  4px;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-    transform: translateX(-50%) translateY(-50px);
-  } */
-
-  ul.tech li .tooltip {
-    position: absolute;
-    top: 75px;
-    width: 250px;
-    left: 25px;
-    background: #fff;
-    padding: 25px;
-    box-sizing: border-box;
-    border-radius:  4px;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-    transform: translateX(-50%) translateY(50px);
-  }
-
-  ul.tech li .tooltip h2 {
-    color: black;
-		font-family: 'A-OTF Shin Go Pro M';
-    text-align: center;
-		font-size: 7.5pt;
-  }
-
-  ul.tech li .tooltip p {
-    color: black;
-		font-family: 'A-OTF Shin Go Pro R';
-    text-align: left;
-		font-size: 7.5pt;
-  }
-
-  ul.tech li:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0px);
-  }
-
-  ul.tech li .tooltip:before {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    top: -12.5px;
-    left: 112.5px;
-    transform: rotate(45deg);
   }
 
   @keyframes spin {
@@ -313,51 +322,89 @@ ul.tabs li:hover::after
       .tooltip:hover .tooltiptext {
         visibility: visible;
       } */
+      .accordion {
+        margin-bottom: 10px;
+      }
+
+      .accordion-item {
+        position: relative;
+        margin-bottom: -10px;
+      }
+      
+      .accordion-header {
+        position: relative;
+        background-color: var(--colour-bright);
+        padding: 10px;
+        cursor: pointer;
+        font-family:'A-OTF Shin Go Pro R';
+        /* text-transform: uppercase; */
+
+        transition: background-color 0.3s ease-out, color 0.3s ease-out;
+      }
+      .accordion-header:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: white;
+        float: right;
+        margin-left: 5px;
+      }
+      .accordion-header:hover {
+        background-color: var(--colour-dark);
+      }
+      
+      .accordion-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        margin: 10px;
+      }
+      
+      .accordion-item.active > .accordion-content {
+        height: auto;
+        transition: max-height 0.3s ease-in;
+      }
+      
+      .accordion-item.active > .accordion-header {
+        background-color: #f3eee6;
+        color: black;
+        transition: background-color 0.3s ease-in, color 0.3s ease-in;
+      }
+      .accordion-item.active > .accordion-header:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+      }
 
 
-  /* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-  background-color: #565B6B;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
+      /* .accordion {
+        margin-bottom: 10px;
+      }
 
-  text-transform: uppercase;
-
-  /* margin-bottom: 18px; */
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.accordion.active, .accordion:hover {
-  background-color: #E56E59;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-  padding: 0 18px;
-  /*background-color: white;*/
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-.accordion:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
-  font-size: 13px;
-  color: #777;
-  float: right;
-  margin-left: 5px;
-}
-
-.accordion.active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
-
+      .accordion > .accordion-item {
+        position: relative;
+        margin-bottom: -10px;
+      }
+      
+      .accordion > .accordion-item > .accordion-header {
+        position: relative;
+        background-color: #383838;
+        padding: 10px;
+        cursor: pointer;
+      }
+      
+      .accordion > .accordion-item > .accordion-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.2s ease-out;
+        margin: 10px;
+      }
+      
+      .accordion > .accordion-item.active > .accordion-content {
+        height: auto;
+        transition: max-height 0.2s ease-in;
+      }
+      
+      .accordion > .accordion-item.active > .accordion-header {
+        background-color: #ccc;
+      } */
 /*Box*/
 
 .box {
@@ -441,44 +488,6 @@ body {
   /* height: 100vh; */
   place-items: center;
 }
-
-
-
-
-.code-bg1{
-  background-image: url("../../images/hello-world-html-code-768x384.webp");
-  opacity: 10%;
-  width: 30%;
-  padding-bottom:  100%;
-  margin-top: -5em;
-  margin-bottom: -100%;
-  pointer-events: none;
-}
-
-
-.code-bg{
-  position: relative;
-  opacity: 20%;
-  /* max-width: 600px; */
-  width: 700px;
-  width: 100%;
-  margin-top: -5em;
-  margin-bottom: -10em;
-  pointer-events: none;
-  z-index: -10;
-}
-
-
-/* .a{
-  margin: 0;
-  padding: 0;
-  min-height: 75vh;
-  background: #333;
-  background:#16202B;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-} */
 
 .education-container {
   width: 1000px;

@@ -10,12 +10,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-
 		<link rel="stylesheet" href="assets/css/custom.css" />
-		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
 
 		<link rel="stylesheet" href="assets/css/slick.css" />
+		<link rel="stylesheet" href="slick-1.8.1/slick-1.8.1/slick/slick.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
 
 		<link rel="stylesheet" href="highlight/styles/base16/material-palenight.min.css" />
 		<script src="highlight/highlight.min.js"></script>
@@ -25,46 +25,59 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 	</head>
 	<body class="no-sidebar is-preload">
-
-		<div class="contact fixed">
-			<ul class="contact-social">
-				<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-				<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-				<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-				<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-			</ul>
-			<div class="contact-email">
-				<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-			</div>
-		</div>
-
-			<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="left-sidebar.html">Left Sidebar</a></li>
-				<li><a href="right-sidebar.html">Right Sidebar</a></li>
-				<li><a href="two-sidebar.html">Two Sidebar</a></li>
-			</ul>
-		</nav>
-
+		
 			<div class="projects-header-wrapper">
-			<!-- <h1 class="projects-header">Arcade</h1> -->
+				<nav id="nav"></nav>
 
 				<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
-					<div class="container">
+					<div id="project-top" class="container">
 
-						<!-- Logo -->
-							<div id="logo">
-								<div>
-									<h1><a href="#">Ariya Bayat</a></h1>
-									<span>Game Dev, Programmer Portfolio</span>
-								</div>
+						<header>
+							<h2 class="project-title">Tap Fever</h2>
+						</header>
+						<p id="tap-fever" class="project-date scroll-transition"></p>
+		
+						<div class="slick-slider template">
+		
+								<!-- <div class="slick-slide">
+									<iframe src="https://www.youtube.com/embed/eaXVMo3obiI"></iframe>
+							</div> -->
+
+							<div class="slick-slide">
+								<img src="images/tap-fever/google-play-screenshot-1.jpg">
 							</div>
-							
+							<div class="slick-slide">
+								<img src="images/tap-fever/google-play-screenshot-2.png">
+							</div>
+							<div class="slick-slide">
+								<img src="images/tap-fever/google-play-screenshot-3.png">
+							</div>
+							<div class="slick-slide">
+								<img src="images/tap-fever/google-play-screenshot-4.png">
+							</div>
+							<div class="slick-slide">
+								<img src="images/tap-fever/google-play-screenshot-5.png">
+							</div>
+						</div>
+		
+					<div class="description">
+						<ul class="tech scroll-transition">
+							<li>
+								<div class="spinner" style="background: #ffffff;">
+									<a href="https://play.google.com/store/apps/details?id=com.ShadyLeeGamezz.PumpFever&hl=en_CA&gl=US&pli=1" target="_blank"><img src="images/icons/google-play-store.png" style="right: -3.75px;"/></a>
+		
+								</div>
+							</li>
+						</ul>
+		
+					<ul id="tap-fever" class="project-tech-list scroll-transition"></ul>
+
+					<p id="tap-fever" class="project-category"></p>
+					<p>This was my first published arcade game on Google Play Store at age 12. It reported 89 unique installs.</p>
+					</div>
+						
+					</div>
 
 					</div>
 				</div>
@@ -73,39 +86,15 @@
 					<img src="images/okainos/back-end-user.png" alt="">
 				</div>
 
+				<h1 id="project-name" class="side-title perspective">TAP FEVER</h1>
+
 			<!-- Main -->
 				<div id="main" class="project-content">
 
 					<div class="row">
 						<div class="col-12">
 							<article id="content">
-								<header>
-									<h2 class="project-header">Tap Fever</h2>
-									<span class="byline">MONTH 20XX - PRESENT</span>
-								</header>
 
-								<div class="slider template">
-									<div class="slider-item">
-										<iframe src="https://www.youtube.com/embed/eaXVMo3obiI"></iframe>
-									</div>
-									<div class="slider-item">
-										<img src="images/tap-fever/google-play-screenshot-1.jpg">
-									</div>
-									<div class="slider-item">
-										<img src="images/tap-fever/google-play-screenshot-2.png">
-									</div>
-									<div class="slider-item">
-										<img src="images/tap-fever/google-play-screenshot-3.png">
-									</div>
-									<div class="slider-item">
-										<img src="images/tap-fever/google-play-screenshot-4.png">
-									</div>
-									<div class="slider-item">
-										<img src="images/tap-fever/google-play-screenshot-5.png">
-									</div>
-								</div>
-
-								<p>This was my first published arcade game on Google Play Store at age 12. It reported 89 unique installs.</p>
 								<p>The gameplay was inspired by Fruit Ninja which tests your reflexes in slicing those fruits while avoiding the bombs. In this game, you have to tap as many shrinking circles as possible before they disappear and dodge the bombs. And as time passes, the gameplay speeds up so it gets harder.</p>
 
 								<div class="image-and-text-container left">
@@ -138,47 +127,33 @@
 					</div>
 				</div>
 
-			<!-- Footer -->
-				<div id="footer" class="container">
-
-					<div class="row">
-						<div class="col-12">
-							<!-- <span class="copyright">&copy; Untitled. All rights reserved.</span> -->
-							<div class="contact footer">
-								<ul class="contact-social">
-									<li><a href="https://github.com/ShadyLeeGamer" target="_blank"><img src="images/icons/github.png"></a></li>
-									<li><a href="https://www.linkedin.com/in/ariyabayat/" target="_blank"><img src="images/icons/linkedin.png"></a></li>
-									<li><a href="https://shadyleegamer.itch.io/" target="_blank"><img src="images/icons/itch-io.png"></a></li>
-									<li><a href="https://www.youtube.com/@shadyleegamer" target="_blank"><img src="images/icons/youtube.png"></a></li>
-								</ul>
-								<div class="contact-email">
-									<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-								</div>
-							</div>
-						
-						</div>
-					</div>
-
-				</div>
-
 		</div>
 	</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.slidertron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.slidertron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-			<script src="assets/js/custom.js"></script>
-			<script src="assets/js/slideshow.js"></script>
+		<script src="assets/js/custom.js"></script>
 
-			<script src="assets/js/popup-image.js"></script>
+		<script src="assets/js/project-elements.js"></script>
 
-			<script src="assets/js/image-slider.js"></script>
-			<script src="assets/js/slick.min.js"></script>
+		<script src="assets/js/popup-image.js"></script>
+		
+		<script src="assets/js/image-slider.js"></script>
+		<!-- <script src="assets/js/slideshow.js"></script> -->
+		<!-- <script src="assets/js/slick.min.js"></script> -->
+		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+		<!-- <script src="slick-1.8.1/slick-1.8.1/slick/slick.js"></script> -->
+
+		<script src="assets/js/navbar.js"></script>
+		<script src="assets/js/parallax-scrolling.js"></script>
+
+		<script src="assets/js/observers.js"></script>
 		</body>
 </html>
