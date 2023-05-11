@@ -82,6 +82,7 @@ ul.tech li {
   overflow: hidden;
   
   animation: spin 5s linear infinite;
+
 }
 
 ul.tech li::after,
@@ -117,7 +118,7 @@ ul.tabs li:has(div.spinner)::after {
   height: 100%;
 }
 
-ul.tech li::before {
+/* ul.tech li::before {
   position: absolute;
   content: '+ ' var(--tech-tooltip);
   color: var(--tech-spinner-bg);
@@ -132,11 +133,10 @@ ul.tech li::before {
   transform: translateX(-50%);
   left: 50%;
   white-space: nowrap;
-}
+} */
 
 ul.tech li .tooltip {
   position: absolute;
-  content: '+ ' var(--tech-tooltip);
   color: var(--tech-spinner-bg);
   font-family: 'A-OTF Shin Go Pro R';
   top: 0px;
@@ -144,15 +144,38 @@ ul.tech li .tooltip {
   box-sizing: border-box;
   border-radius:  4px;
   transition: 0.5s;
-  transform: translateY(50px);
+  transform: translate(-50%);
   left: 50%;
   white-space: nowrap;
+  pointer-events: none;
+
+  opacity: 0;
+  transition: 0.25s;
+
+  height: 70px;
+  /* height: 100px;
+  width: 100px; */
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1em;
+
+
 }
 
-ul.tech li:hover::before {
+/* ul.tech li .tooltip h2 {
+  color: var(--tech-spinner-bg);
+} */
+
+ul.tech li .tooltip img {
+  height: 100%;
+  width: auto;
+  top: -2px;
+}
+
+ul.tech li:hover .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translateX(-50%) translateY(-45px);
+  transform: translate(-50%) translateY(-75px);
 }
 
 ul.tech li img {

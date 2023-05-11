@@ -77,7 +77,8 @@ section, summary, time, mark, audio, video {
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+}
 
 body {
 	line-height: 1;
@@ -233,26 +234,6 @@ input, select, textarea {
 	p, ul, ol, dl, table {
 		margin-bottom: 1em;
 	}
-
-	header {
-		margin-bottom: 1em;
-	}
-
-		header h2 {
-			display: block;
-			margin: 0em;
-			padding: 0em;
-			letter-spacing: 0.05em;
-			font-size: 1.6em;
-			font-weight: 700;
-		}
-
-		header .byline {
-			display: block;
-			margin: 0.5em 0 0 0;
-			padding: 0 0 0.5em 0;
-			font-weight: 400;
-		}
 
 	footer {
 		margin-top: 1em;
@@ -781,6 +762,7 @@ input, select, textarea {
 	.project-date {
 		font-size: 1em;
 		white-space: nowrap;
+		margin: 0 auto;
 	}
 
 	.spotlights .project-date {
@@ -796,7 +778,7 @@ input, select, textarea {
 	}
 
 	#work-projects .project-date,
-	#project-top .project-date
+	#project-header .project-date
 	{
 		color: var(--nav-span);
 	}
@@ -3258,12 +3240,6 @@ input, select, textarea {
 			-moz-osx-font-smoothing: grayscale;
 		}
 
-/* Header */
-
-	#header {
-		position: relative;
-	}
-
 	#nav {
 		position: fixed;
 		
@@ -3724,21 +3700,27 @@ input, select, textarea {
 		  }
 		} */
 
+		#about-me #big-reel{
+			position: relative;
 
-		#big-reel{
-			position: absolute;
-			top: 0;
 			width: 100%;
-			height: 600px;
-			height: 750px;
-			/* height: 80vh; */
 			height: 100vh;
-			/* z-index: 10; */
+
 			pointer-events: none;
-			padding-bottom: 5em;
-			background-color: var(--background-1);
-			z-index: 2;
+			z-index: -1;
 		}
+
+		#project-header #big-reel{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+
+			pointer-events: none;
+			z-index: -1;
+		}
+
 		#big-reel::before {
 			position: absolute;
 			content: "";
@@ -3747,49 +3729,58 @@ input, select, textarea {
 			height: 100px;
 			width: 100%;
 			left: 0;
-			transform: translateY(calc(101% - 5em - 100px));
+			transform: translateY(calc(101% - 100px));
 			z-index: 1;
 			pointer-events: none;
 			}
+
+			#big-reel::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: var(--about-me-bg); /* Change the color and opacity as desired */
+				z-index: 1;
+			  }
 		
 		#big-reel video {
 			position: relative;
 			height: 100%;
-			/* object-fit: cover; */
-			object-fit: fill;
+			object-fit: cover;
+			/* object-fit: fill; */
 			/* filter: sepia(100%) hue-rotate(150deg); */
 		}
 
 	#about-me {
 		position: relative;
-		padding: 2em 5em;
+		/* padding: 2em 5em; */
 		text-align: center;
   		color: #fff;
 		width: 100%;
-		height: 100vh;
 		font-size: 1em;
 		padding-top: 0;
 
-		background-color: var(--about-me-bg);
 		z-index: 3;
-		}
+		background-color: var(--background-1);
+	}
 
 	#about-me h2
 	{
-		font-family:'A-OTF Shin Go Pro M';
+		/* font-family:'A-OTF Shin Go Pro M';
 			letter-spacing: 0.10em;
 			font-size: 2em;
 			line-height: 1.25em;
 			position: relative;
-		padding: 10px;
+		padding: 10px; */
 	}
 
 	.about-text {
 		position: absolute;
-		top: 0;
 		transform: translateX(-50%) translateY(-50%);
 		left: 50%;
-		top: 50%;
+		top: 50vh;
 
 		max-width: 50%;
 
@@ -3800,8 +3791,7 @@ input, select, textarea {
 
 	#about-me .ribbon {
 		position: relative;
-		margin: 0 auto;
-		margin-top: 100vh;
+		margin-top: -50em;
 	}
 
 	  @media screen and (max-width: 960px) {
@@ -3879,13 +3869,13 @@ input, select, textarea {
 		#project-top {
 			position: relative;
 			padding: 2em 5em;
+			padding-top: 0;
 			text-align: center;
 			align-items: center;
 			  color: #fff;
 			width: 100%;
 			font-size: 1em;
 	
-			padding-top: 10em;
 	
 			background-color: var(--background-1);
 			z-index: 2;
@@ -3901,17 +3891,30 @@ input, select, textarea {
 			transform: translateY(99%);
 			pointer-events: none;
 		}
-		#project-top .project-title{
+
+		#project-header {
+			position: relative;
+			padding-top: 15em;
+			padding-bottom: 5em;
+
+			/* padding: 2em 5em; */
+			text-align: center;
+			align-items: center;
+		text-shadow: 6px 3px 6px #00000083;
+	}
+
+		#project-header .project-title{
 			position: relative;
 			text-align: center;
 			font-size: 7.5em;
 			font-family:'A-OTF Shin Go Pro EL';
+			
 			/* white-space: nowrap; */
 			/* padding: 0.2em; */
 			
 			/* background-color: #000000; */
 		}
-		#project-top .project-date {
+		#project-header .project-date {
 			/* background-color: #000000; */
 			padding: 0;
 			font-family:'A-OTF Shin Go Pro M';
@@ -3972,18 +3975,18 @@ input, select, textarea {
 		
 
 		@media screen and (max-width: 960px) {
-			#project-top .project-title {
+			#project-header .project-title {
 			font-size: 6em;
 			}
-			#project-top .project-date {
+			#project-header .project-date {
 			font-size: 1.2em;
 			}
 		}
 		@media screen and (max-width: 736px) {
-			#project-top .project-title {
+			#project-header .project-title {
 			font-size: 4.5em;
 			}
-			#project-top .project-date {
+			#project-header .project-date {
 				font-size: 1em;
 			}
 		}
@@ -4854,9 +4857,8 @@ input, select, textarea {
 
 			#about-me {
 				/* padding: 3em 2em 3em 2em; */
-				padding-right: 2em;
-				padding-left: 2em;
-				overflow: hidden;
+				/* padding-right: 2em;
+				padding-left: 2em; */
 			}
 
 				#about-me section {
