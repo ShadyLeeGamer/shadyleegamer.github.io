@@ -1,0 +1,30 @@
+:root .interactable#edge-runner {
+    --cell-size: 512px;
+    --image-width: 4608px;
+    --image-height: 2048px;
+
+    --width: calc(var(--image-width) * var(--size-factor));
+    --height: calc(var(--image-height) * var(--size-factor));
+    --size-factor: 0.175;
+    --size-percent: calc(100% * var(--size-factor));
+}
+
+.interactable#edge-runner{
+    height: calc(var(--cell-size) * var(--size-factor));
+    width: calc(var(--cell-size) * var(--size-factor));
+    overflow: hidden;
+}
+
+
+ .interactable#edge-runner div {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);;
+    /* transform: scale(0.1) translate(-450%, -450%); */
+    background: url(../../images/edge-runner/player-sprite-atlas.png);
+    /* background-color: aqua; */
+    cursor: pointer;
+    background-size: calc(var(--size-percent) * (1 / var(--size-factor)));
+
+    /* animation: animateRunning 1s steps(9) infinite reverse; */
+}

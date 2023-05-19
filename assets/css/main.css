@@ -247,6 +247,7 @@ input, select, textarea {
 		--nav-background: #456678;
 
 		--about-me-bg:#456678c0 ;
+		--project-content-bg:#e4ded5e6 ;
 		--background-1:#456678 ;
 		--background-2:#E4DED5 ;
 
@@ -495,6 +496,34 @@ input, select, textarea {
 }
 
 
+.read-more-button {
+	position: relative;
+	padding-top: 1em;
+}
+
+.read-more-button > div {
+	height: 32px;
+	width: 32px;
+	background-size: contain;
+}
+
+@media screen and (min-width: 960px) {
+ 	#work-projects .read-more-button > div {
+	background-image: url(../../images/icons/read-more-2.png);
+	}
+
+#projects .read-more-button > div {
+	background-image: url(../../images/icons/read-more.png);
+}
+}
+
+@media screen and (max-width: 960px) {
+	.read-more-button > div {
+		background-image: url(../../images/icons/read-more-2.png);
+	}
+}
+
+
 /* Basic */
 	.spotlights .project-title {
 		font-family:'A-OTF Shin Go Pro M';
@@ -523,6 +552,7 @@ input, select, textarea {
 					margin: 4em;
 					margin-top: 1em;
 					margin-bottom: 2.5em;
+
 
 				  }
 				  
@@ -2043,7 +2073,10 @@ input, select, textarea {
 	width: 1100px;
 
 	padding: 5em 5em;
+
+	background: var(--background-2);
 }
+
 .project-content p {
 	color: var(--text-dark);
 }
@@ -2367,9 +2400,12 @@ input, select, textarea {
 				text-decoration: none;
 				text-transform: uppercase;
 
+
 				background: var(--colour-bright);
-				border: solid var(--colour-dark);
+				border: solid var(--colour-bright);
 				color: var(--text-light);
+				/* line-height: calc(2em); */
+
 			}
 
 			ul.project-tech-list li.spin {
@@ -2384,7 +2420,7 @@ input, select, textarea {
 				animation: project-tech-list-spin-reverse 1s ease-out;
 
 				background: var(--colour-bright);
-				border: solid var(--colour-dark);
+				border: solid var(--colour-bright);
 				color: var(--text-light);
 			}
 			  
@@ -2966,11 +3002,17 @@ input, select, textarea {
 			text-align: right;
 			justify-content: right;
 		}
+		.spotlights > section.left .read-more-button {
+			float: right;
+		}
 
 		.spotlights > section.right ul.project-tech-list,
 		.spotlights > section.right ul.tech {
 			text-align: left;
 			justify-content: left;
+		}
+		.spotlights > section.right .read-more-button {
+			float: left;
 		}
 
 
@@ -3028,12 +3070,21 @@ input, select, textarea {
 
 			.spotlights > section {
 				display: block;
-				/* display: flex; */
 				background: none;
-				
+				/* text-align: center; */
 				
 			}
 
+			.spotlights > section.right .read-more-button,
+			.spotlights > section.left .read-more-button {
+				float: none;
+			}
+			.spotlights > section .read-more-button {
+				display: inline-block;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		
 			.spotlights > section > .content {
 				padding: 3em 2em 1em 2em ;
 				padding: 0;
@@ -3287,6 +3338,16 @@ input, select, textarea {
 		transform: translateY(-50%);
 	}
 
+	#nav .right > .resume-and-contacts-container {
+		position: relative;
+		display: flex;
+	}
+	#nav .sidebar .resume-and-contacts-container > * {
+		position: relative;
+		transform: translateX(-50%);
+		left: 50%;
+	}
+
 	#nav .right {
 		position: absolute;
 		/* width: 100%; */
@@ -3294,7 +3355,6 @@ input, select, textarea {
 		display: flex;
 		/* background-color: #ffffff; */
 		flex-direction: row;
-		gap: 1em;
 		right: 0;
 		padding-right: 10px;
 	}
@@ -3304,19 +3364,50 @@ input, select, textarea {
 		transform: translateY(-50%);
 	}
 
-	.resumeBtn
+	.resume-button-container {
+		position: relative;
+		display: flex;
+	  
+		align-items: center;
+		flex-direction: column;
+		gap: 1em;
+
+		
+	}
+
+	.resume-button-label {
+		position: relative;
+		flex-direction: column;
+		-webkit-box-align: center;
+		align-items: center;
+
+		padding-bottom: 0.4em;
+		padding-left: 0.4em;
+		padding-right: 0.4em;
+		color:var(--text-light);
+		font-family:'A-OTF Shin Go Pro H';
+		text-decoration: none;
+		text-transform: uppercase;
+		/* top: -1.5em; */
+		/* top: -0.5em; */
+		top: -1.5em;
+	}
+
+	.resume-button
 	{
 		position: relative;
-		height: 50px;
+		/* height: 50px; */
 
+		display: block;
+		top: 0;
+		margin: 10px;
 	}
-	.resumeBtn img
+	.resume-button img
 	{
 		position: relative;
-		height: 50px;
+		width: 100%;
+		height: 100%;
 	}
-
-
 
 		#nav h1 {
 		position: relative;
@@ -3380,7 +3471,7 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 636px) {
-			#nav .right > .resumeBtn{
+			#nav .right > .resume-and-contacts-container{
 				display: none;
 			}
 			
@@ -3508,7 +3599,7 @@ input, select, textarea {
 			top: 7em;
 			left: 0;
 			display: flex;
-			flex-direction: column;
+			flex-direction: column; 
 			gap: 1em;
 			width: max-content;
 			height: 100%;
@@ -3525,16 +3616,8 @@ input, select, textarea {
 			.hamburger-menu-container{
 				display: none;
 			}
-
-			.resumeBtn{
-				
-			}
 		}
-
-
-
-
-
+		
 		.contact
 		{
 		  position: relative;
@@ -3545,34 +3628,21 @@ input, select, textarea {
 		  gap: 1em;
 		
 		}
-		.contact.fixed
+		.fixed .contact
 		{
 		  position: relative;
 		  width: max-content;
 		  z-index: 10;
 		  margin-right: -10px;
-		
 		}
-		.contact.mobile
+
+		.mobile .contact
 		{
 		  position: relative;
 		  width: max-content;
 		
 		  left: 0;
 		}
-		
-		/* .contact-social
-		{
-		  position: relative;
-		  -webkit-box-align: center;
-		  align-items: center;
-		  padding-top: 0.4em;
-		  padding-bottom: 0.4em;
-		  padding-left: 0.4em;
-		  bottom: 0px;
-		  display: flex;
-		  flex-direction: column;
-		} */
 		
 		.contact .contact-social {
 		  position: relative;
@@ -3582,11 +3652,11 @@ input, select, textarea {
 		  padding: 0;
 		}
 		
-		.contact.fixed .contact-social {
+		.fixed .contact .contact-social {
 		  flex-direction: row;
 		}
 		
-		.contact.mobile .contact-social {
+		.mobile .contact .contact-social {
 		  flex-direction: column;
 		}
 		
@@ -3622,7 +3692,7 @@ input, select, textarea {
 		  /* bottom: 165px; */
 		  /* margin: 0 auto; */
 		  /* background:#1A191D; */
-		  padding-top: 0.4em;
+		  /* padding-top: 0.4em; */
 		  padding-bottom: 0.4em;
 		  padding-left: 0.4em;
 		  color:var(--text-mi);
@@ -3633,11 +3703,11 @@ input, select, textarea {
 		  top: -1.5em;
 		
 		}
-		.contact.fixed .contact-email a
+		.fixed .contact .contact-email a
 		{
 		  padding-right: 0.4em;
 		}
-		.contact.mobile .contact-email a
+		.mobile .contact .contact-email a
 		{
 		  position: relative;
 		  flex-direction: column;
@@ -3677,16 +3747,12 @@ input, select, textarea {
 		} */
 		
 		@media screen and (max-width: 636px) {
-		  .contact.fixed
+		  .fixed .contact
 		  {
 			display: none;
 		  }
 		
-		  .contact-social{
-			/* bottom: 165px; */
-		  }
-		
-		  .contact.mobile {
+		  .mobile .contact {
 			display: flex;
 		  }
 		}
@@ -3700,14 +3766,16 @@ input, select, textarea {
 		  }
 		} */
 
+		#big-reel {
+			z-index: -1;
+			pointer-events: none;
+		}
+
 		#about-me #big-reel{
 			position: relative;
 
 			width: 100%;
 			height: 100vh;
-
-			pointer-events: none;
-			z-index: -1;
 		}
 
 		#project-header #big-reel{
@@ -3717,8 +3785,19 @@ input, select, textarea {
 			top: 0;
 			bottom: 0;
 
-			pointer-events: none;
+		}
+
+		#big-reel video {
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			height: 100%;
+			object-fit: cover;
 			z-index: -1;
+			/* object-fit: fill; */
+			/* filter: sepia(100%) hue-rotate(150deg); */
 		}
 
 		#big-reel::before {
@@ -3744,14 +3823,6 @@ input, select, textarea {
 				background-color: var(--about-me-bg); /* Change the color and opacity as desired */
 				z-index: 1;
 			  }
-		
-		#big-reel video {
-			position: relative;
-			height: 100%;
-			object-fit: cover;
-			/* object-fit: fill; */
-			/* filter: sepia(100%) hue-rotate(150deg); */
-		}
 
 	#about-me {
 		position: relative;
@@ -3762,7 +3833,7 @@ input, select, textarea {
 		font-size: 1em;
 		padding-top: 0;
 
-		z-index: 3;
+		z-index: 0;
 		background-color: var(--background-1);
 	}
 
@@ -3789,9 +3860,15 @@ input, select, textarea {
 		text-shadow: 6px 3px 6px #000000;
 	}
 
+	#skills {
+		position: relative;
+		background: var(--background-1);
+		z-index: 1;
+	}
+
 	#about-me .ribbon {
 		position: relative;
-		margin-top: -50em;
+		/* margin-top: -50em; */
 	}
 
 	  @media screen and (max-width: 960px) {
@@ -3865,6 +3942,12 @@ input, select, textarea {
 
 				}
 
+		#project-content-wrapper {
+			position: relative;
+			background-color: var(--project-content-bg);
+			width: 100%;
+			height: 100%;
+		}
 
 		#project-top {
 			position: relative;

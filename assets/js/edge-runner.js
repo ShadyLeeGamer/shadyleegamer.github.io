@@ -1,5 +1,5 @@
 function EdgeRunner() {
-  var edgeRunnerElement = document.querySelector(".interactable #edge-runner");
+  var edgeRunnerElement = document.querySelector(".interactable#edge-runner div");
   
   var changeSprite = false;
   var speedUp = false;
@@ -29,12 +29,10 @@ function EdgeRunner() {
   let currentDirIndex = 0;
 
   const FPS_NORMAL = 10;
-  const FPS_FAST = 35;
+  const FPS_FAST = 30;
   const FPS_INC = 0.03;
   let currentFPS = FPS_NORMAL;
-  const SECOND_TO_MILLISECOND = 1000;
-  const FRAMES_LENGTH = 9;
-  let frameNo = 1;
+
   
   // Unity's framerate
 const TARGET_FPS = 60;
@@ -45,9 +43,8 @@ const MS_PER_FRAME = 1000 / TARGET_FPS;
   
     if (DELTA_TIME >= MS_PER_FRAME) {
       lastFrameTime = currentTime;
-  
+      
       currentFPS = clamp(currentFPS - FPS_INC * DELTA_TIME, FPS_NORMAL, FPS_FAST);
-       console.log(currentFPS)
   
       if (changeSprite)
       {
@@ -58,6 +55,7 @@ const MS_PER_FRAME = 1000 / TARGET_FPS;
       if(speedUp)
       {
         currentFPS = FPS_FAST;
+        console.log(currentFPS)
       }
     }
   
@@ -65,17 +63,32 @@ const MS_PER_FRAME = 1000 / TARGET_FPS;
   }
   requestAnimationFrame(update);
   
+  const SECOND_TO_MILLISECOND = 1000;
+  const FRAMES_LENGTH  = 9;
+let frameNo = 0;
   function animate() {
-    setTimeout(function() {
-      if (frameNo == FRAMES_LENGTH + 1)
-        frameNo = 1
-      edgeRunnerElement.src = URL + dirs[currentDirIndex] + "-view/" + frameNo + ".PNG";
+    // var FPSToSec = (9 / currentFPS);
+    // edgeRunnerElement.style["-webkit-animation-duration"] = FPSToSec + "s";
+
+
+  setTimeout(function() {
+      if (frameNo == FRAMES_LENGTH)
+        frameNo = 0;
+
+      let step = 512 * getComputedStyle(edgeRunnerElement).getPropertyValue('--size-factor');
+      let posX = step * (9 - frameNo);
+      let posY = step;
+
+        console.log(frameNo);
   
-      if (frameNo < FRAMES_LENGTH + 1) {
+    edgeRunnerElement.style["background-position"] = `${posX}px ${posY}px`;
+
+    if (frameNo < FRAMES_LENGTH) {
         animate();
       }
       frameNo++;
-    }, (1 / currentFPS) * SECOND_TO_MILLISECOND)
+
+    }, (1 / currentFPS) * SECOND_TO_MILLISECOND);
   }
   animate();
 

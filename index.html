@@ -13,7 +13,9 @@
 
 		<link rel="stylesheet" href="assets/css/custom.css"/>
 
-		<link rel="stylesheet" href="assets/css/interactables.css"/>
+		<link rel="stylesheet" href="assets/css/interactable.css"/>
+		<link rel="stylesheet" href="assets/css/edge-runner.css"/>
+		<link rel="stylesheet" href="assets/css/survival-2020.css"/>
 	</head>
 	<body class="homepage is-preload">  
 
@@ -21,145 +23,163 @@
 			<div id="page-wrapper">
 
 			<!-- Nav -->
-			<nav id="nav"></nav>
+			<nav id="nav">
+				<div class="nav-content">
+					<div>
+						<h1><a href="#">Ariya Bayat</a></h1>
+						<span>Game Dev, Programmer Portfolio</span>
+					</div>
+					<div class="right">
+						<div class="resume-and-contacts-container fixed"></div>
 
-				<!-- <img src="images/chrome_1YR5JYWZ6o1.png" class="banner"> -->
+						<div class="hamburger-menu-container">
+							<label class="hamburger-menu">
+								<input type="checkbox" />
+							</label>
+							<div class="sidebar">
+								<nav>
+									<div class="resume-and-contacts-container mobile"></div>
+								</nav>
+							</div>
+						</div>
+					</div>
+					</div>
+			</nav>
 
-
-				
 			<!-- Banner -->
 				<div id="about-me" class="container">
 					<section>
 						<div id="big-reel">
-							<video src="videos/reel.mp4" autoplay muted loop></video>
+							<video src="videos/big-reel.mp4" autoplay muted loop></video>
 						</div>
 						<div class="about-text">
 							<p>Game developer with a passion for making games since the age of 10. Recently published a high-speed anime platformer on Steam showcasing complex gravity-bending physics. Collaborated with teams in 12 game jams and driven to create engaging experiences through problem solving and elegant solutions.</p>
 						</div>
 							<!-- <h2>Technical Experience</h2> -->
+							<div id="skills">
+								<div class="ribbon">
+									<div class="ribbon-content">
+									<ul class="spinner-list tech scroll-transition">
+										<li id="unity">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" style="right: 2.5px;"/>
+											</div>
+											<div class="tooltip">
+												<h2>Unity</h2>
+												<img src="images/ui/icons/skill-level-1-dark.png" alt="">
+											</div>
+										</li>
+										<li id="c-sharp">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/>
+											</div>
+											<div class="tooltip">
+												<h2>C Sharp</h2>
+												<img src="images/ui/icons/skill-level-1-dark.png" alt="">
+											</div>
+										</li>
+										<li id="git">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
+											</div>
+											<div class="tooltip">
+												<h2>Git</h2>
+												<img src="images/ui/icons/skill-level-3-dark.png" alt="">
+											</div>
+										</li>
+										<li id="firebase">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"/>
+											</div>
+											<div class="tooltip">
+												<h2>Firebase</h2>
+												<img src="images/ui/icons/skill-level-1-dark.png" alt="">
+											</div>
+										</li>
+										<li id="js">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>JavaScript</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
 
-							<div class="ribbon">
-								<div class="ribbon-content">
-								<ul class="tech scroll-transition">
-									<li id="unity">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" style="right: 2.5px;"/>
-										</div>
-										<div class="tooltip">
-											<h2>Unity</h2>
-											<img src="images/ui/icons/skill-level-1.png" alt="">
-										</div>
-									</li>
-									<li id="c-sharp">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/>
-										</div>
-										<div class="tooltip">
-											<h2>C Sharp</h2>
-											<img src="images/ui/icons/skill-level-1.png" alt="">
-										</div>
-									</li>
-									<li id="git">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>
-										</div>
-										<div class="tooltip">
-											<h2>Git</h2>
-											<img src="images/ui/icons/skill-level-3.png" alt="">
-										</div>
-									</li>
-									<li id="firebase">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"/>
-										</div>
-										<div class="tooltip">
-											<h2>Firebase</h2>
-											<img src="images/ui/icons/skill-level-1.png" alt="">
-										</div>
-									</li>
-									<li id="js">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>JavaScript</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-
-									<li id="html">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>HTML</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-									<li id="css">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>CSS</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-									<li id="java">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>Java</h2>
-											<img src="images/ui/icons/skill-level-3.png" alt="">
-										</div>
-									</li>
-									<li id="visual-studio">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>Visual Studio</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-									<li id="json">
-										<div class="spinner">
-											<img src="images/icons/json.png" />
-										</div>
-										<div class="tooltip">
-											<h2>JSON</h2>
-											<img src="images/ui/icons/skill-level-3.png" alt="">
-										</div>
-									</li>
-									<li id="trello">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" />
-										</div>
-										<div class="tooltip">
-											<h2>Trello</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-									<li id="notion">
-										<div class="spinner">
-											<img src="images/icons/notion.png" />\gh\devicons\devicon\icons\python\python-original.svg
-										</div>
-										<div class="tooltip">
-											<h2>Notion</h2>
-											<img src="images/ui/icons/skill-level-2.png" alt="">
-										</div>
-									</li>
-									<li id="python">
-										<div class="spinner">
-											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
-										</div>
-										<div class="tooltip">
-												<h2>Python</h2>
-											<img src="images/ui/icons/skill-level-4.png" alt="">
-										</div>
-									</li>
-								</ul>
+										<li id="html">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>HTML</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
+										<li id="css">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>CSS</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
+										<li id="java">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>Java</h2>
+												<img src="images/ui/icons/skill-level-3-dark.png" alt="">
+											</div>
+										</li>
+										<li id="visual-studio">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>Visual Studio</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
+										<li id="json">
+											<div class="spinner">
+												<img src="images/icons/json.png" />
+											</div>
+											<div class="tooltip">
+												<h2>JSON</h2>
+												<img src="images/ui/icons/skill-level-3-dark.png" alt="">
+											</div>
+										</li>
+										<li id="trello">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" />
+											</div>
+											<div class="tooltip">
+												<h2>Trello</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
+										<li id="notion">
+											<div class="spinner">
+												<img src="images/icons/notion.png" />\gh\devicons\devicon\icons\python\python-original.svg
+											</div>
+											<div class="tooltip">
+												<h2>Notion</h2>
+												<img src="images/ui/icons/skill-level-2-dark.png" alt="">
+											</div>
+										</li>
+										<li id="python">
+											<div class="spinner">
+												<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
+											</div>
+											<div class="tooltip">
+													<h2>Python</h2>
+												<img src="images/ui/icons/skill-level-4-dark.png" alt="">
+											</div>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -182,7 +202,7 @@
 							<div class="inner">
 								<a href="okainos.html" class="project-bg bg-perspective-left scroll-transition">
 									<video src="videos/okainos/reel.mp4" autoplay loop muted></video>
-									<img src="images/ui/icons/open-project-page.png" class="open-project-page-icon">
+									<img src="images/icons/read-more-2.png" class="open-project-page-icon">
 								</a>
 								<div class="description scroll-transition">
 									<span>
@@ -205,6 +225,11 @@
 										</div>
 
 										<ul id="okainos" class="project-tech-list scroll-transition"></ul>
+
+										<a href="okainos.html" class="read-more-button">
+											<div>
+											</div>
+										</a>
 								</span>
 								<span>
 									<div class="ribbon-vertical right">
@@ -259,20 +284,26 @@
 															<li>Custom extension script for Unity's Sprite Shape API</li>
 															<li>Player input assist system</li>
 															<li>Camera mechanics</li>
+															<li>UI design</li>
 														</ul>
 													</section>
 												</div>
 
 												<ul id="edge-runner" class="project-tech-list scroll-transition"></ul>
 
-												<!-- <div class="interactable">
-													<img id="edge-runner" src="images/edge-runner/side-view/1.PNG">
-												</div> -->
+												<div id="edge-runner" class="interactable">
+													<div></div>
+												</div>
+
+												<a href="edge-runner.html" class="read-more-button">
+													<div>
+													</div>
+												</a>
 										</span>
 									</div>
 									<a href="edge-runner.html" class="project-bg bg-perspective-right scroll-transition">
 										<video src="videos/okainos/reel.mp4" autoplay loop muted ></video>
-										<img src="images/ui/icons/open-project-page.png" class="open-project-page-icon">
+										<img src="images/icons/read-more-2.png" class="open-project-page-icon">
 									</a>
 										</div>
 									</div>
@@ -286,7 +317,7 @@
 										<div class="inner">
 											<a href="game-jams.html" class="project-bg bg-perspective-left scroll-transition">
 												<video src="videos/game-jams/reel.mp4" autoplay loop muted></video>
-												<img src="images/ui/icons/open-project-page.png" class="open-project-page-icon">
+												<img src="images/icons/read-more-2.png" class="open-project-page-icon">
 											</a>
 											<div class="description scroll-transition">
 												<span>
@@ -309,6 +340,11 @@
 												</div>
 		
 												<ul id="game-jams" class="project-tech-list scroll-transition"></ul>
+
+												<a href="game-jams.html" class="read-more-button">
+													<div>
+													</div>
+												</a>
 											</span>
 										<div>
 		
@@ -361,17 +397,22 @@
 												</div>
 												<ul id="survival-2020" class="project-tech-list scroll-transition"></ul>
 
-												<div class="interactable">
-													<div id="lockdowneer"></div>
+												<div id="lockdowneer" class="interactable">
+													<div></div>
 													<canvas id="survival-game-2020-canvas"></canvas>
 												</div>
+
+												<a href="2020-survival-game.html" class="read-more-button">
+													<div>
+													</div>
+												</a>
 
 												</span>
 											</div>
 											
 											<a href="2020-survival-game.html" class="project-bg bg-perspective-right scroll-transition">
 												<video src="videos/2020-survival-game/reel.mp4" autoplay loop muted ></video>
-												<img src="images/ui/icons/open-project-page.png" class="open-project-page-icon">
+												<img src="images/icons/read-more-2.png" class="open-project-page-icon">
 											</a>
 		
 										</div>
@@ -385,7 +426,7 @@
 										<div class="inner">
 											<a href="tap-fever.html" class="project-bg bg-perspective-left scroll-transition">
 												<video src="videos/tap-fever/reel.mp4" autoplay loop muted></video>
-												<img src="images/ui/icons/open-project-page.png" class="open-project-page-icon">
+												<img src="images/icons/read-more-2.png" class="open-project-page-icon">
 											</a>
 											<div class="description scroll-transition">
 												<span>
@@ -407,6 +448,10 @@
 												</div>
 		
 												<ul id="tap-fever" class="project-tech-list scroll-transition"></ul>
+
+												<a href="tap-fever.html" class="read-more-button">
+													<div></div>
+												</a>
 											</span>
 											<span>
 												<div class="ribbon-vertical right">

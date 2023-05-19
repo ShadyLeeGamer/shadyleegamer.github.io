@@ -1,0 +1,13 @@
+.interactable {
+    position: relative;
+    display: block;
+    width: max-content;
+    clear: both;
+    /* border: 1px solid rgb(255, 0, 0); */
+
+    /* height: 64px; */
+    /* width: 64px; */
+    
+    /* background-color: aqua; */
+    /* border: 1px solid rgb(255, 0, 0); */
+}

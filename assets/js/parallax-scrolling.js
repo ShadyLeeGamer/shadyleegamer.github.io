@@ -13,6 +13,6 @@ window.addEventListener('scroll', function(){
             offset = PROJECT_OFFSET_EM;
             break;
     }
-    sideTitle.style.top = 'calc(' + offset + "em + " + (value * .7) + 'px)';
+    sideTitle.style.top = 'calc(' + offset + "em + " + (value * 0.7) + 'px)';
     // sideTitle.style.top = value * .5 + 'px';
 });
