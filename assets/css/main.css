@@ -2071,6 +2071,7 @@ input, select, textarea {
 	/*width: 1200px;*/
 	/* width: 1000px; */
 	width: 1100px;
+	min-height: 50vh;
 
 	padding: 5em 5em;
 
