@@ -244,6 +244,8 @@ input, select, textarea {
 	}
 
 	:root {
+		--purple: #73176D;
+
 		--nav-background: #456678;
 
 		--about-me-bg:#456678c0 ;
@@ -260,7 +262,6 @@ input, select, textarea {
 		--nav-span: #85AAAD;
 
 		--side-title: #ADACAA;
-		--work-experience: #85AAAD;
 
 		--skills-ribbon-1: #C25056;
 		--skills-ribbon-2: #a93b41;
@@ -280,24 +281,41 @@ input, select, textarea {
 		--secondary-2: #468797;
 	}
 
+	:root #nav {
+		--colour: var(--nav-background);
+	}
+	:root #nav.over-big-reel {
+		--colour: #22222200;
+	}
+
+	:root #work-projects {
+		--work-experience: var(--nav-span);
+	}
+
+	:root #about-content
+	{
+		--project-description-split:#85aaad87;
+		--project-highlights-split:#85aaad41;
+	}
+
 	:root #work-projects .spotlights > section,
 	#project-top #okainos {
 		--project-panel-1: #468797;
 		--project-panel-2: #85AAAD;
 
-		--project-description-split:#468797cc;
-		--project-highlights-split:#46879789;
+		--project-description-split:#46879789;
+		--project-highlights-split:#468797cc;
 
 		--project-text-special:#468797;
 
-		--colour-bright: var(--skills-ribbon-1);
-		--colour-dark: var(--skills-ribbon-3);
-		--project-reel-filter-shift: -60deg;
+		--colour-bright: var(--purple);
+		--colour-dark: var(--purple);
+		--project-reel-filter-shift: -110deg;
 	}
-	@media screen and (max-width: 960px) {
+	@media screen and (max-width: 980px) {
 		:root #work-projects .spotlights > section {
-			--project-description-split:#adacaa89;
-			--project-highlights-split:#adacaa89;
+			--project-description-split:#adacaa43;
+			--project-highlights-split:#adacaa91;
 		}
 	}
 
@@ -306,8 +324,8 @@ input, select, textarea {
 		--project-panel-2: #f3eee6;
 		/* --project-panel-2: #D5CCC5; */
 
-		--project-description-split:#adacaa89;
-		--project-highlights-split:#adacaa89;
+		--project-description-split:#adacaa43;
+		--project-highlights-split:#adacaa91;
 
 		--project-text-special:#ADACAA;
 	}
@@ -354,6 +372,11 @@ input, select, textarea {
 
 
 @media screen and (min-width: 980px) {
+	.project-reel-container {
+    position: relative;
+	width: 481px; /*1924*/
+	}
+
   .project-bg {
     position: relative;
     /* width: 481px; */
@@ -369,11 +392,11 @@ input, select, textarea {
      /* background:white;  */
 
 	 border-radius:1em;
+	 display: inline-block;
   }
 
   .project-bg video {
     position: relative;
-
     width: 481px;
   
     /* transform:translateZ(20px); */
@@ -466,7 +489,7 @@ input, select, textarea {
   
 
   .project-bg video {
-    filter: sepia(100%) hue-rotate(-20deg) brightness(25%);
+    /* filter: sepia(100%) hue-rotate(-20deg) brightness(25%); */
     transition: 0.25s ease-out;
     
     width: 100%;
@@ -475,6 +498,8 @@ input, select, textarea {
 
     border-radius: 1em;
   }
+
+
 
   .project-bg{
     overflow: hidden;
@@ -507,7 +532,7 @@ input, select, textarea {
 	background-size: contain;
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 980px) {
  	#work-projects .read-more-button > div {
 	background-image: url(../../images/icons/read-more-2.png);
 	}
@@ -517,7 +542,7 @@ input, select, textarea {
 }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 980px) {
 	.read-more-button > div {
 		background-image: url(../../images/icons/read-more-2.png);
 	}
@@ -533,9 +558,9 @@ input, select, textarea {
 			letter-spacing: 0.10em;
 			font-size: 2em;
 			position: relative;
-
 			white-space: nowrap;
-
+			/* line-height: 75%; */
+			/* background-color: #000000; */
 		color: var(--text-light);
 
 		}
@@ -552,7 +577,33 @@ input, select, textarea {
 					margin: 4em;
 					margin-top: 1em;
 					margin-bottom: 2.5em;
-
+					/* background-image: 
+		
+					linear-gradient(
+						transparent 8%, 
+						rgba(0, 0, 0, 0.1) 8%, 
+						rgba(0, 0, 0, 0.1) 14%, 
+						transparent 14%, 
+						transparent 86%, 
+						rgba(0, 0, 0, 0.1) 86%, 
+						rgba(0, 0, 0, 0.1) 92%, 
+						transparent 92%
+					), 
+					
+					linear-gradient(
+						rgba(0, 4, 255, 0.75), 
+						rgba(255, 255, 255, 0) 
+					), 
+					
+					linear-gradient(
+						45deg, 
+						transparent 40%, 
+						rgba(0, 0, 0, 0.1) 40%, 
+						rgba(0, 0, 0, 0.1) 60%, 
+						transparent 60%
+					), 
+					
+					linear-gradient(rgb(255, 255, 255), rgb(51, 0, 255));  */
 
 				  }
 				  
@@ -667,7 +718,7 @@ input, select, textarea {
 
 
 
-		@media screen and (max-width: 960px) {
+		@media screen and (max-width: 980px) {
 			.ribbon-vertical {
 				top: 0;
 				background:none;
@@ -689,7 +740,7 @@ input, select, textarea {
 			}
 		}
 
-		@media screen and (min-width: 960px) {
+		@media screen and (min-width: 980px) {
 			.spotlights .project-title {
 			line-height: 1.25em;
 			}
@@ -698,21 +749,22 @@ input, select, textarea {
 		.side-title {
 				font-family:'A-OTF Shin Go Pro H';
 				letter-spacing: 0.10em;
-				font-size: 4em;
 				white-space: nowrap;
 			text-transform: uppercase;
 			color: var(--side-title);
 		}
 		.side-title.perspective {
-			position: absolute;
+				font-size: 4em;
+				position: sticky;
 			writing-mode: vertical-lr;
 			text-orientation: upright;
-			/* transform: translateY(-50%); */
+			transform: translateY(-50%);
 
 			z-index: 1;
 
 			display: block;
-			transform: translateX(-300%);
+			height: 0;
+			top: 3em;
 		}
 		.side-title.mobile {
 			position: relative;
@@ -724,22 +776,38 @@ input, select, textarea {
 			left: -50%;
 		}
 
+		.side-title.projects-header.perspective
+		{
+			transform: translateX(-200%) translateY(-50%);
+		}
+
+		.side-title.project-name
+		{
+			transform: translateX(-400%) translateY(-50%);
+		}
+
 			.work-experience-header {
-				font-family:'A-OTF Shin Go Pro H';
 				position: absolute;
-				writing-mode: vertical-lr;
-				text-transform: uppercase;
 				letter-spacing: 0.10em;
-				font-size: 2em;
-				/* right: -3.5%; */
-				left: -2em;
+				writing-mode: vertical-lr;
 
-				top: 50%;
-				transform: translateY(-50%);
-				white-space: nowrap;
-				/* background-color: black; */
+				bottom: 0;
 				color: var(--work-experience);
+				font-size: 2.5em;
+				font-size: 4em;
+				
+				height: max-content;
+				top:50%;
+			}
 
+			.work-experience-header.left {
+				left: 0;
+				transform: translateX(-22.5px) translateY(-50%);
+			}
+
+			.work-experience-header.right {
+				right: 0;
+				transform: translateX(135%) translateY(-50%);
 			}
 
 			@media screen and (max-width: 1460px) {
@@ -749,7 +817,7 @@ input, select, textarea {
 			}
 
 			@media screen and (max-width: 1080px) {
-				.work-experience-header {
+				.work-experience-header.left {
 					/* position: relative; */
 					writing-mode:horizontal-tb;
 						transform: none;
@@ -780,13 +848,14 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	/* #work-projects .project-category
+	#work-projects .project-category
 	{
-		color: var(--project-text-special);
-	} */
+		color: var(--colour-dark);
+	}
 	#projects .project-category
 	{
 		color: var(--project-text-special);
+		color: var(--colour-dark);
 	}
 
 	.project-date {
@@ -817,20 +886,55 @@ input, select, textarea {
 		color: var(--project-text-special);
 	}
 
-	@media screen and (max-width: 960px) {
-		.work-experience-header {
+	.heading,
+	.side-title {
+			font-size: 4em;
+			font-family:'A-OTF Shin Go Pro H';
+		text-transform: uppercase;
+		white-space: nowrap;
+		line-height: 1.25em;
+	}
+
+	.heading {
+		color: var(--nav-span);
+	}
+
+	@media screen and (max-width: 980px) {
+		.work-experience-header.left {
 		position: relative;
 		writing-mode:horizontal-tb;
 			transform: none;
-			padding: 0.5em;
-			left: 0;
-			transform: translateY(100%);
+			left: 50%;
+			transform: translateX(-50%) translateY(100%);
+			margin-bottom: 3em;
+		}
+
+		.work-experience-header.right {
+				position: relative;
+				writing-mode:horizontal-tb;
+				transform: none;
+				top:0;
+			}
+
+		.side-title.mobile,
+		.heading {
+			font-size: 3em;
 		}
 
 		.spotlights .project-date {
 			right: -1em;
 		}
+
+		#work-projects .project-category
+		{
+			color: var(--text-light);
+		}
+		#projects .project-category
+		{
+			color: var(--text-light);
+		}
 	}
+
 
 
 /* Row */
@@ -1566,7 +1670,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 960px) {
+		@media screen and (max-width: 980px) {
 
 			.row {
 				display: flex;
@@ -2071,11 +2175,13 @@ input, select, textarea {
 	/*width: 1200px;*/
 	/* width: 1000px; */
 	width: 1100px;
-	min-height: 50vh;
+	min-height: 100vh;
 
 	padding: 5em 5em;
 
 	background: var(--background-2);
+	padding-top: 10em;
+
 }
 
 .project-content p {
@@ -2097,7 +2203,7 @@ input, select, textarea {
 
 	}
 
-	@media screen and (max-width: 960px) {
+	@media screen and (max-width: 980px) {
 
 		.project-content {
 			width: 100%;
@@ -2131,6 +2237,7 @@ input, select, textarea {
 		/* gap: 1em; */
 		justify-content:space-evenly;
 		background: var(--nav-background);
+		background: var(--purple);
 		border-radius: 1.5em;
 
 		align-items: center;
@@ -2271,7 +2378,7 @@ input, select, textarea {
 		max-width: 450px;
 	}
 
-	@media screen and (max-width: 960px)
+	@media screen and (max-width: 980px)
 	{
 		.image-center{
 			flex-direction: column;
@@ -2335,14 +2442,20 @@ input, select, textarea {
 			margin-left: -1em;
 		}
 
-			ul.highlights li {
+			ul.highlights > li {
 				display: block;
 				padding: 0.6em 0em;
 				border-top: 2px solid var(--project-highlights-split);
 				margin-inline-end: 1ch;
 			}
 
-			ul.highlights li::before {
+			#about-content ul.highlights > li::before {
+				content: "‣";
+				content: "➤";
+				margin-inline-end: 1ch;
+			}
+
+			.spotlights ul.highlights > li::before {
 				content: "✔";
 				margin-inline-end: 1ch;
 			}
@@ -2406,7 +2519,12 @@ input, select, textarea {
 				border: solid var(--colour-bright);
 				color: var(--text-light);
 				/* line-height: calc(2em); */
+			}
 
+			@media screen and (max-width: 980px) {
+				ul.project-tech-list li {
+					box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+				}
 			}
 
 			ul.project-tech-list li.spin {
@@ -2789,7 +2907,7 @@ input, select, textarea {
 			padding-left: 1em;
 		}
 
-		@media only screen and ((min-width: 960px) and (max-width: 1280px)),
+		@media only screen and ((min-width: 980px) and (max-width: 1280px)),
 		(max-width: 736px)
 		{ 
 			.split {
@@ -2915,7 +3033,7 @@ input, select, textarea {
 		flex-direction: row;
 		/* min-height: 22.5em; */
 		
-		border-radius: 2em;
+		border-radius: 3em;
 		
 		position: relative;
 		
@@ -2939,11 +3057,29 @@ input, select, textarea {
 		filter: sepia(100%) hue-rotate(var(--project-reel-filter-shift));
 	  }
 
+	  .spotlights > section .project-bg::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: var(--colour-dark);
+		pointer-events: none;
+		opacity: 25%;
+		border-radius:1em;
+		transition: all 500ms ease-in;
+	}
+
 	  .spotlights > section .project-bg video  {
 		box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.4);
 	  }
 
-	  .spotlights > section .project-bg video:hover {
+	  .spotlights > section .project-bg:hover::after {
+		opacity: 0%;
+	}
+
+	  .spotlights > section .project-bg:hover {
 		filter: none;
 	  }
 
@@ -3032,6 +3168,11 @@ input, select, textarea {
 			
 		}
 
+		/* .project-reel-container {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		} */
 
 		@media screen and (max-width: 980px) {
 			.spotlights {
@@ -3150,7 +3291,7 @@ input, select, textarea {
 		   filter: none;
 		 }
 
-		@media only screen and ((min-width: 960px) and (max-width: 1280px)),
+		@media only screen and ((min-width: 980px) and (max-width: 1280px)),
 		(max-width: 736px)
 		{ 
 			.spotlights > section.left .split {
@@ -3292,6 +3433,8 @@ input, select, textarea {
 			-moz-osx-font-smoothing: grayscale;
 		}
 
+
+
 	#nav {
 		position: fixed;
 		
@@ -3310,7 +3453,7 @@ input, select, textarea {
 		height: 100%;
 		margin: 0 auto;
 		transform: translateX(-0.5em);
-		background: var(--nav-background);
+		background: var(--colour);
 		pointer-events: all;
 		padding-left: 10px;
 	}
@@ -3325,11 +3468,11 @@ input, select, textarea {
 	}
 	.nav-content::before {
 		right: calc(100% - 1px);
-		background: linear-gradient(90deg, #ffffff00, var(--nav-background));
+		background: linear-gradient(90deg, #ffffff00, var(--colour));
 	}
 	.nav-content::after {
 		left: calc(100% - 1px);
-		background: linear-gradient(90deg, var(--nav-background), #ffffff00);
+		background: linear-gradient(90deg, var(--colour), #ffffff00);
 	}
 
 	#nav > .nav-content > *
@@ -3419,6 +3562,7 @@ input, select, textarea {
 		letter-spacing: 3px;
 			color: var(--nav-header);
 			font-family:'A-OTF Shin Go Pro R';
+
 		}
 
 	#nav > .nav-content > div > span {
@@ -3428,6 +3572,16 @@ input, select, textarea {
 			font-size: 1.1em;
 			color: var(--nav-span);
 			font-family:'A-OTF Shin Go Pro M';
+
+		}
+		
+		#nav.over-big-reel h1,
+		#nav.over-big-reel > .nav-content > div > span,
+		#nav.over-big-reel .resume-and-contacts-container.fixed .resume-button-label {
+			text-shadow: 4px 4px 4px #2f363c;
+		}
+		#nav.over-big-reel  .resume-and-contacts-container.fixed .contact-email a {
+			box-shadow: 4px 4px 4px #2f363c;
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -3435,7 +3589,7 @@ input, select, textarea {
 		width: 90%;
 			}
 			#nav {
-		background: var(--nav-background);
+		background: var(--colour);
 			}
 			.nav-content::before,
 			.nav-content::after {
@@ -3548,6 +3702,12 @@ input, select, textarea {
 			transition: opacity var(--hamburger-menu-animation-timing), width var(--hamburger-menu-animation-timing),
 			rotate var(--hamburger-menu-animation-timing), translate var(--hamburger-menu-animation-timing),
 			background-color var(--hamburger-menu-animation-timing);
+		}
+
+		#nav.over-big-reel .hamburger-menu:has(input:not(:checked))::before,
+		#nav.over-big-reel .hamburger-menu:has(input:not(:checked))::after,
+		#nav.over-big-reel .hamburger-menu:has(input:not(:checked)) input {
+			box-shadow: 4px 4px 4px #2f363c;
 		}
 
 		.hamburger-menu input {
@@ -3669,16 +3829,7 @@ input, select, textarea {
 		  cursor: pointer;
 		}
 		
-		/* .contact-social li img{
-		  animation: spin 5s linear infinite;
-		} */
-		
-		/* .contact-social li:hover img{
-		  animation:none;
-		  transform: scale(1.25);
-		} */
-		
-		.contact-social img{
+		.contact-social .spinner img{
 		  height: 100%;
 		  width: 100%;
 		  object-fit: contain;
@@ -3777,6 +3928,7 @@ input, select, textarea {
 
 			width: 100%;
 			height: 100vh;
+			height: 70vh;
 		}
 
 		#project-header #big-reel{
@@ -3821,7 +3973,7 @@ input, select, textarea {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-color: var(--about-me-bg); /* Change the color and opacity as desired */
+				background-color: var(--about-me-bg);
 				z-index: 1;
 			  }
 
@@ -3831,6 +3983,7 @@ input, select, textarea {
 		text-align: center;
   		color: #fff;
 		width: 100%;
+		
 		font-size: 1em;
 		padding-top: 0;
 
@@ -3838,43 +3991,90 @@ input, select, textarea {
 		background-color: var(--background-1);
 	}
 
-	#about-me h2
-	{
-		/* font-family:'A-OTF Shin Go Pro M';
-			letter-spacing: 0.10em;
-			font-size: 2em;
-			line-height: 1.25em;
-			position: relative;
-		padding: 10px; */
-	}
-
-	.about-text {
-		position: absolute;
-		transform: translateX(-50%) translateY(-50%);
-		left: 50%;
-		top: 50vh;
-
-		max-width: 50%;
-
-		text-align: center;
-		color: var(--text-light);
-		text-shadow: 6px 3px 6px #000000;
-	}
-
 	#skills {
+		position: relative;
+		
+		display: inline-block;
+		width: 100%;
+		background-color: var(--skills-ribbon-1);
+		padding-top: 2.5em;
+		padding-bottom: 2.5em;
+		margin-bottom: 5em;
+	}
+
+	#skills > div
+	{
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+	}
+
+	#skills > div > h2 {
+		color: var(--text-light);
+		padding-bottom: 1em;
+	}
+
+	#about-content {
 		position: relative;
 		background: var(--background-1);
 		z-index: 1;
+		/* padding-top: 5em; */
 	}
 
-	#about-me .ribbon {
+	#about-me-container {
 		position: relative;
-		/* margin-top: -50em; */
+		padding-top: 5em;
+		padding-bottom: 5em;
+		background: var(--background-1);
+
+		margin: 0 auto;
+		width: 100%;
+		max-width: 60%;
+		max-width: 65%;
+		text-align: justify;
+		bottom: 0;
 	}
 
-	  @media screen and (max-width: 960px) {
-		.about-text {
-			max-width: 75%;
+	#about-me-container .platform
+	{
+		justify-content: left;
+	}
+
+	#about-me-container h2 {
+		/* color: var(--text-light); */
+		padding-bottom: 0.5em;
+	}
+
+	.about-text {
+		position: relative;
+		margin: 0 auto;
+		/* top: 3em; */
+		padding-top: 2.5em;
+
+		/* max-width: 60%; */
+		z-index: 2;
+
+		text-align: center;
+		color: var(--text-light);
+		/* text-shadow: 6px 3px 6px #000000; */
+
+		font-family:'A-OTF Shin Go Pro R';
+		/* font-size: 1.25em; */
+
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 60%;
+		text-align: justify;
+	}
+
+
+	  @media screen and (max-width: 980px) {
+		#about-me-container {
+			max-width: 90%;
 		  }
 	}
 	  
@@ -3931,7 +4131,7 @@ input, select, textarea {
 				top: 0.65em;
 			}
 
-				@media screen and (max-width: 960px) {
+				@media screen and (max-width: 980px) {
 
 					#about-me input[type="submit"]:before,
 					#about-me input[type="reset"]:before,
@@ -4032,7 +4232,7 @@ input, select, textarea {
 			/* padding: 5em 5em; */
 		}
 
-			  @media screen and (min-width: 960px) {
+			  @media screen and (min-width: 980px) {
 		  
 				#project-top .image-and-text-container {
 					text-align: left;
@@ -4048,7 +4248,7 @@ input, select, textarea {
 		  
 			  }
 		  
-			  @media screen and (max-width: 960px) {
+			  @media screen and (max-width: 980px) {
 		  
 				#project-top .description {
 					  width: 100%;
@@ -4058,7 +4258,7 @@ input, select, textarea {
 		
 		
 
-		@media screen and (max-width: 960px) {
+		@media screen and (max-width: 980px) {
 			#project-header .project-title {
 			font-size: 6em;
 			}
@@ -4090,6 +4290,7 @@ input, select, textarea {
 		}
 		#projects {
 			background-color: var(--background-2);
+			padding-top: 2.5em;
 		}
 
 /* Main */
@@ -4217,7 +4418,7 @@ input, select, textarea {
 
 	}
 
-	@media screen and (max-width: 960px) {
+	@media screen and (max-width: 980px) {
 
 		#featured {
 			width: 100%;
@@ -4579,7 +4780,7 @@ input, select, textarea {
 		display: none;
 	}
 
-	@media screen and (max-width: 960px) {
+	@media screen and (max-width: 980px) {
 
 		/* Basic */
 
@@ -5113,4 +5314,3 @@ input, select, textarea {
 			}
 
 	}
-

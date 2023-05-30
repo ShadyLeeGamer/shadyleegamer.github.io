@@ -1,4 +1,4 @@
-:root .interactable#edge-runner {
+:root .interactable #edge-runner {
     --cell-size: 512px;
     --image-width: 4608px;
     --image-height: 2048px;
@@ -6,17 +6,29 @@
     --width: calc(var(--image-width) * var(--size-factor));
     --height: calc(var(--image-height) * var(--size-factor));
     --size-factor: 0.175;
+    --size-factor: 0.15;
     --size-percent: calc(100% * var(--size-factor));
 }
 
-.interactable#edge-runner{
+.interactable.wide {
+}
+
+.interactable.narrow {
+    position: relative;
+    width: 32px;
+    height: 72px;
+}
+
+.interactable #edge-runner{
     height: calc(var(--cell-size) * var(--size-factor));
     width: calc(var(--cell-size) * var(--size-factor));
     overflow: hidden;
+    transform: translateX(-10px);
+    transform: translateX(-22.5px);
 }
 
 
- .interactable#edge-runner div {
+ .interactable #edge-runner div {
     position: absolute;
     width: var(--width);
     height: var(--height);;

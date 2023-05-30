@@ -1,5 +1,5 @@
 function EdgeRunner() {
-  var edgeRunnerElement = document.querySelector(".interactable#edge-runner div");
+  var edgeRunnerElement = document.querySelector(".interactable #edge-runner div");
   
   var changeSprite = false;
   var speedUp = false;
@@ -79,8 +79,6 @@ let frameNo = 0;
       let posX = step * (9 - frameNo);
       let posY = step;
 
-        console.log(frameNo);
-  
     edgeRunnerElement.style["background-position"] = `${posX}px ${posY}px`;
 
     if (frameNo < FRAMES_LENGTH) {

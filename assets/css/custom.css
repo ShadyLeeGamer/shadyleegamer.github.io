@@ -37,6 +37,9 @@
 :root ul.tech li#python {
   --tech-spinner-bg: #F2F2F2;
 }
+:root ul.tech li#android-studio {
+  --tech-spinner-bg: #F6F6F6;
+}
 
 :root ul.contact-social li#github {
   --tech-spinner-bg: var(--colour-1-bright);
@@ -51,48 +54,99 @@
   --tech-spinner-bg: var(--colour-3-bright);
 }
 
+:root ul.platform li#steam {
+  --tech-spinner-bg: #ffffff;
+}
+:root ul.platform li#itch-io {
+  --tech-spinner-bg: #fa5c5c;
+}
+:root ul.platform li#google-play {
+  --tech-spinner-bg: #ffffff;
+}
+
 :root .resume-button .spinner {
-  --tech-spinner-bg: var(--secondary-1);
+  /* --tech-spinner-bg: var(--secondary-1); */
+  --tech-spinner-bg: var(--purple);
+}
+
+:root ul.spinner-list li .spinner::after,
+:root .resume-button .spinner::after {
+  --spinner-shine-bg: #ffffffc1;
+}
+:root ul.spinner-list li:hover .spinner::after,
+:root .resume-button:hover .spinner::after {
+  --spinner-shine-bg: var(--tech-spinner-bg);
 }
 
 ul.platform {
-  margin: 0;
-  padding: 0;
+  position: relative;
   display: flex;
+  align-items: center;
 
-  justify-content: center;
-  margin: 1em 0em 1em 0em;
-  gap: 2em;
+  padding: 0;
+
+  flex-direction: row;
   list-style: none;
+}
+
+ul.platform li {
+  display: block;
+  position: relative;
+  top: 0;
+  margin: 10px;
 }
 
 ul.platform li img {
   width: 100%;
   height: 100%;
+  
 }
 
 ul.tech {
-  margin: 0;
-  padding: 0;
+  position: relative;
   display: flex;
+  align-items: center;
 
-  /* justify-content: center;
-  align-items: center; */
-  margin: 1em 0em 1em 0em;
+  padding: 0;
+
+  flex-direction: row;
 }
 
 ul.tech li {
-  list-style: none;
+  display: block;
   position: relative;
-
-  /* border-radius: 11em; */
-  transform: scale(1);
-  margin: 0;
+  top: 0;
+  margin: 10px;
 }
 
-ul.tech li .spinner {
-  pointer-events: none;
+ul.spinner-list li,
+.resume-button {
+  animation: hover 3s linear infinite;
+  
 }
+
+ul.spinner-list {
+  /* background-color: #38ADDE; */
+  flex-wrap: wrap;
+
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(3px);
+    }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(3px);
+    }
+
+}
+
+
 
 .spinner {
   width: 60px;
@@ -105,6 +159,22 @@ ul.tech li .spinner {
   overflow: hidden;
   
   animation: spin 5s linear infinite;
+}
+
+ul.tech li .spinner {
+  pointer-events: none;
+}
+
+ul.tech li .spinner,
+ul.platform li .spinner {
+  width: 40px;
+  height: 40px;
+}
+
+ul.tech .spinner img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain
 }
 
 /* Shadow */
@@ -145,8 +215,7 @@ ul.tech li .tooltip {
   transition: 0.25s;
   
   display: flex;
-  /* flex-direction: row-reverse; */
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 1em;
   align-items: center;
 
@@ -156,13 +225,7 @@ ul.tech li .tooltip h2 {
   /* color: var(--tech-spinner-bg); */
   color: var(--text-dark);
 }
-ul.tech li .tooltip span {
-  color: var(--text-dark);
-  font-family: 'A-OTF Shin Go Pro H';
-  position: absolute;
-  top: 11px;
-  z-index: 1;
-}
+
 ul.tech li .tooltip img {
   height: 25px;
   width: auto;
@@ -181,41 +244,31 @@ ul.tech li .tooltip h2::after {
 ul.tech li:hover .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%) translateY(-75px);
+  transform: translate(-50%) translateY(-90px);
 }
 
-ul.tech li img {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+
 
 /* Shine */
 ul.spinner-list li .spinner::after,
-/* ul.tech li .spinner::after,
-ul.platform li .spinner::after,
-ul.contact-social li .spinner::after,
-ul.tabs li .spinner::after, */
-
 .resume-button .spinner::after{
   content: '';
   position: absolute;
   height: 100%;
   top: 0;
   width: 30px;
-  background: #ffffff80;
-  box-shadow: 0  0 10px #ffffffba;
+  background: var(--spinner-shine-bg);
+  box-shadow: 0  0 10px #ffffffde;
   filter: blur(5px);
   opacity: 0.9;
-  transition: 0.7s;
+
     animation: shining 10s infinite;
   pointer-events: none;
-
 }
 
 @keyframes shining {
   0% {
-    transform: translateX(-100px);
+  transform: translateX(-100px);
     }
 
   25% {
@@ -235,22 +288,12 @@ ul.tabs li .spinner::after, */
       }
 
 }
-@media screen and (max-width: 736px) {
-  ul.tech {
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+@media screen and (max-width: 1280px) {
+
 
 .ribbon ul.tech {
   justify-content: center;
   align-items: center;
-}
-
-ul.tech .spinner {
-  width: 50px;
-  height: 50px;
 }
   
   ul.tech li {
@@ -271,35 +314,51 @@ ul.tech .spinner {
     animation: spin 1s ease-out;
     }
 
+    ul.spinner-list li:hover .spinner::after
+{
+  background: var(--tech-spinner-bg);
+}
+
 /* Spinner */
 ul.spinner-list li:hover .spinner,
-/* ul.tech li:hover .spinner,
-ul.contact-social li:hover .spinner,
-ul.tabs li:hover .spinner, */
 
-/* Shine */
-ul.spinner-list li:hover .spinner::after,
-/* ul.tech li:hover .spinner::after,
-ul.contact-social li:hover .spinner::after,
-ul.tabs li:hover .spinner::after, */
+
 
 /* Shadow */
 ul.spinner-list li:hover::after,
-/* ul.tech li:hover::after,
-ul.contact-social li:hover::after,
-ul.tabs li:hover::after, */
 
+/* Resume Button */
 .resume-button:hover::after,
 .resume-button:hover .spinner,
-.resume-button:hover .spinner::after
+.resume-button:hover .spinner::after,
+
+ul.spinner-list li:hover,
+.resume-button:hover
+/* Hover */
  {
       animation:none;
       background: none;
       transform: scale(1.25);
+      overflow:visible;
       box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.5);
-  /* background: #86ff3b;
-  box-shadow: 0 0 0 4px #333,
-              0 0 0 6px #86ff3b; */
+  }
+
+/* Shine */
+ul.spinner-list li:hover .spinner::after,
+.resume-button:hover .spinner::after
+{
+      animation:none;
+      transition: background 0.1s linear, opacity 0.7s linear;
+      opacity: 0;
+      width: 100%;
+      transform: translateX(-50%);
+      left: 50%;
+      z-index: -1;
+}
+
+  ul.spinner-list li:hover .spinner > img
+  {
+    transform: scale(1.5);
   }
 
   @keyframes spin {

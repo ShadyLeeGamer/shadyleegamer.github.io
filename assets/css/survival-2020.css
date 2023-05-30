@@ -7,32 +7,34 @@
     /* border: 1px solid white; */
 }
 
-.interactable#lockdowneer div{
+.interactable #lockdowneer div{
     position: absolute;
     width: calc(64px/2);
     width: 32px;
     height: 32px;
     transform: scale(2.275) translateX(1.5px) translateY(6.75px);
-    background: url(../../images/2020-survival-game/lockdowneer-idle.png);
+      transform: scale(2) translateX(-1.5px) translateY(6.75px);
+      background: url(../../images/2020-survival-game/lockdowneer-idle.png);
     image-rendering: pixelated;
     cursor: pointer;
 
     animation: animateIdle 2s steps(2) infinite;
   }
 
-  .interactable#lockdowneer div:hover{
+  .interactable #lockdowneer div:hover{
     background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
     
     animation: none;
   }
 
-  .interactable#lockdowneer-shooting div{
+  .interactable #lockdowneer-shooting div{
     position: absolute;
     width: calc(64px/2);
     width: 32px;
     height: 32px;
       background-position: 64px;
-      transform: scale(2.275) translateX(1.5px) translateY(6.75px);
+      /* transform: scale(2.275) translateX(1.5px) translateY(6.75px); */
+      transform: scale(2) translateX(-1.5px) translateY(6.75px);
     /* transform: scale(2) translateY(9px); */
     background: url(../../images/2020-survival-game/lockdowneer-shoot.png);
     image-rendering: pixelated;

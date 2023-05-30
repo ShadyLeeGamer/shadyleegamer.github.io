@@ -1,4 +1,4 @@
-const navbar = document.getElementById("nav");
+const element = document.getElementById("nav");
 
 // Initialise
 let html = `
@@ -22,12 +22,9 @@ let html = `
     </div>
 </div>
 </div>`
-// navbar.innerHTML = html;
+element.innerHTML = html;
 
 const socialContactsElements = document.querySelectorAll(".resume-and-contacts-container")
-
-
-
 var socialContactsHTML = `<div class="resume-button-container">
 <a class="resume-button">
     <div class="spinner">
@@ -80,15 +77,36 @@ socialContactsElements.forEach(socialContacts => {
 });
 
 
+
 // Animate Scroll
 var lastScrollTop = 0;
 window.addEventListener("scroll", function() {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
-        navbar.style.top = "-8em";
+        element.style.top = "-8em";
     }
     else {
-        navbar.style.top = "0";
+        element.style.top = "0";
     }
     lastScrollTop = scrollTop;
+
+    UpdateNavColour();
 });
+
+function UpdateNavColour() {
+    var navOffset = element.offsetTop;
+    var scrollPosition = window.scrollY;
+    var threshold = 0;
+    if (element.parentElement.classList.contains("projects-header-wrapper")) {
+        threshold = 10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    }
+    else {
+        threshold = navOffset + window.innerHeight * 0.7;
+    }
+    if (scrollPosition > threshold) {
+        element.classList.remove('over-big-reel');
+    } else {
+        element.classList.add('over-big-reel');
+    }
+}
+UpdateNavColour();
