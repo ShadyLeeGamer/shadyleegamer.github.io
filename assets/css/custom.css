@@ -165,10 +165,14 @@ ul.tech li .spinner {
   pointer-events: none;
 }
 
-ul.tech li .spinner,
-ul.platform li .spinner {
+ul.tech li .spinner {
   width: 40px;
   height: 40px;
+}
+
+ul.platform li .spinner {
+  width: 50px;
+  height: 50px;
 }
 
 ul.tech .spinner img {
