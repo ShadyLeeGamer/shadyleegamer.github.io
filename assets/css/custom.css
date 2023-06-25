@@ -121,7 +121,7 @@ ul.tech li {
 
 ul.spinner-list li,
 .resume-button {
-  animation: hover 3s linear infinite;
+  /* animation: hover 3s linear infinite; */
   
 }
 
@@ -133,15 +133,15 @@ ul.spinner-list {
 
 @keyframes hover {
   0% {
-    transform: translateY(3px);
+    transform: translateY(3px) scale(1, 1);
     }
 
   50% {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1, 1);
   }
 
   100% {
-    transform: translateY(3px);
+    transform: translateY(3px) scale(1, 1);
     }
 
 }
@@ -694,6 +694,35 @@ img{
 
 .project-bg.scroll-transition.end video {
   transform: scale(1, 1);
+  transition: transform 0.5s ease-out;
+}
+
+.project-bg::after
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+    opacity: 25%;
+    background-color: var(--colour-dark);
+  pointer-events: none;
+  border-radius:1em;
+  transition: all 500ms ease-in;
+
+}
+
+.project-bg.scroll-transition::after
+{
+    opacity: 0;
+    transform: scale(0, 1);
+  }
+.project-bg.scroll-transition.end::after
+{
+  opacity: 25%;
+  transform: scale(1, 1);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .description.scroll-transition {
@@ -715,10 +744,12 @@ img{
 
   .spotlights > section.left .description.scroll-transition.end {
     transform: translateX(0px);
-  }
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
   .spotlights > section.right .description.scroll-transition.end {
     transform: translateX(0px);
-  }
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
 }
 
 @media screen and (max-width: 980px) {
@@ -752,20 +783,30 @@ img{
 
 .project-date.scroll-transition.end {
   opacity: 1;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 
-.project-tech-list.scroll-transition li,
 .tech.scroll-transition li,
 .contact.scroll-transition li,
 .tabs.scroll-transition li {
   transform: scale(0, 0);
+  animation: none;
 }
 
-.project-tech-list.scroll-transition li.end,
 .tech.scroll-transition li.end,
 .contact.scroll-transition li.end,
 .tabs.scroll-transition li.end {
-  transform: scale(1, 1);
   transition: transform 0.25s ease-out;
+  animation: hover 3s linear infinite;
+  
+}
+
+.project-tech-list.scroll-transition li{
+  transform: scale(0, 0);
+}
+
+.project-tech-list.scroll-transition li.end {
+  transition: transform 0.25s ease-out;
+  transform: scale(1, 1);
 }

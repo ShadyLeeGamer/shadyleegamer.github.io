@@ -7,7 +7,7 @@ tabs.forEach(tab =>
     {
         tab.addEventListener('click', () => {
             const targets = document.querySelectorAll(tab.dataset.tabTarget);
-
+            console.log(targets.length);
             // let count = targets.length > 0 ? targets.length : 1;
             for (let i = 0; i < targets.length; i++)
             {

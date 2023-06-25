@@ -96,11 +96,15 @@ function TransitionItemClose(content){
 }
 
 function PlayVideo(video) {
+  if(!video)
+    return;
   video.play();
   video.muted = false;
 }
 
 function PauseVideo(video) {
+  if(!video)
+    return;
   video.pause();
   video.currentTime = 0;
   video.muted = true;
