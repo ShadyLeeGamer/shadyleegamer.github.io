@@ -221,52 +221,48 @@
 			<div id="project-content-wrapper">
 				<div class="project-content">
 
-					<div class="row">
-						<div class="col-12">
-							<article id="content">
+					<div class="tab-content">
+						<div id="mini-jam-83-dread-tab" data-tab-content>
+			<h1 class="projects-header side-title perspective">Dread</h1>
 
-								<div class="tab-content">
-									<div id="mini-jam-83-dread-tab" data-tab-content>
-
-										<h1 class="side-title perspective project-name">Dread</h1>
-
-
-
-								<p>In this project, I worked as lead programmer with two other programmers. We broke down the game system into 3 seperate modules: player controller, enemy AI and level generator which I implemented.</p>
+			<div class="row">
+				<div class="col-12">
+					<article id="content">
+			<p>In this project, I worked as lead programmer with two other programmers. We broke down the game system into 3 seperate modules: player controller, enemy AI and level generator which I implemented.</p>
 								
-								<h1>Dungeon Level Generator</h1>
-									
-									<div class="image-and-text-container left">
-										<div class="image-container">
-											<img src="images/game-jams/mini-jam-83-dread/generation-sequence.png">
-										</div>
-										<div class="text-container">
-											<p>The level generator sequence was inspired by the one in the Spelunky games, which goes like this:</p>
-										</div>
-									</div>
+			<h1>Dungeon Level Generator</h1>
+				
+				<div class="image-and-text-container left">
+					<div class="image-container">
+						<img src="images/game-jams/mini-jam-83-dread/generation-sequence.png">
+					</div>
+					<div class="text-container">
+						<p>The level generator sequence was inspired by the one in the Spelunky games, which goes like this:</p>
+					</div>
+				</div>
 
-									<p>This system was suitable for the game since we wanted unique level patterns with props to hide from enemies which chase you.</p>
-									
-									<div class="image-and-text-container right">
-										<div class="image-container">
-											<img src="images/game-jams/mini-jam-83-dread/room-layouts.png">
-										</div>
-										<div class="text-container">
-											<p>To further achieve this, there are several room layouts with different arrangements of props, which is randomly rotated in 90 degrees for more variety.</p>
-										</div>
-									</div>
-								
-									<p>I applied more downward bias to encourage more of a straight path from start to end to have similar length for each randomly generated level. The level on the right is created with the bias.</p>
-									<div class="image-center">
-									<img src="images/game-jams/mini-jam-83-dread/generate-without-downard-bias.png">
-									<img src="images/game-jams/mini-jam-83-dread/generate-with-downard-bias.png">
-								</div>
+				<p>This system was suitable for the game since we wanted unique level patterns with props to hide from enemies which chase you.</p>
+				
+				<div class="image-and-text-container right">
+					<div class="image-container">
+						<img src="images/game-jams/mini-jam-83-dread/room-layouts.png">
+					</div>
+					<div class="text-container">
+						<p>To further achieve this, there are several room layouts with different arrangements of props, which is randomly rotated in 90 degrees for more variety.</p>
+					</div>
+				</div>
+			
+				<p>I applied more downward bias to encourage more of a straight path from start to end to have similar length for each randomly generated level. The level on the right is created with the bias.</p>
+				<div class="image-center">
+				<img src="images/game-jams/mini-jam-83-dread/generate-without-downard-bias.png">
+				<img src="images/game-jams/mini-jam-83-dread/generate-with-downard-bias.png">
+			</div>
 
-								<div class="accordion">
-									<div class="accordion-item">
-										<div class="accordion-header">CODE SNIPPET - Level Generation</div>
-										<div class="accordion-content">
-											<pre><code class="language-csharp hljs">public void Generate()
+			<div class="accordion">
+				<div class="accordion-item">
+					<div class="accordion-header">CODE SNIPPET - Level Generation</div>
+					<div class="accordion-content">
+						<pre><code class="language-csharp hljs">public void Generate()
 {
 Rooms = new List<Room>();
 map = new bool[levelSizeX, levelSizeZ];
@@ -278,63 +274,69 @@ CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
 
 // Create rooms middle to exit
 while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
-		roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
+roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
 {
-	// Left, right or down (more downs to encorage more of a linear shape)
-	int randomDirIndex = Random.Range(0, directions.Length);
-	Vector3Int randomDir = directions[randomDirIndex];
+// Left, right or down (more downs to encorage more of a linear shape)
+int randomDirIndex = Random.Range(0, directions.Length);
+Vector3Int randomDir = directions[randomDirIndex];
 
-	int newPosX = roomPosX + randomDir.x;
-	int newPosZ = roomPosZ + randomDir.z;
+int newPosX = roomPosX + randomDir.x;
+int newPosZ = roomPosZ + randomDir.z;
 
-	// Check if we're hitting the edge of the map
-	if (newPosX < 0 || newPosX > levelSizeX - 1 ||
-		newPosZ > 0 || newPosZ < -levelSizeZ + 1)
-	{
-		// If we're not hitting bottom edge, then move down and create a new middle room
-		if (roomPosZ > -levelSizeZ + 1)
-		{
-			randomDir = directions[2];
-			roomPosX += randomDir.x;
-			roomPosZ += randomDir.z;
+// Check if we're hitting the edge of the map
+if (newPosX < 0 || newPosX > levelSizeX - 1 ||
+newPosZ > 0 || newPosZ < -levelSizeZ + 1)
+{
+// If we're not hitting bottom edge, then move down and create a new middle room
+if (roomPosZ > -levelSizeZ + 1)
+{
+randomDir = directions[2];
+roomPosX += randomDir.x;
+roomPosZ += randomDir.z;
 
-			CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
-			continue;
-		}
-		// If we are on bottom edge, then mark new room as exit and end generation
-		else if (roomPosZ == -levelSizeZ + 1)
-		{
-			Room exitRoom = Rooms[Rooms.Count - 1];
-			exitRoom.ApplyType(RoomType.Exit);
+CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+continue;
+}
+// If we are on bottom edge, then mark new room as exit and end generation
+else if (roomPosZ == -levelSizeZ + 1)
+{
+Room exitRoom = Rooms[Rooms.Count - 1];
+exitRoom.ApplyType(RoomType.Exit);
 
-			CreateHallway(exitRoom, directions[2], PassType.Exit);
-			CreateDoor(exitRoom, directions[2], PassType.Exit);
-			break;
-		}
-	}
+CreateHallway(exitRoom, directions[2], PassType.Exit);
+CreateDoor(exitRoom, directions[2], PassType.Exit);
+break;
+}
+}
 
-	// If chosen direction is blocked by another room, then pick another
-	if (map[newPosX, -newPosZ] == true)
-		continue; 
+// If chosen direction is blocked by another room, then pick another
+if (map[newPosX, -newPosZ] == true)
+continue; 
 
-	// If we are just within the map, then create a middle room
-	roomPosX = newPosX;
-	roomPosZ = newPosZ;
+// If we are just within the map, then create a middle room
+roomPosX = newPosX;
+roomPosZ = newPosZ;
 
-	CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
 }
 
 // Create path nodes for enemy AI
 mapHolder.CreateNodes();
 }</code></pre>
-											</div>
-										</div>
-									</div>
-							</div>
-									<div id="swords-and-fangs-tab" data-tab-content>
-
-										<h1 class="side-title perspective project-name">Dracula</h1>
-
+						</div>
+						
+					</div>
+					
+				</div>
+					</article>
+				</div>
+			</div>
+		</div>
+						<div id="swords-and-fangs-tab" data-tab-content>
+							<h1 class="projects-header side-title perspective">Dracula</h1>
+							<div class="row">
+								<div class="col-12">
+									<article id="content">
 										<div class="accordion">
 											<div class="accordion-item">
 											  <div class="accordion-header">Combo System</div>
@@ -431,11 +433,15 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 											</div>
 											</div>
 										  </div>
-									</div>
-									<div id="disaster-is-coming-tab" data-tab-content>
-
-										<h1 class="side-title perspective project-name">Distaster</h1>
-
+									</article>
+								</div>
+							</div>
+						</div>
+						<div id="disaster-is-coming-tab" data-tab-content>
+							<h1 class="projects-header side-title perspective">Disaster</h1>
+							<div class="row">
+								<div class="col-12">
+									<article id="content">
 										<div class="accordion">
 											<div class="accordion-item">
 												<div class="accordion-header">Isometric grid movement</div>
@@ -513,18 +519,17 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 												</div>
 											</div>
 										</div>
-									</div>
-
-	
+									</article>
 								</div>
-						</article>
+							</div>
+						</div>
 					</div>
 				</div>
+
 				</div>
 			</div>
 
 		</div>
-	</div>
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
