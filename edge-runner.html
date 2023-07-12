@@ -28,11 +28,16 @@
 
 		<div id="page-wrapper">
 
+			<header id="project-header">
+				<div id="big-reel">
+					<video src="videos/okainos/reel.mp4" autoplay muted loop></video>
+				</div>
+				<h2 class="project-title">Edge Runner</h2>
+
+				<p id="edge-runner" class="project-date scroll-transition"></p>
+			</header>
+			
 			<div id="project-top" class="container">
-				<header>
-					<h2 class="project-title">Edge Runner</h2>
-				</header>
-				<p id="okainos" class="project-date scroll-transition"></p>
 
 				<div class="slick-slider template">
 					<div class="slick-slide">
@@ -53,8 +58,8 @@
 				</div>
 
 				<div class="description">
-					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourages fast-paced gameplay.</p>
-					<p>The biggest technical challenge for me was developing the raycast and engine physics character controller which functions on a variety of mechanics during gameplay.</p>
+					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourage fast-paced gameplay.</p>
+					<p>The biggest challenge for me was developing the player which functions on a variety of mechanics during gameplay.</p>
 				</div>
 			</div>
 
@@ -62,53 +67,324 @@
 				<img src="images/okainos/back-end-user.png" alt="">
 			</div>
 
-			<h1 id="project-name" class="side-title perspective">Edge Runner</h1>
+			<div id="project-content-wrapper">
+			<div class="project-content">
 
-			<!-- Main -->
-				<div id="main" class="project-content">
-
+			<h1 class="projects-header side-title perspective">EDGE RUNNER</h1>
 					<div class="row">
 						<div class="col-12">
 
 							<h2>Raycast & Engine Physics Character Controller</h2>
 
+							<div class="image-and-text-container left">
+								<div class="image-container">
+									<img src="images/edge-runner/player-shapes.png"/>
+								</div>
+								<div class="text-container">
+									<p>The player is surrounded by shapes that are used to detect different types of collisions.</p>
+								</div>
+							</div>
+
 							<div class="accordion">
 								<div class="accordion-item">
-									<div class="accordion-header">Collision</div>
+									<div class="accordion-header">Wall Running</div>
 									<div class="accordion-content">
-										<p>Collision is handled by raycasting a circle collider onto surfaces.</p>
+										<h3>First Revision</h3>
+								<p>In the first revision of the player script, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to angle the player and adjust their direction accordingly.</p>
+										<p>This method was inspired by the use of spheres for collision in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
+											<div class="image-and-text-container left">
+												<div class="image-container">
+									<video src="videos/edge-runner/ray-sensors-sonic-physics-unity.mp4" controls muted loop>
+												</div>
+												<div class="text-container">
+													<p>I found this to be much more effective than casting rays as used in the classic Sonic games due to the bugs that occur when standing on slanted ledges and pointy terrain.</p>
+													<p>I made a prototype of this in Unity to demonstrate this, as you can see the feet is not being positioned correctly when one of the floor sensors could not find a ground.</p>
+												</div>
+											</div>
 
-										<p>This method was inspired by the use of spheres as hitboxes in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
-										<p>I found this to be more suitable than sensor rays as used in the classic Sonic games due to the bugs that occur when standing on slanted ledges and pointy terrain. This is demonstrated in the clip below of the WIP classic Sonic physics prototype of I was making.</p>
+											<h3>Final Revision</h3>
+											<div class="image-and-text-container right">
+												<div class="image-container">
+													<video src="videos/edge-runner/wall-point-percent.mp4" controls muted loop>
+												</div>
+												<div class="text-container">
+													<p>However, after replacing Unity’s physics engine and utilising splines with an extension script I made for Unity’s SpriteShape API, the process is a lot lighter now as we no longer need to make anymore detections after entering a wall since movement is simply achieved by moving the player along the wall spline with a percent value.</p>
+												</div>
+											</div>
+
+											<div class="image-and-text-container left">
+												<div class="image-container">
+													<video src="videos/edge-runner/wall-run-stress-test.mp4" controls muted loop>
+												</div>
+												<div class="text-container">
+													<p>This method guarantees that the player will never fall off a wall even at extreme speeds, resulting in much more consistent physics. You can see this being stress tested in the clip.</p>
+												</div>
+											</div>
+
+
+											<div class="image-and-text-container right">
+												<div class="image-container">
+													<img src="images/edge-runner/evenly-spaced-points-and-normals.png"/>
+												</div>
+												<div class="text-container">
+													<p>The spline is divided into evenly spaced points in order to achieve constant speed between points, which is also used for seamlessly attaching and detaching at nearest points when entering or exiting a wall.</p>
+													<p>The normal vector of each evenly spaced point is also calculated, which is used to angle the player correctly.</p>
+													<p>The yellow lines are the normals of the evenly spaced points (green), which are created from the wall spline points (blue).</p>
+												</div>
+											</div>
+
+												<div class="accordion">
+													<div class="accordion-item">
+														<div class="accordion-header">CODE SNIPPET | Calculate Evenly Spaced Points</div>
+														<div class="accordion-content">
+															<p>The following code is used to calculate the position of all evenly spaced points based off the wall spline points.</p>
+															<pre><code class="language-csharp hljs">public Vector2[] CalculateEvenlySpacedPoints()
+{
+	List<Vector2> evenlySpacedPoints = new List<Vector2>();
+
+	// Setup with first evenly spaced point
+	Vector2 prevPoint = splinePoints[0].pos;
+	evenlySpacedPoints.Add(prevPoint);
+	float dstSinceLastEvenPoint = 0;
+
+	// loop for each segment
+	for (int segmentIndex = 0; segmentIndex < splinePoints.Count; segmentIndex++)
+	{
+		// Calculate step value for the amount we will increment percent
+		float segmentLength = splinePoints[segmentIndex].length;
+		float step = 1f / Mathf.CeilToInt(segmentLength * EVENLY_SPACED_POINTS_RESOLUTION);
+		float percent = 0f;
+
+		// Iterate through the divisions to calculate evenly spaced points
+		while (percent <= 1f)
+		{
+			// Progress thorugh spline by step and get disance from last evenly spaced point
+			percent += step;
+			Vector2 pointOnCurve = GetPoint(segmentIndex + percent);
+			dstSinceLastEvenPoint += Vector2.Distance(prevPoint, pointOnCurve);
+
+			// Add evenly spaced points between last evenly spaced point and our progress on spline
+			while (dstSinceLastEvenPoint >= EVENLY_SPACED_POINTS_SPACING)
+			{
+				// Use overshot distance to estimate position of evenly spaced point, add it to the list and set it as last point
+				float overshootDst = dstSinceLastEvenPoint - EVENLY_SPACED_POINTS_SPACING;
+				Vector2 newEvenlySpacedPoint = pointOnCurve + (prevPoint - pointOnCurve).normalized * overshootDst;
+				evenlySpacedPoints.Add(newEvenlySpacedPoint);
+
+				prevPoint = newEvenlySpacedPoint;
+				dstSinceLastEvenPoint = overshootDst;
+			}
+
+			prevPoint = pointOnCurve;
+		}
+	}
+
+	return evenlySpacedPoints.ToArray();
+}</code></pre>
+														</div>
+													</div>
+													<div class="accordion-item">
+														<div class="accordion-header">CODE SNIPPET | Calculate Evenly Spaced Point Normal</div>
+														<div class="accordion-content">
+															<pre><code class="language-csharp hljs">Vector2 CalculateEvenlySpacedPointNormal(int node)
+{
+	int prevIndex = MathUtility.WrapIndex(evenlySpacedPoints.Count, node - 1);
+	int nextIndex = MathUtility.WrapIndex(evenlySpacedPoints.Count, node + 1);
+	Vector2 point = evenlySpacedPoints[node].pos;
+	Vector2 prevPoint = evenlySpacedPoints[prevIndex].pos;
+	Vector2 nextPoint = evenlySpacedPoints[nextIndex].pos;
+
+	float t = 0.5f; // position along spline segment
+	// Calculate the tangent using a finite difference approximation
+	Vector2 tangent = 0.5f * ((nextPoint - point) + (point - prevPoint)) / t;
+
+	// Get the normal vector by rotating the tangent vector by 90 degrees
+	Vector2 normal = new Vector2(-tangent.y, tangent.x).normalized;
+
+	// Transform normal with wall rotation
+	return (SpriteShapeController.transform.rotation * normal).normalized;
+}</code></pre>
+														</div>
+													</div>
+												</div>
+
+
+												<p>All these wall calculations save a lot of performance as it’s only done once during initialisation, and we can access it from the wall the player enters.</p>
+											</div>
 									</div>
-								</div>
+
+
 								<div class="accordion-item">
 									<div class="accordion-header">Edge Running</div>
 									<div class="accordion-content">
-										<p>While wall running, when the player reaches the edge of a wall, they will perform an ‘edge run’. where they drift off at a constant velocity. This stunt can also be used to seamlessly cross over small gaps.</p>
-										<p>Edge run is executed when there is no surface underneath the player or a steep slope angle threshold has been reached.</p>
-										<p>This is made possible by the CONTROL LOCK DISTANCE mechanic.</p>
+										<p>Corners are defined by steep points that turn at a certain angle threshold. Outer corner points are automatically marked as “Edge points”.</p>
+									
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<video src="videos/edge-runner/evenly-spaced-points-editor.mp4" controls muted loop>
+											</div>
+											<div class="text-container">
+												<p>Here we can see these corners updating in the editor, the blue are normal points and the red are edge points.</p>
+											</div>
+										</div>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-content">
+										<p>The following code is used to calculate edge points.</p>
+										<pre><code class="language-csharp hljs">bool IsEdge(int node)
+{
+	Vector2 pos = Spline.GetPosition(node);
+	Vector2 prevPos = Spline.GetPosition(MathUtility.WrapIndex(Spline.GetPointCount(), node - 1));
+	Vector2 nextPos = Spline.GetPosition(MathUtility.WrapIndex(Spline.GetPointCount(), node + 1));
+	Vector2 prevDir = (pos - prevPos).normalized;
+	Vector2 nextDir = (nextPos - pos).normalized;
+	
+	return
+		Vector2.Angle(prevDir, nextDir) >= EDGE_ANGLE_THRESHOLD && // Turns at an angle threshold
+		Spline.GetTangentMode(node) == ShapeTangentMode.Linear && // Is a sharp corner
+		Vector3.Cross(prevDir, nextDir).z < 0f; // Is an outer corner - next direction is to the left of previous direction
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+										<div class="image-and-text-container right">
+											<div class="image-container">
+												<video src="videos/edge-runner/edge-running.mp4" controls muted loop>
+											</div>
+											<div class="text-container">
+												<p>This allows the player to perform an “edge run” (which is when they drift off at a constant velocity, made possible by the CONTROL LOCK mechanic) whenever they reach their upcoming edge point.</p>
+											</div>
+										</div>
+
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<video src="videos/edge-runner/edge-run-between-2.mp4" controls muted loop></video>
+											</div>
+											<div class="text-container">
+										<p>A raycast is also shot from the edge point in the player's direction to find a close corner for the player to seamlessly cross over the small gap, if there is one.</p>
+											</div>
+										</div>
+										
+										<div class="image-and-text-container right">
+											<div class="image-container">
+												<video src="videos/edge-runner/edge-running-stress-test.mp4" controls muted loop></video>
+
+											</div>
+											<div class="text-container">
+												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point, making it work even in extreme speeds. You can see this system being stress tested here.</p>
+											</div>
+										</div>
+
+										<!-- <div class="image-center">
+												<video src="videos/edge-runner/edge-running-stress-test.mp4" controls muted loop></video>
+											</div> -->
 									</div>
 								</div>
+
 								<div class="accordion-item">
-									<div class="accordion-header">Wall jumping & Ricocheting</div>
+									<div class="accordion-header">Wall Jumping & Ricocheting</div>
 									<div class="accordion-content">
-										<p>Wall jump is achieved by reflecting the player’s velocity off the surface as well as initiating a CONTROL LOCK.</p>
+										<p>Wall jumping is achieved by reflecting the player’s velocity off the surface as well as initiating a CONTROL LOCK.</p>
 										<p>The reflected velocity is then normalised with some of the surface normal to bounce further away from the wall. This adjustment was made to more easily wall jump over spikes while wall running more effectively.</p>
-										
+												<div class="image-and-text-container left">
+											<div class="image-container">
+												<img src="images/edge-runner/wall-jump-trajectories.png"/>
+											</div>
+											<div class="text-container">
+												<p>The while line is the direction the player enters the wall (in the case of wallrunning, this is the direction of the mouse to the player), the red is the reflected direction, and the green is the reflected trajectory with some of the surface normal (yellow). As you can see the final green trajectory points the player further away from the wall, in turn making it easier to avoid nearby spikes.</p>
+											</div>
+										</div>
+
+										<h3>Secret Ricochet Mechanic</h3>
 										<p>One secret mechanic I really wanted to include was the ability to ricochet in tunnels. Like external forces, doing so allows you to gain instant momentum by exceeding the normal speed capacity.</p>
 										<p>However, this did not work well with the adjustment added as it causes the player to eventually ricochet in place.</p>
-										<p>To overcome this, I excluded the normal vector if the player was ricocheting, which is defined by if they were constantly wall jumping without spamming the input and without unlocking the control lock distance. This was the result:</p>
-									
+										<p>To overcome this, I excluded the normal vector if the player was ricocheting, which is defined by if they wall jump without pressing the dash input during control lock. This was the result, on the left is ricocheting with the adjustment and on the right is without:</p>
+										<div class="image-center">
+											<video src="videos/edge-runner/rapid-wall-jumping-with-adjustment.mp4" controls muted loop></video>
+											<video src="videos/edge-runner/rapid-wall-jumping-without-adjustment.mp4" controls muted loop></video>
+										</div>
 									</div>
 								</div>
+
 								<div class="accordion-item">
 									<div class="accordion-header">Control Lock Distance</div>
 									<div class="accordion-content">
-										<p>The control lock distance is used to prevents directional input from influencing the player’s speed until they reach a certain amount of distance from lock point.</p>
+										<p>The control lock distance mechanic is used to prevent directional input from influencing the player’s direction until they reach a certain amount of distance from lock point.</p>
 
-										<p>This system was made flexible for use and is what ties all the other mechanics together such as edge running, wall jumping and hitting a launch pad.</p>
-										<p>In older solutions, the control lock timer concept was used, however it wasn’t suitable as the amount of distance covered during control lock was inconsistent due to speed always changing, which conflicted level design.</p>
+										<p>This system was made flexible for use and is what ties all the other mechanics together such as edge running, wall jumping, hitting a launch pad, and assist pushing the player to a nearby ground.</p>
+
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<video src="videos/edge-runner/control-lock.mp4" controls muted loop></video>
+											</div>
+											<div class="text-container">
+												<p>The lines show the path from the lock point to the unlock point, and the number next to the player shows the distance remaining until they reach the unlock point. As you can see, this can also be interrupted by player input or environment blocking in the way (ground, wall).</p>
+											</div>
+										</div>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-content">
+										<p>The following code is used to manage control locks. Control locks are updated to see if the distance has been reached and then unlocked. Control locks are also abruptly unlocked when transitioning into new states while exiting the last one.</p>
+										<pre><code class="language-csharp hljs">void ControlLock(float distance)
+{
+	// Initate lock
+	controlLockDistance = distance;
+	controlLockPoint = Pos;
+}
+
+void UpdateControlLock()
+{
+	if (!ControlLockActive)
+		return;
+
+	// Move control lock point with motion object velocity if there is one
+	var externalVelocity = Vector2.zero;
+	if (movingWall)
+		externalVelocity += movingWall.Velocity * Time.deltaTime;
+	if (rotatingWall)
+		externalVelocity += rotatingWall.Velocity(controlLockPoint) * Time.deltaTime;
+	controlLockPoint += externalVelocity;
+
+	if (Vector2.Distance(controlLockPoint, Pos) >= controlLockDistance - 0.0001f)
+	{
+		// Distance has been reached, unlock control
+		ControlUnlock();
+	}
+}
+
+void ControlUnlock()
+{
+	// Exit last state
+	if (State == States.EdgeRun)
+	{
+		ExitWallRun();
+		transform.position = CenterPosUnderInnerCircle;
+	}
+	else if (State == States.WallJump)
+	{
+		ExitWallJump();
+	}
+
+		// Exit others
+	if (launchPad)
+		launchPad = null;
+	if (assistingLand)
+		assistingLand = false;
+
+	// Reset
+	controlLockDistance = 0;
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+										<p>The system was inspired by the control lock timer used in the classic Sonic games, except it instead uses distance.</p>
+										<p>In older revisions, the control lock timer method was used, however it wasn’t suitable as the travelled distance during control locks were inconsistent due to speed always changing, which conflicted with the level design.</p>
 									</div>
 								</div>
 								<div class="accordion-item">
@@ -117,29 +393,11 @@
 										<p>The game aids player inputs to better achieve desired actions through assists like snapping to missed nearby environments, dash distance extension, input buffering, etc.</p>
 									</div>
 								</div>
-								<div class="accordion-item">
-									<div class="accordion-header">Momentum-based movement</div>
-									<div class="accordion-content">
-										<p>The player’s momentum is influenced by activity like player mechanics (running along slopes, edge running, wall jumping) and external forces (launch pads, and moving or rotating platforms).</p>
-									</div>
-								</div>
 							</div>
 
 							<h2>Other</h2>
 
 							<div class="accordion">
-								<div class="accordion-item">
-									<div class="accordion-header">Pushing Splines to Limits!</div>
-									<div class="accordion-content">
-										<p>With the world being built entirely out of splines, I developed an extension for Unity's Sprite Shape API that breaks splines down to segments and points for full control and flexibility.</p>
-										<p>It is used for entity movement movement on splines like player grinding on rails, hazards moving on walls.</p>
-										<p>It is also used to aid level design by displaying paths and point within a spline.</p>
-
-										<p>Here we can see the script being used to break down the grind rail spline into evenly spaced points to allow the player to move along the rail.</p>
-
-										<p>It is used similarly here for hazards moving along a path inside a wall. The spline path and points are visualised with an additional custom level editor tool.</p>
-									</div>
-								</div>
 								<div class="accordion-item">
 									<div class="accordion-header">Camera</div>
 									<div class="accordion-content">
@@ -149,7 +407,57 @@
 								<div class="accordion-item">
 									<div class="accordion-header">Motion Platforms</div>
 									<div class="accordion-content">
-										<p>The moving and rotating platforms give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
+										<p>The moving and rotating platforms, known as “motion objects”, give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
+										<p>With the first revision of the player script, we had to add the velocity of the rotating or moving platform to the player’s move velocity so that they move with the motion object they are on and not fall off. However, with the spline-based solution we implemented, our problem is automatically solved since the wall spline is already rotating or moving and we can still just use the spline points to position the player along the wall correctly.</p>
+										
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<video src="videos/edge-runner/rotating-platform-normals.mp4" controls muted loop></video>
+											</div>
+											<div class="text-container">
+										<p>And to angle the player correctly with rotating platforms, we need the normal vector of the evenly-spaced spline points to rotate with the wall too. This is done by only refreshing the spline point normals of the rotating wall the player is currently on.</p>
+										<p>As you can see, once the player enters a wall, the normals turn red and spike out as they update correctly relative to the rotation of the wall.</p>
+											</div>
+										</div>
+										<p>The player gains the momentum of the motion object on exit.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-content">
+										<p>The following code shows the logic behind gaining the speed of motion objects on exit. We are using a “applyPassengerExitForce” flag as we want to gain speed from certain motion objects.</p>
+										<pre><code class="language-csharp hljs">void ExitWall(bool removeMotionObject = true)
+{
+	wall = null;
+		
+	if (rotatingWall)
+	{
+		KeepMotionObjectSpeed(ref rotatingWall, removeMotionObject);
+	}
+	if (movingWall)
+	{
+		KeepMotionObjectSpeed(ref movingWall, removeMotionObject);
+	}
+}
+
+void KeepMotionObjectSpeed<T>(ref T motionObject, bool removeObject) where T : MotionObject
+{
+		// Apply motion object's momentum on exit if we were wall running or edge running
+	if (WallOrEdgeRunning && motionObject.applyPassengerExitForce)
+	{
+		ModifySpeed(TotalVelocity.magnitude, sum: false, exceed: true);
+	}
+		// Remove motion object
+	if(removeObject)
+	{
+		motionObject.SetPassengerActive(false);
+		motionObject = null;
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
 									</div>
 								</div>
 							</div>
@@ -179,11 +487,12 @@
 		
 		<script src="assets/js/image-slider.js"></script>
 		
-		<script src="assets/js/slick.min.js"></script>
+	<!-- <script src="assets/js/slick.min.js"></script> -->
+	<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
 
 		
 		<script src="assets/js/navbar.js"></script>
-		<script src="assets/js/parallax-scrolling.js"></script>
+		<!-- <script src="assets/js/parallax-scrolling.js"></script> -->
 
 		<script src="assets/js/observers.js"></script>
 
