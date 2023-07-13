@@ -90,7 +90,7 @@
 									<div class="accordion-header">Wall Running</div>
 									<div class="accordion-content">
 										<h3>First Revision</h3>
-								<p>In the first revision of the player script, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to angle the player and adjust their direction accordingly.</p>
+								<p>Initially, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to adjust angle the player correctly.</p>
 										<p>This method was inspired by the use of spheres for collision in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
 											<div class="image-and-text-container left">
 												<div class="image-container">
@@ -274,7 +274,7 @@
 
 											</div>
 											<div class="text-container">
-												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point, making it work even in extreme speeds. You can see this system being stress tested here.</p>
+												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point. You can see this system being stress tested here.</p>
 											</div>
 										</div>
 
@@ -321,7 +321,7 @@
 												<video src="videos/edge-runner/control-lock.mp4" controls muted loop></video>
 											</div>
 											<div class="text-container">
-												<p>The lines show the path from the lock point to the unlock point, and the number next to the player shows the distance remaining until they reach the unlock point. As you can see, this can also be interrupted by player input or environment blocking in the way (ground, wall).</p>
+												<p>The lines show the path from the lock point to the unlock point, and the number next to the player show the distance remaining until they reach the unlock point. As you can see, this can also be interrupted by player input or environment blocking in the way (ground, wall).</p>
 											</div>
 										</div>
 
@@ -387,12 +387,13 @@ void ControlUnlock()
 										<p>In older revisions, the control lock timer method was used, however it wasn’t suitable as the travelled distance during control locks were inconsistent due to speed always changing, which conflicted with the level design.</p>
 									</div>
 								</div>
-								<div class="accordion-item">
+
+								<!-- <div class="accordion-item">
 									<div class="accordion-header">Assist System (inspired by Celeste)</div>
 									<div class="accordion-content">
 										<p>The game aids player inputs to better achieve desired actions through assists like snapping to missed nearby environments, dash distance extension, input buffering, etc.</p>
 									</div>
-								</div>
+								</div> -->
 							</div>
 
 							<h2>Other</h2>
@@ -401,31 +402,183 @@ void ControlUnlock()
 								<div class="accordion-item">
 									<div class="accordion-header">Camera</div>
 									<div class="accordion-content">
-										
-									</div>
-								</div>
-								<div class="accordion-item">
-									<div class="accordion-header">Motion Platforms</div>
-									<div class="accordion-content">
-										<p>The moving and rotating platforms, known as “motion objects”, give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
-										<p>With the first revision of the player script, we had to add the velocity of the rotating or moving platform to the player’s move velocity so that they move with the motion object they are on and not fall off. However, with the spline-based solution we implemented, our problem is automatically solved since the wall spline is already rotating or moving and we can still just use the spline points to position the player along the wall correctly.</p>
+										<p>I used Cinemachine to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
+										<p>We’re also smoothly changing the dead zone of the virtual camera component based on the player’s state, allowing us to tweak the feel of each, thus making the camera more dynamic.</p>
+										<p>The target’s position is limited by a threshold box surrounding the player so the camera never loses them. The bounds is scaled by the screen ratio so there’s more horizontal freedom.</p>
 										
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<video src="videos/edge-runner/rotating-platform-normals.mp4" controls muted loop></video>
+												<video src="videos/edge-runner/camera.mp4" controls muted loop></video>
 											</div>
 											<div class="text-container">
-										<p>And to angle the player correctly with rotating platforms, we need the normal vector of the evenly-spaced spline points to rotate with the wall too. This is done by only refreshing the spline point normals of the rotating wall the player is currently on.</p>
-										<p>As you can see, once the player enters a wall, the normals turn red and spike out as they update correctly relative to the rotation of the wall.</p>
+										<p>The camera target is the blue, you can see it turn cyan when it hits the threshold box (red). You can also see the dead zone box (yellow) changing smoothly.</p>
 											</div>
 										</div>
-										<p>The player gains the momentum of the motion object on exit.</p>
 
 										<div class="accordion">
 											<div class="accordion-item">
 												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
 												<div class="accordion-content">
 										<p>The following code shows the logic behind gaining the speed of motion objects on exit. We are using a “applyPassengerExitForce” flag as we want to gain speed from certain motion objects.</p>
+										<pre><code class="language-csharp hljs">using UnityEngine;
+using Cinemachine;
+
+public class CameraTarget : MonoBehaviour
+{
+	readonly Vector2 SCREEN_RATIO = new(1f, 0.5625f); // Aspect 16:9
+
+	[SerializeField] float threshold;
+
+	[Header("Player Direction")]
+	[SerializeField] float playerDirInfluenceAmount;
+	[SerializeField] float playerDirInfluenceAcc;
+	[SerializeField] float playereDirInfluenceDec;
+	Vector2 playerDirSmooth;
+	Vector2 playerDirSmoothCurrentVelocity;
+	[SerializeField] float playerDirSmoothTime;
+	float playerDirInfluencePercent;
+
+	[Header("Dead Zone")]
+	[SerializeField, Range(0f, 1f)] float deadZoneOnWall;
+	[SerializeField, Range(0f, 1f)] float deadZoneAirborne;
+	[SerializeField, Range(0f, 1f)] float deadZoneOnGround;
+	[SerializeField] float deadZoneSmoothTime;
+	float deadZone;
+	float deadZoneSmooth;
+	float deadZoneSmoothCurrentVelocity;
+
+	[Header("Cam Setup")]
+	public Camera cam;
+	[SerializeField] CinemachineVirtualCamera virtualCam;
+	CinemachineFramingTransposer framingTransposer;
+
+	#region Gizmos
+	bool targetPosClamped;
+	#endregion
+
+	public bool CanMove { get; set; }
+
+	Player player;
+
+	public static CameraTarget Instance { get; private set; }
+
+	private void Awake()
+	{
+		Instance = this;
+	}
+
+	private void Start()
+	{
+		player = Player.Instance;
+		transform.position = player.CenterPos;
+
+		player.OnStateChanged += UpdateDeadZone;
+		player.OnGroundedChanged += UpdateDeadZone;
+	}
+
+	private void Update()
+	{
+		if (CanMove)
+		{
+			// Get mid position between player and mouse
+			Vector2 playerPos = player.CenterPos;
+			Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+			Vector2 targetPos = (playerPos + mousePos) / 2f;
+
+			// Calculate and apply player direction values
+			playerDirInfluencePercent = Mathf.Clamp01(playerDirInfluencePercent
+				+ (player.WallOrEdgeRunning ? playerDirInfluenceAcc : -playereDirInfluenceDec)
+				* Time.unscaledDeltaTime);
+			playerDirSmooth = Vector2.SmoothDamp(playerDirSmooth, player.Dir,
+				ref playerDirSmoothCurrentVelocity, playerDirSmoothTime);
+			targetPos += playerDirSmooth * playerDirInfluenceAmount * playerDirInfluencePercent * threshold * SCREEN_RATIO;
+
+			// Bound target by threshold and screen ratio
+			Vector2 unclampedTargetPos = targetPos;
+			targetPos.x = Mathf.Clamp(targetPos.x, (-threshold * SCREEN_RATIO.x) + playerPos.x,
+													(threshold * SCREEN_RATIO.x) + playerPos.x);
+			targetPos.y = Mathf.Clamp(targetPos.y, (-threshold * SCREEN_RATIO.y) + playerPos.y,
+													(threshold * SCREEN_RATIO.y) + playerPos.y);
+			targetPosClamped = targetPos != unclampedTargetPos;
+
+			// Dead zone of virtual cam
+			deadZoneSmooth = Mathf.SmoothDamp(deadZoneSmooth, deadZone, ref deadZoneSmoothCurrentVelocity, deadZoneSmoothTime);
+			framingTransposer.m_DeadZoneWidth = deadZoneSmooth * SCREEN_RATIO.y;
+			framingTransposer.m_DeadZoneHeight = deadZoneSmooth * SCREEN_RATIO.x;
+
+			transform.position = targetPos;
+		}
+	}
+
+	public void UpdateDeadZone()
+	{
+		switch (player.State)
+		{
+			case Player.States.Normal:
+				deadZone = player.Grounded ? deadZoneOnGround : deadZoneAirborne;
+				break;
+			case Player.States.WallRun:
+			case Player.States.EdgeRun:
+				deadZone = deadZoneOnWall;
+				break;
+			case Player.States.WallJump:
+			case Player.States.Dash:
+				deadZone = deadZoneAirborne;
+				break;
+		}
+	}
+
+	private void OnValidate()
+	{
+		framingTransposer = virtualCam.GetCinemachineComponent<CinemachineFramingTransposer>();
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		// Threshold
+		Vector2 thresholdCenter = player ? player.CenterPos : cam.transform.position;
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireCube(thresholdCenter, new Vector2(threshold * 2f * SCREEN_RATIO.x, threshold * 2f * SCREEN_RATIO.y));
+
+		// Virtual cam dead zone
+		Gizmos.color = new Color(255, 255, 0, 0.5f);
+		Gizmos.DrawCube((Vector2)cam.transform.position, new Vector2(
+			framingTransposer.m_DeadZoneWidth * (1f / SCREEN_RATIO.y),
+			framingTransposer.m_DeadZoneHeight * (1f / SCREEN_RATIO.x))
+			* virtualCam.m_Lens.OrthographicSize * 2);
+
+		// Target
+		Gizmos.color = targetPosClamped ? Color.cyan : Color.blue;
+		Gizmos.DrawCube((Vector2)transform.position, Vector2.one * 1.5f);
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<div class="accordion-header">Moving & Rotating Walls, Profiler Analysis & Optimisation</div>
+									<div class="accordion-content">
+										<p>The moving and rotating platforms, known as “motion wall”, give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
+										<p>With the first revision of the player script, we had to add the velocity of the rotating or moving platform to the player’s move velocity so that they move with the motion wall they are on and not fall off. However, with the spline-based solution we implemented, our problem is automatically solved since the wall spline is already rotating or moving and we can still just use the spline points to position the player along the wall correctly.</p>
+										<p>And to angle the player correctly with rotating platforms, we need the normal vector of the evenly-spaced spline points to rotate with the wall too. This is done by only refreshing the spline point normals of the rotating wall the player is currently on.</p>
+										
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<video src="videos/edge-runner/rotating-platform-normals.mp4" controls muted loop></video>
+											</div>
+											<div class="text-container">
+										<p>As you can see, once the player enters a wall, the normals turn red and spike out as they update correctly relative to the rotation of the wall.</p>
+											</div>
+										</div>
+										<p>The player gains the momentum of the motion wall on exit.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-content">
+										<p>The following code shows the logic behind gaining the speed of motion walls on exit. We are using a “applyPassengerExitForce” flag as we want to gain speed from certain motion walls.</p>
 										<pre><code class="language-csharp hljs">void ExitWall(bool removeMotionObject = true)
 {
 	wall = null;
@@ -440,9 +593,9 @@ void ControlUnlock()
 	}
 }
 
-void KeepMotionObjectSpeed<T>(ref T motionObject, bool removeObject) where T : MotionObject
+void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : MotionObject
 {
-		// Apply motion object's momentum on exit if we were wall running or edge running
+		// Apply motion walls's momentum on exit if we were wall running or edge running
 	if (WallOrEdgeRunning && motionObject.applyPassengerExitForce)
 	{
 		ModifySpeed(TotalVelocity.magnitude, sum: false, exceed: true);
@@ -458,6 +611,17 @@ void KeepMotionObjectSpeed<T>(ref T motionObject, bool removeObject) where T : M
 											</div>
 										</div>
 
+										<p>A problem I encountered was low performance in scenes where a lot of motion objects were present. Using the profiler, I identified that most of the processing power was being spent on the “Physics2D.SyncCollider2DTransformChanges” event, responsible for updating colliders of objects with a changing transform.</p>
+										<p>The frame being shown was the time we loaded a new “chunk”. You see, to improve performance I broke the level down into chunks that load when detected by the camera box. However, in this case, the second chunk loads in more motion objects, which explains the doubling of processing power from this frame.</p>
+										<p>The event took up a whopping 45.7% of frame time, due to 283 calls being made to its functions.</p>
+										<div class="image-center">
+											<img src="images/edge-runner/unity-profiler-without-cam-detection.png"/>
+										</div>
+
+										<p>I implemented a solution where motion objects are surrounded by a circle that detects for the camera box so that we can only apply calculated rotation or movement to the transform when it’s in view. This significantly reduced the event’s impact to 2.6% of frame time, with only 6 function calls. Processing power is now distributed well and never doubles when loading the 2nd chunk.</p>
+										<div class="image-center">
+											<img src="images/edge-runner/unity-profiler-with-cam-detection.png"/>
+										</div>
 									</div>
 								</div>
 							</div>
