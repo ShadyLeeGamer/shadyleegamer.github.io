@@ -30,7 +30,8 @@ new ElementHTML(
     <li>Unity</li>
     <li>Git</li>
     <li>Sprite Shape API</li>
-    <li>Notion</li>`));
+    <li>Notion</li>
+    <li>Cinemachine</li>`));
 
 elementsHTML.set('game-jams',
 new ElementHTML(

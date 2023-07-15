@@ -306,6 +306,48 @@
 											<video src="videos/edge-runner/rapid-wall-jumping-with-adjustment.mp4" controls muted loop></video>
 											<video src="videos/edge-runner/rapid-wall-jumping-without-adjustment.mp4" controls muted loop></video>
 										</div>
+
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-content">
+										<p>The following code is used to manage control locks. Control locks are updated to see if the distance has been reached and then unlocked. Control locks are also abruptly unlocked when transitioning into new states while exiting the last one.</p>
+										<pre><code class="language-csharp hljs">void EnterWallJump(RaycastHit2D wallHit)
+{
+	SetDirection(Vector2.Reflect(Dir, wallHit.normal));
+	ricocheting = State == States.WallJump && !dashInput;
+	if (!ricocheting)
+	{
+		// Normal wall jump, adjust direction with some of surface normal
+		SetDirection((Dir + wallHit.normal * WALL_JUMP_ADJUSTMENT_FACTOR).normalized);
+		ricochetCount = 0;
+	}
+	else
+	{
+		// Ricochet, don't add adjustment, increment count and add score
+		ricochetCount++;
+
+		gameManager.SetScore(GameManager.PointTypes.Ricochet, CenterPos,
+			multiplier: Mathf.Clamp(ricochetCount, 1, ricochetPointMultiplierMax));
+	}
+
+	ControlLock(ricocheting ? controlLockDistanceRicochet : controlLockDistanceWallJump);
+	StartFalling(ricocheting ? fallingTimeRicochet : fallingTimeWallJump);
+	ModifySpeed(ricocheting ? speedIncRicochet : speedIncWallJump, exceed: ricocheting);
+
+	SetState(States.WallJump);
+
+	// Play particle & sound effect
+	wallJumpPFX.Play();
+	audioManager.PlaySound(SFX.WallJump,
+		Mathf.Clamp(walljumpPitchMin + (wallJumpPitchStep * ricochetCount),
+		walljumpPitchMin, walljumpPitchMax));
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
 									</div>
 								</div>
 
