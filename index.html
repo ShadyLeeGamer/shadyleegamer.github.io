@@ -9,6 +9,7 @@
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/loader.css"/>
 		<link rel="stylesheet" href="assets/css/main.css"/>
 
 		<link rel="stylesheet" href="assets/css/custom.css"/>
@@ -16,11 +17,21 @@
 		<link rel="stylesheet" href="assets/css/interactable.css"/>
 		<link rel="stylesheet" href="assets/css/edge-runner.css"/>
 		<link rel="stylesheet" href="assets/css/survival-2020.css"/>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	</head>
+	
 	<body class="homepage is-preload">  
-
+		<div id="loader-wrapper">
+			<span id="loader-spinner">
+				<span id="loader-hover">
+				</span>
+			</span>
+		</div>
 
 			<div id="page-wrapper">
+
+
 
 			<!-- Nav -->
 			<nav id="nav"></nav>
@@ -30,8 +41,8 @@
 					<section>
 						<div id="big-reel">
 							<video src="videos/big-reel.mp4" autoplay muted loop></video>
-
-
+							<span id="filter"></span>
+							<span id="fade"></span>
 						</div>
 
 						<div id="about-content">
@@ -154,7 +165,6 @@
 									</ul>
 									</section>
 									<section>
-							<!-- <h2 class="heading work-experience-header right">Tech XP</h2> -->
 
 										<ul class="highlights">
 											<li><div class="highlight-label">PROJECT MANAGEMENT</div>
@@ -237,9 +247,6 @@
 
 					</section>
 				</div>
-
-						<!-- <img src="images/hello-world-html-code-768x384.webp" class="code-bg"> -->
-						<!-- <img src="images/hello-world-html-code-768x384.webp" class="code-bg1"> -->
 
 				<div id="work-projects" class="container">
 							<!-- <section id="featured" class="wrapper style3 spotlights"> -->
@@ -573,122 +580,6 @@
 			</div> -->
 		</div>
 
-			
-			<!-- <div id="intro">
-				<section>
-					<div class="heading">
-						<span class="txt1">Education</span>
-						<span class="txt2">BTEC National Extended Diploma in Information Technology</span>
-						<span class="txt2">Units included:</span>
-					</div>
-				</section>
-			</div>
-
-			<div class="a">
-				<div class ="education-container">
-					<div class ="unit-card">
-						<div class="face face1">
-							<div class="unit-content">
-								<h3>Computer Games Development</h3>
-							</div>
-						</div>
-						<div class="face face2">
-							<div class="unit-content">
-								<p>Design Design Design Design Design Design</p>
-							</div> Design Design Design Design Design Design
-						</div>
-					</div>
-
-					<div class ="unit-card">
-						<div class="face face1">
-							<div class="unit-content">
-								<h3>Website Development</h3>
-							</div>
-						</div>
-						<div class="face face2">
-							<div class="unit-content">
-								<p>Design Design Design Design Design Design</p>
-							</div> Design Design Design Design Design Design
-						</div>
-					</div>
-
-					<div class ="unit-card">
-						<div class="face face1">
-							<div class="unit-content">
-								<h3>Mobile Apps Development</h3>
-							</div>
-						</div>
-						<div class="face face2">
-							<div class="unit-content">
-								<p>Design Design Design Design Design Design</p>
-							</div> Design Design Design Design Design Design
-						</div>
-					</div>
-					
-				</div>
-			</div> -->
-
-			<!-- Newsletter -->
-				<!-- <div id="newsletter" class="container">
-					<section>
-						<header>
-							<h2>Morbi insem uisdui</h2>
-							<span class="byline">Vivamus vestibulum nulla nec ante</span>
-						</header>
-						<form method="post" action="#" id="subscribe">
-							<input type="text" class="text" name="search" placeholder="Email address" />
-							<a href="#" class="button">Submit</a>
-						</form>
-					</section>
-
-				</div> -->
-
-			<!-- Footer -->
-				<!-- <div id="footer" class="container">
-
-					<div class="row">
-						<div class="col-12">
-							<div class="contact footer scroll-transition">
-								<ul class="contact-social">
-									<li>
-										<a href="https://github.com/ShadyLeeGamer" target="_blank">
-											<div class="spinner" style="width: 40px; height: 40px;">
-												<img src="images/icons/github.png">
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.linkedin.com/in/ariyabayat/" target="_blank">
-											<div class="spinner" style="width: 40px; height: 40px;">
-												<img src="images/icons/linkedin.png">
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="https://shadyleegamer.itch.io/" target="_blank">
-											<div class="spinner" style="width: 40px; height: 40px;">
-												<img src="images/icons/itch-io.png">
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.youtube.com/@shadyleegamer" target="_blank">
-											<div class="spinner" style="width: 40px; height: 40px;">
-												<img src="images/icons/youtube.png">
-											</div>
-										</a>
-									</li>
-								</ul>
-								<div class="contact-email">
-									<a href="mailto:shadyleegamer@gmail.com" >shadyleegamer@gmail.com</a>
-								</div>
-							</div>
-						
-						</div>
-					</div>
-
-				</div> -->
-
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -697,6 +588,10 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
+
+			<script src="assets/js/loader.js"></script>
+
+			<script src="assets/js/global.js"></script>
 			<script src="assets/js/main.js"></script>
 
 			<script src="assets/js/custom.js"></script>
@@ -708,10 +603,8 @@
 			<script src="assets/js/edge-runner.js"></script>
 
 			<script src="assets/js/navbar.js"></script>
-			<!-- <script src="assets/js/parallax-scrolling.js"></script> -->
 
 			<script src="assets/js/observers.js"></script>
-			<script src="assets/js/accordion-single.js"></script>
 		</div>
 	</body>
 </html>
