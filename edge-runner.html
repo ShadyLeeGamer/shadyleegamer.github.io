@@ -9,6 +9,7 @@
 		<title>Untitled</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
 		<link rel="stylesheet" href="assets/css/loader.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
@@ -22,7 +23,13 @@
 		<script src="highlight/highlight.min.js"></script>
 		<script>hljs.highlightAll();</script>
 	</head>
-	<body class="no-sidebar is-preload">
+	<body class="no-sidebar">
+		<div id="loader-wrapper">
+			<span id="loader-spinner">
+				<span id="loader-hover">
+				</span>
+			</span>
+		</div>
 
 		<div class="projects-header-wrapper">
 			<nav id="nav"></nav>
@@ -32,6 +39,8 @@
 			<header id="project-header">
 				<div id="big-reel">
 					<video src="videos/okainos/reel.mp4" autoplay muted loop></video>
+					<span id="filter"></span>
+					<span id="fade"></span>
 				</div>
 				<h2 class="project-title">Edge Runner</h2>
 
@@ -683,9 +692,11 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
 
+		<script src="assets/js/loader.js"></script>
+		<script src="assets/js/main.js"></script>
 		<script src="assets/js/custom.js"></script>
+		
 		<script src="assets/js/project-elements.js"></script>
 		<script src="assets/js/slideshow.js"></script>
 		

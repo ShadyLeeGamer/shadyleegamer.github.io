@@ -78,9 +78,38 @@
   --spinner-shine-bg: var(--tech-spinner-bg);
 }
 
+ul.tabs {
+  padding-bottom: 2em;
+}
+
+ul.other-game-jams
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  margin: 0;
+
+  flex-direction: row;
+  list-style: none;
+}
+
+ul.other-game-jams li {
+  margin: 1em;
+}
+
+ul.other-game-jams li img {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.55);
+}
+
 ul.platform {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
 
   padding: 0;
@@ -203,6 +232,8 @@ ul.tabs li:has(div.spinner)::after{
   width: calc(100% - 3.5px);
   pointer-events: none;
 }
+
+
 
 ul.tech li .tooltip {
   position: absolute;
