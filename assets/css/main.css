@@ -84,6 +84,9 @@ body {
 	line-height: 1;
 }
 
+#page-wrapper {
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -3941,9 +3944,9 @@ input, select, textarea {
 			transition: height 1s ease; 
 		}
 		@media screen and (max-width: 980px) {
-			#project-header #big-reel video{
+			/* #project-header #big-reel video{
 				height: 28em;
-		}
+		} */
 		}
 
 		#big-reel #fade {
