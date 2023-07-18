@@ -23,6 +23,40 @@
 
 }
 
+#loader-spinner {
+    display: flex;
+    animation: loader-spin 3s cubic-bezier(0, 0.3, 0.6, 1) infinite;
+  }
+
+#loader-hover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    animation: loader-hover 3s infinite ease-in-out;
+  }
+
+  #loader-spinner::after
+  {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    bottom: -20px;
+    left: 0;
+    z-index: -1;
+  }
+  
+  @keyframes loader-hover {
+    0%, 100% {
+        transform: translateY(10px);
+      }
+      50% {
+        transform: translateY(-10px);
+    }
+  }
 
   @keyframes loader-spin {
     0%, 100% {

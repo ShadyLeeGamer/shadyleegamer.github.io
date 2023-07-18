@@ -1,11 +1,13 @@
 const projectTop = document.getElementById('project-top');
 isHomePage = projectTop == null;
-$("#loader-wrapper").show();
-$(document).ready(function() {
+// $(document).ready(function() {
+//     $("#loader-wrapper").fadeOut("slow");
+//     setTimeout(BigReelIntro, isHomePage ? 2000 : 1000);
+// });
+$(window).on("load", function() {
     $("#loader-wrapper").fadeOut("slow");
     setTimeout(BigReelIntro, isHomePage ? 2000 : 1000);
 });
-
 
 // Big Reel
 function BigReelIntro() {
