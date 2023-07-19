@@ -35,7 +35,7 @@ new ElementHTML(
 
 elementsHTML.set('game-jams',
 new ElementHTML(
-    ``,
+    `🏆 13 Game Jams`,
     `Sept 2020 — May 2022`,
     `<li>C#</li>
     <li>Unity</li>

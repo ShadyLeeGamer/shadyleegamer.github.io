@@ -2544,7 +2544,6 @@ input, select, textarea {
 			align-self: flex-end;
 			margin: 0;
 			left: 0;
-			/* background-color: #000000; */
 		}
 
 			ul.project-tech-list li {
@@ -2560,10 +2559,10 @@ input, select, textarea {
 				text-decoration: none;
 				text-transform: uppercase;
 
-
 				background: var(--colour-bright);
 				border: solid var(--colour-bright);
 				color: var(--text-light);
+
 				/* line-height: calc(2em); */
 			}
 
@@ -4197,7 +4196,8 @@ input, select, textarea {
 		text-shadow: 6px 3px 6px #00000083;
 	}
 
-		#project-header .project-title{
+		#project-header .project-title,
+		#project-top .project-title{
 			position: relative;
 			text-align: center;
 			font-size: 7.5em;
@@ -4270,7 +4270,8 @@ input, select, textarea {
 		
 
 		@media screen and (max-width: 980px) {
-			#project-header .project-title {
+			#project-header .project-title,
+		#project-top .project-title {
 			font-size: 6em;
 			}
 			#project-header .project-date {
@@ -4278,7 +4279,8 @@ input, select, textarea {
 			}
 		}
 		@media screen and (max-width: 736px) {
-			#project-header .project-title {
+			#project-header .project-title,
+		#project-top .project-title {
 			font-size: 4.5em;
 			}
 			#project-header .project-date {
@@ -5077,4 +5079,5 @@ input, select, textarea {
 	h3.project-heading {
 		font-size: 2em;
 		padding-bottom: 0.5em;
+		letter-spacing: 0.10em;
 	}

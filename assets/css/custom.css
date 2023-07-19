@@ -148,30 +148,10 @@ ul.tech li {
   margin: 10px;
 }
 
-ul.spinner-list li,
-.resume-button {
-  /* animation: hover 3s linear infinite; */
-  
-}
-
 ul.spinner-list {
   /* background-color: #38ADDE; */
   flex-wrap: wrap;
 
-}
-
-@keyframes hover {
-  0% {
-    transform: translateY(3px) scale(1, 1);
-    }
-
-  50% {
-    transform: translateY(-3px) scale(1, 1);
-  }
-
-  100% {
-    transform: translateY(3px) scale(1, 1);
-    }
 }
 
 #project-content-wrapper,
@@ -181,16 +161,16 @@ ul.spinner-list {
 }
 
 .spinner {
+  position: relative;
   width: 60px;
   height: 60px;
   margin: 0 0px;
   border-radius: 100%;
   background: var(--tech-spinner-bg);
-  padding: 0.75em;
-  position: relative;
+  padding: 0.6em;
   overflow: hidden;
   
-  animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite, hover 3s ease-in-out infinite;
 }
 
 ul.tech li .spinner {
@@ -215,25 +195,20 @@ ul.tech .spinner img {
 
 /* Shadow */
 ul.spinner-list li::after,
-/* ul.tech li::after,
-ul.contact-social li::after,
-ul.platform li::after, */
-
 .resume-button::after,
 ul.tabs li:has(div.spinner)::after{
-  content: "";
-  display: block;
+  content: '';
   position: absolute;
-  bottom: 0;
-  border-radius: 100%;
-  box-shadow: 0 20px 10px -5px rgba(0, 0, 0, 0.5);
+  display: block;
+  left: 2px;
+  width: 100%;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  bottom: -15px;
+
   animation: spin 5s linear infinite;
-  height: 100%;
-  width: calc(100% - 3.5px);
-  pointer-events: none;
 }
-
-
 
 ul.tech li .tooltip {
   position: absolute;
@@ -304,28 +279,36 @@ ul.spinner-list li .spinner::after,
   pointer-events: none;
 }
 
+@keyframes spin {
+  0%, 100% {
+    transform: rotateY(0deg);
+    }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+  }
+
+  @keyframes hover {
+    0%, 100% {
+      top: 5px;
+    }
+  
+    50% {
+      top: -5px;
+    }
+  }
+
 @keyframes shining {
-  0% {
+  0%, 50%, 100% {
   transform: translateX(-100px);
     }
 
-  25% {
+  25%, 75% {
     transform: translateX(50px);
   }
-
-  50% {
-    transform: translateX(-100px);
-    }
-
-    75% {
-      transform: translateX(50px);
-    }
-  
-    100% {
-      transform: translateX(-100px);
-      }
-
 }
+
 @media screen and (max-width: 1280px) {
 
 
@@ -398,15 +381,6 @@ ul.spinner-list li:hover .spinner::after,
   {
     transform: scale(1.5);
   }
-
-  @keyframes spin {
-    from {
-      transform: rotateY(0deg);
-  }
-    to {
-      transform: rotateY(360deg);
-    }
-    }
 
       .accordion {
         margin-bottom: 10px;
@@ -821,26 +795,20 @@ img{
 }
 
 
-.tech.scroll-transition li,
+.spinner-list.scroll-transition li,
 .contact.scroll-transition li,
-.tabs.scroll-transition li {
+.tabs.scroll-transition li,
+.project-tech-list.scroll-transition li {
   transform: scale(0, 0);
+  transition: transform 0.5s;
   animation: none;
 }
 
-.tech.scroll-transition li.end,
+.spinner-list.scroll-transition li.end,
 .contact.scroll-transition li.end,
-.tabs.scroll-transition li.end {
-  transition: transform 0.25s ease-out;
-  animation: hover 3s linear infinite;
-  
-}
-
-.project-tech-list.scroll-transition li{
-  transform: scale(0, 0);
-}
-
+.tabs.scroll-transition li.end,
 .project-tech-list.scroll-transition li.end {
-  transition: transform 0.25s ease-out;
+  /* transition: transform 0.25s ease-out; */
+  /* animation: spin 3s linear infinite; */
   transform: scale(1, 1);
 }
