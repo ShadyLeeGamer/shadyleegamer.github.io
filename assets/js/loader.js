@@ -1,4 +1,5 @@
 const projectTop = document.getElementById('project-top');
+const bigReelVideo = document.querySelector('#big-reel video');
 isProjectPage = projectTop != null;
 // $(document).ready(function() {
 //     $("#loader-wrapper").fadeOut("slow");
@@ -6,14 +7,14 @@ isProjectPage = projectTop != null;
 // });
 $(window).on("load", function() {
     $("#loader-wrapper").fadeOut("slow");
+    bigReelVideo.style.width = "100%";
     setTimeout(BigReelIntro, isProjectPage ? 1000 : 2000);
     StartObservers();
 });
 
-// Big Reel
+// Big Reel (& Nav) Intro
 function BigReelIntro() {
     const bigReelContainer = document.getElementById('big-reel');
-    const bigReelVideo = document.querySelector('#big-reel video');
     const bigReelFilter = document.querySelector('#big-reel #filter');
     const bigReelFade = document.querySelector('#big-reel #fade');
     const nav = document.getElementById('nav');
@@ -36,7 +37,6 @@ function BigReelIntro() {
 }
 
 // Observers
-
 function StartObservers()
 {
     const faders = document.querySelectorAll('.scroll-transition');

@@ -50,13 +50,13 @@
 
 				<div class="slick-slider template">
 					<div class="slick-slide">
-						<video src="videos/okainos/Turns_in_action.mp4"></video>
+						<video src="videos/okainos/Turns_in_action.mp4" controls></video>
 					</div>
 					<div class="slick-slide">
 						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/okainos-logo.png">
+						<img src="images/okainos/booster-opening-screenshot.png">
 					</div>
 					<div class="slick-slide">
 						<img src="images/okainos/card-data-asset-firebase-json.png">
@@ -67,22 +67,11 @@
 				</div>
 
 				<div class="description">
-					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as the lead developer by an artist i met in a game jam to help transition the game from alpha to closed beta.</p>
-					<p>I built and integrated game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
+					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as lead developer by an artist I met on a game jam to help transition the game from alpha to closed beta.</p>
+					<p>I built game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
 
 					<h3 class="project-heading">Alpha Testers!</h3>
-					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and improving the testing process.</p>
-
-					<!-- <div class="image-and-text-container left">
-						<div class="image-container">
-							<a href="https://okainos-b8c7b.web.app/" target="_blank"><img src="images/okainos/website.jpeg"/></a>
-						</div>
-						<div class="text-container">
-							<h3 class="project-heading">Alpha Testers!</h3>
-							
-							<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and improving the testing process.</p>
-						</div>
-					</div> -->
+					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and the testing process.</p>
 
 					<ul class="spinner-list platform scroll-transition">
 						<li>
@@ -120,7 +109,7 @@
 								<div class="accordion-item">
 									<div class="accordion-header">Card Deck Builder (Encoding & Decoding)</div>
 									<div class="accordion-content">
-										<p>In order to store the card decks created by players, a card deck code containing the details of the deck is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing.</p>
+										<p>In order to store the card decks created by players, a card deck code containing details is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing.</p>
 										
 										<div class="realtime-function">
 											<div class="display">
@@ -133,7 +122,7 @@
 											</div>
 										</div>
 
-										<p>Of course, before a card deck code is created and stored, the game compares the card deck against the player's card collection to see if all selected cards is available.</p>
+										<p>Of course, before a card deck code is created and stored, the game compares the deck against the player's card collection to check if all selected cards is available.</p>
 									
 										<div class="accordion">
 											<div class="accordion-item">
@@ -270,7 +259,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Card Data Assets and Launcher</div>
+									<div class="accordion-header">Reducing Updates with Card Data Assets (& Launcher App)</div>
 									<div class="accordion-content">
 										<p>Since the game was in development, we had to find ways to reduce the amount of updates the alpha testers had to do from the game page.</p>
 										<!--<h3>Left &amp; Right</h3>-->
@@ -280,7 +269,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 										<img src="images/okainos/card-data-asset-firebase-json.png"/>
 									</div>
 									<div class="text-container">
-										<p>The solution I implemented were card assets, which were used to store the data of cards including stats, effects, description, etc. The data was written and read in JSON between the editor and database and custom editor tools were used to automate the process.</p>
+										<p>The solution I implemented were card data assets, used to store details of cards including stats, effects, description, etc. The data was written and read in JSON between the editor and database and custom editor tools were used to automate the process.</p>
 										<p>This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
 									</div>
 								</div>
@@ -290,7 +279,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 										<img src="images/okainos/card-asset-inspector.png"/>
 									</div>
 									<div class="text-container">
-										<p>However, this excluded card resources like materials as they were stored locally in the game.</p>
+										<p>However, this excluded heavy card resources like materials as they were stored locally in the game.</p>
 										<p>The solution we came up was to instead put a launcher app on the game page which would automatically retrieve updated versions of the game build from the Firebase Cloud Storage.</p>
 									</div>
 								</div>
@@ -311,7 +300,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									<div class="accordion-header">Booster Opening</div>
 									<div class="accordion-content">
 
-										<p>Boosters give you more cards and can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
+										<p>You can gain more cards with boosters, which can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
 										<div class="realtime-function">
 											<div class="display">
 												<h2>FRONT-END</h2>
@@ -320,7 +309,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 											<div class="display">
 												<h2>BACK-END</h2>
 												<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
-												<video src="videos/okainos/booster-opening-back-end-.mp4" autoplay loop muted></video>
+												<video src="videos/okainos/booster-opening-back-end.mp4" autoplay loop muted></video>
 											</div>
 										</div>
 		
@@ -355,9 +344,6 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 												<p>This system was also linked to Itch.io in order to private the game's access to only testers using Itch io’s key group feature. I generated a max of 100 keys and stored them in Firebase Cloud Storage. For every account created on the website, a key URL is pulled and stored in the user’s account for them to claim and access the game page via it from their profile page.</p>
 											</div>
 										</div>
-	
-										<p><span class="image left">
-											<img src="images/okainos/closed-beta-tester-key-group.png" style="object-fit:contain;width:300px; height:400px;"/></span>
 
 											<div class="accordion">
 											<div class="accordion-item">
@@ -479,7 +465,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/okainos/card-data-asset-firebase-json.png"></span>
+												<img src="images/okainos/card-data-asset-firebase-json-old.png"></span>
 											</div>
 											<div class="text-container">
 												<p>A big issue we faced when testing a build of the game was that it would fail to load card resources like materials, sprites, and prefabs. This was due to the old method of storing the GUID of the assets on the database and using it to load the assets at runtime. Since this uses the UnityEditor namespace it does not work in a build.</p>

@@ -14,6 +14,10 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
 
+		<link rel="stylesheet" href="assets/css/interactable.css" />
+		<link rel="stylesheet" href="assets/css/edge-runner.css" />
+
+
 		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
 
 		<link rel="stylesheet" href="assets/css/slick.css" />
@@ -68,6 +72,22 @@
 				</div>
 
 				<div class="description">
+					<ul class="spinner-list platform scroll-transition">
+						<li id="steam">
+							<div class="spinner">
+								<a href="https://store.steampowered.com/" target="_blank">
+									<img src="images/icons/steam.png" />
+								</a>
+							</div>
+						</li>
+					</ul>
+
+					<div class="interactable narrow">
+						<div id="edge-runner">
+							<div></div>
+						</div>
+					</div>
+
 					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourage fast-paced gameplay.</p>
 					<p>The biggest challenge for me was developing the player which functions on a variety of mechanics during gameplay.</p>
 				</div>
@@ -699,6 +719,8 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 		
 		<script src="assets/js/project-elements.js"></script>
 		<script src="assets/js/slideshow.js"></script>
+
+		<script src="assets/js/edge-runner.js"></script>
 		
 		<script src="assets/js/popup-image.js"></script>
 		<script src="assets/js/tabs.js"></script>
