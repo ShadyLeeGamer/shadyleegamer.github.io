@@ -67,12 +67,6 @@
 				</div>
 
 				<div class="description">
-					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as lead developer by an artist I met on a game jam to help transition the game from alpha to closed beta.</p>
-					<p>I built game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
-
-					<h3 class="project-heading">Alpha Testers!</h3>
-					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and the testing process.</p>
-
 					<ul class="spinner-list platform scroll-transition">
 						<li>
 							<div class="spinner" style="background: #ffffff;">
@@ -89,6 +83,14 @@
 							</div>
 						</li>
 					</ul>
+
+					<ul id="okainos" class="project-tech-list scroll-transition"></ul>
+
+					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as lead developer by an artist I met on a game jam to help transition the game from alpha to closed beta.</p>
+					<p>I built game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
+
+					<h3 class="project-heading">Alpha Testers!</h3>
+					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and the testing process.</p>
 				</div>
 			</div>
 
@@ -107,7 +109,7 @@
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<div class="accordion-header">Card Deck Builder (Encoding & Decoding)</div>
+									<div class="accordion-header">Card Deck Builder - Encoding & Decoding Custom Code</div>
 									<div class="accordion-content">
 										<p>In order to store the card decks created by players, a card deck code containing details is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing.</p>
 										
@@ -325,7 +327,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Authentication with Firebase and Itch.io Integration</div>
+									<div class="accordion-header">Website Integration of Firebase & Itch.io systems</div>
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
 											<div class="image-container">
@@ -438,7 +440,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Card Collection Filter Tool</div>
+									<div class="accordion-header">Card Collection Filtering & Trading Tools</div>
 									<div class="accordion-content">
 										<p>To help players strategize, I created a team planner with a filtering system that can sort cards by tribe, rarity, strength, price, draw. For further filtering, you can also check to only see cards owned in your collection or search by name.</p>
 										<div class="image-center">
@@ -461,7 +463,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Card Resources Manager</div>
+									<div class="accordion-header">Card Resources Manager (materials, sprites, prefabs)</div>
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
 											<div class="image-container">
@@ -472,7 +474,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 											</div>
 										</div>
 	
-										<p>The solution I implemented was a resources manager which uses Unity’s persisting resources folder which is loaded for retrieving card resources. The correct resources are fetched by card id. This will also save space in the database</p>
+										<p>The solution I implemented was a resources manager which uses Unity’s persisting resources folder which is loaded for retrieving the correct card resources by ID. This saved a lot of space in the database as we are no longer storing ID for each resource and instead use the card's ID to retrieve resources from the persisting folder.</p>
 										
 										<div class="accordion">
 											<div class="accordion-item">

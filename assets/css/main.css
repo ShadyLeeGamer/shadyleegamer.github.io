@@ -208,7 +208,8 @@ input, select, textarea {
 	}
 
 	a {
-		color: #E56E59;
+		color: var(--purple);
+		font-weight: bold;
 	}
 
 	sub {
@@ -254,10 +255,6 @@ input, select, textarea {
 		--nav-background: #385a68;
 
 		/* --about-me-bg-1:#263D4Cc0 ; */
-		--about-me-bg-1:#907a5ec0 ;
-		--about-me-bg-1:#c5835fc0 ;
-		--about-me-bg-1:#84492ec0 ;
-		--about-me-bg-2:#EECA9Dc0 ;
 		--about-me-bg-1:#263D4C ;
 		--about-me-bg-2:#456678c0 ;
 		--project-content-bg:#e4ded5e6 ;
@@ -274,7 +271,6 @@ input, select, textarea {
 		--nav-span: #85AAAD;
 
 		--nav-span-2: #c2d8d9;
-
 
 		--side-title: #A9A9A1;
 
@@ -300,6 +296,9 @@ input, select, textarea {
 		--colour: var(--nav-background);
 	}
 	:root #nav.over-big-reel {
+		--colour: #222222c6;
+	}
+	:root #nav.over-big-reel.over-filter {
 		--colour: #22222200;
 	}
 

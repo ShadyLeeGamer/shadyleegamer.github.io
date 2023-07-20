@@ -79,6 +79,7 @@ socialContactsElements.forEach(socialContacts => {
 
 
 // Animate Scroll
+bigReelHasFilter = document.querySelector('#big-reel #filter');
 var lastScrollTop = 0;
 window.addEventListener("scroll", function() {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -104,9 +105,13 @@ function UpdateNavColour() {
         threshold = navOffset + window.innerHeight * 0.7;
     }
     if (scrollPosition > threshold) {
+        if (bigReelHasFilter)
+            element.classList.remove('over-filter');
         element.classList.remove('over-big-reel');
     } else {
         element.classList.add('over-big-reel');
+        if (bigReelHasFilter)
+            element.classList.add('over-filter');
     }
 }
 UpdateNavColour();

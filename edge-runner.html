@@ -88,6 +88,8 @@
 						</div>
 					</div>
 
+				<ul id="edge-runner" class="project-tech-list scroll-transition"></ul>
+
 					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourage fast-paced gameplay.</p>
 					<p>The biggest challenge for me was developing the player which functions on a variety of mechanics during gameplay.</p>
 				</div>
@@ -474,7 +476,7 @@ void ControlUnlock()
 								<div class="accordion-item">
 									<div class="accordion-header">Camera</div>
 									<div class="accordion-content">
-										<p>I used Cinemachine to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
+										<p>I used <a href="https://unity.com/unity/features/editor/art-and-design/cinemachine">Cinemachine</a> to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
 										<p>We’re also smoothly changing the dead zone of the virtual camera component based on the player’s state, allowing us to tweak the feel of each, thus making the camera more dynamic.</p>
 										<p>The target’s position is limited by a threshold box surrounding the player so the camera never loses them. The bounds is scaled by the screen ratio so there’s more horizontal freedom.</p>
 										
@@ -630,7 +632,7 @@ public class CameraTarget : MonoBehaviour
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Moving & Rotating Walls, Profiler Analysis & Optimisation</div>
+									<div class="accordion-header">Optimising Moving & Rotating Walls with Profiler Analysis</div>
 									<div class="accordion-content">
 										<p>The moving and rotating platforms, known as “motion wall”, give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
 										<p>With the first revision of the player script, we had to add the velocity of the rotating or moving platform to the player’s move velocity so that they move with the motion wall they are on and not fall off. However, with the spline-based solution we implemented, our problem is automatically solved since the wall spline is already rotating or moving and we can still just use the spline points to position the player along the wall correctly.</p>

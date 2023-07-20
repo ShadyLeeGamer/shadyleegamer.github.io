@@ -8,7 +8,7 @@ isProjectPage = projectTop != null;
 $(window).on("load", function() {
     $("#loader-wrapper").fadeOut("slow");
     bigReelVideo.style.width = "100%";
-    setTimeout(BigReelIntro, isProjectPage ? 1000 : 2000);
+    setTimeout(BigReelIntro, isProjectPage ? 1000 : 1500);
     StartObservers();
 });
 
@@ -32,7 +32,11 @@ function BigReelIntro() {
     else {
         bigReelContainer.style.height = bigReelVideo.style.height = '80vh';
     }
-    bigReelFilter.style.opacity = bigReelFade.style.opacity = '1';
+    
+    if (bigReelFilter) {
+      bigReelFilter.style.opacity =  '1';
+    }
+    bigReelFade.style.opacity = '1';
     nav.style.opacity = '1';
 }
 
