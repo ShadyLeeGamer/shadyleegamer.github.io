@@ -46,6 +46,7 @@
 				<p id="okainos" class="project-date scroll-transition"></p>
 			</header>
 			
+			<!-- <div id="project-top" class="container"> -->
 			<div id="project-top" class="container">
 
 				<div class="slick-slider template">
@@ -89,6 +90,8 @@
 
 					<ul id="okainos" class="project-tech-list scroll-transition"></ul>
 
+					<p id="okainos" class="project-category"></p>
+
 					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as lead developer by an artist I met on a game jam to help transition the game from alpha to closed beta.</p>
 					<p>I built game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
 
@@ -112,7 +115,7 @@
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<div class="accordion-header">Card Deck Builder - Encoding & Decoding Custom Code</div>
+									<div class="accordion-header user-interface"><div>Card Deck Builder - Serialising & Deserialising Custom Code</div></div>
 									<div class="accordion-content">
 										<p>In order to save the card deck created by a player, a card deck code containing the details is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing. The format goes like this:</p>
 										
@@ -133,7 +136,7 @@ CARD1_NAME*QUANITY,CARD2_NAME*QUANITY,CARD3_NAME*QUANITY</code></pre>
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">(C#) CODE SNIPPET - Card Deck Code Processing</div>
+												<div class="accordion-header c-sharp"><div>Card Deck Code SerDes & Validation</div></div>
 												<div class="accordion-content">
 													<p>The following code is used to decode the player’s card deck from the database, and validate created card decks by comparing against the player’s card collection to see if all selected cards is available before encoding.</p>
 													<pre><code class="language-csharp hljs">/// <summary>
@@ -267,7 +270,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Reducing Updates with Card Data Assets (& Launcher App)</div>
+									<div class="accordion-header diagnostic"><div>Reducing Updates with Card Data Assets (& Launcher App)</div></div>
 									<div class="accordion-content">
 									<h3 class="project-heading">Card Data Assets</h3>
 								<div class="image-and-text-container left">
@@ -280,6 +283,9 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								
+								<p>However, this is not suitable for card resource files like materials as they much more complex than simple data types like strings or integers. A solution could be to store resources in Firebase Cloud Storage and fetch changes from there, or use a launcher app.</p>
+
+
 								<div class="image-and-text-container right">
 									<div class="image-container">
 										<img src="images/okainos/card-asset-inspector.png"/>
@@ -291,7 +297,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 
 								<div class="accordion">
 									<div class="accordion-item">
-										<div class="accordion-header">(C#) CODE SNIPPET - Property Selector Drawer</div>
+										<div class="accordion-header c-sharp"><div>Property Selector Drawer</div></div>
 										<div class="accordion-content">
 <pre><code class="language-csharp hljs">using UnityEngine;
 using UnityEditor;
@@ -403,8 +409,6 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									</div>
 								</div>
 
-								<p>However, this is not suitable for card resource files like materials as they much more complex than simple data types like strings or integers.</p>
-								<p>A solution could be to store resources in Firebase Cloud Storage and fetch changes from there, or use a launcher app.</p>
 
 
 								<h3 class="project-heading">Launcher App</h3>
@@ -422,7 +426,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Booster Opening</div>
+									<div class="accordion-header probability"><div>Booster Opening</div></div>
 									<div class="accordion-content">
 										<p>You can gain more cards with boosters, which can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
 										<div class="realtime-function">
@@ -449,7 +453,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Website Auth System (Firebase, Email & Itch.io)</div>
+									<div class="accordion-header web"><div>Website Auth System (Firebase, Email & Itch.io)</div></div>
 									<div class="accordion-content">
 										<h3 class="project-heading">Firebase Authentication & Itch.io Integration</h3>
 
@@ -473,7 +477,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 
 											<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">(JS) CODE SNIPPET | Authentication Process</div>
+												<div class="accordion-header javascript"><div>Authentication Process</div></div>
 												<div class="accordion-content">
 													<p>This function is called upon pressing submit in the register page.</p>
 													<pre><code class="language-js hljs">function OnRegisterInput()
@@ -574,7 +578,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Card Collection Filtering & Trading Tools</div>
+									<div class="accordion-header user-interface"><div>Card Collection Filtering & Trading Tools</div></div>
 									<div class="accordion-content">
 										<p>To help players strategize, I created a team planner with a filtering system that can sort cards by tribe, rarity, strength, price, draw. For further filtering, you can also check to only see cards owned in your collection or search by name.</p>
 										<div class="image-center">
@@ -597,7 +601,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Card Resources Manager (materials, sprites, prefabs)</div>
+									<div class="accordion-header diagnostic"><div>Managing Heavy Resources (materials, sprites, prefabs)</div></div>
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
 											<div class="image-container">
@@ -612,7 +616,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 										
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">(C#) CODE SNIPPET - Card Deck Code Processing</div>
+												<div class="accordion-header c-sharp"><div>CardResourcesManager</div></div>
 												<div class="accordion-content">
 													<pre><code class="language-csharp hljs">public static class CardResourcesManager 
 {

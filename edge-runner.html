@@ -90,6 +90,8 @@
 
 				<ul id="edge-runner" class="project-tech-list scroll-transition"></ul>
 
+				<p id="edge-runner" class="project-category"></p>
+
 					<p>Recently published a high-speed anime platformer on Steam, with the help of my sister (artist) for designing and animating the player and levels. The game features complex gravity-bending physics with open levels and mechanics that encourage fast-paced gameplay.</p>
 					<p>The biggest challenge for me was developing the player which functions on a variety of mechanics during gameplay.</p>
 				</div>
@@ -106,7 +108,7 @@
 					<div class="row">
 						<div class="col-12">
 
-							<h2>Raycast & Engine Physics Character Controller</h2>
+							<h3 class="project-heading"><s>Rigidbody & Raycast</s> Spline-Based Character Controller</h3>
 
 							<div class="image-and-text-container left">
 								<div class="image-container">
@@ -119,10 +121,11 @@
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<div class="accordion-header">Wall Running</div>
+									<!-- <span class="accordion-icon icon-movement"><img src="images/accordion-icons/movement.png"></span> -->
+									<div class="accordion-header movement"><div>Wall Running</div></div>
 									<div class="accordion-content">
-										<h3>First Revision</h3>
-								<p>Initially, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to adjust angle the player correctly.</p>
+										<h3 class="project-heading">First Revision</h3>
+								<p>Initially, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to angle the player correctly.</p>
 										<p>This method was inspired by the use of spheres for collision in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
 											<div class="image-and-text-container left">
 												<div class="image-container">
@@ -134,7 +137,7 @@
 												</div>
 											</div>
 
-											<h3>Final Revision</h3>
+											<h3 class="project-heading">Final Revision</h3>
 											<div class="image-and-text-container right">
 												<div class="image-container">
 													<video src="videos/edge-runner/wall-point-percent.mp4" controls muted loop>
@@ -153,6 +156,7 @@
 												</div>
 											</div>
 
+											<h3 class="project-heading">Evenly-Spaced Spline Points</h3>
 
 											<div class="image-and-text-container right">
 												<div class="image-container">
@@ -167,7 +171,7 @@
 
 												<div class="accordion">
 													<div class="accordion-item">
-														<div class="accordion-header">CODE SNIPPET | Calculate Evenly Spaced Points</div>
+														<div class="accordion-header c-sharp"><div>SplineManager.CalculateEvenlySpacedPoints</div></div>
 														<div class="accordion-content">
 															<p>The following code is used to calculate the position of all evenly spaced points based off the wall spline points.</p>
 															<pre><code class="language-csharp hljs">public Vector2[] CalculateEvenlySpacedPoints()
@@ -216,7 +220,7 @@
 														</div>
 													</div>
 													<div class="accordion-item">
-														<div class="accordion-header">CODE SNIPPET | Calculate Evenly Spaced Point Normal</div>
+														<div class="accordion-header c-sharp"><div>SplineManager.CalculateEvenlySpacedPointNormal</div></div>
 														<div class="accordion-content">
 															<pre><code class="language-csharp hljs">Vector2 CalculateEvenlySpacedPointNormal(int node)
 {
@@ -247,7 +251,7 @@
 
 
 								<div class="accordion-item">
-									<div class="accordion-header">Edge Running</div>
+									<div class="accordion-header movement"><div>Edge Running</div></div>
 									<div class="accordion-content">
 										<p>Corners are defined by steep points that turn at a certain angle threshold. Outer corner points are automatically marked as “Edge points”.</p>
 									
@@ -262,9 +266,9 @@
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-header c-sharp"><div>SplineManager.IsEdge</div></div>
 												<div class="accordion-content">
-										<p>The following code is used to calculate edge points.</p>
+										<p>The following code is used to define edge points.</p>
 										<pre><code class="language-csharp hljs">bool IsEdge(int node)
 {
 	Vector2 pos = Spline.GetPosition(node);
@@ -317,7 +321,7 @@
 								</div>
 
 								<div class="accordion-item">
-									<div class="accordion-header">Wall Jumping & Ricocheting</div>
+									<div class="accordion-header movement"><div>Wall Jumping & Ricocheting</div></div>
 									<div class="accordion-content">
 										<p>Wall jumping is achieved by reflecting the player’s velocity off the surface as well as initiating a CONTROL LOCK.</p>
 										<p>The reflected velocity is then normalised with some of the surface normal to bounce further away from the wall. This adjustment was made to more easily wall jump over spikes while wall running more effectively.</p>
@@ -342,7 +346,7 @@
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-header c-sharp"><div>Player.EnterWallJump</div></div>
 												<div class="accordion-content">
 										<p>The following code is used to manage control locks. Control locks are updated to see if the distance has been reached and then unlocked. Control locks are also abruptly unlocked when transitioning into new states while exiting the last one.</p>
 										<pre><code class="language-csharp hljs">void EnterWallJump(RaycastHit2D wallHit)
@@ -384,7 +388,7 @@
 								</div>
 
 								<div class="accordion-item">
-									<div class="accordion-header">Control Lock Distance</div>
+									<div class="accordion-header movement"><div>Control Lock Distance</div></div>
 									<div class="accordion-content">
 										<p>The control lock distance mechanic is used to prevent directional input from influencing the player’s direction until they reach a certain amount of distance from lock point.</p>
 
@@ -401,7 +405,7 @@
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-header c-sharp"><div>Control Lock System</div></div>
 												<div class="accordion-content">
 										<p>The following code is used to manage control locks. Control locks are updated to see if the distance has been reached and then unlocked. Control locks are also abruptly unlocked when transitioning into new states while exiting the last one.</p>
 										<pre><code class="language-csharp hljs">void ControlLock(float distance)
@@ -470,11 +474,11 @@ void ControlUnlock()
 								</div> -->
 							</div>
 
-							<h2>Other</h2>
+							<h3 class="project-heading">Other Systems</h3>
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<div class="accordion-header">Camera</div>
+									<div class="accordion-header camera"><div>Camera</div></div>
 									<div class="accordion-content">
 										<p>I used <a href="https://unity.com/unity/features/editor/art-and-design/cinemachine">Cinemachine</a> to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
 										<p>We’re also smoothly changing the dead zone of the virtual camera component based on the player’s state, allowing us to tweak the feel of each, thus making the camera more dynamic.</p>
@@ -491,7 +495,7 @@ void ControlUnlock()
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-header c-sharp"><div>Camera Target</div></div>
 												<div class="accordion-content">
 										<p>The following code shows the logic behind gaining the speed of motion objects on exit. We are using a “applyPassengerExitForce” flag as we want to gain speed from certain motion objects.</p>
 										<pre><code class="language-csharp hljs">using UnityEngine;
@@ -632,7 +636,7 @@ public class CameraTarget : MonoBehaviour
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Optimising Moving & Rotating Walls with Profiler Analysis</div>
+									<div class="accordion-header diagnostic"><div>Optimising Moving & Rotating Walls with Profiler Analysis</div></div>
 									<div class="accordion-content">
 										<p>The moving and rotating platforms, known as “motion wall”, give more opportunity for the player to manoeuvre around the levels with exceeding speeds.</p>
 										<p>With the first revision of the player script, we had to add the velocity of the rotating or moving platform to the player’s move velocity so that they move with the motion wall they are on and not fall off. However, with the spline-based solution we implemented, our problem is automatically solved since the wall spline is already rotating or moving and we can still just use the spline points to position the player along the wall correctly.</p>
@@ -650,7 +654,7 @@ public class CameraTarget : MonoBehaviour
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET | Define Edge Points</div>
+												<div class="accordion-header c-sharp"><div>On (Motion) Wall Exit</div></div>
 												<div class="accordion-content">
 										<p>The following code shows the logic behind gaining the speed of motion walls on exit. We are using a “applyPassengerExitForce” flag as we want to gain speed from certain motion walls.</p>
 										<pre><code class="language-csharp hljs">void ExitWall(bool removeMotionObject = true)

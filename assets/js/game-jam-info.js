@@ -35,7 +35,6 @@ class GameJamInfo {
 
   for (let i = 0; i < gameJameInfoElements.length; i++) {
     let element = gameJameInfoElements[i];
-    console.log(element.id);
     let info = gameJamInfos.get(element.id);
     element.innerHTML = `
     <table class="game-jam-info">

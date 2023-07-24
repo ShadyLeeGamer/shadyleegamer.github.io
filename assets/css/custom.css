@@ -146,12 +146,12 @@ ul.tech li {
   position: relative;
   top: 0;
   margin: 10px;
+
 }
 
 ul.spinner-list {
   /* background-color: #38ADDE; */
   flex-wrap: wrap;
-
 }
 
 #project-content-wrapper,
@@ -171,13 +171,11 @@ ul.spinner-list {
   overflow: hidden;
   
   animation: spin 5s linear infinite, hover 3s ease-in-out infinite;
+
 }
 
 ul.tech li .spinner {
   pointer-events: none;
-}
-
-ul.tech li .spinner {
   width: 40px;
   height: 40px;
 }
@@ -190,8 +188,9 @@ ul.platform li .spinner {
 ul.tech .spinner img {
   height: 100%;
   width: 100%;
-  object-fit: contain
-}
+  object-fit: contain;
+} 
+
 
 /* Shadow */
 ul.spinner-list li::after,
@@ -208,6 +207,7 @@ ul.tabs li:has(div.spinner)::after{
   bottom: -15px;
 
   animation: spin 5s linear infinite;
+  z-index: -1;
 }
 
 ul.tech li .tooltip {
@@ -218,8 +218,6 @@ ul.tech li .tooltip {
   padding: 10px;
   box-sizing: border-box;
   border-radius:  1.5em;
-  transition: 0.5s;
-  transform: translate(-50%);
   left: 50%;
   white-space: nowrap;
   pointer-events: none;
@@ -229,14 +227,40 @@ ul.tech li .tooltip {
   
   display: flex;
   flex-direction: column;
-  gap: 1em;
   align-items: center;
 
   background-color: var(--project-content-bg);
+
+  z-index: 1;
+  width: max-content;
+  max-width: 140px;
+  transform: translateX(-50%);
 }
+
+ul.tech li .tooltip h2,
+  ul.tech li .tooltip p {
+    color: var(--text-dark);
+    display: flex;
+    /* font-size: 0.8em; */
+    white-space: normal;
+  }
+
 ul.tech li .tooltip h2 {
   /* color: var(--tech-spinner-bg); */
-  color: var(--text-dark);
+  margin-top: 1em;
+}
+
+ul.tech li .tooltip p {
+  font-family: 'A-OTF Shin Go Pro R';
+  margin: 0;
+}
+
+@media screen and (max-width: 980px) {
+
+ul.tech li .tooltip h2,
+  ul.tech li .tooltip p {
+    white-space: normal;
+}
 }
 
 ul.tech li .tooltip img {
@@ -257,7 +281,7 @@ ul.tech li .tooltip h2::after {
 ul.tech li:hover .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%) translateY(-90px);
+  transform: translateX(-50%) translateY(calc(-100% - 10px));
 }
 
 
@@ -301,7 +325,7 @@ ul.spinner-list li .spinner::after,
 
 @keyframes shining {
   0%, 50%, 100% {
-  transform: translateX(-100px);
+  transform: translateX(-100px) ;
     }
 
   25%, 75% {
@@ -383,7 +407,7 @@ ul.spinner-list li:hover .spinner::after,
   }
 
       .accordion {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
       }
 
       .accordion-item {
@@ -393,23 +417,66 @@ ul.spinner-list li:hover .spinner::after,
       
       .accordion-header {
         position: relative;
-        background-color: var(--colour-bright);
         padding: 10px;
         cursor: pointer;
         font-family:'A-OTF Shin Go Pro R';
-        /* text-transform: uppercase; */
-
-        transition: background-color 0.3s ease-out, color 0.3s ease-out;
+        background-color: var(--colour-bright);
+        transition: background-color 0.3s ease-in, color 0.3s ease-in;
       }
+
       .accordion-header:after {
+        position: absolute;
         content: '\02795'; /* Unicode character for "plus" sign (+) */
         font-size: 13px;
-        color: white;
-        float: right;
-        margin-left: 5px;
+        color: black;
+        width: 25px;
+        height: 25px;
+        top: 50%;
+        right: 0;
+        z-index: 1;
+        transform: translateY(-50%);
+        transition: filter 0.3s ease-in;
+        filter: brightness(0) invert(1);
       }
       .accordion-header:hover {
         background-color: var(--colour-dark);
+      }
+
+      .accordion-header > img,
+      .accordion-header > div {
+        pointer-events: none;
+      }
+
+      .accordion-header > img {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        z-index: 1;
+        transform: translateY(-50%);
+        top: 50%;
+        display: flex;
+        transition: filter 0.3s ease-in;
+        filter: brightness(0) invert(1);
+      }
+
+      .accordion-item.active {
+        margin-bottom: 0px;
+      }
+
+      .accordion-item.active > .accordion-header > img  {
+        filter: none;
+      }
+
+      .accordion-item.active > .accordion-header:after  {
+        filter: brightness(0);
+      }
+
+      .accordion-header > div {
+        position: relative;
+        margin-left: 55px;
+        right: 25px;
+        /* text-transform: uppercase; */
       }
       
       .accordion-content {
@@ -427,7 +494,6 @@ ul.spinner-list li:hover .spinner::after,
       .accordion-item.active > .accordion-header {
         background-color: #f3eee6;
         color: black;
-        transition: background-color 0.3s ease-in, color 0.3s ease-in;
       }
       .accordion-item.active > .accordion-header:after {
         content: "\2796"; /* Unicode character for "minus" sign (-) */
@@ -794,7 +860,6 @@ img{
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-
 .spinner-list.scroll-transition li,
 .contact.scroll-transition li,
 .tabs.scroll-transition li,
@@ -808,12 +873,10 @@ img{
 .contact.scroll-transition li.end,
 .tabs.scroll-transition li.end,
 .project-tech-list.scroll-transition li.end {
-  /* transition: transform 0.25s ease-out; */
-  /* animation: spin 3s linear infinite; */
   transform: scale(1, 1);
 }
 
-
+/* Game Jam Info */
 table.game-jam-info {
   padding: 2em;
   width: 100%;
@@ -850,8 +913,50 @@ table.game-jam-info th {
     text-align: right;
 }
 
-
 table.game-jam-info tr :nth-child(2n) {
   text-align: left;
     padding-left: 1em;
+  }
+
+/* Project Heading */
+  h3.project-heading {
+    position: relative;
+		font-size: 2em;
+		margin-top: 40px;
+    line-height: 1.5em;
+		letter-spacing: 0.10em;
+		font-family:'A-OTF Shin Go Pro EL';
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+	}
+
+    .description h3.project-heading {
+		color: #85AAAD;
+		color: var(--text-white);
+	}
+
+	.project-content h3.project-heading {
+		color: var(--text-dark);
+	}
+
+  h3.project-heading::after {
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 2.5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .description h3.project-heading::after {
+    background: #46879789;
+  }
+
+  .project-content h3.project-heading::after {
+    background: #A9A9A1;
+  }
+
+  s {
+    color: #A9A9A1;
   }

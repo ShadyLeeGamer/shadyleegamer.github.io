@@ -109,3 +109,15 @@ function PauseVideo(video) {
   video.currentTime = 0;
   video.muted = true;
 }
+
+// Accordion Icons
+window.onload = function() {
+  let headers = document.querySelectorAll('.accordion-header');
+  for (let i = 0; i < headers.length; i++) {
+    let element = headers[i];
+    const iconType = element.classList[1];
+    if(iconType == null)
+      continue;
+    element.insertAdjacentHTML("afterbegin", `<img src="images/accordion-icons/${iconType}.png">`);
+  }
+};

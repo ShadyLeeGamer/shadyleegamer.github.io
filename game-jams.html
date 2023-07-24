@@ -196,7 +196,7 @@
 							<p class="project-category scroll-transition">Action Survival</p>
 							<p>An endless survival game where you play as a Dracula killing knights to satisfy your endless thirst for blood before you’re drained of it. Blood is used as a currency to upgrade stats and unlock new abilities in between waves.</p>
 
-							<ul class="tech scroll-transition">
+							<ul class="spinner-list platform scroll-transition">
 								<li>
 									<div class="spinner" style="background: #fa5c5c;">
 										<a href="https://yoram-illouz.itch.io/dracula-sword-and-fangs" target="_blank"><img src="images/icons/itch-io.png"/></a>
@@ -229,8 +229,8 @@
 		
 							<p class="project-category scroll-transition">Puzzle</p>
 							<p>A turn-based escape game where you need to carefully make your move before you run out of actions to evacuate all the people out of the building that’s burning in flames!</p>
-							
-							<ul class="tech scroll-transition">
+
+							<ul class="spinner-list platform scroll-transition">
 								<li>
 									<div class="spinner" style="background: #fa5c5c;">
 										<a href="https://yoram-illouz.itch.io/disaster-is-coming-definitive-edition" target="_blank"><img src="images/icons/itch-io.png"/></a>
@@ -294,7 +294,7 @@
 
 			<div class="accordion">
 				<div class="accordion-item">
-					<div class="accordion-header">CODE SNIPPET - Level Generation</div>
+					<div class="accordion-header c-sharp"><div>LevelGenerator.Generate</div></div>
 					<div class="accordion-content">
 						<pre><code class="language-csharp hljs">public void Generate()
 {
@@ -373,9 +373,8 @@ mapHolder.CreateNodes();
 									<article id="content">
 										<div class="accordion">
 											<div class="accordion-item">
-											  <div class="accordion-header">Combo System</div>
+											  <div class="accordion-header movement"><div>Combo System</div></div>
 											  <div class="accordion-content">
-
 												<div class="image-and-text-container left">
 													<div class="image-container">
 														<img src="images/game-jams/swords-and-fangs/in-between-waves.png">
@@ -410,7 +409,7 @@ mapHolder.CreateNodes();
 											</div>
 
 											<div class="accordion-item">
-											  <div class="accordion-header">Wave Spawner</div>
+											  <div class="accordion-header probability"><div>Wave Spawner</div></div>
 											  <div class="accordion-content">
 												<p>For the endless game loop we needed a wave system that progressively gets harder as more new enemies are introduced.</p>
 												<p>The system makes creative use of the gradient component for editing and visualising the spawn probability of different enemies per wave. Enemies are spawned at a random position on the nav mesh.</p>
@@ -425,14 +424,14 @@ mapHolder.CreateNodes();
 											</div>
 
 											<div class="accordion-item">
-											  <div class="accordion-header">Object Pooling</div>
+											  <div class="accordion-header diagnostic"><div>Object Pooling</div></div>
 											  <div class="accordion-content">
 												<p>In this game jam, one of the biggest challenges we faced was low performance when gameplay gets more intense later on.</p>
 												<p>In order to maintain performance while many objects of different types are present in the scene, I implemented some methods including object pooling. The object pooler recycles many types of objects including: enemies, projectiles, combat text, particle effects and audio players. This greatly boosted performance during gameplay.</p>
 											  
 												<div class="accordion">
 													<div class="accordion-item">
-													  <div class="accordion-header">(C#) CODE SNIPPET | Object Pooler</div>
+													  <div class="accordion-header c-sharp"><div>ObjectPooler.Get</div></div>
 													  <div class="accordion-content">
 														<pre><code class="language-csharp hljs">T Get<T>(T prefab, Dictionary<int, Queue<T>> poolDictionary, int id, Vector3 pos, Quaternion rot,
 		 ObjectData objectData) where T : MonoBehaviour, IPooledObject
@@ -482,68 +481,91 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 
 										<div class="accordion">
 											<div class="accordion-item">
-												<div class="accordion-header">CODE SNIPPET - Isometric grid movement</div>
+												<div class="accordion-header c-sharp"><div>Person.ShowPathsInDir</div></div>
 												<div class="accordion-content">
-									<pre><code class="language-csharp hljs">public void Generate()
+									<pre><code class="language-csharp hljs">void ShowPathsInDir(int moveDirectionI)
 {
-Rooms = new List<Room>();
-map = new bool[levelSizeX, levelSizeZ];
+	pathPos = transform.position;
+	pathDir = moveDirections[moveDirectionI];
+	int orthogonalLength, diagonalLength;
+	int pathLength = diagonalLength = speedPoints;
+	orthogonalLength = speedPoints != 1 ? diagonalLength / 2 : 0;
 
-// Create entrance from top
-int roomPosX = Random.Range(0, levelSizeX);
-int roomPosZ = 0;
-CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
+	for (int pathNumber = 0; pathNumber < pathLength; pathNumber++)
+	{
+		bool isOrthogonal = false;
 
-// Create rooms middle to exit
-while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
-roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
-{
-// Left, right or down (more downs to encorage more of a linear shape)
-int randomDirIndex = Random.Range(0, directions.Length);
-Vector3Int randomDir = directions[randomDirIndex];
+		dirMultiplier = 1f;
+		for (int i = 0; i < horizontalDirections.Length; i++)
+			if (moveDirectionI == horizontalDirections[i])
+			{
+				isOrthogonal = true;
+				pathLength = orthogonalLength;
+				dirMultiplier = 1.25f;
+			}
+			else if (moveDirectionI == verticalDirections[i])
+			{
+				isOrthogonal = true;
+				pathLength = orthogonalLength;
+				dirMultiplier = .75f;
+			}
 
-int newPosX = roomPosX + randomDir.x;
-int newPosZ = roomPosZ + randomDir.z;
+		if (pathLength == 0)
+			break; // End path
 
-// Check if we're hitting the edge of the map
-if (newPosX < 0 || newPosX > levelSizeX - 1 ||
-newPosZ > 0 || newPosZ < -levelSizeZ + 1)
-{
-// If we're not hitting bottom edge, then move down and create a new middle room
-if (roomPosZ > -levelSizeZ + 1)
-{
-	randomDir = directions[2];
-	roomPosX += randomDir.x;
-	roomPosZ += randomDir.z;
+		string pathType = "Move";
 
-	CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
-	continue;
-}
-// If we are on bottom edge, then mark new room as exit and end generation
-else if (roomPosZ == -levelSizeZ + 1)
-{
-	Room exitRoom = Rooms[Rooms.Count - 1];
-	exitRoom.ApplyType(RoomType.Exit);
+		// Check if next tile in path is blocked. If it's pushable and there is space to push then mark tile as "push", else end the path due to immovable obstacle
+		RaycastHit2D nextTileHit = NextTileRayHit(pathPos, pathDir);
+		if (nextTileHit)
+			if (pathNumber == 0 && nextTileHit.transform.GetComponent<PushObject>() &&
+				strengthPoints >= nextTileHit.transform.GetComponent<PushObject>().strengthPointsNeeded)
+			{
+				RaycastHit2D next2TileHit = NextTileRayHit(pathPos + pathDir, pathDir, true);
+				if (next2TileHit)
+					break; // End path
 
-	CreateHallway(exitRoom, directions[2], PassType.Exit);
-	CreateDoor(exitRoom, directions[2], PassType.Exit);
-	break;
-}
-}
+				pathType = "Push";
+			}
+			else
+				break; // End path
 
-// If chosen direction is blocked by another room, then pick another
-if (map[newPosX, -newPosZ] == true)
-continue; 
+		ShowPath(pathPos += pathDir, pathType, nextTileHit, pathNumber);
 
-// If we are just within the map, then create a middle room
-roomPosX = newPosX;
-roomPosZ = newPosZ;
+		if (pathType == "Push")
+			break;
+		
+		// Fill in between orthogonal and diagonal paths
+		int sidePathLength = (diagonalLength - 2) - (2 * pathNumber);
+		if (isOrthogonal && speedPoints >= 3)
+		{
+			// Fill in direction counter-clockwise to current direction
+			int prevMoveDirIndex = moveDirectionI - 1;
+			prevMoveDirIndex = prevMoveDirIndex < 0 ? 7 : prevMoveDirIndex; // Wrap index
+			Vector3 prevMoveDir = moveDirections[prevMoveDirIndex];
+			
+			int leftPathLength = sidePathLength;
+			for (int sidePathNumber = 0; sidePathNumber < leftPathLength; sidePathNumber++)
+			{
+				RaycastHit2D nextLeftTileHit = NextTileRayHit(pathPos, prevMoveDir);
+				if (!nextLeftTileHit)
+					ShowPath(pathPos + prevMoveDir, "Move", nextLeftTileHit);
+			}
 
-CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
-}
+			// Fill in direction clockwise to current direction
+			int nextMoveDirIndex = moveDirectionI + 1;
+			nextMoveDirIndex = nextMoveDirIndex > 7 ? 0 : nextMoveDirIndex;
+			Vector3 nextMoveDir = moveDirections[nextMoveDirIndex];
 
-// Create path nodes for enemy AI
-mapHolder.CreateNodes();
+			int rightPathLength = sidePathLength;
+			for (int sidePathNumber = 0; sidePathNumber < rightPathLength; sidePathNumber++)
+			{
+				RaycastHit2D nextRightTileHit = NextTileRayHit(pathPos, nextMoveDir);
+				if (!nextRightTileHit)
+					ShowPath(pathPos + nextMoveDir, "Move", nextRightTileHit);
+			}
+		}
+	}
 }</code></pre>
 													</div>
 												</div>
