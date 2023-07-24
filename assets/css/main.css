@@ -2864,31 +2864,6 @@ input, select, textarea {
 		} */
 	/* Split */
 
-	.game-jam-info {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-
-		text-align: left;
-		justify-content: center;
-		padding: 2em;
-	}
-
-		.game-jam-info > * {
-			margin-bottom: 0px;
-		}
-
-		.game-jam-info > :nth-child(2n - 1) {
-			padding-right: 1em;
-			text-transform: uppercase;
-			font-family:'A-OTF Shin Go Pro R';
-	}
-
-		.game-jam-info > :nth-child(2n) {
-			padding-left: 1em;
-		}
-
 
 	.split {
 		display: -moz-flex;
@@ -3947,7 +3922,7 @@ input, select, textarea {
 
 		@media screen and (min-width: 1080px) {
 		#big-reel video {
-			width: 150%;
+			width: 125%;
 		}
 		}
 
@@ -5088,6 +5063,19 @@ input, select, textarea {
 
 	h3.project-heading {
 		font-size: 2em;
-		padding-bottom: 0.5em;
+		padding-bottom: 1em;
 		letter-spacing: 0.10em;
+		font-family:'A-OTF Shin Go Pro EL';
+	}
+
+    .description h3.project-heading {
+		color: var(--text-white);
+	}
+
+	.project-content h3.project-heading {
+		color: var(--text-dark);
+	}
+
+	.project-content {
+		text-align: justify;
 	}

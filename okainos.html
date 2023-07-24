@@ -59,10 +59,13 @@
 						<img src="images/okainos/booster-opening-screenshot.png">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/card-data-asset-firebase-json.png">
+						<img src="images/okainos/battle-screenshot.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/okainos-logo.png">
+						<img src="images/okainos/trading-screenshot.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/okainos/card-deck-builder-screenshot.png">
 					</div>
 				</div>
 
@@ -89,7 +92,7 @@
 					<p>Okainos was a multiplayer card game inspired by Hearthstone. I was recruited as lead developer by an artist I met on a game jam to help transition the game from alpha to closed beta.</p>
 					<p>I built game systems and networking tools, teaching me how to use back-end technologies like Rest API, JavaScript, JSON, and Firebase's suite of tools, including the Realtime Database, Authentication, Hosting, and Cloud Storage.</p>
 
-					<h3 class="project-heading">Alpha Testers!</h3>
+					<h3 class="project-heading">Launched Alpha Testing Campaign through Web Dev!</h3>
 					<p>One major challenge we faced was to see how all systems performed in action. To address this, we created a website to attract alpha testers, leveraging Firebase's free web hosting services. Additionally, I created networking editor tools to automate processes, streamlining the game's development and the testing process.</p>
 				</div>
 			</div>
@@ -111,8 +114,12 @@
 								<div class="accordion-item">
 									<div class="accordion-header">Card Deck Builder - Encoding & Decoding Custom Code</div>
 									<div class="accordion-content">
-										<p>In order to store the card decks created by players, a card deck code containing details is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing.</p>
+										<p>In order to save the card deck created by a player, a card deck code containing the details is imported and exported by the game. The code was designed with simplicity in mind for sharing and manual editing. The format goes like this:</p>
 										
+										<pre><code>// Multiple cards seperated by commas
+CARD1_NAME*QUANITY,CARD2_NAME*QUANITY,CARD3_NAME*QUANITY</code></pre>
+
+										<p>Here you can see changes to card decks being saved to the database.</p>
 										<div class="realtime-function">
 											<div class="display">
 												<h2>FRONT-END</h2>
@@ -124,12 +131,11 @@
 											</div>
 										</div>
 
-										<p>Of course, before a card deck code is created and stored, the game compares the deck against the player's card collection to check if all selected cards is available.</p>
-									
 										<div class="accordion">
 											<div class="accordion-item">
 												<div class="accordion-header">(C#) CODE SNIPPET - Card Deck Code Processing</div>
 												<div class="accordion-content">
+													<p>The following code is used to decode the player’s card deck from the database, and validate created card decks by comparing against the player’s card collection to see if all selected cards is available before encoding.</p>
 													<pre><code class="language-csharp hljs">/// <summary>
 /// Convert card deck code to list of cards through validation
 /// </summary>
@@ -263,16 +269,14 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 								<div class="accordion-item">
 									<div class="accordion-header">Reducing Updates with Card Data Assets (& Launcher App)</div>
 									<div class="accordion-content">
-										<p>Since the game was in development, we had to find ways to reduce the amount of updates the alpha testers had to do from the game page.</p>
-										<!--<h3>Left &amp; Right</h3>-->
-								<h3>Card Data Asset</h3>
+									<h3 class="project-heading">Card Data Assets</h3>
 								<div class="image-and-text-container left">
 									<div class="image-container">
 										<img src="images/okainos/card-data-asset-firebase-json.png"/>
 									</div>
 									<div class="text-container">
-										<p>The solution I implemented were card data assets, used to store details of cards including stats, effects, description, etc. The data was written and read in JSON between the editor and database and custom editor tools were used to automate the process.</p>
-										<p>This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
+										<p>In order to reduce the amount of updates testers had to install from the game page, I implemented card data assets, used to store card details like stats, effects, description, etc. This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
+										<p>The data is written and read in JSON between the editor and database and custom editor tools were used to automate the process.</p>
 									</div>
 								</div>
 								
@@ -281,18 +285,137 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 										<img src="images/okainos/card-asset-inspector.png"/>
 									</div>
 									<div class="text-container">
-										<p>However, this excluded heavy card resources like materials as they were stored locally in the game.</p>
-										<p>The solution we came up was to instead put a launcher app on the game page which would automatically retrieve updated versions of the game build from the Firebase Cloud Storage.</p>
+										<p>I also built a custom property drawer to apply abstraction for card editing by hiding properties of unselected card effects that wont be stored in the database. This was needed since each card effect had its own unique set of properties.</p>
 									</div>
 								</div>
+
+								<div class="accordion">
+									<div class="accordion-item">
+										<div class="accordion-header">(C#) CODE SNIPPET - Property Selector Drawer</div>
+										<div class="accordion-content">
+<pre><code class="language-csharp hljs">using UnityEngine;
+using UnityEditor;
+using Story;
+
+[CanEditMultipleObjects]
+public abstract class PropertySelectorDrawer : PropertyDrawer
+{
+	protected virtual string[] GetPropertyHeightOfTypes => new string[0];
+	protected abstract string SelectorPropertyName { get; }
+	protected abstract string GetEnumString(int enumIndex, bool lowercaseFirstChar = false);
+
+	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+	{
+		SerializedProperty selectorProperty = GetSelectorProperty(property);
+		var selectorRect = new Rect(position.x, position.y, position.width, EditorGUI.GetPropertyHeight(selectorProperty));
+		EditorGUI.PropertyField(selectorRect, selectorProperty, GUIContent.none);
+
+		SerializedProperty selectedProperty =
+			property.FindPropertyRelative(GetEnumString(selectorProperty.intValue, true));
+		if (selectedProperty != null)
+			EditorGUI.PropertyField(position, selectedProperty, GUIContent.none, true);
+		else
+			Debug.LogWarning("Property " + selectedProperty.name + " does not exist");
+	}
+
+	public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+	{
+		SerializedProperty tempProperty;
+		float totalHeight = 0;
+		for (int i = 0; i < GetPropertyHeightOfTypes.Length; i++)
+		{
+			tempProperty = property.Copy();
+			while (tempProperty.NextVisible(true))
+				if (tempProperty.type == GetPropertyHeightOfTypes[i])
+				{
+					totalHeight += EditorGUI.GetPropertyHeight(tempProperty, true);
+					break;
+				}
+		}
+		tempProperty = property.Copy();
+		while (tempProperty.NextVisible(true))
+			if (tempProperty.type == GetEnumString(GetSelectorProperty(property).intValue))
+			{
+				totalHeight += EditorGUI.GetPropertyHeight(tempProperty, true);
+				break;
+			}
+		return totalHeight;
+	}
+
+	protected void LowercaseFirstChar(ref string str)
+	{
+		str = char.ToLower(str[0]) + str.Substring(1);
+	}
+	protected SerializedProperty GetSelectorProperty(SerializedProperty property)
+	{
+		return property.FindPropertyRelative(SelectorPropertyName);
+	}
+}
+
+[CustomPropertyDrawer(typeof(StoryEvent))]
+public class StoryEventPropertySelectorDrawer : PropertySelectorDrawer
+{
+	protected override string SelectorPropertyName => "EventType";
+	protected override string GetEnumString(int enumIndex, bool lowercaseFirstChar = false)
+	{
+		string enumString = ((StoryEvent.EventTypeEnum)enumIndex).ToString();
+		return enumString;
+	}
+}
+
+[CustomPropertyDrawer(typeof(CardEffectEdit))]
+public class CardEffectEditPropertySelectorDrawer : PropertySelectorDrawer
+{
+	protected override string SelectorPropertyName => "effectTag";
+	protected override string[] GetPropertyHeightOfTypes => new[] { typeof(CardEffectConditionEdit).ToString() };
+	protected override string GetEnumString(int enumIndex, bool lowercaseFirstChar = false)
+	{
+		string enumString = ((CardEffect.Tag)enumIndex).ToString();
+		if (lowercaseFirstChar)
+			LowercaseFirstChar(ref enumString);
+		return enumString;
+	}
+	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+	{
+		base.OnGUI(position, property, label); // SHOW CARD EFFECT TAG AND PROPRERTIES
+
+		// SHOW CARD EFFECT CONDITIONS EDIT
+		SerializedProperty selectedProperty =
+			property.FindPropertyRelative(GetEnumString(GetSelectorProperty(property).intValue, true));
+		position.y += EditorGUI.GetPropertyHeight(selectedProperty);
+		EditorGUI.PropertyField(position, property.FindPropertyRelative("conditionsEdit"), new GUIContent("Conditions Edit"), true);
+	}
+}
+
+[CustomPropertyDrawer(typeof(CardEffectConditionEdit))]
+public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDrawer
+{
+	protected override string SelectorPropertyName => "conditionTag";
+	protected override string GetEnumString(int enumIndex, bool lowercaseFirstChar = false)
+	{
+		string enumString = ((CardEffect.Condition.Tag)enumIndex).ToString();
+		if (lowercaseFirstChar)
+			LowercaseFirstChar(ref enumString);
+		return enumString;
+	}
+}</code></pre>
+										</div>
+									</div>
+								</div>
+
+								<p>However, this is not suitable for card resource files like materials as they much more complex than simple data types like strings or integers.</p>
+								<p>A solution could be to store resources in Firebase Cloud Storage and fetch changes from there, or use a launcher app.</p>
+
+
+								<h3 class="project-heading">Launcher App</h3>
+								<p>To further reduce updates, we can put a launcher app on the game page which will automatically retrieve updated versions of the game build (along with card resources) from the Firebase Cloud Storage.</p>
 								
-								<h3>Launcher App</h3>
 								<div class="image-and-text-container left">
 									<div class="image-container">
 										<img src="images/okainos/launcher-firebase-download-exceeded.png"/>
 									</div>
 									<div class="text-container">
-										<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
+								<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
 									</div>
 								</div>
 
@@ -301,7 +424,6 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 								<div class="accordion-item">
 									<div class="accordion-header">Booster Opening</div>
 									<div class="accordion-content">
-
 										<p>You can gain more cards with boosters, which can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
 										<div class="realtime-function">
 											<div class="display">
@@ -327,8 +449,10 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									</div>
 								</div>
 								<div class="accordion-item">
-									<div class="accordion-header">Website Integration of Firebase & Itch.io systems</div>
+									<div class="accordion-header">Website Auth System (Firebase, Email & Itch.io)</div>
 									<div class="accordion-content">
+										<h3 class="project-heading">Firebase Authentication & Itch.io Integration</h3>
+
 										<div class="image-and-text-container left">
 											<div class="image-container">
 												<img src="images/okainos/back-end-user.png"></span>
@@ -343,7 +467,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 												<img src="images/okainos/closed-beta-tester-key-group.png"></span>
 											</div>
 											<div class="text-container">
-												<p>This system was also linked to Itch.io in order to private the game's access to only testers using Itch io’s key group feature. I generated a max of 100 keys and stored them in Firebase Cloud Storage. For every account created on the website, a key URL is pulled and stored in the user’s account for them to claim and access the game page via it from their profile page.</p>
+												<p>In order to private the game's access to only alpha testers, I used Itch.io's key group feature to generate a max of 100 keys and stored them in Firebase Cloud Storage. For each account created on the website, after they pass the verification process via email, a key URL is pulled from the list and stored in the account for them to claim and access the game page with it from their profile page.</p>
 											</div>
 										</div>
 
@@ -435,6 +559,16 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 			});
 }</code></pre>
 												</div>
+											</div>
+										</div>
+
+
+										<div class="image-and-text-container left">
+											<div class="image-container">
+												<img src="images/okainos/remaining-seats.png"></span>
+											</div>
+											<div class="text-container">
+												<p>The remaining number of seats available was also displayed on the site to induce urgency.</p>
 											</div>
 										</div>
 									</div>
@@ -560,6 +694,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 												</div>
 											</div>
 										</div>
+
 									</div>
 								</div>
 							</div>
