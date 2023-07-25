@@ -42,7 +42,7 @@
 
 			<header id="project-header">
 				<div id="big-reel">
-					<video src="videos/okainos/reel.mp4" autoplay muted loop></video>
+					<video src="videos/edge-runner/reel.mp4" autoplay muted loop></video>
 					<span id="filter"></span>
 					<span id="fade"></span>
 				</div>
@@ -58,16 +58,16 @@
 						<video src="videos/okainos/Turns_in_action.mp4"></video>
 					</div>
 					<div class="slick-slide">
-						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
+						<img src="images/edge-runner/screenshot3.png">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/okainos-logo.png">
+						<img src="images/edge-runner/screenshot1.png">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/card-data-asset-firebase-json.png">
+						<img src="images/edge-runner/screenshot4.png">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/okainos-logo.png">
+						<img src="images/edge-runner/screenshot2.png">
 					</div>
 				</div>
 
@@ -480,7 +480,7 @@ void ControlUnlock()
 								<div class="accordion-item">
 									<div class="accordion-header camera"><div>Camera</div></div>
 									<div class="accordion-content">
-										<p>I used <a href="https://unity.com/unity/features/editor/art-and-design/cinemachine">Cinemachine</a> to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
+										<p>I used <a href="https://unity.com/unity/features/editor/art-and-design/cinemachine" target="_blank">Cinemachine</a> to follow a “CameraTarget” object, which is set not only based on the player’s position but also the mouse position. The player’s direction is also gradually added with a “influence percent” that increases while wallrunning to show what’s ahead.</p>
 										<p>We’re also smoothly changing the dead zone of the virtual camera component based on the player’s state, allowing us to tweak the feel of each, thus making the camera more dynamic.</p>
 										<p>The target’s position is limited by a threshold box surrounding the player so the camera never loses them. The bounds is scaled by the screen ratio so there’s more horizontal freedom.</p>
 										
@@ -489,7 +489,7 @@ void ControlUnlock()
 												<video src="videos/edge-runner/camera.mp4" controls muted loop></video>
 											</div>
 											<div class="text-container">
-										<p>The camera target is the blue, you can see it turn cyan when it hits the threshold box (red). You can also see the dead zone box (yellow) changing smoothly.</p>
+										<p>The camera target is the blue, you can see it turn cyan when it's clamped by the threshold box (red). You can also see the dead zone box (yellow) changing smoothly.</p>
 											</div>
 										</div>
 

@@ -296,7 +296,7 @@ input, select, textarea {
 		--colour: var(--nav-background);
 	}
 	:root #nav.over-big-reel {
-		--colour: #222222c6;
+		--colour: #222222e7;
 	}
 	:root #nav.over-big-reel.over-filter {
 		--colour: #22222200;
@@ -3540,10 +3540,10 @@ input, select, textarea {
 		#nav.over-big-reel h1,
 		#nav.over-big-reel > .nav-content > div > span,
 		#nav.over-big-reel .resume-and-contacts-container.fixed .resume-button-label {
-			text-shadow: 4px 4px 4px #2f363c;
+			/* text-shadow: 4px 4px 4px #2f363c; */
 		}
 		#nav.over-big-reel  .resume-and-contacts-container.fixed .contact-email a {
-			box-shadow: 4px 4px 4px #2f363c;
+			/* box-shadow: 4px 4px 4px #2f363c; */
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -3667,11 +3667,11 @@ input, select, textarea {
 			background-color var(--hamburger-menu-animation-timing);
 		}
 
-		#nav.over-big-reel .hamburger-menu:has(input:not(:checked))::before,
+		/* #nav.over-big-reel .hamburger-menu:has(input:not(:checked))::before,
 		#nav.over-big-reel .hamburger-menu:has(input:not(:checked))::after,
 		#nav.over-big-reel .hamburger-menu:has(input:not(:checked)) input {
 			box-shadow: 4px 4px 4px #2f363c;
-		}
+		} */
 
 		.hamburger-menu input {
 			appearance: none;
@@ -3804,18 +3804,13 @@ input, select, textarea {
 		  flex-direction: column;
 		  -webkit-box-align: center;
 		  align-items: center;
-		  /* bottom: 165px; */
-		  /* margin: 0 auto; */
-		  /* background:#1A191D; */
-		  /* padding-top: 0.4em; */
 		  padding-bottom: 0.4em;
 		  padding-left: 0.4em;
-		  color:var(--text-mi);
-		  font-family:'A-OTF Shin Go Pro H';
+		  color:var(--text-light);
+		  font-family:'A-OTF Shin Go Pro EL';
 		letter-spacing: 0.075em;
 		background-color: var(--skills-ribbon-1);
 		  text-decoration: none;
-		  /* bottom: 22.5px; */
 		  top: -1.5em;
 		
 		}
@@ -3838,7 +3833,8 @@ input, select, textarea {
 		  padding-top: 0.4em;
 		  padding-bottom: 0.4em;
 		  padding-left: 0.4em;
-		  font-family:'A-OTF Shin Go Pro H';
+		  font-family:'A-OTF Shin Go Pro EL';
+
 		  text-decoration: none;
 		  
 		  /* border-radius: 1em; */
@@ -3885,6 +3881,7 @@ input, select, textarea {
 		#big-reel {
 			z-index: -1;
 			pointer-events: none;
+			pointer-events: all;
 		}
 
 		#about-me #big-reel{
@@ -3908,17 +3905,27 @@ input, select, textarea {
 			right: 0;
 			top: 0;
 			bottom: 0;
-			object-fit: cover;
+			object-fit:cover;
 			z-index: -1;
 
 			transform: translateX(-50%);
 			height: 100%;
 			transition: height 1s ease, width 10s ease-out; 
 		}
+
+		#about-me #big-reel video {
+			object-fit:contain;
+			background-color: #000000;
+		}
+
 		@media screen and (max-width: 980px) {
 			/* #project-header #big-reel video{
 				height: 28em;
 		} */
+
+		#big-reel video {
+			/* object-fit:cover; */
+		}
 		}
 
 		@media screen and (min-width: 1080px) {

@@ -237,8 +237,7 @@ ul.tech li .tooltip {
   transform: translateX(-50%);
 }
 
-ul.tech li .tooltip h2,
-  ul.tech li .tooltip p {
+ul.tech li .tooltip h2 {
     color: var(--text-dark);
     display: flex;
     /* font-size: 0.8em; */
@@ -248,11 +247,6 @@ ul.tech li .tooltip h2,
 ul.tech li .tooltip h2 {
   /* color: var(--tech-spinner-bg); */
   margin-top: 1em;
-}
-
-ul.tech li .tooltip p {
-  font-family: 'A-OTF Shin Go Pro R';
-  margin: 0;
 }
 
 @media screen and (max-width: 980px) {
@@ -929,6 +923,7 @@ table.game-jam-info tr :nth-child(2n) {
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
+    text-align: left;
 	}
 
     .description h3.project-heading {
