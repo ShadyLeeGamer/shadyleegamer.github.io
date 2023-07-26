@@ -296,7 +296,7 @@ input, select, textarea {
 		--colour: var(--nav-background);
 	}
 	:root #nav.over-big-reel {
-		--colour: #222222e7;
+		--colour: #000000c0;
 	}
 	:root #nav.over-big-reel.over-filter {
 		--colour: #22222200;
@@ -3944,6 +3944,7 @@ input, select, textarea {
 			transform: translateY(calc(101% - 100px));
 			z-index: 1;
 			pointer-events: none;
+			/* background: linear-gradient(#00000000, black); */
 			background: linear-gradient(#00000000, var(--background-1));
 			opacity: 0;
 			transition: opacity 1s ease; 

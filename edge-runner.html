@@ -58,16 +58,16 @@
 						<video src="videos/okainos/Turns_in_action.mp4"></video>
 					</div>
 					<div class="slick-slide">
-						<img src="images/edge-runner/screenshot3.png">
+						<img src="images/edge-runner/screenshot3.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/edge-runner/screenshot1.png">
+						<img src="images/edge-runner/screenshot1.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/edge-runner/screenshot4.png">
+						<img src="images/edge-runner/screenshot4.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/edge-runner/screenshot2.png">
+						<img src="images/edge-runner/screenshot2.jpg">
 					</div>
 				</div>
 
@@ -112,7 +112,7 @@
 
 							<div class="image-and-text-container left">
 								<div class="image-container">
-									<img src="images/edge-runner/player-shapes.png"/>
+									<img src="images/edge-runner/player-shapes.jpg"/>
 								</div>
 								<div class="text-container">
 									<p>The player is surrounded by shapes that are used to detect different types of collisions.</p>
@@ -121,7 +121,7 @@
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<!-- <span class="accordion-icon icon-movement"><img src="images/accordion-icons/movement.png"></span> -->
+									<!-- <span class="accordion-icon icon-movement"><img src="images/accordion-icons/movement.jpg"></span> -->
 									<div class="accordion-header movement"><div>Wall Running</div></div>
 									<div class="accordion-content">
 										<h3 class="project-heading">First Revision</h3>
@@ -160,7 +160,7 @@
 
 											<div class="image-and-text-container right">
 												<div class="image-container">
-													<img src="images/edge-runner/evenly-spaced-points-and-normals.png"/>
+													<img src="images/edge-runner/evenly-spaced-points-and-normals.jpg"/>
 												</div>
 												<div class="text-container">
 													<p>The spline is divided into evenly spaced points in order to achieve constant speed between points, which is also used for seamlessly attaching and detaching at nearest points when entering or exiting a wall.</p>
@@ -327,7 +327,7 @@
 										<p>The reflected velocity is then normalised with some of the surface normal to bounce further away from the wall. This adjustment was made to more easily wall jump over spikes while wall running more effectively.</p>
 												<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/edge-runner/wall-jump-trajectories.png"/>
+												<img src="images/edge-runner/wall-jump-trajectories.jpg"/>
 											</div>
 											<div class="text-container">
 												<p>The while line is the direction the player enters the wall (in the case of wallrunning, this is the direction of the mouse to the player), the red is the reflected direction, and the green is the reflected trajectory with some of the surface normal (yellow). As you can see the final green trajectory points the player further away from the wall, in turn making it easier to avoid nearby spikes.</p>
@@ -693,12 +693,12 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 										<p>The frame being shown was the time we loaded a new “chunk”. You see, to improve performance I broke the level down into chunks that load when detected by the camera box. However, in this case, the second chunk loads in more motion objects, which explains the doubling of processing power from this frame.</p>
 										<p>The event took up a whopping 45.7% of frame time, due to 283 calls being made to its functions.</p>
 										<div class="image-center">
-											<img src="images/edge-runner/unity-profiler-without-cam-detection.png"/>
+											<img src="images/edge-runner/unity-profiler-without-cam-detection.jpg"/>
 										</div>
 
 										<p>I implemented a solution where motion objects are surrounded by a circle that detects for the camera box so that we can only apply calculated rotation or movement to the transform when it’s in view. This significantly reduced the event’s impact to 2.6% of frame time, with only 6 function calls. Processing power is now distributed well and never doubles when loading the 2nd chunk.</p>
 										<div class="image-center">
-											<img src="images/edge-runner/unity-profiler-with-cam-detection.png"/>
+											<img src="images/edge-runner/unity-profiler-with-cam-detection.jpg"/>
 										</div>
 									</div>
 								</div>
