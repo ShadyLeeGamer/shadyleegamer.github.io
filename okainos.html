@@ -11,11 +11,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 		<link rel="stylesheet" href="assets/css/loader.css" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<link rel="stylesheet" href="assets/css/global.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
 		
-		<link rel="stylesheet" href="assets/css/slideshowGallery.css" />
-
 		<link rel="stylesheet" href="assets/css/slick.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
 
@@ -57,16 +56,16 @@
 						<iframe src="https://www.youtube.com/embed/I4HunMIyDJw"></iframe>
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/booster-opening-screenshot.png">
+						<img src="images/okainos/booster-opening-screenshot.jpg">
 					</div>
 					<div class="slick-slide">
 						<img src="images/okainos/battle-screenshot.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/trading-screenshot.png">
+						<img src="images/okainos/trading-screenshot.jpg">
 					</div>
 					<div class="slick-slide">
-						<img src="images/okainos/card-deck-builder-screenshot.png">
+						<img src="images/okainos/card-deck-builder-screenshot.jpg">
 					</div>
 				</div>
 
@@ -101,7 +100,7 @@
 			</div>
 
 			<div class="popup-image">
-				<img src="images/okainos/back-end-user.png" alt="">
+				<img src="images/okainos/back-end-user.jpg" alt="">
 			</div>
 
 
@@ -275,7 +274,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									<h3 class="project-heading">Card Data Assets</h3>
 								<div class="image-and-text-container left">
 									<div class="image-container">
-										<img src="images/okainos/card-data-asset-firebase-json.png"/>
+										<img src="images/okainos/card-data-asset-firebase-json.jpg"/>
 									</div>
 									<div class="text-container">
 										<p>In order to reduce the amount of updates testers had to install from the game page, I implemented card data assets, used to store card details like stats, effects, description, etc. This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
@@ -288,7 +287,7 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 
 								<div class="image-and-text-container right">
 									<div class="image-container">
-										<img src="images/okainos/card-asset-inspector.png"/>
+										<img src="images/okainos/card-asset-inspector.jpg"/>
 									</div>
 									<div class="text-container">
 										<p>I also built a custom property drawer to apply abstraction for card editing by hiding properties of unselected card effects that wont be stored in the database. This was needed since each card effect had its own unique set of properties.</p>
@@ -416,7 +415,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 								
 								<div class="image-and-text-container left">
 									<div class="image-container">
-										<img src="images/okainos/launcher-firebase-download-exceeded.png"/>
+										<img src="images/okainos/launcher-firebase-download-exceeded.jpg"/>
 									</div>
 									<div class="text-container">
 								<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
@@ -443,7 +442,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 		
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/okainos/booster-probability-gradient.png"></span>
+												<img src="images/okainos/booster-probability-gradient.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>Creative use of the Gradient component is made for visualising and editing the card rarity possibility allowing for unique chances for each booster chest type.</p>
@@ -459,7 +458,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/okainos/back-end-user.png"></span>
+												<img src="images/okainos/back-end-user.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>An essential system I had to implement for the website was authentication. This was linked to the same database allowing people to login with the same account created on the website or the game!</p>
@@ -468,7 +467,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 	
 										<div class="image-and-text-container right">
 											<div class="image-container">
-												<img src="images/okainos/closed-beta-tester-key-group.png"></span>
+												<img src="images/okainos/closed-beta-tester-key-group.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>In order to private the game's access to only alpha testers, I used Itch.io's key group feature to generate a max of 100 keys and stored them in Firebase Cloud Storage. For each account created on the website, after they pass the verification process via email, a key URL is pulled from the list and stored in the account for them to claim and access the game page with it from their profile page.</p>
@@ -569,7 +568,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/okainos/remaining-seats.png"></span>
+												<img src="images/okainos/remaining-seats.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>The remaining number of seats available was also displayed on the site to induce urgency.</p>
@@ -583,7 +582,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 										<p>To help players strategize, I created a team planner with a filtering system that can sort cards by tribe, rarity, strength, price, draw. For further filtering, you can also check to only see cards owned in your collection or search by name.</p>
 										<div class="image-center">
 											<video src="videos/okainos/card-collection-filter-tool.mp4" autoplay loop controls></video>
-											<img src="images/okainos/card-collection-back-end.png">
+											<img src="images/okainos/card-collection-back-end.jpg">
 										</div>
 
 										<p>Other functionalities include the ability to trade craft and scrap cards for salt and pearls.</p>
@@ -605,7 +604,7 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
 											<div class="image-container">
-												<img src="images/okainos/card-data-asset-firebase-json-old.png"></span>
+												<img src="images/okainos/card-data-asset-firebase-json-old.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>A big issue we faced when testing a build of the game was that it would fail to load card resources like materials, sprites, and prefabs. This was due to the old method of storing the GUID of the assets on the database and using it to load the assets at runtime. Since this uses the UnityEditor namespace it does not work in a build.</p>
