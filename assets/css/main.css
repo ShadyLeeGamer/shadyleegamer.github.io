@@ -363,10 +363,6 @@
 		color: var(--project-text-special);
 	}
 
-	#about-me .heading {
-		color: var(--nav-span);
-	}
-
 	@media screen and (max-width: 980px) {
 		.work-experience-header.left {
 		position: relative;
@@ -384,11 +380,6 @@
 				top:0;
 			}
 
-		.side-title.mobile,
-		.heading {
-			font-size: 3em;
-		}
-
 		.spotlights .project-date {
 			right: -1em;
 		}
@@ -402,145 +393,6 @@
 			color: var(--text-light);
 		}
 	}
-
-
-/* Lists */
-
-	ul {
-		list-style: disc;
-		padding-left: 1em;
-	}
-
-	li .highlight-label
-	{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	li .highlight-label::before {
-		content: "➤";
-		margin-inline-end: 1ch;
-	}
-
-	li .highlight-label::after {
-		content: "➤";
-		margin-inline-start: 1ch;
-		display: inline-block;
-		transform: scale(-1,1);
-	}
-
-		ul li {
-			padding-left: 0.25em;
-
-			position: relative;
-		text-align: justify;
-		}
-
-		ul.highlights {
-			margin: 0;
-			margin-left: -1em;
-		}
-
-			ul.highlights > li {
-				display: block;
-				padding: 0.6em 0em;
-				border-top: 2px solid var(--project-highlights-split);
-				margin-inline-end: 1ch;
-				width:100%;
-				
-			}
-
-			.spotlights ul.highlights > li::before {
-				content: "✔";
-				margin-inline-end: 1ch;
-			}
-
-			/* ul.highlights li::after {
-
-				content: "✔";
-				position: absolute;
-				top: 0;
-				right: 0;
-			} */
-
-				ul.highlights li:first-child {
-					padding-top: 0;
-					border-top: none;
-				}
-
-			ul.highlights a {
-				text-decoration: none;
-				color: #888787;
-			}
-
-				ul.highlights a:hover {
-					text-decoration: underline;
-				}
-
-
-
-	.split {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-	}
-
-		.split > * {
-			/* width: calc(50% - 2.5em); */
-			width: 50%;
-			
-			margin-bottom: 0px;
-			
-		}
-
-		.split > :nth-child(2n - 1) {
-			padding-right: 1em;
-			border-right: solid 3px var(--project-description-split);
-			
-		}
-
-		.split > :nth-child(2n) {
-			padding-left: 1em;
-		}
-
-		@media only screen and ((min-width: 980px) and (max-width: 1280px)),
-		(max-width: 736px)
-		{ 
-			.split {
-				display: block;
-
-			}
-
-				.split > * {
-					border-top: solid 3px;
-					border-color: var(--project-description-split);
-					padding-top: 1em;
-
-					width: 100% !important;
-
-				}
-
-				.split > :nth-child(2n - 1) {
-					border-right: 0;
-					padding-right: 0;
-
-		}
-
-				.split > :nth-child(2n) {
-					padding-left: 0;
-					
-				}
-
-				.split > :first-child {
-					border-top: 0;
-					margin-top: 0;
-					padding-top: 0;
-					padding-top: 1em;
-
-					width: 100% !important;
-				}
-		}
 
 
 		.spotlights .description p {
@@ -586,7 +438,7 @@
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 
-		font-family:'A-OTF Shin Go Pro R';
+		font-family:'A-OTF Shin Go Pro L';
 	}
 
 	.spotlights .description p,
@@ -933,6 +785,7 @@
 
 		z-index: 0;
 		background-color: var(--background-1);
+		font-family: "A-OTF Shin Go Pro L";
 	}
 
 	#skills {
@@ -999,23 +852,6 @@
 		text-align: center;
 }
 
-#tech-xp-container .highlight-label
-{
-	letter-spacing: 0.175em;
-	font-size: 1.1em;
-	font-family:'A-OTF Shin Go Pro EL';
-
-	align-items: center;
-	padding: 0;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-}
-
-#tech-xp-container .highlights li {
-	text-align: center;
-}
-
 	  @media screen and (max-width: 980px) {
 		#about-me-container {
 			max-width: 90%;
@@ -1032,6 +868,7 @@
 		#work-projects {
 			background-color: var(--background-3);
 			z-index: 2;
+		font-family: "A-OTF Shin Go Pro L";
 		}
 
 		#work-projects::before {
@@ -1211,5 +1048,3 @@
 	.spotlights {
 		margin-top: 8em;
 	}
-
-	

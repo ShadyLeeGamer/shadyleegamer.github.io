@@ -57,7 +57,8 @@
     --work-experience: var(--nav-span-2);
 }
 
-:root #about-content
+:root #about-content,
+    #project-header
 {
     --project-description-split:#85aaad41;
     --project-highlights-split:#85aaad87;
@@ -222,21 +223,18 @@
         font-family: 'A-OTF Shin Go Pro L';
         src: url('../fonts/attfshingoprolight.woff2') format('woff2'),
              url('../fonts/attfshingoprolight.woff') format('woff');
-    
     }
     
     @font-face {
         font-family: 'A-OTF Shin Go Pro M';
         src: url('../fonts/attfshingopromedium.woff2') format('woff2'),
              url('../fonts/attfshingopromedium.woff') format('woff');
-    
     }
     
     @font-face {
         font-family: 'A-OTF Shin Go Pro R';
         src: url('../fonts/attfshingoproregular.woff2') format('woff2'),
              url('../fonts/attfshingoproregular.woff') format('woff');
-    
     }
     
     @font-face {
@@ -368,7 +366,7 @@ input, select, textarea {
 		}
 
 	body, input, textarea, select {
-		font-family: 'A-OTF Shin Go Pro EL';
+		font-family: 'A-OTF Shin Go Pro R';
 		font-size: 10pt;
 		/* line-height: 2em; */
 		color: rgba(255, 255, 255, 0.749);
@@ -522,11 +520,12 @@ input, select, textarea {
 
 
 .side-title {
-    font-family:'A-OTF Shin Go Pro H';
+    font-family:'A-OTF Shin Go Pro U';
     letter-spacing: 0.10em;
     white-space: nowrap;
 text-transform: uppercase;
 color: var(--side-title);
+
 }
 .side-title.perspective {
     font-size: 4em;
@@ -534,6 +533,7 @@ color: var(--side-title);
 writing-mode: vertical-lr;
 text-orientation: upright;
 transform: translateY(-50%);
+letter-spacing: -0.15em;
 
 z-index: 1;
 
@@ -579,25 +579,27 @@ left: -50%;
 }
 
 .project-category {
-    font-family:'A-OTF Shin Go Pro M';
-
 
     text-transform: uppercase;
     font-style: italic;
     letter-spacing: 0.175em;
     font-size: 1.1em;
-    font-family:'A-OTF Shin Go Pro R';
+    font-family:'A-OTF Shin Go Pro M';
 }
 
 
 .heading,
 .side-title {
         font-size: 4em;
-        font-family:'A-OTF Shin Go Pro H';
+        font-family:'A-OTF Shin Go Pro U';
     text-transform: uppercase;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     line-height: 1.25em;
-    padding-bottom: 0.25em;
+    padding-bottom: 20px;
+}
+
+#project-header .heading {
+    padding-top: 20px;
 }
 
 
@@ -1944,12 +1946,15 @@ left: -50%;
     display: block;
     top: 0;
     margin: 10px;
+
 }
+
 .resume-button img
 {
     position: relative;
     width: 100%;
     height: 100%;
+    
 }
 
     #nav h1 {
@@ -1971,7 +1976,6 @@ left: -50%;
         font-size: 1.1em;
         color: var(--nav-span);
         font-family:'A-OTF Shin Go Pro M';
-
     }
     
     #nav.over-big-reel h1,
@@ -2058,6 +2062,8 @@ left: -50%;
         position: relative;
         width: var(--hamburger-bar-width);
         height: var(--hamburger-height);
+
+        right: -10px;
     }
 
     .hamburger-menu{
@@ -2151,8 +2157,7 @@ left: -50%;
         min-height: 110vh;
         width: 90vh;
         top: -2.5em;
-        left: -1em;
-
+        left: calc(-1em - 10px);
     }
 
     .sidebar > nav {
@@ -2425,19 +2430,27 @@ left: -50%;
   }
   
   :root ul.spinner-list li .spinner::after,
-  :root .resume-button .spinner::after {
+  :root .resume-button .spinner::after,
+  :root ul.tabs li .spinner::after {
     --spinner-shine-bg: #ffffffc1;
   }
   :root ul.spinner-list li:hover .spinner::after,
   :root .resume-button:hover .spinner::after {
     --spinner-shine-bg: var(--tech-spinner-bg);
   }
-  
-  ul.tabs {
-    padding-bottom: 2em;
-  }
-  
-  ul.other-game-jams
+
+  /* ul.tabs{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    gap: 3em;
+} */
+
+  ul.other-game-jams,
+  ul.tabs
   {
     position: relative;
     display: flex;
@@ -2449,17 +2462,28 @@ left: -50%;
   
     flex-direction: row;
     list-style: none;
+
+    flex-wrap: wrap;
+    max-width: 100%;
   }
   
-  ul.other-game-jams li {
+  ul.other-game-jams li,
+  ul.tabs li {
     margin: 1em;
   }
   
-  ul.other-game-jams li img {
+  ul.other-game-jams li img,
+  ul.tabs li img {
     width: 100%;
     height: 100%;
-    transform: scale(1.55);
+    scale: 1.375;
   }
+
+    
+  /* ul.platform li img {
+    width: 100%;
+    height: 100%;
+  } */
   
   ul.platform {
     position: relative;
@@ -2483,7 +2507,6 @@ left: -50%;
   ul.platform li img {
     width: 100%;
     height: 100%;
-    
   }
   
   ul.tech {
@@ -2504,11 +2527,6 @@ left: -50%;
   
   }
   
-  ul.spinner-list {
-    /* background-color: #38ADDE; */
-    flex-wrap: wrap;
-  }
-  
   #project-content-wrapper,
   #project-top  {
     opacity: 0;
@@ -2526,7 +2544,7 @@ left: -50%;
     overflow: hidden;
     
     animation: spin 5s linear infinite, hover 3s ease-in-out infinite;
-  
+
   }
   
   ul.tech li .spinner {
@@ -2545,6 +2563,44 @@ left: -50%;
     width: 100%;
     object-fit: contain;
   } 
+  
+  .programming-tab,
+  .music-production-tab{
+      cursor: pointer;
+  }
+  
+  .programming-tab .spinner,
+  .programming-tab > div {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .music-production-tab .spinner,
+  .music-production-tab > div{
+    width: 60px;
+    height: 60px;
+  }
+
+  ul.spinner-list,
+  ul.tabs {
+    padding-bottom: 20px;
+  }
+
+  /* .programming-tab  li .spinner,
+  .music-production-tab li .spinner{
+      cursor: pointer;
+  }
+  
+  .programming-tab {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .music-production-tab {
+    width: 60px;
+    height: 60px;
+  } */
+
   
   
   /* Shadow */
@@ -2637,7 +2693,8 @@ left: -50%;
   
   /* Shine */
   ul.spinner-list li .spinner::after,
-  .resume-button .spinner::after{
+  .resume-button .spinner::after,
+  ul.tabs li .spinner::after{
     content: '';
     position: absolute;
     height: 100%;
@@ -2715,19 +2772,24 @@ left: -50%;
   
   /* Spinner */
   ul.spinner-list li:hover .spinner,
-  
-  
+  ul.tabs li:hover .spinner,
+  ul.other-game-jams li:hover .spinner,
   
   /* Shadow */
   ul.spinner-list li:hover::after,
-  
+  ul.tabs li:hover::after,
+  ul.other-game-jams li:hover::after,
+
   /* Resume Button */
   .resume-button:hover::after,
   .resume-button:hover .spinner,
   .resume-button:hover .spinner::after,
   
   ul.spinner-list li:hover,
-  .resume-button:hover
+  .resume-button:hover,
+  ul.tabs li:hover,
+  ul.other-game-jams li:hover
+  
   /* Hover */
    {
         animation:none;
@@ -2757,10 +2819,181 @@ left: -50%;
 
 
     #tech-xp-container ul.spinner-list,
-    #project-top ul.spinner-list  {
+    #project-top ul.spinner-list,
+    #project-header ul.spinner-list  {
         margin: 0 auto;
         width: max-content;
       }
+
+
+
+      #about-me .heading,
+      #project-header .heading {
+		color: var(--nav-span);
+	}
+
+	@media screen and (max-width: 980px) {
+        .side-title.mobile,
+		.heading {
+			font-size: 3em;
+		}
+    }
+/* Lists */
+
+ul {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+li .highlight-label
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li .highlight-label::before {
+    content: "➤";
+    margin-inline-end: 1ch;
+}
+
+li .highlight-label::after {
+    content: "➤";
+    margin-inline-start: 1ch;
+    display: inline-block;
+    transform: scale(-1,1);
+}
+
+    ul li {
+        padding-left: 0.25em;
+
+        position: relative;
+    text-align: justify;
+    }
+
+    ul.highlights {
+        margin: 0;
+        margin-left: -1em;
+    }
+
+        ul.highlights > li {
+            display: block;
+            padding: 0.6em 0em;
+            border-top: 2px solid var(--project-highlights-split);
+            margin-inline-end: 1ch;
+            width:100%;
+            
+    text-align: justify;
+}
+
+        .spotlights ul.highlights > li::before {
+            content: "✔";
+            margin-inline-end: 1ch;
+        }
+
+        /* ul.highlights li::after {
+
+            content: "✔";
+            position: absolute;
+            top: 0;
+            right: 0;
+        } */
+
+            ul.highlights li:first-child {
+                padding-top: 0;
+                border-top: none;
+            }
+
+        ul.highlights a {
+            text-decoration: none;
+            color: #888787;
+        }
+
+            ul.highlights a:hover {
+                text-decoration: underline;
+            }
+
+            .highlight-label
+            {
+                letter-spacing: 0.35em;
+                font-size: 1.1em;
+                font-family:'A-OTF Shin Go Pro L';
+            
+                align-items: center;
+                padding: 0;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+            }
+            
+            .highlights li {
+                text-align: center;
+            }
+
+
+
+.split {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+    .split > * {
+        /* width: calc(50% - 2.5em); */
+        width: 50%;
+        
+        margin-bottom: 0px;
+        
+    }
+
+    .split > :nth-child(2n - 1) {
+        padding-right: 1em;
+        border-right: solid 3px var(--project-description-split);
+        
+    }
+
+    .split > :nth-child(2n) {
+        padding-left: 1em;
+    }
+
+    @media only screen and ((min-width: 980px) and (max-width: 1280px)),
+    (max-width: 736px)
+    { 
+        .split {
+            display: block;
+
+        }
+
+            .split > * {
+                border-top: solid 3px;
+                border-color: var(--project-description-split);
+                padding-top: 1em;
+
+                width: 100% !important;
+
+            }
+
+            .split > :nth-child(2n - 1) {
+                border-right: 0;
+                padding-right: 0;
+
+    }
+
+            .split > :nth-child(2n) {
+                padding-left: 0;
+                
+            }
+
+            .split > :first-child {
+                border-top: 0;
+                margin-top: 0;
+                padding-top: 0;
+                padding-top: 1em;
+
+                width: 100% !important;
+            }
+    }
+
 
 
 /* Scroll Transitions */
@@ -2875,3 +3108,9 @@ left: -50%;
 		line-height: 1.5;
 		place-items: center;
 	} */
+
+    .space {
+        position: relative;
+        width: 100%;
+        height: 100px;
+    }

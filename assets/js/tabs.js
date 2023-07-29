@@ -39,6 +39,7 @@ tabs.forEach(tab =>
 
         tab.addEventListener("mouseenter", () => {
             tab.firstElementChild.classList.remove('spinner');
+            // tab.firstElementChild.style.animation = "";
         });
 
         tab.addEventListener("mouseleave", () => {

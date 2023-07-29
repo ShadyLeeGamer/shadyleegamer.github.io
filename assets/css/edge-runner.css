@@ -33,7 +33,7 @@
     width: var(--width);
     height: var(--height);;
     /* transform: scale(0.1) translate(-450%, -450%); */
-    background: url(../../images/edge-runner/player-sprite-atlas.png);
+    background: url(../../images/edge-runner/player-sprite-atlas.jpg);
     /* background-color: aqua; */
     cursor: pointer;
     background-size: calc(var(--size-percent) * (1 / var(--size-factor)));
