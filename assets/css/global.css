@@ -2882,7 +2882,6 @@ li .highlight-label::after {
             margin-inline-end: 1ch;
             width:100%;
             
-    text-align: justify;
 }
 
         .spotlights ul.highlights > li::before {
@@ -2926,7 +2925,7 @@ li .highlight-label::after {
             }
             
             .highlights li {
-                text-align: center;
+                text-align: left;
             }
 
 
