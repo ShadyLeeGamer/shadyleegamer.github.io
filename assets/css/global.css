@@ -593,9 +593,14 @@ left: -50%;
         font-size: 4em;
         font-family:'A-OTF Shin Go Pro U';
     text-transform: uppercase;
-    /* white-space: nowrap; */
     line-height: 1.25em;
     padding-bottom: 20px;
+    white-space: nowrap;
+}
+
+#game-jam-spinners .heading
+{
+    white-space: normal;
 }
 
 #project-header .heading {
