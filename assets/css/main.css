@@ -1,8 +1,3 @@
-
-
-
-
-
 @media screen and (min-width: 980px) {
 	.project-reel-container {
     position: relative;
@@ -184,6 +179,7 @@
 /* Basic */
 	.spotlights .project-title {
 		font-family:'A-OTF Shin Go Pro M';
+		font-family: "A-OTF Shin Go Pro H";
 		writing-mode: vertical-lr;
 
 		text-transform: uppercase;
@@ -452,7 +448,6 @@
 	}
 
 	.spotlights .description .project-tech-list,
-	.spotlights .description .project-title,
 	.interactable,
 	.tech {
 		pointer-events:all;
@@ -516,7 +511,7 @@
 		box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.4);
 	  }
 
-	  .spotlights > section .project-bg:hover::after {
+	.spotlights > section .project-bg:hover::after {
 		opacity: 0%;
 	}
 
@@ -767,9 +762,9 @@
 			transition: height 1s ease; 
 		}
 
-		#big-reel video {
+		#big-reel video.main-video {
 			object-fit:contain;
-			background-color: #000000;
+			/* background-color: #263D4C; */
 		}
 
 
@@ -972,6 +967,7 @@
 					letter-spacing: 0.10em;
 					/* font-size: 1.6em; */
 					font-size: 2.5em;
+
 		}
 	}
 

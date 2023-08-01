@@ -1,5 +1,5 @@
 const projectTop = document.getElementById('project-top');
-const bigReelVideo = document.querySelector('#big-reel video');
+const bigReelVideo = document.querySelector('#big-reel video.main-video');
 isProjectPage = projectTop != null;
 // $(document).ready(function() {
 //     $("#loader-wrapper").fadeOut("slow");
