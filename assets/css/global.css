@@ -3133,12 +3133,12 @@ li .highlight-label::after {
 
       .image-container.scroll-transition > *,
       .image-center.scroll-transition > *,
-      img.scroll-transition,
-      video.scroll-transition {
+      .image-container > *.scroll-transition,
+      .image-center > *.scroll-transition {
         opacity: 0;
       }
-      img.scroll-transition.end,
-      video.scroll-transition.end {
+      .image-container > *.scroll-transition.end,
+      .image-center > *.scroll-transition.end {
         opacity: 1;
         transition: opacity 0.5s ease-out;
       }
