@@ -1,16 +1,27 @@
 const projectTop = document.getElementById('project-top');
 const bigReelVideo = document.querySelector('#big-reel video.main-video');
 isProjectPage = projectTop != null;
-// $(document).ready(function() {
-//     $("#loader-wrapper").fadeOut("slow");
-//     setTimeout(BigReelIntro, isProjectPage ? 2000 : 1000);
-// });
-$(window).on("load", function() {
-    $("#loader-wrapper").fadeOut("slow");
-    bigReelVideo.style.width = "100%";
-    setTimeout(BigReelIntro, isProjectPage ? 1000 : 1500);
-    StartObservers();
+
+window.addEventListener("load", (event) => {
+  FadeOutPreloader(document.getElementById('loader-wrapper'));
+  bigReelVideo.style.width = "100%";
+  setTimeout(BigReelIntro, isProjectPage ? 1000 : 1500);
+  StartObservers();
 });
+
+function FadeOutPreloader(loaderWrapper) {
+  var fadeEffect = setInterval(function () {
+    if (!loaderWrapper.style.opacity) {
+        loaderWrapper.style.opacity = 1;
+    }
+    if (loaderWrapper.style.opacity > 0) {
+        loaderWrapper.style.opacity -= 0.1;
+    } else {
+        clearInterval(fadeEffect);
+        loaderWrapper.remove();
+    }
+}, 25);
+}
 
 // Big Reel (& Nav) Intro
 function BigReelIntro() {
@@ -62,7 +73,6 @@ function StartObservers()
           {
             if (target.classList.contains(type))
             {
-              console.log(type);
               isDelayedItemTypes = true;
               return false;
             }
@@ -72,6 +82,24 @@ function StartObservers()
             addDelayToListElements(target);
           } else {
             target.classList.add("end");
+            
+            var children = target.children;
+            for (var i = 0; i < children.length; i++) {
+              let child = children[i];
+              if (child.hasAttribute("data-src"))
+              {
+                child.src = child.getAttribute("data-src");
+                child.classList.add("scroll-transition");
+                child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () => {
+                  child.classList.add("end");
+                  child.addEventListener("transitionend", () => {
+                    child.classList.remove("scroll-transition");
+                    child.classList.remove("end");
+                  });
+                });
+              }
+            }
+
             target.addEventListener("transitionend", () => {
               target.classList.remove("scroll-transition");
               target.classList.remove("end");
@@ -89,9 +117,15 @@ function StartObservers()
     async function addDelayToListElements(target) {
       var listElements = target.getElementsByTagName("li");
       for (var i = 0; i < listElements.length; i++) {
-        listElements[i].classList.add("end");
+        let element = listElements[i];
+        element.classList.add("end");
         await new Promise(resolve => setTimeout(resolve, 150));
       }
+      // target.classList.remove("scroll-transition");
+      APPEAR_ON_SCROLL.unobserve(target);
+            // for (var i = 0; i < listElements.length; i++) {
+      //   listElements[i].classList.remove("end");
+      // }
     }
 }
 

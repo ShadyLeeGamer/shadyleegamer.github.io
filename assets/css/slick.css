@@ -188,17 +188,18 @@
     height: 250px;
     
   }
+  }
 
-  .slick-list {
-    overflow: hidden;
-  }
-  }
+
 
   @media screen and (min-width: 736px) {
     .slick-current {
       position: relative;
-      scale: 1.125;
       z-index: 2;
+    }
+
+    .slick-current {
+      scale: 1.125;
     }
   }
 
@@ -206,3 +207,6 @@
     opacity: 100%;
   }
 
+  .slick-slide {
+    overflow: hidden;
+  }

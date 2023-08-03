@@ -3012,8 +3012,16 @@ li .highlight-label::after {
     }
 
 
+    .space {
+        position: relative;
+        width: 100%;
+        height: 100px;
+    }
+
 
 /* Scroll Transitions */
+
+
     
     .spinner-list.scroll-transition li,
     .contact.scroll-transition li,
@@ -3069,6 +3077,7 @@ li .highlight-label::after {
       }
       
       .description.scroll-transition {
+        display: none;
         opacity: 0;
       }
       
@@ -3115,19 +3124,33 @@ li .highlight-label::after {
       .project-date.scroll-transition {
         opacity: 0;
       }
-      
       .project-date.scroll-transition.end {
         opacity: 1;
         transition: opacity 0.5s ease-out, transform 0.5s ease-out;
       }
 
-      /* body {
-		line-height: 1.5;
-		place-items: center;
-	} */
+      .image-container.scroll-transition > *,
+      .image-center.scroll-transition > * {
+        opacity: 0;
+      }
 
-    .space {
-        position: relative;
-        width: 100%;
-        height: 100px;
-    }
+      img.scroll-transition,
+      video.scroll-transition {
+        opacity: 0;
+      }
+
+      img.scroll-transition.end,
+      video.scroll-transition.end {
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+      }
+
+      /* .image-container.scroll-transition > *.end,
+      .image-center.scroll-transition > *.end {
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+      } */
+
+      /* .scroll-transition:not(.end) {
+        display: none;
+    } */

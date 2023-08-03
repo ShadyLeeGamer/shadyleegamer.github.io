@@ -56,16 +56,16 @@
 						<video src="videos/okainos/Turns_in_action.mp4"></video>
 					</div>
 					<div class="slick-slide">
-						<img loading="lazy" src="images/edge-runner/screenshot3.jpg">
+						<img src="images/edge-runner/screenshot3.jpg">
 					</div>
 					<div class="slick-slide">
-						<img loading="lazy" src="images/edge-runner/screenshot1.jpg">
+						<img src="images/edge-runner/screenshot1.jpg">
 					</div>
 					<div class="slick-slide">
-						<img loading="lazy" src="images/edge-runner/screenshot4.jpg">
+						<img src="images/edge-runner/screenshot4.jpg">
 					</div>
 					<div class="slick-slide">
-						<img loading="lazy" src="images/edge-runner/screenshot2.jpg">
+						<img src="images/edge-runner/screenshot2.jpg">
 					</div>
 				</div>
 
@@ -74,7 +74,7 @@
 						<li id="steam">
 							<div class="spinner">
 								<a href="https://store.steampowered.com/" target="_blank">
-									<img loading="lazy" src="images/icons/steam.png" />
+									<img src="images/icons/steam.png" />
 								</a>
 							</div>
 						</li>
@@ -96,7 +96,7 @@
 			</div>
 
 			<div class="popup-image">
-				<img loading="lazy" src="images/okainos/back-end-user.png" alt="">
+				<img src="images/okainos/back-end-user.png">
 			</div>
 
 			<div id="project-content-wrapper">
@@ -109,8 +109,8 @@
 							<h3 class="project-heading"><s>Rigidbody & Raycast</s> Spline-Based Character Controller</h3>
 
 							<div class="image-and-text-container left">
-								<div class="image-container">
-									<img loading="lazy" src="images/edge-runner/player-shapes.jpg"/>
+								<div class="image-container scroll-transition ">
+									<img data-src="images/edge-runner/player-shapes.jpg"/>
 								</div>
 								<div class="text-container">
 									<p>The player is surrounded by shapes that are used to detect different types of collisions.</p>
@@ -119,15 +119,14 @@
 
 							<div class="accordion">
 								<div class="accordion-item">
-									<!-- <span class="accordion-icon icon-movement"><img loading="lazy" src="images/accordion-icons/movement.jpg"></span> -->
 									<div class="accordion-header movement"><div>Wall Running</div></div>
 									<div class="accordion-content">
 										<h3 class="project-heading">First Revision</h3>
-								<p>Initially, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to angle the player correctly.</p>
+										<p>Initially, wall movement was handled by continuously casting a circle at the wall in order to get the surface normal, which is then used to angle the player correctly.</p>
 										<p>This method was inspired by the use of spheres for collision in Super Mario Galaxy, due to its round shape, we can prevent the side effects of gravity bending physics.</p>
 											<div class="image-and-text-container left">
-												<div class="image-container">
-									<video src="videos/edge-runner/ray-sensors-sonic-physics-unity.mp4" controls muted loop>
+												<div class="image-container scroll-transition">
+													<video data-src="videos/edge-runner/ray-sensors-sonic-physics-unity.mp4"  autoplay controls muted loop>
 												</div>
 												<div class="text-container">
 													<p>I found this to be much more effective than casting rays as used in the classic Sonic games due to the bugs that occur when standing on slanted ledges and pointy terrain.</p>
@@ -137,8 +136,8 @@
 
 											<h3 class="project-heading">Final Revision</h3>
 											<div class="image-and-text-container right">
-												<div class="image-container">
-													<video src="videos/edge-runner/wall-point-percent.mp4" controls muted loop>
+												<div class="image-container scroll-transition">
+													<video data-src="videos/edge-runner/wall-point-percent.mp4"  autoplay controls muted loop>
 												</div>
 												<div class="text-container">
 													<p>However, after replacing Unity’s physics engine and utilising splines with an extension script I made for Unity’s SpriteShape API, the process is a lot lighter now as we no longer need to make anymore detections after entering a wall since movement is simply achieved by moving the player along the wall spline with a percent value.</p>
@@ -146,8 +145,8 @@
 											</div>
 
 											<div class="image-and-text-container left">
-												<div class="image-container">
-													<video src="videos/edge-runner/wall-run-stress-test.mp4" controls muted loop>
+												<div class="image-container scroll-transition">
+													<video data-src="videos/edge-runner/wall-run-stress-test.mp4"  autoplay controls muted loop>
 												</div>
 												<div class="text-container">
 													<p>This method guarantees that the player will never fall off a wall even at extreme speeds, resulting in much more consistent physics. You can see this being stress tested in the clip.</p>
@@ -157,8 +156,8 @@
 											<h3 class="project-heading">Evenly-Spaced Spline Points</h3>
 
 											<div class="image-and-text-container right">
-												<div class="image-container">
-													<img loading="lazy" src="images/edge-runner/evenly-spaced-points-and-normals.jpg"/>
+												<div class="image-container scroll-transition">
+													<img data-src="images/edge-runner/evenly-spaced-points-and-normals.jpg"/>
 												</div>
 												<div class="text-container">
 													<p>The spline is divided into evenly spaced points in order to achieve constant speed between points, which is also used for seamlessly attaching and detaching at nearest points when entering or exiting a wall.</p>
@@ -257,8 +256,8 @@
 										<p>Corners are defined by steep points that turn at a certain angle threshold. Outer corner points are automatically marked as “Edge points”.</p>
 									
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<video src="videos/edge-runner/evenly-spaced-points-editor.mp4" controls muted loop>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/evenly-spaced-points-editor.mp4" autoplay controls muted loop>
 											</div>
 											<div class="text-container">
 												<p>Here we can see these corners updating in the editor, the blue are normal points and the red are edge points.</p>
@@ -288,8 +287,8 @@
 										</div>
 
 										<div class="image-and-text-container right">
-											<div class="image-container">
-												<video src="videos/edge-runner/edge-running.mp4" controls muted loop>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/edge-running.mp4"  autoplay controls muted loop>
 											</div>
 											<div class="text-container">
 												<p>This allows the player to perform an “edge run” (which is when they drift off at a constant velocity, made possible by the CONTROL LOCK mechanic) whenever they reach their upcoming edge point.</p>
@@ -297,8 +296,8 @@
 										</div>
 
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<video src="videos/edge-runner/edge-run-between-2.mp4" controls muted loop></video>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/edge-run-between-2.mp4"  autoplay controls muted loop></video>
 											</div>
 											<div class="text-container">
 										<p>A raycast is also shot from the edge point in the player's direction to find a close corner for the player to seamlessly cross over the small gap, if there is one.</p>
@@ -306,18 +305,14 @@
 										</div>
 										
 										<div class="image-and-text-container right">
-											<div class="image-container">
-												<video src="videos/edge-runner/edge-running-stress-test.mp4" controls muted loop></video>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/edge-running-stress-test.mp4"  autoplay controls muted loop></video>
 
 											</div>
 											<div class="text-container">
 												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point. You can see this system being stress tested here.</p>
 											</div>
 										</div>
-
-										<!-- <div class="image-center">
-												<video src="videos/edge-runner/edge-running-stress-test.mp4" controls muted loop></video>
-											</div> -->
 									</div>
 								</div>
 
@@ -327,8 +322,8 @@
 										<p>Wall jumping is achieved by reflecting the player’s velocity off the surface as well as initiating a CONTROL LOCK.</p>
 										<p>The reflected velocity is then normalised with some of the surface normal to bounce further away from the wall. This adjustment was made to more easily wall jump over spikes while wall running more effectively.</p>
 												<div class="image-and-text-container left">
-											<div class="image-container">
-												<img loading="lazy" src="images/edge-runner/wall-jump-trajectories.jpg"/>
+											<div class="image-container scroll-transition">
+												<img data-src="images/edge-runner/wall-jump-trajectories.jpg"/>
 											</div>
 											<div class="text-container">
 												<p>The while line is the direction the player enters the wall (in the case of wallrunning, this is the direction of the mouse to the player), the red is the reflected direction, and the green is the reflected trajectory with some of the surface normal (yellow). As you can see the final green trajectory points the player further away from the wall, in turn making it easier to avoid nearby spikes.</p>
@@ -339,9 +334,9 @@
 										<p>One secret mechanic I really wanted to include was the ability to ricochet in tunnels. Like external forces, doing so allows you to gain instant momentum by exceeding the normal speed capacity.</p>
 										<p>However, this did not work well with the adjustment added as it causes the player to eventually ricochet in place.</p>
 										<p>To overcome this, I excluded the normal vector if the player was ricocheting, which is defined by if they wall jump without pressing the dash input during control lock. This was the result, on the left is ricocheting with the adjustment and on the right is without:</p>
-										<div class="image-center">
-											<video src="videos/edge-runner/rapid-wall-jumping-with-adjustment.mp4" controls muted loop></video>
-											<video src="videos/edge-runner/rapid-wall-jumping-without-adjustment.mp4" controls muted loop></video>
+										<div class="image-center scroll-transition">
+											<video data-src="videos/edge-runner/rapid-wall-jumping-with-adjustment.mp4"  autoplay controls muted loop></video>
+											<video data-src="videos/edge-runner/rapid-wall-jumping-without-adjustment.mp4"  autoplay controls muted loop></video>
 										</div>
 
 
@@ -396,8 +391,8 @@
 										<p>This system was made flexible for use and is what ties all the other mechanics together such as edge running, wall jumping, hitting a launch pad, and assist pushing the player to a nearby ground.</p>
 
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<video src="videos/edge-runner/control-lock.mp4" controls muted loop></video>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/control-lock.mp4"  autoplay controls muted loop></video>
 											</div>
 											<div class="text-container">
 												<p>The lines show the path from the lock point to the unlock point, and the number next to the player show the distance remaining until they reach the unlock point. As you can see, this can also be interrupted by player input or environment blocking in the way (ground, wall).</p>
@@ -486,8 +481,8 @@ void ControlUnlock()
 										<p>The target’s position is limited by a threshold box surrounding the player so the camera never loses them. The bounds is scaled by the screen ratio so there’s more horizontal freedom.</p>
 										
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<video src="videos/edge-runner/camera.mp4" controls muted loop></video>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/camera.mp4"  autoplay controls muted loop></video>
 											</div>
 											<div class="text-container">
 										<p>The camera target is the blue, you can see it turn cyan when it's clamped by the threshold box (red). You can also see the dead zone box (yellow) changing smoothly.</p>
@@ -644,8 +639,8 @@ public class CameraTarget : MonoBehaviour
 										<p>And to angle the player correctly with rotating platforms, we need the normal vector of the evenly-spaced spline points to rotate with the wall too. This is done by only refreshing the spline point normals of the rotating wall the player is currently on.</p>
 										
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<video src="videos/edge-runner/rotating-platform-normals.mp4" controls muted loop></video>
+											<div class="image-container scroll-transition">
+												<video data-src="videos/edge-runner/rotating-platform-normals.mp4"  autoplay controls muted loop></video>
 											</div>
 											<div class="text-container">
 										<p>As you can see, once the player enters a wall, the normals turn red and spike out as they update correctly relative to the rotation of the wall.</p>
@@ -695,13 +690,13 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 										<p>A problem I encountered was low performance in scenes where a lot of motion objects were present. Using the profiler, I identified that most of the processing power was being spent on the “Physics2D.SyncCollider2DTransformChanges” event, responsible for updating colliders of objects with a changing transform.</p>
 										<p>The frame being shown was the time we loaded a new “chunk”. You see, to improve performance I broke the level down into chunks that load when detected by the camera box. However, in this case, the second chunk loads in more motion objects, which explains the doubling of processing power from this frame.</p>
 										<p>The event took up a whopping 45.7% of frame time, due to 283 calls being made to its functions.</p>
-										<div class="image-center">
-											<img loading="lazy" src="images/edge-runner/unity-profiler-without-cam-detection.jpg"/>
+										<div class="image-center scroll-transition">
+											<img data-src="images/edge-runner/unity-profiler-without-cam-detection.jpg"/>
 										</div>
 
 										<p>I implemented a solution where motion objects are surrounded by a circle that detects for the camera box so that we can only apply calculated rotation or movement to the transform when it’s in view. This significantly reduced the event’s impact to 2.6% of frame time, with only 6 function calls. Processing power is now distributed well and never doubles when loading the 2nd chunk.</p>
-										<div class="image-center">
-											<img loading="lazy" src="images/edge-runner/unity-profiler-with-cam-detection.jpg"/>
+										<div class="image-center scroll-transition">
+											<img data-src="images/edge-runner/unity-profiler-with-cam-detection.jpg"/>
 										</div>
 									</div>
 								</div>
@@ -714,8 +709,8 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 									<div class="accordion-header audio"><div>Level Music</div></div>
 									<div class="accordion-content">
 										<p>I made the tracks for room 1 (Cryo City) and room 2 (Factory Falls).</p>
-										<audio controls><source src="sounds/edge-runner/cryo-city.mp3" type="audio/mpeg"></audio>
-										<audio controls><source src="sounds/edge-runner/factory-falls.mp3" type="audio/mpeg"></audio>
+										<audio  controls><source src="sounds/edge-runner/cryo-city.mp3" type="audio/mpeg"></audio>
+										<audio  controls><source src="sounds/edge-runner/factory-falls.mp3" type="audio/mpeg"></audio>
 									</div>
 								</div>
 							</div>
@@ -729,35 +724,19 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 	</div>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.slidertron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
 
 		<script src="assets/js/loader.js"></script>
-		
-		<script src="assets/js/main.js"></script>
-		<script src="assets/js/custom.js"></script>
-		
+
+		<script src="assets/js/navbar.js"></script>
 		<script src="assets/js/project-elements.js"></script>
-		<script src="assets/js/slideshow.js"></script>
 
 		<script src="assets/js/edge-runner.js"></script>
-		
-		<script src="assets/js/popup-image.js"></script>
-		<script src="assets/js/tabs.js"></script>
-		
+
+		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
 		<script src="assets/js/image-slider.js"></script>
-		
-	<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
 
-		
-		<script src="assets/js/navbar.js"></script>
-
-		<script src="assets/js/observers.js"></script>
-
+		<script src="assets/js/popup-image.js"></script>
 		<script src="assets/js/accordion-single.js"></script>
 		</body>
 </html>

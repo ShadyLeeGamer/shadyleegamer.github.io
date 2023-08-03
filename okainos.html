@@ -36,7 +36,7 @@
 		<div id="page-wrapper">
 			<header id="project-header">
 				<div id="big-reel">
-					<video class="main-video" src="videos/okainos/reel.mp4" autoplay muted loop></video>
+					<video class="main-video" src="videos/okainos/reel.mp4" poster="images/okainos/reel-thumbnail.png" autoplay muted loop></video>
 					<span id="filter"></span>
 					<span id="fade"></span>
 				</div>
@@ -123,13 +123,13 @@ CARD1_NAME*QUANITY,CARD2_NAME*QUANITY,CARD3_NAME*QUANITY</code></pre>
 
 										<p>Here you can see changes to card decks being saved to the database.</p>
 										<div class="realtime-function">
-											<div class="display">
+											<div class="display scroll-transition">
 												<h2>FRONT-END</h2>
-												<video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video>
+												<video data-src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video>
 											</div>
-											<div class="display">
+											<div class="display scroll-transition">
 												<h2>BACK-END</h2>
-												<video src="videos/okainos/card-deck-builder-back-end.mp4" autoplay loop muted></video>
+												<video data-src="videos/okainos/card-deck-builder-back-end.mp4" autoplay loop muted></video>
 											</div>
 										</div>
 
@@ -273,8 +273,8 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 									<div class="accordion-content">
 									<h3 class="project-heading">Card Data Assets</h3>
 								<div class="image-and-text-container left">
-									<div class="image-container">
-										<img src="images/okainos/card-data-asset-firebase-json.jpg"/>
+									<div class="image-container scroll-transition">
+										<img data-src="images/okainos/card-data-asset-firebase-json.jpg"/>
 									</div>
 									<div class="text-container">
 										<p>In order to reduce the amount of updates testers had to install from the game page, I implemented card data assets, used to store card details like stats, effects, description, etc. This allowed card nerfs or buffs to be updated across all devices behind the scenes.</p>
@@ -286,8 +286,8 @@ response(new CardDeckCodeValidationResponse(validDeckCards.ToArray(), validDeckC
 
 
 								<div class="image-and-text-container right">
-									<div class="image-container">
-										<img src="images/okainos/card-asset-inspector.jpg"/>
+									<div class="image-container scroll-transition">
+										<img data-src="images/okainos/card-asset-inspector.jpg"/>
 									</div>
 									<div class="text-container">
 										<p>I also built a custom property drawer to apply abstraction for card editing by hiding properties of unselected card effects that wont be stored in the database. This was needed since each card effect had its own unique set of properties.</p>
@@ -414,8 +414,8 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 								<p>To further reduce updates, we can put a launcher app on the game page which will automatically retrieve updated versions of the game build (along with card resources) from the Firebase Cloud Storage.</p>
 								
 								<div class="image-and-text-container left">
-									<div class="image-container">
-										<img src="images/okainos/launcher-firebase-download-exceeded.jpg"/>
+									<div class="image-container scroll-transition">
+										<img data-src="images/okainos/launcher-firebase-download-exceeded.jpg"/>
 									</div>
 									<div class="text-container">
 								<p>Unfortunately, I ran into issues during testing as the Firebase project has reached its monthly limit of downloads. So we decided to put off the idea for now.</p>
@@ -429,20 +429,20 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									<div class="accordion-content">
 										<p>You can gain more cards with boosters, which can be bought in the shop. The number of boosters you have along with your expanding card collection is updated in your account.</p>
 										<div class="realtime-function">
-											<div class="display">
+											<div class="display scroll-transition">
 												<h2>FRONT-END</h2>
-												<video src="videos/okainos/booster-opening-front-end.mp4" autoplay loop muted></video>
+												<video data-src="videos/okainos/booster-opening-front-end.mp4" autoplay loop muted></video>
 											</div>
-											<div class="display">
+											<div class="display scroll-transition">
 												<h2>BACK-END</h2>
-												<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
-												<video src="videos/okainos/booster-opening-back-end.mp4" autoplay loop muted></video>
+												<!-- <video data-src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
+												<video data-src="videos/okainos/booster-opening-back-end.mp4" autoplay loop muted></video>
 											</div>
 										</div>
 		
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<img src="images/okainos/booster-probability-gradient.jpg"></span>
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/booster-probability-gradient.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>Creative use of the Gradient component is made for visualising and editing the card rarity possibility allowing for unique chances for each booster chest type.</p>
@@ -457,8 +457,8 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 										<h3 class="project-heading">Firebase Authentication & Itch.io Integration</h3>
 
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<img src="images/okainos/back-end-user.jpg"></span>
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/back-end-user.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>An essential system I had to implement for the website was authentication. This was linked to the same database allowing people to login with the same account created on the website or the game!</p>
@@ -466,8 +466,8 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 										</div>
 	
 										<div class="image-and-text-container right">
-											<div class="image-container">
-												<img src="images/okainos/closed-beta-tester-key-group.jpg"></span>
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/closed-beta-tester-key-group.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>In order to private the game's access to only alpha testers, I used Itch.io's key group feature to generate a max of 100 keys and stored them in Firebase Cloud Storage. For each account created on the website, after they pass the verification process via email, a key URL is pulled from the list and stored in the account for them to claim and access the game page with it from their profile page.</p>
@@ -567,11 +567,11 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 
 
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<img src="images/okainos/remaining-seats.jpg"></span>
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/remaining-seats.jpg"></span>
 											</div>
 											<div class="text-container">
-												<p>The remaining number of seats available was also displayed on the site to induce urgency.</p>
+												<p>The remaining number of seats available was also display scroll-transitioned on the site to induce urgency.</p>
 											</div>
 										</div>
 									</div>
@@ -580,21 +580,20 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									<div class="accordion-header user-interface"><div>Card Collection Filtering & Trading Tools</div></div>
 									<div class="accordion-content">
 										<p>To help players strategize, I created a team planner with a filtering system that can sort cards by tribe, rarity, strength, price, draw. For further filtering, you can also check to only see cards owned in your collection or search by name.</p>
-										<div class="image-center">
-											<video src="videos/okainos/card-collection-filter-tool.mp4" autoplay loop controls></video>
-											<img src="images/okainos/card-collection-back-end.jpg">
+										<div class="image-center scroll-transition">
+											<video data-src="videos/okainos/card-collection-filter-tool.mp4" autoplay controls loop></video>
+											<img data-src="images/okainos/card-collection-back-end.jpg">
 										</div>
 
 										<p>Other functionalities include the ability to trade craft and scrap cards for salt and pearls.</p>
 										<div class="realtime-function">
-										<div class="display">
+										<div class="display scroll-transition">
 											<h2>FRONT-END</h2>
-											<video src="videos/okainos/trading-front-end.mp4" autoplay loop muted></video>
+											<video data-src="videos/okainos/trading-front-end.mp4" autoplay loop muted></video>
 										</div>
-										<div class="display">
+										<div class="display scroll-transition">
 											<h2>BACK-END</h2>
-											<!-- <video src="videos/okainos/card-deck-builder-front-end.mp4" autoplay loop muted></video> -->
-											<video src="videos/okainos/trading-back-end.mp4" autoplay loop muted></video>
+											<video data-src="videos/okainos/trading-back-end.mp4" autoplay loop muted></video>
 										</div>
 									</div>
 									</div>
@@ -603,8 +602,8 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 									<div class="accordion-header diagnostic"><div>Managing Heavy Resources (materials, sprites, prefabs)</div></div>
 									<div class="accordion-content">
 										<div class="image-and-text-container left">
-											<div class="image-container">
-												<img src="images/okainos/card-data-asset-firebase-json-old.jpg"></span>
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/card-data-asset-firebase-json-old.jpg"></span>
 											</div>
 											<div class="text-container">
 												<p>A big issue we faced when testing a build of the game was that it would fail to load card resources like materials, sprites, and prefabs. This was due to the old method of storing the GUID of the assets on the database and using it to load the assets at runtime. Since this uses the UnityEditor namespace it does not work in a build.</p>
@@ -712,50 +711,19 @@ public class CardEffectConditionEditPropertySelectorDrawer : PropertySelectorDra
 	</div>
 
 		<!-- Scripts -->
-			<!-- <script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.slidertron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-			<script src="assets/js/custom.js"></script>
-			<script src="assets/js/slideshow.js"></script>
-			
-			<script src="assets/js/popup-image.js"></script>
-			
-			<script src="assets/js/image-slider.js"></script>
-			
-			<script src="assets/js/slick.min.js"></script> -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.slidertron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
 
 			<script src="assets/js/loader.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/custom.js"></script>
 
-			<script src="assets/js/project-elements.js"></script>
-			<script src="assets/js/slideshow.js"></script>
-			
-			<script src="assets/js/popup-image.js"></script>
-			<script src="assets/js/tabs.js"></script>
-			
-			<script src="assets/js/image-slider.js"></script>
-			
-		<!-- <script src="assets/js/slick.min.js"></script> -->
-		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
-	
-			
 			<script src="assets/js/navbar.js"></script>
-			<!-- <script src="assets/js/parallax-scrolling.js"></script> -->
+			<script src="assets/js/project-elements.js"></script>
 	
-			<script src="assets/js/observers.js"></script>
-	
+			<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+			<script src="assets/js/image-slider.js"></script>
+
+			<script src="assets/js/popup-image.js"></script>
 			<script src="assets/js/accordion-single.js"></script>
+
+			<script src="assets/js/observers.js"></script>
 		</body>
 </html>

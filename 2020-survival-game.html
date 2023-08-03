@@ -14,16 +14,12 @@
 
 		<link rel="stylesheet" href="assets/css/global.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
-
+		
 		<link rel="stylesheet" href="assets/css/interactable.css" />
 		<link rel="stylesheet" href="assets/css/survival-2020.css" />
-		
+
 		<link rel="stylesheet" href="assets/css/slick.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
-
-		<link rel="stylesheet" href="highlight/styles/base16/material-palenight.min.css" />
-		<script src="highlight/highlight.min.js"></script>
-		<script>hljs.highlightAll();</script>
 	</head>
 	<body class="no-sidebar">
 		<div id="loader-wrapper">
@@ -44,7 +40,7 @@
 
 			<header id="project-header">
 				<div id="big-reel">
-					<video class="main-video" src="videos/2020-survival-game/reel.mp4" autoplay muted loop></video>
+					<video class="main-video" src="videos/2020-survival-game/reel.mp4" poster="images/2020-survival-game/reel-thumbnail.png" autoplay muted loop></video>
 					<span id="filter"></span>
 					<span id="fade"></span>
 				</div>
@@ -56,14 +52,9 @@
 			<div id="project-top" class="container">
 
 				<div class="slick-slider template">
-
-						<div class="slick-slide">
+					<div class="slick-slide">
 						<iframe src="https://www.youtube.com/embed/eaXVMo3obiI"></iframe>
 					</div>
-
-					<!-- <div class="slick-slide">
-						<img src="images/pic05.jpg">
-					</div> -->
 					<div class="slick-slide">
 						<img src="images/2020-survival-game/google-play-screenshot-1.jpg">
 					</div>
@@ -77,45 +68,6 @@
 						<img src="images/2020-survival-game/google-play-screenshot-4.jpg">
 					</div>
 				</div>
-				
-				<!-- <div class="description">
-				<div class="split">
-					<section>
-						<span>
-
-							<p class="project-category">Endless survival game</p>
-						<p>Made and published a silly game on Google Play during BTEC course and quarantine about surviving the lockdown, collecting toilet papers and shooting soap at the infected!</p>
-						</span>
-					</section>
-					<section>
-						<ul class="highlights">
-							<li>Rest API</li>
-							<li>Pusing Firebase to limits!</li>
-							<li>Server and website management</li>
-							<li>Custom editor tools</li>
-							<li>Networking</li>
-						</ul>
-					</section>
-				</div> 
-			</div>
-			-->
-
-				<!-- <div class="split">
-					<section>
-						<p>Date</p>
-						<p>T</p>
-						<p>asdasd</p>
-						<p>asdasd</p>
-						<p>asdasd</p>
-					</section>
-					<section>
-						<p>asdasd</p>
-						<p>asdasd</p>
-						<p>asdasd</p>
-						<p>asdasd</p>
-						<p>asdasd</p>
-					</section>
-				</div> -->
 
 			<div class="description">
 				<ul class="spinner-list platform scroll-transition">
@@ -142,8 +94,8 @@
 				<ul id="survival-2020" class="project-tech-list scroll-transition"></ul>
 
 					<div class="image-and-text-container left">
-						<div class="image-container">
-							<img src="images/2020-survival-game/sculpture.jpg" style="width:300px;"/>
+						<div class="image-container scroll-transition">
+							<img data-src="images/2020-survival-game/sculpture.jpg" style="width:300px;"/>
 						</div>
 						<div class="text-container">
 							<p id="survival-2020" class="project-category"></p>
@@ -151,10 +103,6 @@
 							<p>The game is published on Google Play and PC and reported 80 unique user installs!</p>
 						</div>
 					</div>
-
-					<!-- <p class="project-category">Endless survival game</p>
-					<p>During quarantine, while I was working on my BTEC course, I made a fun game about surviving a lockdown, collecting toilet papers, and shooting soap at the infected!</p>
-					<p>The game is published on Google Play and PC and reported 80 unique user installs!</p> -->
 			</div>
 				
 			</div>
@@ -169,8 +117,8 @@
 						<div class="col-12">
 							<article id="content">
 					<div class="image-and-text-container right">
-										<div class="image-container">
-											<video src="videos//2020-survival-game/in-between-waves.mp4" controls></video>
+										<div class="image-container scroll-transition">
+											<video data-src="videos//2020-survival-game/in-between-waves.mp4" autoplay controls muted></video>
 										</div>
 										<div class="text-container">
 					<h3 class="project-heading">Wave System with in-between Shops</h3>
@@ -181,8 +129,8 @@
 								
 								
 					<div class="image-and-text-container left">
-									<div class="image-container">
-										<img src="images/2020-survival-game/gallery-enemies.jpg"/>
+									<div class="image-container scroll-transition">
+										<img data-src="images/2020-survival-game/gallery-enemies.jpg"/>
 									</div>
 									<div class="text-container">
 					<h3 class="project-heading">Shared functionality between entities</h3>
@@ -191,9 +139,8 @@
 								</div>
 
 					<div class="image-and-text-container right">
-									<div class="image-container">
-									<video src="videos//2020-survival-game/shop.mp4" autoplay controls loop></video>
-									<!-- <img src="images/2020-survival-game/shop.png"/> -->
+									<div class="image-container scroll-transition">
+									<video data-src="videos//2020-survival-game/shop.mp4" autoplay controls muted loop></video>
 									</div>
 									<div class="text-container">
 					<h3 class="project-heading">Skins & perks shop</h3>
@@ -203,12 +150,9 @@
 
 								<h3 class="project-heading">Adapting to Feedback</h3>
 								<p>During the submission process, Google Play rejected my game due to the game over screen, which originally said ‘YOU GOT CORONA’. So I changed it to something more sensitive to prevent triggering users. It taught me to be willing to adapt and make changes based on feedback.</p>
-								<div class="image-center-container">
-									<div class="image-center">
-										<img src="images/2020-survival-game/google-play-support-game-over-screen-screenshot.jpg"/>
-										<img src="images/2020-survival-game/game-over-screen.jpg"/>
-										<!-- <img src="images/okainos/back-end-user.png"/> -->
-									</div>
+								<div class="image-center scroll-transition">
+									<img data-src="images/2020-survival-game/google-play-support-game-over-screen-screenshot.jpg"/>
+									<img data-src="images/2020-survival-game/game-over-screen.jpg"/>
 								</div>
 							</article>
 						</div>
@@ -220,29 +164,20 @@
 	</div>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.slidertron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
 
 		<script src="assets/js/loader.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script src="assets/js/custom.js"></script>
 
+		<script src="assets/js/navbar.js"></script>
 		<script src="assets/js/project-elements.js"></script>
 
-		<script src="assets/js/popup-image.js"></script>
-		
-		<script src="assets/js/image-slider.js"></script>
-		<!-- <script src="assets/js/slideshow.js"></script> -->
-		<!-- <script src="assets/js/slick.min.js"></script> -->
-		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
-
 		<script src="assets/js/survival-2020.js"></script>
-		
-		<script src="assets/js/navbar.js"></script>
+
+		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+		<script src="assets/js/image-slider.js"></script>
+
+		<script src="assets/js/popup-image.js"></script>
+		<script src="assets/js/accordion-single.js"></script>
 
 		<script src="assets/js/observers.js"></script>
 		</body>
