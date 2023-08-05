@@ -26,7 +26,6 @@
 
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
 }
 .slick-list:focus
 {
@@ -86,15 +85,15 @@
 {
     float: right;
 }
-.slick-slide img
+.slick-slide *
 {
     display: block;
 }
-.slick-slide.slick-loading img
+.slick-slide.slick-loading *
 {
     display: none;
 }
-.slick-slide.dragging img
+.slick-slide.dragging *
 {
     pointer-events: none;
 }
@@ -123,86 +122,75 @@
 
 .slick-slider {
     width: 100%;
-    /* background-color: blue; */
-    /* width: calc(95vw - 30PX);
-    margin-left: calc(-47.5vw + 50% + 15px); */
-  }
-  
-  .slick-slider .slick-slide {
-    /* width: 350px;
-    height: 250px;
-    margin: 25px; */
   }
   
 .slick-slide {
+  height: 300px;
   transition: 0.25s;
 }
-
-  .slick-slide img,
-  .slick-slide video {
-    height: 300px;
-    object-fit: contain;
-  }
-  
-  .slick-slide video  {
-    width: auto;
-  }
-  
-  .slick-slide iframe {
-    width: 500px;
-    height: 300px;
-  }
   
   .slick-slide:not(.slick-current) {
     opacity: 40%;
   }
   
+  .slick-slide * {
+    height: calc(100% - 25px);
+    width: auto;
+    object-fit: contain;
+  }
+  
+  .slick-slide iframe {
+    width: 500px;
+  }
+
+  .slick-current {
+    position: relative;
+    z-index: 2;
+  }
+
 
   
   @media screen and (max-width: 960px) {
-    .slick-slide img,
-    .slick-slide video,
-    .slick-slide iframe {
-      height: 200px;
-      object-fit: contain;
-      margin: 0 auto;
+    .slick-slide {
+      height: 210px;
     }
   
     .slick-slide iframe {
-    width: 100%;
-    width: 400px;
-  
+      width: 400px;
     }
   }
-  
-  @media screen and (max-width: 736px) {
-    .slick-slide img,
-    .slick-slide video {
-      height: auto;
-      max-height: 500px;
-      width: 100%;
-    }
-  
-    .slick-slide iframe {
-    width: 100%;
-    height: 250px;
-    
-  }
-  }
-
-
 
   @media screen and (min-width: 736px) {
     .slick-current {
-      position: relative;
-      z-index: 2;
-    }
-
-    .slick-current {
       scale: 1.125;
     }
+    }
+  
+  @media screen and (max-width: 736px) {
+  .slick-list {
+    overflow: hidden;
+    }
+    
+  .slick-slide {
+    position: relative;
+    min-height: 300px;
+    max-height: 300px;
+    width: 100%;
+    background-color: black;
   }
 
+  .slick-slide * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* height: 300px; */
+    object-fit: contain;
+  }
+
+  .slick-slide iframe {
+    width: 100%;
+  }
+  }
   .slick-current {
     opacity: 100%;
   }
