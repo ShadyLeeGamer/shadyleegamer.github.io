@@ -43,6 +43,15 @@
     --secondary-2: #468797;
 }
 
+:root #about-me {
+    --reel-fade:#456678c0 ;
+}
+
+:root #project-header {
+    --reel-fade:var(--background-1) ;
+}
+
+
 :root #nav {
     --colour: var(--nav-background);
 }
@@ -398,11 +407,6 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	a {
-		color: var(--purple);
-		font-weight: bold;
-	}
-
 	sub {
 		position: relative;
 		top: 0.5em;
@@ -532,16 +536,17 @@ color: var(--side-title);
 .side-title.perspective {
     font-size: 4em;
     position: sticky;
-writing-mode: vertical-lr;
-text-orientation: upright;
-transform: translateY(-50%);
-letter-spacing: -0.25em;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    letter-spacing: -0.25em;
 
-z-index: 1;
+    z-index: 1;
+    float: left; 
+    top: 0;
+    bottom: 0;
+    top: 2em;
 
-display: block;
-height: 0;
-top: 3em;
+    width: 0;
 }
 .side-title.mobile {
 position: relative;
@@ -1933,11 +1938,13 @@ left: -50%;
     -webkit-box-align: center;
     align-items: center;
 
-    padding-bottom: 0.4em;
+    /* padding-bottom: 0.4em;
     padding-left: 0.4em;
-    padding-right: 0.4em;
+    padding-right: 0.4em; */
+    right: -2.5px;
     color:var(--text-light);
     font-family:'A-OTF Shin Go Pro H';
+    letter-spacing: 3.5px;
     text-decoration: none;
     text-transform: uppercase;
     /* top: -1.5em; */
@@ -1949,7 +1956,7 @@ left: -50%;
 {
     position: relative;
     /* height: 50px; */
-
+    cursor: pointer;
     display: block;
     top: 0;
     margin: 10px;
@@ -2345,6 +2352,7 @@ left: -50%;
     height: 100%;
     object-fit:fill;
     filter: blur(50px) brightness(0.75);
+
 }
 
 #big-reel #fade {
@@ -2354,11 +2362,10 @@ left: -50%;
     height: 100px;
     width: 100%;
     left: 0;
-    transform: translateY(calc(101% - 100px));
     z-index: 1;
     pointer-events: none;
-    /* background: linear-gradient(#00000000, black); */
-    background: linear-gradient(#00000000, var(--background-1));
+
+    background: linear-gradient(#00000000, var(--reel-fade));
     opacity: 0;
     transition: opacity 1s ease; 
 }
@@ -2848,7 +2855,8 @@ left: -50%;
 
 
       #about-me .heading,
-      #project-header .heading {
+      #project-header .heading,
+      #education-section .heading {
 		color: var(--nav-span);
 	}
 
@@ -3019,6 +3027,103 @@ li .highlight-label::after {
         width: 100%;
         height: 100px;
     }
+
+
+
+    .accordion {
+        margin-bottom: 20px;
+      }
+
+      .accordion-item {
+        position: relative;
+        margin-bottom: -10px;
+      }
+      
+      .accordion-header {
+        position: relative;
+        padding: 10px;
+        cursor: pointer;
+        font-family:'A-OTF Shin Go Pro M';
+        background-color: var(--colour-bright);
+        text-align: left;
+        transition: background-color 0.15s ease-in, color 0.15s ease-in;
+      }
+
+      .accordion-header:after {
+        position: absolute;
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: black;
+        width: 25px;
+        height: 25px;
+        top: 50%;
+        right: 0;
+        z-index: 1;
+        transform: translateY(-50%);
+        transition: filter 0.3s ease-in;
+        filter: brightness(0) invert(1);
+      }
+      .accordion-header:hover {
+        background-color: var(--colour-dark);
+      }
+
+      .accordion-header > img,
+      .accordion-header > div {
+        pointer-events: none;
+      }
+
+      .accordion-header > img {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        z-index: 1;
+        transform: translateY(-50%);
+        top: 50%;
+        display: flex;
+        transition: filter 0.3s ease-in;
+        filter: brightness(0) invert(1);
+      }
+
+      .accordion-item.active {
+        margin-bottom: 0px;
+      }
+
+      .accordion-item.active > .accordion-header > img  {
+        filter: none;
+      }
+
+      .accordion-item.active > .accordion-header:after  {
+        filter: brightness(0);
+      }
+
+      .accordion-header > div {
+        position: relative;
+        margin-left: 55px;
+        right: 25px;
+        /* text-transform: uppercase; */
+      }
+      
+      .accordion-content {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        margin: 10px;
+      }
+      
+      .accordion-item.active > .accordion-content {
+        height: auto;
+        transition: max-height 0.3s ease-in;
+      }
+      
+      .accordion-item.active > .accordion-header {
+        background-color: #f3eee6;
+        color: black;
+      }
+      .accordion-item.active > .accordion-header:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+      }
+
 
 
 /* Scroll Transitions */

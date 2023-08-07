@@ -31,7 +31,8 @@ new ElementHTML(
     <li>Git</li>
     <li>Sprite Shape API</li>
     <li>Notion</li>
-    <li>Cinemachine</li>`));
+    <li>Cinemachine</li>
+    <li>JSON</li>`));
 
 elementsHTML.set('game-jams',
 new ElementHTML(

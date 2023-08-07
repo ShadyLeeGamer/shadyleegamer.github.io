@@ -275,7 +275,8 @@
 
 		#projects .side-title.projects-header.perspective
 		{
-			transform: translateX(-200%) translateY(-50%);
+			transform: translateX(-130px);
+
 		}
 
 
@@ -772,7 +773,7 @@
 		position: relative;
 		/* padding: 2em 5em; */
 		text-align: center;
-  		color: #fff;
+  		color: var(--text-light);
 		width: 100%;
 		
 		font-size: 1em;
@@ -1044,3 +1045,163 @@
 	.spotlights {
 		margin-top: 8em;
 	}
+
+
+	#hero-buttons-container {
+		position: relative;
+		background: var(--about-me-bg-2);
+		margin: 0 auto;
+        padding: 20px;
+	}
+
+	:root .hero-buttons > a:nth-child(n) {
+		--colour-bright: var(--purple);
+		--colour-dark: black;
+	}
+	:root .hero-buttons > a:nth-child(2n) {
+		--colour-bright: var(--colour-1-bright);
+		--colour-dark: var(--colour-1-dark);
+	}
+	:root .hero-buttons > a:nth-child(3n) {
+		--colour-bright: var(--colour-2-bright);
+		--colour-dark: var(--colour-2-dark);
+	}
+	:root .hero-buttons > a:nth-child(4n) {
+		--colour-bright: var(--colour-3-bright);
+		--colour-dark: var(--colour-3-dark);
+	}
+	:root .hero-buttons > a:nth-child(5n) {
+		--colour-bright: var(--colour-4-bright);
+		--colour-dark: var(--colour-4-dark);
+	}
+
+	:root .accordion .hero-buttons > a:nth-child(n) {
+		--colour-bright: var(--secondary-1);
+		--colour-dark: var(--nav-background);
+	}
+	:root .accordion .hero-buttons > a:nth-child(2n) {
+		--colour-bright: var(--secondary-2);
+		--colour-dark: var(--nav-background);
+	}
+
+	.hero-buttons {
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		padding-bottom: 20px;
+	}
+
+	.hero-buttons > a {
+        position: relative;
+        padding: 10px;
+        cursor: pointer;
+		/* width: max-content; */
+        font-family:'A-OTF Shin Go Pro M';
+		letter-spacing: 3.5px;
+		text-align: center;
+		color: var(--text-light);
+        background-color: var(--colour-bright);
+        transition: background-color 0.15s ease-in, color 0.15s ease-in;
+		z-index: 10;
+		max-width: 500px;
+	}
+
+	#hero-buttons-container .hero-buttons > a {
+		width: 200px;
+	}
+
+	.hero-buttons > a:hover {
+        background-color: var(--colour-dark);
+	}
+
+	@media screen and (max-width: 980px) {
+		.hero-buttons {
+			flex-direction: column;
+		}
+
+		.hero-buttons > a {
+			width: 300px;
+		}
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* #education-section .heading.work-experience-header.left
+	{
+		transform: translateX(-45px) translateY(-50%);
+	} */
+
+	#projects {
+		padding-bottom: 100px;
+		z-index: 0;
+	}
+
+	#projects::after {
+		position: absolute;
+		content: "";
+		bottom: 0;
+		background: linear-gradient(#00000000, var(--background-1));
+		z-index: 24;
+		height: 100px;
+		width: 100%;
+	}
+
+	#education-section {
+			background-color: var(--background-1);
+		z-index: 2;
+		color: var(--text-light);
+		font-family: "A-OTF Shin Go Pro L";
+	}
+
+	#education-content > p {
+		text-align: center;
+	}
+
+#education-section .heading {
+	text-align: center;
+}
+
+	#education-content {
+		position: relative;
+		margin: 0 auto;
+		width: 1100px;
+	  
+		padding: 5em 5em;
+	  
+		text-align: justify;
+	}
+
+
+    @media screen and (max-width: 1280px) {
+  
+		#education-content {
+        width: 90%;
+      }
+  
+    }
+  
+    @media screen and (max-width: 1080px) {
+  
+		#education-content {
+        width: 95%;
+      }
+  
+    }
+  
+    @media screen and (max-width: 980px) {
+  
+		#education-content {
+        width: 100%;
+      }
+    }
+
+	@media screen and (max-width: 736px) {
+		#education-content {
+      padding: 5em 2em 2.5em 2em;
+    }
+  }

@@ -4,7 +4,7 @@ const element = document.getElementById("nav");
 let html = `
 <div class="nav-content">
 <div>
-    <h1><a href="#">Ariya Bayat</a></h1>
+    <h1><a href="index.html">Ariya Bayat</a></h1>
     <span>Game Dev, Programmer Portfolio</span>
 </div>
 <div class="right">
@@ -26,14 +26,12 @@ element.innerHTML = html;
 
 const socialContactsElements = document.querySelectorAll(".resume-and-contacts-container")
 var socialContactsHTML = `<div class="resume-button-container">
-<a class="resume-button">
+<a class="resume-button" href="assets/docs/cv.pdf" target="_blank">
     <div class="spinner">
         <img src="images/icons/resume-cv.png">
     </div>
 </a>
-<div class="resume-button-label">
-    Resume
-</div>
+<div class="resume-button-label">CV</div>
 </div>
 
 <div class="contact scroll-transition">

@@ -1,95 +1,8 @@
-      .accordion {
-        margin-bottom: 20px;
-      }
 
-      .accordion-item {
-        position: relative;
-        margin-bottom: -10px;
-      }
-      
-      .accordion-header {
-        position: relative;
-        padding: 10px;
-        cursor: pointer;
-        font-family:'A-OTF Shin Go Pro R';
-        background-color: var(--colour-bright);
-        transition: background-color 0.3s ease-in, color 0.3s ease-in;
-      }
-
-      .accordion-header:after {
-        position: absolute;
-        content: '\02795'; /* Unicode character for "plus" sign (+) */
-        font-size: 13px;
-        color: black;
-        width: 25px;
-        height: 25px;
-        top: 50%;
-        right: 0;
-        z-index: 1;
-        transform: translateY(-50%);
-        transition: filter 0.3s ease-in;
-        filter: brightness(0) invert(1);
-      }
-      .accordion-header:hover {
-        background-color: var(--colour-dark);
-      }
-
-      .accordion-header > img,
-      .accordion-header > div {
-        pointer-events: none;
-      }
-
-      .accordion-header > img {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        object-fit: contain;
-        z-index: 1;
-        transform: translateY(-50%);
-        top: 50%;
-        display: flex;
-        transition: filter 0.3s ease-in;
-        filter: brightness(0) invert(1);
-      }
-
-      .accordion-item.active {
-        margin-bottom: 0px;
-      }
-
-      .accordion-item.active > .accordion-header > img  {
-        filter: none;
-      }
-
-      .accordion-item.active > .accordion-header:after  {
-        filter: brightness(0);
-      }
-
-      .accordion-header > div {
-        position: relative;
-        margin-left: 55px;
-        right: 25px;
-        /* text-transform: uppercase; */
-      }
-      
-      .accordion-content {
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.3s ease-out;
-        margin: 10px;
-      }
-      
-      .accordion-item.active > .accordion-content {
-        height: auto;
-        transition: max-height 0.3s ease-in;
-      }
-      
-      .accordion-item.active > .accordion-header {
-        background-color: #f3eee6;
-        color: black;
-      }
-      .accordion-item.active > .accordion-header:after {
-        content: "\2796"; /* Unicode character for "minus" sign (-) */
-      }
+a {
+  color: var(--purple);
+  font-weight: bold;
+}
 
 /*Box*/
 
@@ -172,7 +85,7 @@ img{
 
 .project-content .side-title.projects-header.perspective
 {
-  transform: translateX(-200%) translateY(-50%);
+  transform: translateX(-130px);
 }
 
 
@@ -583,6 +496,9 @@ top: 0;
     color: #A9A9A1;
   }
 
+  .project-content p {
+    color: var(--text-dark);
+  }
 
   .project-content {
     position: relative;
@@ -598,10 +514,8 @@ top: 0;
     padding-top: 10em;
     text-align: justify;
   }
-  
-  .project-content p {
-    color: var(--text-dark);
-  }
+
+
     @media screen and (max-width: 1280px) {
   
       .project-content {
