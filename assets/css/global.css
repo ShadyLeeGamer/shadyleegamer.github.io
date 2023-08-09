@@ -542,12 +542,11 @@ color: var(--side-title);
 
     z-index: 1;
     float: left; 
-    top: 0;
     bottom: 0;
     top: 2em;
-
     width: 0;
 }
+
 .side-title.mobile {
 position: relative;
 text-align: center;
