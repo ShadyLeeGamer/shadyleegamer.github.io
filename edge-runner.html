@@ -246,7 +246,6 @@
 													</div>
 												</div>
 
-
 												<p>All these wall calculations save a lot of performance as it’s only done once during initialisation, and we can access it from the wall the player enters.</p>
 											</div>
 									</div>
@@ -315,7 +314,7 @@
 
 											</div>
 											<div class="text-container">
-												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point. You can see this system being stress tested here.</p>
+												<p>By taking into account the distance the player will travel per frame, they will never overshoot their edge point, even during very slow or fast frame rates. You can see this system being stress tested here.</p>
 											</div>
 										</div>
 									</div>
@@ -713,7 +712,7 @@ void KeepMotionWallSpeed<T>(ref T motionObject, bool removeObject) where T : Mot
 								<div class="accordion-item">
 									<div class="accordion-header audio"><div>Level Music</div></div>
 									<div class="accordion-content">
-										<p>I made the tracks for room 1 (Cryo City) and room 2 (Factory Falls).</p>
+										<p>I made the tracks for room 1 (Cryo City) and room 2 (Factory Falls) using FL Studio.</p>
 										<audio  controls><source src="sounds/edge-runner/cryo-city.mp3" type="audio/mpeg"></audio>
 										<audio  controls><source src="sounds/edge-runner/factory-falls.mp3" type="audio/mpeg"></audio>
 									</div>
