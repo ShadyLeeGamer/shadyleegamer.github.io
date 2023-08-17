@@ -2429,6 +2429,12 @@ left: -50%;
   :root ul.tech li#webgl {
     --tech-spinner-bg: #ffffff;
   }
+  :root ul.tech li#word {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#powerpoint {
+    --tech-spinner-bg: #ffffff;
+  }
   
   :root ul.contact-social li#github {
     --tech-spinner-bg: var(--colour-1-bright);
