@@ -2426,6 +2426,9 @@ left: -50%;
   :root ul.tech li#android-studio {
     --tech-spinner-bg: #F6F6F6;
   }
+  :root ul.tech li#webgl {
+    --tech-spinner-bg: #ffffff;
+  }
   
   :root ul.contact-social li#github {
     --tech-spinner-bg: var(--colour-1-bright);
