@@ -90,13 +90,17 @@ function StartObservers()
               {
                 child.src = child.getAttribute("data-src");
                 child.classList.add("scroll-transition");
-                child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () => {
-                  child.classList.add("end");
-                  child.addEventListener("transitionend", () => {
-                    child.classList.remove("scroll-transition");
-                    child.classList.remove("end");
+                if (!child.closest(".accordion"))
+                {
+                  child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () =>
+                  {
+                    child.classList.add("end");
+                    child.addEventListener("transitionend", () => {
+                      child.classList.remove("scroll-transition");
+                      child.classList.remove("end");
+                    });
                   });
-                });
+                }
               }
             }
 

@@ -81,6 +81,23 @@ accordionSingleGroups.forEach(group => {
 
 function TransitionItemOpen(content){
     content.style.maxHeight = content.scrollHeight + "px";
+
+    medias = document.querySelectorAll('.scroll-transition');
+    medias.forEach(media => {
+      var children = media.children;
+      for (var i = 0; i < children.length; i++) {
+        let child = children[i];
+        child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () =>
+        {
+          child.classList.add("end");
+          child.addEventListener("transitionend", () => {
+            child.classList.remove("scroll-transition");
+            child.classList.remove("end");
+          });
+        });
+      }
+    });
+    
     content.addEventListener('transitionend', () => {
         content.style.maxHeight = 'none';
     }, { once: true });
