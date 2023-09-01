@@ -8,7 +8,7 @@ accordionHeaders.forEach(header => {
 
     const accordionContent = accordionItem.querySelector(".accordion-content");
     if (accordionItem.classList.contains('active')) {
-      TransitionItemOpen(accordionContent);
+      TransitionItemOpen(accordionContent, true);
 
       let videos = accordionItem.querySelectorAll("video");
       videos.forEach(video => {
@@ -56,7 +56,7 @@ accordionSingleGroups.forEach(group => {
       }
       else {
         accordionContent = accordionItem.querySelector(".accordion-content");
-        TransitionItemOpen(accordionContent);
+        TransitionItemOpen(accordionContent, false);
 
         const video = accordionItem.querySelector('video');
         PlayVideo(video);
@@ -79,24 +79,27 @@ accordionSingleGroups.forEach(group => {
   });
 });
 
-function TransitionItemOpen(content){
+function TransitionItemOpen(content, loadMedia){
     content.style.maxHeight = content.scrollHeight + "px";
 
-    medias = document.querySelectorAll('.scroll-transition');
-    medias.forEach(media => {
-      var children = media.children;
-      for (var i = 0; i < children.length; i++) {
-        let child = children[i];
-        child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () =>
-        {
-          child.classList.add("end");
-          child.addEventListener("transitionend", () => {
-            child.classList.remove("scroll-transition");
-            child.classList.remove("end");
+    if (loadMedia)
+    {
+      medias = document.querySelectorAll('.scroll-transition');
+      medias.forEach(media => {
+        var children = media.children;
+        for (var i = 0; i < children.length; i++) {
+          let child = children[i];
+          child.addEventListener(child.nodeName == "IMG" ? "load" : "loadeddata", () =>
+          {
+            child.classList.add("end");
+            child.addEventListener("transitionend", () => {
+              child.classList.remove("scroll-transition");
+              child.classList.remove("end");
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    }
     
     content.addEventListener('transitionend', () => {
         content.style.maxHeight = 'none';

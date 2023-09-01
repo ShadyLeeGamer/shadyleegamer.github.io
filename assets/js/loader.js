@@ -41,7 +41,8 @@ function BigReelIntro() {
     }
     // Home page
     else {
-        bigReelContainer.style.height = bigReelVideo.style.height = '80vh';
+        // bigReelContainer.style.height = bigReelVideo.style.height = '80vh';
+        bigReelContainer.style.height = bigReelVideo.style.height = '70vh';
     }
     
     if (bigReelFilter) {
