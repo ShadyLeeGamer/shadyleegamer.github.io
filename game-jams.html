@@ -434,64 +434,65 @@
 					<div class="accordion-content">
 						<pre><code class="language-csharp hljs">public void Generate()
 {
-Rooms = new List<Room>();
-map = new bool[levelSizeX, levelSizeZ];
+	Rooms = new List<Room>();
+	map = new bool[levelSizeX, levelSizeZ];
 
-// Create entrance from top
-int roomPosX = Random.Range(0, levelSizeX);
-int roomPosZ = 0;
-CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
+	// Create entrance from top
+	int roomPosX = Random.Range(0, levelSizeX);
+	int roomPosZ = 0;
+	CreateRoom(roomPosX * distanceX, roomPosZ, RoomType.Entrance, roomPosX);
 
-// Create rooms middle to exit
-while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
-roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
-{
-// Left, right or down (more downs to encorage more of a linear shape)
-int randomDirIndex = Random.Range(0, directions.Length);
-Vector3Int randomDir = directions[randomDirIndex];
+	// Create rooms middle to exit
+	while (roomPosX >= 0 && roomPosX <= levelSizeX - 1 &&
+		roomPosZ <= 0 && roomPosZ >= -levelSizeZ + 1)
+	{
+		// Left, right or down (more downs to encorage more of a linear shape)
+		int randomDirIndex = Random.Range(0, directions.Length);
+		Vector3Int randomDir = directions[randomDirIndex];
 
-int newPosX = roomPosX + randomDir.x;
-int newPosZ = roomPosZ + randomDir.z;
+		int newPosX = roomPosX + randomDir.x;
+		int newPosZ = roomPosZ + randomDir.z;
 
-// Check if we're hitting the edge of the map
-if (newPosX < 0 || newPosX > levelSizeX - 1 ||
-newPosZ > 0 || newPosZ < -levelSizeZ + 1)
-{
-// If we're not hitting bottom edge, then move down and create a new middle room
-if (roomPosZ > -levelSizeZ + 1)
-{
-randomDir = directions[2];
-roomPosX += randomDir.x;
-roomPosZ += randomDir.z;
+		// Check if we're hitting the edge of the map
+		if (newPosX < 0 || newPosX > levelSizeX - 1 ||
+			newPosZ > 0 || newPosZ < -levelSizeZ + 1)
+		{
+			// If we're not hitting bottom edge, then move down and create a new middle room
+			if (roomPosZ > -levelSizeZ + 1)
+			{
+				randomDir = directions[2];
+				roomPosX += randomDir.x;
+				roomPosZ += randomDir.z;
 
-CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
-continue;
-}
-// If we are on bottom edge, then mark new room as exit and end generation
-else if (roomPosZ == -levelSizeZ + 1)
-{
-Room exitRoom = Rooms[Rooms.Count - 1];
-exitRoom.ApplyType(RoomType.Exit);
+				CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
 
-CreateHallway(exitRoom, directions[2], PassType.Exit);
-CreateDoor(exitRoom, directions[2], PassType.Exit);
-break;
-}
-}
+				continue;
+			}
+			// If we are on bottom edge, then mark new room as exit and end generation
+			else if (roomPosZ == -levelSizeZ + 1)
+			{
+				Room exitRoom = Rooms[Rooms.Count - 1];
+				exitRoom.ApplyType(RoomType.Exit);
 
-// If chosen direction is blocked by another room, then pick another
-if (map[newPosX, -newPosZ] == true)
-continue; 
+				CreateHallway(exitRoom, directions[2], PassType.Exit);
+				CreateDoor(exitRoom, directions[2], PassType.Exit);
+				break;
+			}
+		}
 
-// If we are just within the map, then create a middle room
-roomPosX = newPosX;
-roomPosZ = newPosZ;
+		// If chosen direction is blocked by another room, then pick another
+		if (map[newPosX, -newPosZ] == true)
+			continue; 
 
-CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
-}
+		// If we are just within the map, then create a middle room
+		roomPosX = newPosX;
+		roomPosZ = newPosZ;
 
-// Create path nodes for enemy AI
-mapHolder.CreateNodes();
+		CreateMiddleRoom(roomPosX, roomPosZ, randomDir);
+	}
+
+	// Create path nodes for enemy AI
+	mapHolder.CreateNodes();
 }</code></pre>
 						</div>
 						
@@ -626,7 +627,7 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 
 										<p>I implemented isometric grid-based movement for the avatars. On selecting a avatar, available path tiles appear, with detection of moveable and immovable objects.</p>
 
-										<div class="accordion">
+										<!-- <div class="accordion">
 											<div class="accordion-item">
 												<div class="accordion-header c-sharp"><div>Person.ShowPathsInDir</div></div>
 												<div class="accordion-content">
@@ -644,6 +645,7 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 
 		dirMultiplier = 1f;
 		for (int i = 0; i < horizontalDirections.Length; i++)
+		{
 			if (moveDirectionI == horizontalDirections[i])
 			{
 				isOrthogonal = true;
@@ -656,6 +658,7 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 				pathLength = orthogonalLength;
 				dirMultiplier = .75f;
 			}
+		}
 
 		if (pathLength == 0)
 			break; // End path
@@ -716,7 +719,7 @@ T Get<T>(T prefab, Queue<T> pool, Vector3 pos, Quaternion rot,
 }</code></pre>
 													</div>
 												</div>
-											</div>
+											</div> -->
 
 											<div class="space"></div>
 											<div class="space"></div>

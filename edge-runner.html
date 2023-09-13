@@ -278,13 +278,13 @@
 	Vector2 pos = Spline.GetPosition(node);
 	Vector2 prevPos = Spline.GetPosition(MathUtility.WrapIndex(Spline.GetPointCount(), node - 1));
 	Vector2 nextPos = Spline.GetPosition(MathUtility.WrapIndex(Spline.GetPointCount(), node + 1));
+
 	Vector2 prevDir = (pos - prevPos).normalized;
 	Vector2 nextDir = (nextPos - pos).normalized;
 	
-	return
-		Vector2.Angle(prevDir, nextDir) >= EDGE_ANGLE_THRESHOLD && // Turns at an angle threshold
+	return Vector2.Angle(prevDir, nextDir) >= EDGE_ANGLE_THRESHOLD && // Turns at an angle threshold
 		Spline.GetTangentMode(node) == ShapeTangentMode.Linear && // Is a sharp corner
-		Vector3.Cross(prevDir, nextDir).z < 0f; // Is an outer corner - next direction is to the left of previous direction
+		Vector3.Cross(prevDir, nextDir).z < 0f; // Is an outer corner - next dir is to the left of prev dir
 }</code></pre>
 												</div>
 											</div>
@@ -348,10 +348,10 @@
 											<div class="accordion-item">
 												<div class="accordion-header c-sharp"><div>Player.EnterWallJump</div></div>
 												<div class="accordion-content">
-										<p>The following code is used to manage control locks. Control locks are updated to see if the distance has been reached and then unlocked. Control locks are also abruptly unlocked when transitioning into new states while exiting the last one.</p>
 										<pre><code class="language-csharp hljs">void EnterWallJump(RaycastHit2D wallHit)
 {
 	SetDirection(Vector2.Reflect(Dir, wallHit.normal));
+	// Is ricocheting - wall jumped without input
 	ricocheting = State == States.WallJump && !dashInput;
 	if (!ricocheting)
 	{
@@ -448,11 +448,15 @@ void ControlUnlock()
 		ExitWallJump();
 	}
 
-		// Exit others
+	// Exit others
 	if (launchPad)
+	{
 		launchPad = null;
+	}
 	if (assistingLand)
+	{
 		assistingLand = false;
+	}
 
 	// Reset
 	controlLockDistance = 0;
@@ -511,15 +515,17 @@ public class CameraTarget : MonoBehaviour
 	[SerializeField] float playerDirInfluenceAmount;
 	[SerializeField] float playerDirInfluenceAcc;
 	[SerializeField] float playereDirInfluenceDec;
+	float playerDirInfluencePercent;
+
+	[SerializeField] float playerDirSmoothTime;
 	Vector2 playerDirSmooth;
 	Vector2 playerDirSmoothCurrentVelocity;
-	[SerializeField] float playerDirSmoothTime;
-	float playerDirInfluencePercent;
 
 	[Header("Dead Zone")]
 	[SerializeField, Range(0f, 1f)] float deadZoneOnWall;
 	[SerializeField, Range(0f, 1f)] float deadZoneAirborne;
 	[SerializeField, Range(0f, 1f)] float deadZoneOnGround;
+
 	[SerializeField] float deadZoneSmoothTime;
 	float deadZone;
 	float deadZoneSmooth;
@@ -573,10 +579,10 @@ public class CameraTarget : MonoBehaviour
 
 			// Bound target by threshold and screen ratio
 			Vector2 unclampedTargetPos = targetPos;
-			targetPos.x = Mathf.Clamp(targetPos.x, (-threshold * SCREEN_RATIO.x) + playerPos.x,
-													(threshold * SCREEN_RATIO.x) + playerPos.x);
-			targetPos.y = Mathf.Clamp(targetPos.y, (-threshold * SCREEN_RATIO.y) + playerPos.y,
-													(threshold * SCREEN_RATIO.y) + playerPos.y);
+			targetPos.x = Mathf.Clamp(targetPos.x
+				(-threshold * SCREEN_RATIO.x) + playerPos.x, (threshold * SCREEN_RATIO.x) + playerPos.x);
+			targetPos.y = Mathf.Clamp(targetPos.y,
+				(-threshold * SCREEN_RATIO.y) + playerPos.y, (threshold * SCREEN_RATIO.y) + playerPos.y);
 			targetPosClamped = targetPos != unclampedTargetPos;
 
 			// Dead zone of virtual cam
