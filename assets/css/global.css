@@ -109,7 +109,8 @@
 }
 #projects .spotlights > section:nth-child(n),
 .accordion > .accordion-item:nth-child(n),
-#project-top #edge-runner
+#project-top #arrow-simulator,
+#project-top #tap-fever
 {
     --colour-bright: var(--colour-1-bright);
     --colour-dark: var(--colour-1-dark);
@@ -117,21 +118,21 @@
 }
 :root #projects .spotlights > section:nth-child(2n),
 .accordion > .accordion-item:nth-child(2n),
-#project-top #game-jams {
+#project-top #edge-runner {
     --colour-bright: var(--colour-2-bright);
     --colour-dark: var(--colour-2-dark);
     --project-reel-filter-shift: 0deg;
 }
 :root #projects .spotlights > section:nth-child(3n),
 .accordion > .accordion-item:nth-child(3n),
-#project-top #survival-2020 {
+#project-top #game-jams {
     --colour-bright: var(--colour-3-bright);
     --colour-dark: var(--colour-3-dark);
     --project-reel-filter-shift: -70deg;
 }
 :root #projects .spotlights > section:nth-child(4n),
 .accordion > .accordion-item:nth-child(4n),
-#project-top #tap-fever {
+#project-top #survival-2020 {
     --colour-bright: var(--colour-4-bright);
     --colour-dark: var(--colour-4-dark);
     --project-reel-filter-shift: -170deg;

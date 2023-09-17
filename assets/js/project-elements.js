@@ -22,10 +22,20 @@ new ElementHTML(
     <li>Unity</li>
     <li>Trello</li>`));
 
+    elementsHTML.set('arrow-simulator',
+    new ElementHTML(
+        `Local Multiplayer AR Game`,
+        `Oct 2023 — Present`,
+        `<li>AR Foundation</li>
+        <li>Unity</li>
+        <li>C#</li>
+        <li>Git</li>
+        <li>Universal Render Pipeline</li>`));
+
 elementsHTML.set('edge-runner',
 new ElementHTML(
     `High-Speed Anime Platformer`,
-    `June 2020 — Present`,
+    `June 2022 — August 2023`,
     `<li>C#</li>
     <li>Unity</li>
     <li>Git</li>
