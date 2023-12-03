@@ -273,7 +273,8 @@
 
 
 
-		#projects .side-title.projects-header.perspective
+		#projects .side-title.projects-header.perspective,
+		#work-projects .side-title.projects-header.perspective
 		{
 			transform: translateX(-130px);
 
@@ -299,6 +300,7 @@
 				top:50%;
 			}
 
+			
 			.work-experience-header.left {
 				left: 0;
 				transform: translateX(-60px) translateY(-50%);
@@ -761,16 +763,23 @@
 
 
 		#big-reel {
-			position: relative;
+		position: relative;
 			width: 100%;
 			height: 100vh;
 			transition: height 1s ease; 
 		}
 
 		#big-reel video.main-video {
-			object-fit:contain;
+
+				object-fit:contain;
 			/* background-color: #263D4C; */
 		}
+
+		/* @media screen and (min-width: 980px) {
+			#big-reel video.main-video {
+				padding-top: 7.5em;
+			}
+		} */
 
 
 	#about-me {
@@ -779,7 +788,6 @@
 		text-align: center;
   		color: var(--text-light);
 		width: 100%;
-		
 		font-size: 1em;
 		padding-top: 0;
 

@@ -1,0 +1,1182 @@
+<!DOCTYPE HTML>
+<!--
+	Axiom by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Ariya Bayat | Game Dev, Programmer Portfolio - Okainos</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="assets/css/loader.css" />
+
+		<link rel="stylesheet" href="assets/css/global.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		
+		<link rel="stylesheet" href="assets/css/slick.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+
+		<link rel="stylesheet" href="highlight/styles/base16/material-palenight.min.css" />
+		<script src="highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+	</head>
+	<body class="no-sidebar">
+		<div id="loader-wrapper">
+			<span id="loader-spinner">
+				<span id="loader-hover">
+				</span>
+			</span>
+		</div>
+
+		<div class="projects-header-wrapper">
+			<nav id="nav"></nav>
+
+		<div id="page-wrapper">
+			<header id="project-header">
+				<div id="big-reel">
+					<video class="main-video" src="videos/hope-art/reel.mp4" poster="images/okainos/reel-thumbnail.png" autoplay muted loop></video>
+					<span id="filter"></span>
+					<span id="fade"></span>
+				</div>
+				<h2 class="project-title">HOPE ART</h2>
+
+				<p id="hope" class="project-date scroll-transition"></p>
+			</header>
+			
+			<div id="project-top" class="container">
+
+				<div class="slick-slider template">
+					<div class="slick-slide">
+						<img src="images/hope-art/screenshot1.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/hope-art/screenshot2.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/hope-art/screenshot1.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/hope-art/screenshot2.png">
+					</div>
+				</div>
+
+				<div class="description">
+					<ul class="spinner-list platform scroll-transition">
+						<li>
+							<div class="spinner" style="background: #ffffff;">
+								<a href="https://hope3g.com/" target="_blank">
+									<img src="images/icons/website.png" style="padding-left: 1.75px"/>
+								</a>
+							</div>
+						</li>
+					</ul>
+
+					<ul id="hope" class="project-tech-list scroll-transition"></ul>
+
+					<p id="hope" class="project-category"></p>
+
+					<p>HOPE ART is an educational platform for ages 2-5, developed by Humanitarian Operations (HOPE). It uses AR technology to deliver immersive experiences and lessons from nursery to other subjects like music.</p>
+					<p>I’ve been part of the Android app’s development, where I got to work on different game prototypes while implementing optimisations to ensure a smooth performance at nursery testing sessions.</p>
+					<p>Currently, I am working on the PC game, which uses advanced computer vision algorithms such as hand tracking, gesture tracking and human segmentation to make lessons more immersive.</p>
+				</div>
+			</div>
+
+			<div class="popup-image">
+				<img src="images/okainos/back-end-user.jpg" alt="">
+			</div>
+
+
+			<div id="project-content-wrapper">
+			<div class="project-content">
+
+			<h1 class="projects-header side-title perspective">HOPE ART</h1>
+			<div class="row">
+						<div class="col-12">
+							<h3 class="project-heading">PC</h3>
+
+							<p>I am currently working on the PC game, which uses advanced computer vision algorithms such as hand tracking, gesture tracking and human segmentation to make lessons more immersive.</p>
+
+							<div class="image-center scroll-transition">
+								<video data-src="videos/hope-art/hand-tracking-and-gestures.mp4" autoplay controls loop></video>
+								<video data-src="videos/hope-art/hand-interaction.mp4" autoplay controls loop></video>
+							</div>
+
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header diagnostic"><div>Two-way TCP communication between Unity and Python</div></div>
+									<div class="accordion-content">
+										<p>I achieved this by building a two-way TCP connection between the Python and Unity program. Initially, the process went like this:</p>
+
+										<div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+												<img data-src="images/hope-art/comm1.png"></span>
+											</div>
+											<div class="text-container">
+												<p>Video capture is done in Unity and sent to Python, Python receives and performs image processing on the image, then results (track data) are sent back and simulated in Unity.</p>
+											</div>
+										</div>
+
+										<p>However, the process of encoding the video capture in Unity caused significant lag due to setting new pixels to a Texture2D each frame.</p>
+
+										<!-- <div class="image-center scroll-transition">
+											<video data-src="videos/okainos/card-collection-filter-tool.mp4" autoplay controls loop></video>
+											<img data-src="images/okainos/card-collection-back-end.jpg">
+										</div> -->
+
+										<div class="image-and-text-container right">
+											<div class="image-container scroll-transition">
+												<img data-src="images/hope-art/comm2.png"></span>
+											</div>
+											<div class="text-container">
+												<p>I fixed this by performing the video capture in Python instead. This only became more performant but also simplified the communication, making it one-way.</p>
+												<p>In addition, this eliminated the need to transfer image bytes twice. This boosted performance from 30 FPS to 200+ FPS!</p>
+											</div>
+										</div>
+
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header python"><div>Python TCP system</div></div>
+												<div class="accordion-content">
+												<p>The following code is used for the sending of track data and camera feed over TCP communication in Python. The camFeedSender instance is used by the HumanSegmentation.py class to send the cam feed and the trackDataSender is used by HandGestureTracker and HandProcessor for sending results to Unity to simulate.</p>
+													<pre><code class="language-py hljs">import socket
+import struct
+
+
+# Communication Vars
+IP = "127.0.0.1"  # Local
+CAM_FEED_PORT, TRACK_DATA_PORT, REQUEST_PORT = 8000, 8001, 8002
+
+
+# Class for establishing a TCP socket connection
+class TCPSocket:
+	def __init__(self, IP, PORT):
+		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.sock.connect((IP, PORT))
+
+	def Send(self, data):
+		self.sock.sendall(data)  # Send the compressed frame data
+
+
+# Class to send image buffer over TCP
+class CamFeedSender(TCPSocket):
+	def SendImgBuffer(self, buffer):
+		# Pack the frame size and send it in big-endian format
+		self.Send(struct.pack("!L", len(buffer)))
+		self.Send(buffer.tobytes())  # Send the compressed frame data
+
+
+# Class to send string data over TCP
+class TrackDataSender(TCPSocket):
+	def SendStr(self, str):
+		self.Send(str.encode())
+
+
+camFeedSender = CamFeedSender(IP, CAM_FEED_PORT)
+trackDataSender = TrackDataSender(IP, TRACK_DATA_PORT)
+</code></pre>
+												</div>
+											</div>
+
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>Unity TCP system</div></div>
+												<div class="accordion-content">
+												<p>The following code is used for receiving track data and camera feed from TCP communication in Unity. The TcpSocket and TcpReceiver has been separated to allow for future implementation of the TcpSender for sending requests to Python.</p>
+												<pre><code class="language-csharp hljs">using UnityEngine;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+
+public abstract class TcpSocket : MonoBehaviour
+{
+	const string IP = "127.0.0.1"; // Local host
+	protected abstract int PORT { get; }
+
+	Thread streamThread;
+
+	TcpListener listener;
+	protected TcpClient client;
+	protected NetworkStream stream;
+
+	void Start()
+	{
+		// Create receiving thread to prevent blocking
+		StartThread(ref streamThread, new(StreamThreadStart));
+
+
+		void StartThread(ref Thread t, ThreadStart ts)
+		{
+			t = new Thread(ts);
+			t.IsBackground = true;
+			t.Start();
+		}
+	}
+
+	protected virtual void StreamThreadStart()
+	{
+		ListenForConnection();
+	}
+
+	protected virtual void ListenForConnection()
+	{
+		// Listen for connection
+		listener = new TcpListener(IPAddress.Parse(IP), PORT);
+		listener.Start();
+
+		// Connect to Python program
+		client = listener.AcceptTcpClient();
+		stream = client.GetStream();
+	}
+
+	// Properly end communication
+	protected virtual void EndComms()
+	{
+		streamThread?.Abort();
+		listener?.Stop();
+		client?.Close();
+		stream?.Close();
+	}
+
+	private void OnDestroy() => EndComms();
+	private void OnApplicationQuit() => EndComms();
+}</code></pre>
+<pre><code class="language-csharp hljs">using System;
+using System.IO;
+using UnityEngine;
+
+public abstract class TcpReceiver : TcpSocket
+{
+	protected BinaryReader binaryReader;
+
+	public bool active = true;
+
+	protected abstract void ReadData();
+
+	protected override void ListenForConnection()
+	{
+		base.ListenForConnection();
+
+		binaryReader = new(stream);
+	}
+
+	protected override void StreamThreadStart()
+	{
+		base.StreamThreadStart();
+
+		// Keep receiving data until functionality to stop
+		while (active)
+		{
+			// Handle exception errors
+			try
+			{
+				ReadData();
+			}
+			catch (Exception err)
+			{
+				Debug.LogWarning(err.ToString());
+			}
+		}
+	}
+
+	// Properly end communication
+	protected override void EndComms()
+	{
+		base.EndComms();
+
+		binaryReader?.Close();
+	}
+}</code></pre>
+	<pre><code class="language-csharp hljs">using PimDeWitte.UnityMainThreadDispatcher;
+using System;
+using System.IO;
+
+public class CamFeedReceiver : TcpReceiver
+{
+	protected override int PORT => 8000;
+
+	public event Action<byte[]> OnReceived;
+
+	public static CamFeedReceiver Instance { get; private set; }
+
+	private void Awake()
+	{
+		Instance = this;
+	}
+
+	protected override void ReadData()
+	{
+		// First receive image size then data
+		int frameSize = (int)ReadUInt32BigEndian(binaryReader);
+		byte[] frameBytes = binaryReader.ReadBytes(frameSize);
+
+		// Call on main thread
+		UnityMainThreadDispatcher.Instance().Enqueue(
+			() => OnReceived?.Invoke(frameBytes)); // CamDisplay.cs is listening for frames to display
+
+
+		uint ReadUInt32BigEndian(BinaryReader reader)
+		{
+			byte[] bytes = reader.ReadBytes(4);
+			Array.Reverse(bytes);
+			return BitConverter.ToUInt32(bytes, 0);
+		}
+	}
+}</code></pre>
+<pre><code class="language-csharp hljs">using PimDeWitte.UnityMainThreadDispatcher;
+using System;
+using System.Text;
+
+public class TrackDataReceiver : TcpReceiver
+{
+	protected override int PORT => 8001;
+
+	public event Action<string> OnReceived;
+
+	public static TrackDataReceiver Instance { get; private set; }
+
+	private void Awake()
+	{
+		Instance = this;
+	}
+
+	protected override void ReadData()
+	{
+		byte[] bytes = new byte[client.ReceiveBufferSize];
+		int bytesRead = stream.Read(bytes, 0, bytes.Length); // Get bytes length to read whole data
+		string data = Encoding.UTF8.GetString(bytes, 0, bytesRead); // Convert bytes to string
+
+		// Call on main thread
+		UnityMainThreadDispatcher.Instance().Enqueue(
+			() => OnReceived?.Invoke(data)); // TrackDataReader.cs is listening for track data to deserialse
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+												<img data-src="images/hope-art/comm3.png"></span>
+											</div>
+											<div class="text-container">
+												<p>Currently, I am adding back the two-way connection to allow Unity to request Python to perform specific types of tracking. For example, there are times when we want only human segmentation and hand tracking.</p>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header user-interface"><div>Simulation</div></div>
+									<div class="accordion-content">
+										<p>In order to simulate the received track data in Unity, we needs to be able to interpret it. By pairing track data with a tag, we can know what type of data we are receiving. The format of the sent data goes like this:</p>
+
+<pre><code>Format:
+(TAG, [[TRACK_DATA1], [TRACK_DATA2]])
+
+Example:
+(2, [['Open'], ['Close']])</code></pre>
+
+										<p>In this example, this is data contains the gesture of two different hands and is categorised as tag number 2, which is converted to enum in Unity to group datasets.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>TrackDataReader</div></div>
+												<div class="accordion-content">
+										<p>The following code is used for reading received track data and sorting them into a dictionary by tag.</p>
+										<pre><code class="language-csharp hljs">using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TrackDataReader : MonoBehaviour
+{
+	public enum Tag { HandLm, HandHandedness, HandGesture }
+
+	public Dictionary<Tag, Action<List<string>>> Datasets { get; private set; }
+
+	public static TrackDataReader Instance { get; private set; }
+
+	private void Awake()
+	{
+		Instance = this;
+
+		Datasets = new();
+		foreach (Tag tag in Enum.GetValues(typeof(Tag)))
+		{
+			Datasets.Add(tag, default);
+		}
+	}
+
+	private void Start()
+	{
+		TrackDataReceiver.Instance.OnReceived += ReadDatasets;
+	}
+
+	int startI, endI;
+
+	Tag tag;
+	HashSet<Tag> seenTags = new();
+
+	List<string> dataset = new();
+	int dataCount;
+	int datasetI;
+	void ReadDatasets(string str)
+	{
+		startI = 0;
+		endI = 0;
+		seenTags.Clear();
+		// For each dataset
+		while ((startI = str.IndexOf('(', endI)) != -1)
+		{
+			// Get tag
+			startI++;
+			endI = str.IndexOf(',', startI) - 1;
+			tag = (Tag)int.Parse(SubstringSelect()); // Tag no
+			// Only check each tag once
+			if (seenTags.Contains(tag))
+				break;
+			else
+				seenTags.Add(tag);
+
+			// Get dataset
+			startI = endI + 3 + 1;
+			dataset.Clear();
+			dataCount = 1;
+			datasetI = startI;
+			do
+			{
+				int nextOpen = str.IndexOf('[', datasetI),
+					nextClose = str.IndexOf(']', datasetI);
+
+				if (nextClose < nextOpen || nextOpen == -1)
+				{
+					datasetI = nextClose;
+					dataCount--;
+				}
+				else if (nextOpen < nextClose)
+				{
+					datasetI = nextOpen;
+					dataCount++;
+				}
+
+				if (dataCount == 1)
+				{
+					endI = datasetI;
+					dataset.Add(SubstringSelect());
+					startI = str.IndexOf('[', datasetI);
+				}
+
+				datasetI++;
+			}
+			while (dataCount != 0);
+
+			// Broadcast dataset
+			Datasets[tag]?.Invoke(dataset);
+
+
+			string SubstringSelect() => str.Substring(startI, endI - startI + 1);
+		}
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+										<p>By storing events by tag into the dictionary, it’s nice and easy for other classes to listen for deserislised track data. This is an example of the HandReader listening for hand data:</p>
+
+										<pre><code class="language-csharp hljs">var trackDataReader = TrackDataReader.Instance;
+trackDataReader.Datasets[TrackDataReader.Tag.HandLm] += SerialiseHandLm;
+trackDataReader.Datasets[TrackDataReader.Tag.HandHandedness] += SerialiseHandedness;
+trackDataReader.Datasets[TrackDataReader.Tag.HandGesture] += SerialiseHandGesture;</code></pre>
+
+								<div class="accordion">
+									<div class="accordion-item">
+										<div class="accordion-header c-sharp"><div>ScreenGizmos</div></div>
+										<div class="accordion-content">
+								<pre><code class="language-csharp hljs">using UnityEditor;
+using UnityEngine;
+
+public class ScreenGizmos
+{
+	Canvas canvas;
+
+	Camera cam;
+
+	const float offsetZ = 0.005f;
+
+	public float LineThickness { get; set; }
+
+	public ScreenGizmos(Canvas canvas, Camera cam)
+	{
+		this.canvas = canvas;
+		this.cam = cam;
+		LineThickness = 1f;
+	}
+
+	public void DrawSphere(Vector3 screenPos, float radius)
+	{
+		Gizmos.DrawSphere(PxToCamClipPlane(screenPos), radius);
+	}
+
+	public void DrawLine(Vector3 startScreenPos, Vector3 endScreenPos)
+	{
+		Vector3
+			startWorldPos = PxToCamClipPlane(startScreenPos),
+			endWorldPos = PxToCamClipPlane(endScreenPos);
+
+		Handles.DrawLine(startWorldPos, endWorldPos, LineThickness);
+	}
+
+	public void DrawLabel(Vector3 screenPos, string text)
+	{
+		float screenSizeFactor = HandleUtility.GetHandleSize(Vector3.zero) * 0.1f;
+		GUIStyle style = new(GUI.skin.label);
+		style.fontStyle = FontStyle.Bold;
+		style.normal.textColor = Color.white;
+		style.fontSize = Mathf.RoundToInt(10 * screenSizeFactor);
+
+		Handles.Label(PxToCamClipPlane(screenPos), text, style);
+	}
+
+	Vector3 PxToCamClipPlane(Vector3 screenPos)
+	{
+		screenPos *= canvas.scaleFactor;
+		screenPos.z = cam.nearClipPlane + offsetZ;
+		return cam.ScreenToWorldPoint(screenPos);
+	}
+}</code></pre>
+
+
+		</div>
+	</div>
+
+	<div class="accordion-item">
+		<div class="accordion-header c-sharp"><div>HandDrawer</div></div>
+		<div class="accordion-content">
+<pre><code class="language-csharp hljs">using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using Hand = HandReader.Hand;
+
+public class HandDrawer : MonoBehaviour
+{
+	[SerializeField] Canvas canvas;
+	ScreenGizmos screenGizmos;
+
+	List<Hand> handsCache = new();
+
+	private void Awake()
+	{
+		screenGizmos = new(canvas, Camera.main);
+	}
+
+	private void Start()
+	{
+		HandReader.Instance.OnHandsRefresh += hands => handsCache = new List<Hand>(hands);
+	}
+
+	private void OnDrawGizmos()
+	{
+		foreach (var h in handsCache)
+		{
+			// Lines
+			Handles.color = Color.green;
+			screenGizmos.LineThickness = 4;
+
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.WRIST),
+				h.GetLm(Hand.LmTags.THUMB_CMC));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_CMC), h.GetLm(Hand.LmTags.THUMB_MCP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_MCP), h.GetLm(Hand.LmTags.THUMB_IP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_IP), h.GetLm(Hand.LmTags.THUMB_TIP));
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.WRIST),
+				h.GetLm(Hand.LmTags.INDEX_FINGER_MCP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_MCP), h.GetLm(Hand.LmTags.INDEX_FINGER_PIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_PIP), h.GetLm(Hand.LmTags.INDEX_FINGER_DIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_DIP), h.GetLm(Hand.LmTags.INDEX_FINGER_TIP));
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.INDEX_FINGER_MCP),
+				h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_PIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_PIP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_DIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_DIP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_TIP));
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP),
+				h.GetLm(Hand.LmTags.RING_FINGER_MCP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_MCP), h.GetLm(Hand.LmTags.RING_FINGER_PIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_PIP), h.GetLm(Hand.LmTags.RING_FINGER_DIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_DIP), h.GetLm(Hand.LmTags.RING_FINGER_TIP));
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.RING_FINGER_MCP),
+				h.GetLm(Hand.LmTags.PINKY_MCP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_MCP), h.GetLm(Hand.LmTags.PINKY_PIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_PIP), h.GetLm(Hand.LmTags.PINKY_DIP));
+			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_DIP), h.GetLm(Hand.LmTags.PINKY_TIP));
+			screenGizmos.DrawLine(
+				h.GetLm(Hand.LmTags.PINKY_MCP),
+				h.GetLm(Hand.LmTags.WRIST));
+
+			float minX = float.MaxValue, maxX = float.MinValue;
+			float minY = float.MaxValue, maxY = float.MinValue;
+			Gizmos.color = Color.red;
+			foreach (var lm in h.Landmarks)
+			{
+				minX = Mathf.Min(lm.x, minX);
+				maxX = Mathf.Max(lm.x, maxX);
+				minY = Mathf.Min(lm.y, minY);
+				maxY = Mathf.Max(lm.y, maxY);
+
+				// Landmarks
+				screenGizmos.DrawSphere(lm, 0.0035f);
+			}
+
+			// Border
+			screenGizmos.LineThickness = 3;
+			Handles.color = new Color(255, 0, 255);
+
+			screenGizmos.DrawLine(
+				new Vector2(minX, minY),
+				new Vector2(maxX, minY));
+			screenGizmos.DrawLine(
+				new Vector2(maxX, minY),
+				new Vector2(maxX, maxY));
+			screenGizmos.DrawLine(
+				new Vector2(maxX, maxY),
+				new Vector2(minX, maxY));
+			screenGizmos.DrawLine(
+				new Vector2(minX, maxY),
+				new Vector2(minX, minY));
+
+			// Gesture & Handedness
+			screenGizmos.DrawLabel(h.GetLm(Hand.LmTags.WRIST), h.Gesture);
+			screenGizmos.DrawLabel(h.GetLm(Hand.LmTags.WRIST) + (Vector2.down * 100f), h.Handedness);
+		}
+	}
+}</code></pre>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header diagnostic"><div>Automatic Python Processing</div></div>
+									<div class="accordion-content">
+										<p>To make the use of Python program seamless, it is automatically run. I disabled the Python console window from appearing while still retrieving it for debugging.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>PythonProcessor</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using System.Diagnostics;
+using UnityEngine;
+
+public class PythonProcessor : MonoBehaviour
+{
+	// Path must be consistent per device
+	const string INTERPRETER_PATH = @"C:\Program Files\Python311\python.exe";
+
+	[System.Serializable]
+	public struct ScriptReference
+	{
+		public string name;
+		public string directory;
+	}
+
+	[SerializeField] ScriptReference[] scriptRefs;
+	[SerializeField] int scriptIndex;
+
+	Process process;
+
+	private void Start()
+	{
+		StartProgram();
+
+
+		void StartProgram()
+		{
+			ScriptReference scriptRef = scriptRefs[scriptIndex];
+
+			// Innit start info
+			ProcessStartInfo startInfo = new();
+			startInfo.FileName = INTERPRETER_PATH;
+
+			// Assign directory
+			string location = $"{Application.dataPath}\\Python\\{scriptRef.directory}";
+			startInfo.Arguments = $"{location}\\{scriptRef.name}.py";
+			startInfo.WorkingDirectory = location;
+
+			// Settings
+			startInfo.UseShellExecute = false;
+			startInfo.RedirectStandardOutput = true;
+			startInfo.RedirectStandardError = true;
+			startInfo.CreateNoWindow = true;
+
+			// Innit process
+			process = new();
+			process.StartInfo = startInfo;
+
+			// Log Python console
+			process.OutputDataReceived +=
+				(sender, args) => UnityEngine.Debug.Log("Python Output: " + args.Data);
+			process.ErrorDataReceived +=
+				(sender, args) => UnityEngine.Debug.LogError("Python Error: " + args.Data);
+
+			// Start process
+			process.Start();
+			process.BeginOutputReadLine();
+			process.BeginErrorReadLine();
+		}
+	}
+
+	// Terminate process and cleanup
+	void EndProcess()
+	{
+		if (process != null && !process.HasExited)
+		{
+			process.Kill();
+			process.Dispose();
+		}
+	}
+	private void OnDisable() => EndProcess();
+	private void OnDestroy() => EndProcess();
+	private void OnApplicationQuit() => EndProcess();
+}</code></pre>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header diagnostic"><div>Multithreading</div></div>
+									<div class="accordion-content">
+										<p>Multithreading is used extensively to ensure responsiveness. It used for the TCP communication systems, since we need a separate thread to receive data to prevent blocking the main thread.</p>
+										<p>It also used to distribute all the different types of image processing into separate threads so we are not waiting for them all to be done before receiving it in Unity. This is mostly noticeable with the video capture, which now only needs to wait for human segmentation for it to be send to Unity.</p>
+
+										<!-- <div class="image-center scroll-transition">
+											<video data-src="videos/okainos/card-collection-filter-tool.mp4" autoplay controls loop></video>
+											<video data-src="videos/okainos/card-collection-filter-tool.mp4" autoplay controls loop></video>
+										</div>
+
+										<p>On the right is with multithreading and on the left is without. On the right we can see more frames being received but the latency of the hand and gesture tracking is more apparent. This isn’t</p> -->
+
+										
+									</div>
+								</div>
+
+
+</div>
+
+
+
+
+							<h3 class="project-heading">Android</h3>
+
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header diagnostic"><div>Fixing Crashes with Memory management using Addressables (& Pooling)</div></div>
+									<div class="accordion-content">
+										<p>During development of our next day test build, we were facing consistent startup crashes after adding a new game prototype to the platform.</p>
+										<p>This was due to all inactive games still being present in the scene. Since we needed to feature a lot of games, they needed to be loaded additively to save memory.</p>
+										<p>At the time, Addressables was only being used to dynamically load and unload Timelines for game intros and outros.</p>
+										<p>To resolve this, I had to familiarise myself with the existing system and expand on it to also dynamically load and unload games.</p>
+										<p>This not only got rid of the crashes, but also drastically improved performance, making it more stable for testing at nurseries.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>LoadAddressables.LoadGameSceneAsync()</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">public async Task<GameObject> LoadGameSceneAsync(string gameName, Transform parent)
+{
+	string path = $"Assets/Scenes/Games/{gameName}/";
+	string file = $"{gameName}.prefab";
+	string fullPath = Path.Combine(path, file);
+
+	AsyncOperationHandle<IList<IResourceLocation>> locationHandle =
+		Addressables.LoadResourceLocationsAsync(fullPath);
+
+	await locationHandle.Task;
+
+	if (locationHandle.Status == AsyncOperationStatus.Succeeded)
+	{
+		AsyncOperationHandle<GameObject> handle =
+			Addressables.InstantiateAsync(fullPath, parent);
+
+		await handle.Task;
+
+		return handle.Result;
+	}
+	else
+	{
+		Debug.LogError("Failed to load addressable asset: " + file);
+		return null;
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+										<div class="image-center scroll-transition">
+											<img data-src="images/hope-art/addressables-groups-annotated.png">
+											<img data-src="images/hope-art/addressables-groups-labels.png">
+										</div>
+
+										<p>To improve on the Addressables Groups, using the Addressables Analyze tool I packed asset bundles appropriately:</p>
+										<p>Packing Together by Label - I used this for organisation subgroups within groups. In the right screenshot, you can see them being labelled by modules (M1, M2…) and lesson (numerals, letters…).</p>
+										<p>Packing Together - Used for grouping objects with dependencies that are typically loaded together. E.g. characters and their textures and models.</p>
+										<p>Packing Separately - Used for assets that are loaded separately like game prefabs and timelines,</p>
+
+										<h3 class="project-heading">Pooling</h3>
+										<p>To further improve on memory management, I also developed an ObjectPooler to reuse objects (characters, particle FX, hovering texts) between games. It uses addressables instead of prefabs so that we are never loading them until we need to.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>ObjectPooler</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+public class ObjectPooler : MonoBehaviour
+{
+	public interface IPoolObject { }
+
+	public class Pool<T> where T : IPoolObject
+	{
+		public AssetReference reference;
+		public Stack<T> pooled = new();
+
+		public Pool(AssetReference reference)
+		{
+			this.reference = reference;
+		}
+	}
+
+	Dictionary<Type, Pool<IPoolObject>> pools = new();
+
+	[Serializable]
+	public struct AddressableReference
+	{
+		public string type;
+		public AssetReference reference;
+	}
+
+	[SerializeField] AddressableReference[] addressables;
+
+	public static ObjectPooler Instance { get; private set; }
+
+	private void Awake()
+	{
+		Instance = this;
+
+		foreach (var addressable in addressables)
+		{
+			pools.Add(Type.GetType(addressable.type), new(addressable.reference));
+		}
+	}
+
+	public async Task<T> Get<T>() where T : MonoBehaviour, IPoolObject
+	{
+		Pool<IPoolObject> pool = pools[typeof(T)];
+
+		T obj = await GetObject();
+
+		obj.gameObject.SetActive(true);
+
+		return obj;
+
+		
+		async Task<T> GetObject()
+		{
+			if (pool.pooled.Count > 0)
+				return (T)pool.pooled.Pop();
+			else
+			{
+				AsyncOperationHandle<GameObject> handle =
+					Addressables.InstantiateAsync(pool.reference);
+
+				await handle.Task;
+
+				return handle.Status == AsyncOperationStatus.Succeeded
+					? handle.Result.GetComponent<T>()
+					: null;
+			}
+		}
+	}
+
+	public void Recycle<T>(T obj) where T : MonoBehaviour, IPoolObject
+	{
+		obj.gameObject.SetActive(false);
+		obj.transform.SetParent(transform);
+		pools[typeof(T)].pooled.Push(obj);
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+										<p>Currently I am working on a component pooler.</p>
+
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header audio"><div>Automating Generation of Musical Notes (”Music Game”)</div></div>
+									<div class="accordion-content">
+												<p>This is a rhythm game prototype I'm working on. I had to work closely with the music department to ensure that the simulated piano keys were accurate.</p>
+												<!-- <div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+											<video data-src="videos/okainos/card-collection-filter-tool.mp4" autoplay controls loop></video>
+											</div>
+											<div class="text-container">
+												<p>This is a rhythm game prototype I'm working on. I had to work closely with the music department to ensure that the simulated piano keys were accurate.</p>
+											</div>
+										</div> -->
+
+										<p>The biggest task I was assigned with for this project was making a system that can generate musical notes from music. The first idea was to make an editing tool for sound engineers to manually add notes, which takes many musical factors into account (beat length, frequency, bpm…).</p>
+										
+
+										<p>However, by using the DryWetMIDI .NET library, I implemented a much more effective solution which reads MIDI files to automatically generate the musical notes.</p>
+										<!-- <div class="image-and-text-container right">
+											<div class="image-container scroll-transition">
+												<img data-src="images/okainos/closed-beta-tester-key-group.jpg"></span>
+											</div>
+											<div class="text-container">
+												<p>However, by using the DryWetMIDI .NET library, I implemented a much more effective solution which reads MIDI files to automatically generate the musical notes.</p>
+											</div>
+										</div> -->
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>TrackInfo</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using System.IO;
+using System.Linq;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "TrackInfo", menuName = "ScriptableObjects/TrackInfo", order = 1)]
+public class TrackInfo : ScriptableObject
+{
+	public AudioClip instrumental;
+	[SerializeField] string leadMidiFileStreamingAssetsPath;
+
+	public float noteBarHeightAdjustmentFactor = 0.00125f;
+
+	[ReadOnly] public double bpm;
+	[SerializeField, ReadOnly] float quantity, quality;
+	[ReadOnly] public float totalNumBars;
+	[SerializeField, ReadOnly] float secondsPerBar;
+	[ReadOnly] public float duration;
+
+	public class Note
+	{
+		public int Number { get; set; }
+		public MetricTimeSpan MetricStartTimeSpan { get; set; }
+		public MetricTimeSpan MetricEndTimeSpan { get; set; }
+		public long Length { get; set; }
+	}
+	public Note[] Notes { get; set; }
+
+	public void RefreshInfo()
+	{
+		BetterStreamingAssets.Initialize();
+		byte[] data = BetterStreamingAssets.ReadAllBytes(leadMidiFileStreamingAssetsPath);
+		ParseInfo(data);
+	}
+
+	private void Awake()
+	{
+		RefreshInfo();
+	}
+
+	void ParseInfo(byte[] midiData)
+	{
+		MemoryStream stream = new(midiData);
+		MidiFile midiFile = MidiFile.Read(stream);
+		TempoMap tempoMap = midiFile.GetTempoMap();
+
+		Notes = midiFile.GetNotes().Select(n => new Note
+		{
+			Number = n.NoteNumber,
+			MetricStartTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(n.Time, tempoMap),
+			MetricEndTimeSpan = n.EndTimeAs<MetricTimeSpan>(tempoMap),
+			Length = n.Length
+		}).ToArray();
+
+		Tempo tempo = tempoMap.GetTempoAtTime(
+			new MetricTimeSpan(Notes[0].MetricStartTimeSpan.TotalMicroseconds));
+		bpm = tempo.BeatsPerMinute;
+
+		var firstTrackChunk = midiFile.GetTrackChunks().First();
+		var firstTimeSignatureEvent = firstTrackChunk
+			.Events
+			.OfType<TimeSignatureEvent>()
+			.FirstOrDefault();
+		quantity = firstTimeSignatureEvent.Numerator;
+		quality = firstTimeSignatureEvent.Denominator;
+
+		secondsPerBar = quantity * 60000f * 0.001f / (float)bpm;
+
+		var barBeatTimeOfLastEvent = midiFile.GetTimedEvents().Last().TimeAs<BarBeatTicksTimeSpan>(tempoMap);
+		totalNumBars = barBeatTimeOfLastEvent.Bars;
+		// If a bar is partially occupied, we need add it to the total count of bars
+		if (barBeatTimeOfLastEvent.Beats > 0 || barBeatTimeOfLastEvent.Ticks > 0)
+			totalNumBars = barBeatTimeOfLastEvent.Bars + 1;
+		duration = totalNumBars * secondsPerBar;
+	}
+
+	private void OnValidate()
+	{
+		if (File.Exists($"{Application.streamingAssetsPath}/{leadMidiFileStreamingAssetsPath}"))
+		{
+			RefreshInfo();
+		}
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+
+								<!-- <div class="accordion-item">
+									<div class="accordion-header probability"><div>Round Up Game</div></div>
+									<div class="accordion-content">
+										<p>Round Up is one of the game prototypes I worked on. It was transferred to me to rebuild and finalise. I had to familiarise myself with the codebase and core structure to ensure it was ready to be added with the rest in the modules for testing at nurseries.</p>
+										<p>In the game, you simply had to select the patrolling egglets in order (by number or alphabetical) for them to jump onto the trampoline. The biggest challenge for me was making the game manager compatible for different modules (which meant different game modes), from numbers (M1) and letters (M2 & M3) to matching lowercase and uppercase letters (M4) together.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>RoundUpEgglet</div></div>
+												<div class="accordion-content">
+												<p>The following code is used for the Egglet logic.</p>
+												<pre><code class="language-csharp hljs">using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using System.IO;
+using System.Linq;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "TrackInfo", menuName = "ScriptableObjects/TrackInfo", order = 1)]
+public class TrackInfo : ScriptableObject
+{
+	public AudioClip instrumental;
+	[SerializeField] string leadMidiFileStreamingAssetsPath;
+
+	public float noteBarHeightAdjustmentFactor = 0.00125f;
+
+	[ReadOnly] public double bpm;
+	[SerializeField, ReadOnly] float quantity, quality;
+	[ReadOnly] public float totalNumBars;
+	[SerializeField, ReadOnly] float secondsPerBar;
+	[ReadOnly] public float duration;
+
+	public class Note
+	{
+		public int Number { get; set; }
+		public MetricTimeSpan MetricStartTimeSpan { get; set; }
+		public MetricTimeSpan MetricEndTimeSpan { get; set; }
+		public long Length { get; set; }
+	}
+	public Note[] Notes { get; set; }
+
+	public void RefreshInfo()
+	{
+		BetterStreamingAssets.Initialize();
+		byte[] data = BetterStreamingAssets.ReadAllBytes(leadMidiFileStreamingAssetsPath);
+		ParseInfo(data);
+	}
+
+	private void Awake()
+	{
+		RefreshInfo();
+	}
+
+	void ParseInfo(byte[] midiData)
+	{
+		MemoryStream stream = new(midiData);
+		MidiFile midiFile = MidiFile.Read(stream);
+		TempoMap tempoMap = midiFile.GetTempoMap();
+
+		Notes = midiFile.GetNotes().Select(n => new Note
+		{
+			Number = n.NoteNumber,
+			MetricStartTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(n.Time, tempoMap),
+			MetricEndTimeSpan = n.EndTimeAs<MetricTimeSpan>(tempoMap),
+			Length = n.Length
+		}).ToArray();
+
+		Tempo tempo = tempoMap.GetTempoAtTime(
+			new MetricTimeSpan(Notes[0].MetricStartTimeSpan.TotalMicroseconds));
+		bpm = tempo.BeatsPerMinute;
+
+		var firstTrackChunk = midiFile.GetTrackChunks().First();
+		var firstTimeSignatureEvent = firstTrackChunk
+			.Events
+			.OfType<TimeSignatureEvent>()
+			.FirstOrDefault();
+		quantity = firstTimeSignatureEvent.Numerator;
+		quality = firstTimeSignatureEvent.Denominator;
+
+		secondsPerBar = quantity * 60000f * 0.001f / (float)bpm;
+
+		var barBeatTimeOfLastEvent = midiFile.GetTimedEvents().Last().TimeAs<BarBeatTicksTimeSpan>(tempoMap);
+		totalNumBars = barBeatTimeOfLastEvent.Bars;
+		// If a bar is partially occupied, we need add it to the total count of bars
+		if (barBeatTimeOfLastEvent.Beats > 0 || barBeatTimeOfLastEvent.Ticks > 0)
+			totalNumBars = barBeatTimeOfLastEvent.Bars + 1;
+		duration = totalNumBars * secondsPerBar;
+	}
+
+	private void OnValidate()
+	{
+		if (File.Exists($"{Application.streamingAssetsPath}/{leadMidiFileStreamingAssetsPath}"))
+		{
+			RefreshInfo();
+		}
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div> -->
+								
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- Scripts -->
+			<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+
+			<script src="assets/js/loader.js"></script>
+
+			<script src="assets/js/navbar.js"></script>
+			<script src="assets/js/project-elements.js"></script>
+	
+			<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+			<script src="assets/js/image-slider.js"></script>
+
+			<script src="assets/js/popup-image.js"></script>
+			<script src="assets/js/accordion-single.js"></script>
+
+			<script src="assets/js/observers.js"></script>
+		</body>
+</html>

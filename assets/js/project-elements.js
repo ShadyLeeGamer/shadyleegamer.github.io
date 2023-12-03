@@ -8,6 +8,22 @@ class ElementHTML {
 
 let elementsHTML = new Map();
 
+elementsHTML.set('hope',
+new ElementHTML(
+    `Educational AR Game`,
+    `Oct 2023 — Present`,
+    `<li>OpenCV</li>
+    <li>Python</li>
+    <li>AR Foundation</li>
+    <li>Unity</li>
+    <li>Addressables</li>
+    <li>Timelines</li>
+    <li>C#</li>
+    <li>Git</li>
+    <li>Trello</li>
+    <li>Miro</li>
+    <li>Universal Render Pipeline</li>`));
+
 elementsHTML.set('okainos',
 new ElementHTML(
     `Multiplayer Card Game`,
@@ -42,7 +58,8 @@ new ElementHTML(
     <li>Sprite Shape API</li>
     <li>Notion</li>
     <li>Cinemachine</li>
-    <li>JSON</li>`));
+    <li>JSON</li>
+    <li>Universal Render Pipeline</li>`));
 
 elementsHTML.set('game-jams',
 new ElementHTML(

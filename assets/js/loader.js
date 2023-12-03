@@ -43,6 +43,7 @@ function BigReelIntro() {
     else {
         // bigReelContainer.style.height = bigReelVideo.style.height = '80vh';
         bigReelContainer.style.height = bigReelVideo.style.height = '70vh';
+        bigReelVideo.style.paddingTop = '7.5em';
     }
     
     if (bigReelFilter) {

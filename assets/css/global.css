@@ -74,7 +74,8 @@
 }
 
 :root #work-projects .spotlights > section,
-#project-top #okainos {
+#project-top #okainos,
+#project-top #hope {
     --project-panel-1: #468797;
     --project-panel-2: #85AAAD;
     --project-panel-1: #0B555C;
@@ -549,6 +550,21 @@ color: var(--side-title);
     bottom: 0;
     top: 2em;
     width: 0;
+}
+
+#work-projects .side-title {
+    color: var(--work-experience);
+}
+
+#work-projects .side-title.perspective {
+    letter-spacing: 0.10em;
+    writing-mode: vertical-lr;
+
+    font-size: 2.5em;
+    font-size: 4em;
+    top: 4em;
+    
+    text-orientation: sideways;
 }
 
 .side-title.mobile {
@@ -2335,7 +2351,8 @@ left: -50%;
 
     transform: translateX(-50%);
     height: 100%;
-    transition: height 1s ease, width 10s ease-out; 
+    transition: height 1s ease, width 10s ease-out, padding-top 1s ease; 
+
 }
 
 @media screen and (min-width: 1080px) {
@@ -2437,6 +2454,18 @@ left: -50%;
     --tech-spinner-bg: #ffffff;
   }
   :root ul.tech li#powerpoint {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#pycharm {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#opencv {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#arcore {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#arkit {
     --tech-spinner-bg: #ffffff;
   }
   
