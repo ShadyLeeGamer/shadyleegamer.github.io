@@ -147,7 +147,7 @@ import struct
 
 # Communication Vars
 IP = "127.0.0.1"  # Local
-CAM_FEED_PORT, TRACK_DATA_PORT, REQUEST_PORT = 8000, 8001, 8002
+CAM_FEED_PORT, TRACK_DATA_PORT = 8000, 8001
 
 
 # Class for establishing a TCP socket connection
@@ -496,56 +496,60 @@ trackDataReader.Datasets[TrackDataReader.Tag.HandGesture] += SerialiseHandGestur
 									<div class="accordion-item">
 										<div class="accordion-header c-sharp"><div>ScreenGizmos</div></div>
 										<div class="accordion-content">
-								<pre><code class="language-csharp hljs">using UnityEditor;
-using UnityEngine;
+								<pre><code class="language-csharp hljs">using UnityEngine;
 
-public class ScreenGizmos
+public class HandSync : MonoBehaviour
 {
-	Canvas canvas;
+	[SerializeField] Canvas canvas;
 
 	Camera cam;
 
-	const float offsetZ = 0.005f;
+	[SerializeField] Transform humanSegT;
 
-	public float LineThickness { get; set; }
-
-	public ScreenGizmos(Canvas canvas, Camera cam)
+	[System.Flags]
+	public enum SegTransformChange
 	{
-		this.canvas = canvas;
-		this.cam = cam;
-		LineThickness = 1f;
+		Position = 1,   // 000001
+		Rotation = 2,   // 000010
+		Scale = 4       // 000100
+	}
+	[SerializeField] SegTransformChange segTransformChanges;
+
+	public static HandSync Instance { get; private set; }
+
+	public void Awake()
+	{
+		Instance = this;
+
+		cam = Camera.main;
 	}
 
-	public void DrawSphere(Vector3 screenPos, float radius)
+	// TODO: Make it work with cmaera transform changes
+	public Vector3 ViewPortToOverlayPos(Vector3 viewPort)
 	{
-		Gizmos.DrawSphere(PxToCamClipPlane(screenPos), radius);
-	}
+		float depth = viewPort.z;
 
-	public void DrawLine(Vector3 startScreenPos, Vector3 endScreenPos)
-	{
-		Vector3
-			startWorldPos = PxToCamClipPlane(startScreenPos),
-			endWorldPos = PxToCamClipPlane(endScreenPos);
+		viewPort *= canvas.scaleFactor;
 
-		Handles.DrawLine(startWorldPos, endWorldPos, LineThickness);
-	}
+		viewPort.z += cam.nearClipPlane;
 
-	public void DrawLabel(Vector3 screenPos, string text)
-	{
-		float screenSizeFactor = HandleUtility.GetHandleSize(Vector3.zero) * 0.1f;
-		GUIStyle style = new(GUI.skin.label);
-		style.fontStyle = FontStyle.Bold;
-		style.normal.textColor = Color.white;
-		style.fontSize = Mathf.RoundToInt(10 * screenSizeFactor);
+		Ray ray = cam.ViewportPointToRay(viewPort);
+		Vector3 worldPos = ray.origin + ray.direction * (-ray.origin.z / ray.direction.z);
+		worldPos += depth * Vector3.Distance(ray.origin, worldPos) * ray.direction;
 
-		Handles.Label(PxToCamClipPlane(screenPos), text, style);
-	}
+		// Selective Transform Point
+		{
+			var worldToLocalMatrix = Matrix4x4.TRS(
+				ChangeIsEnabled(SegTransformChange.Position) ? humanSegT.position : Vector3.one,
+				ChangeIsEnabled(SegTransformChange.Rotation) ? humanSegT.rotation : Quaternion.identity,
+				ChangeIsEnabled(SegTransformChange.Scale) ? humanSegT.localScale : Vector3.one);
+			worldPos = worldToLocalMatrix.MultiplyPoint3x4(worldPos);
 
-	Vector3 PxToCamClipPlane(Vector3 screenPos)
-	{
-		screenPos *= canvas.scaleFactor;
-		screenPos.z = cam.nearClipPlane + offsetZ;
-		return cam.ScreenToWorldPoint(screenPos);
+
+			bool ChangeIsEnabled(SegTransformChange transformChange) => (segTransformChanges & transformChange) != 0; // If there is no match of 1s, then it is not present in bit mask
+		}
+
+		return worldPos;
 	}
 }</code></pre>
 
@@ -556,104 +560,142 @@ public class ScreenGizmos
 	<div class="accordion-item">
 		<div class="accordion-header c-sharp"><div>HandDrawer</div></div>
 		<div class="accordion-content">
-<pre><code class="language-csharp hljs">using System.Collections.Generic;
-using UnityEditor;
+<pre><code class="language-csharp hljs">using UnityEditor;
 using UnityEngine;
-using Hand = HandReader.Hand;
+using LmTag = HandReader.Hand.LmTag;
 
 public class HandDrawer : MonoBehaviour
 {
-	[SerializeField] Canvas canvas;
-	ScreenGizmos screenGizmos;
+	HandReader reader;
 
-	List<Hand> handsCache = new();
-
-	private void Awake()
+	[System.Flags]
+	public enum DrawType
 	{
-		screenGizmos = new(canvas, Camera.main);
+		Landmarks = 1,  // 000001
+		HandLines = 2,  // 000010
+		Bounds = 4,     // 000100
+		Labels = 8,     // 001000
+		Axis = 16       // 010000
 	}
+	[SerializeField] public DrawType draws = DrawType.Landmarks | DrawType.HandLines;
 
 	private void Start()
 	{
-		HandReader.Instance.OnHandsRefresh += hands => handsCache = new List<Hand>(hands);
+		reader = HandReader.Instance;
 	}
+
+	bool DrawTypeIsEnabled(DrawType draw) => (draws & draw) != 0;
 
 	private void OnDrawGizmos()
 	{
-		foreach (var h in handsCache)
+		if (!Application.isPlaying)
+			return;
+
+		if (draws == 0)
+			return;
+
+		float lineThickness;
+		foreach (var h in reader.hands)
 		{
-			// Lines
-			Handles.color = Color.green;
-			screenGizmos.LineThickness = 4;
-
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.WRIST),
-				h.GetLm(Hand.LmTags.THUMB_CMC));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_CMC), h.GetLm(Hand.LmTags.THUMB_MCP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_MCP), h.GetLm(Hand.LmTags.THUMB_IP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.THUMB_IP), h.GetLm(Hand.LmTags.THUMB_TIP));
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.WRIST),
-				h.GetLm(Hand.LmTags.INDEX_FINGER_MCP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_MCP), h.GetLm(Hand.LmTags.INDEX_FINGER_PIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_PIP), h.GetLm(Hand.LmTags.INDEX_FINGER_DIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.INDEX_FINGER_DIP), h.GetLm(Hand.LmTags.INDEX_FINGER_TIP));
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.INDEX_FINGER_MCP),
-				h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_PIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_PIP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_DIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.MIDDLE_FINGER_DIP), h.GetLm(Hand.LmTags.MIDDLE_FINGER_TIP));
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.MIDDLE_FINGER_MCP),
-				h.GetLm(Hand.LmTags.RING_FINGER_MCP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_MCP), h.GetLm(Hand.LmTags.RING_FINGER_PIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_PIP), h.GetLm(Hand.LmTags.RING_FINGER_DIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.RING_FINGER_DIP), h.GetLm(Hand.LmTags.RING_FINGER_TIP));
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.RING_FINGER_MCP),
-				h.GetLm(Hand.LmTags.PINKY_MCP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_MCP), h.GetLm(Hand.LmTags.PINKY_PIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_PIP), h.GetLm(Hand.LmTags.PINKY_DIP));
-			screenGizmos.DrawLine(h.GetLm(Hand.LmTags.PINKY_DIP), h.GetLm(Hand.LmTags.PINKY_TIP));
-			screenGizmos.DrawLine(
-				h.GetLm(Hand.LmTags.PINKY_MCP),
-				h.GetLm(Hand.LmTags.WRIST));
-
-			float minX = float.MaxValue, maxX = float.MinValue;
-			float minY = float.MaxValue, maxY = float.MinValue;
-			Gizmos.color = Color.red;
-			foreach (var lm in h.Landmarks)
+			if (DrawTypeIsEnabled(DrawType.Landmarks))
 			{
-				minX = Mathf.Min(lm.x, minX);
-				maxX = Mathf.Max(lm.x, maxX);
-				minY = Mathf.Min(lm.y, minY);
-				maxY = Mathf.Max(lm.y, maxY);
-
-				// Landmarks
-				screenGizmos.DrawSphere(lm, 0.0035f);
+				Gizmos.color = Color.yellow;
+				foreach (var lm in h.Landmarks)
+				{
+					Gizmos.DrawSphere(lm, 0.1f);
+				}
 			}
 
-			// Border
-			screenGizmos.LineThickness = 3;
-			Handles.color = new Color(255, 0, 255);
+			if (DrawTypeIsEnabled(DrawType.HandLines))
+			{
+				lineThickness = 4;
+				Handles.color = Color.grey;
 
-			screenGizmos.DrawLine(
-				new Vector2(minX, minY),
-				new Vector2(maxX, minY));
-			screenGizmos.DrawLine(
-				new Vector2(maxX, minY),
-				new Vector2(maxX, maxY));
-			screenGizmos.DrawLine(
-				new Vector2(maxX, maxY),
-				new Vector2(minX, maxY));
-			screenGizmos.DrawLine(
-				new Vector2(minX, maxY),
-				new Vector2(minX, minY));
+				HandLine(LmTag.THUMB_CMC, LmTag.THUMB_MCP);
 
-			// Gesture & Handedness
-			screenGizmos.DrawLabel(h.GetLm(Hand.LmTags.WRIST), h.Gesture);
-			screenGizmos.DrawLabel(h.GetLm(Hand.LmTags.WRIST) + (Vector2.down * 100f), h.Handedness);
+				HandLine(LmTag.THUMB_MCP, LmTag.THUMB_IP);
+				HandLine(LmTag.THUMB_IP, LmTag.THUMB_TIP);
+
+				HandLine(LmTag.WRIST, LmTag.INDEX_FINGER_MCP);
+
+				HandLine(LmTag.INDEX_FINGER_MCP, LmTag.INDEX_FINGER_PIP);
+				HandLine(LmTag.INDEX_FINGER_PIP, LmTag.INDEX_FINGER_DIP);
+				HandLine(LmTag.INDEX_FINGER_DIP, LmTag.INDEX_FINGER_TIP);
+
+				HandLine(LmTag.INDEX_FINGER_MCP, LmTag.MIDDLE_FINGER_MCP);
+
+				HandLine(LmTag.MIDDLE_FINGER_MCP, LmTag.MIDDLE_FINGER_PIP);
+				HandLine(LmTag.MIDDLE_FINGER_PIP, LmTag.MIDDLE_FINGER_DIP);
+				HandLine(LmTag.MIDDLE_FINGER_DIP, LmTag.MIDDLE_FINGER_TIP);
+
+				HandLine(LmTag.MIDDLE_FINGER_MCP, LmTag.RING_FINGER_MCP);
+
+				HandLine(LmTag.RING_FINGER_MCP, LmTag.RING_FINGER_PIP);
+				HandLine(LmTag.RING_FINGER_PIP, LmTag.RING_FINGER_DIP);
+				HandLine(LmTag.RING_FINGER_DIP, LmTag.RING_FINGER_TIP);
+
+				HandLine(LmTag.RING_FINGER_MCP, LmTag.PINKY_MCP);
+
+				HandLine(LmTag.PINKY_MCP, LmTag.PINKY_PIP);
+				HandLine(LmTag.PINKY_PIP, LmTag.PINKY_DIP);
+				HandLine(LmTag.PINKY_DIP, LmTag.PINKY_TIP);
+
+				HandLine(LmTag.PINKY_MCP, LmTag.WRIST);
+			}
+
+			if (DrawTypeIsEnabled(DrawType.Bounds))
+			{
+				lineThickness = 3;
+				Handles.color = new Color(255, 0, 255);
+
+				// Border
+				BorderSide(-1, -1, 1, -1);
+				BorderSide(1, -1, 1, 1);
+				BorderSide(1, 1, -1, 1);
+				BorderSide(-1, 1, -1, -1);
+
+				// Center
+				Gizmos.color = new Color(255, 0, 255);
+				Gizmos.DrawSphere(h.Bounds.center, 0.1f);
+			}
+
+			if (DrawTypeIsEnabled(DrawType.Labels))
+			{
+				// Gesture & Handedness
+				float screenSizeFactor = HandleUtility.GetHandleSize(Vector3.zero) * 0.1f;
+				GUIStyle style = new(GUI.skin.label);
+				style.fontStyle = FontStyle.Bold;
+				style.normal.textColor = new Color(255, 0, 255);
+				style.fontSize = Mathf.RoundToInt(100 * screenSizeFactor);
+
+				Handles.Label(h.GetLm(LmTag.WRIST), h.Gesture.ToString());
+				Handles.Label(h.GetLm(LmTag.WRIST) + (Vector3.down * 1f), h.Handedness.ToString());
+			}
+
+			if (DrawTypeIsEnabled(DrawType.Axis))
+			{
+				lineThickness = 5;
+				Handles.color = Color.green;
+				Line(h.GetLm(LmTag.WRIST), h.GetLm(LmTag.WRIST) + h.UpOrientation.Direction);
+
+				Handles.color = Color.red;
+				Line(h.GetLm(LmTag.WRIST), h.GetLm(LmTag.WRIST) + h.RightOrientation.Direction);
+
+				Handles.color = Color.blue;
+				Line(h.GetLm(LmTag.WRIST), h.GetLm(LmTag.WRIST) + h.ForwardOrientation.Direction);
+			}
+
+
+			// Helpers
+			void Line(Vector3 start, Vector3 end) => Handles.DrawLine(start, end, lineThickness);
+			void HandLine(LmTag start, LmTag end) => Line(h.GetLm(start), h.GetLm(end));
+
+			void BorderSide(int signStartX, float signStartY, int signEndX, float signEndY)
+			{
+				Line(
+					h.Bounds.center + new Vector3(h.Bounds.extents.x * signStartX, h.Bounds.extents.y * signStartY),
+					h.Bounds.center + new Vector3(h.Bounds.extents.x * signEndX, h.Bounds.extents.y * signEndY));
+			}
 		}
 	}
 }</code></pre>

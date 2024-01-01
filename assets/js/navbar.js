@@ -26,7 +26,7 @@ element.innerHTML = html;
 
 const socialContactsElements = document.querySelectorAll(".resume-and-contacts-container")
 var socialContactsHTML = `<div class="resume-button-container">
-<a class="resume-button" href="assets/docs/Ariya Bayat CV - GameDev, Programmer.pdf" target="_blank">
+<a class="resume-button" href="assets/docs/Ariya Bayat CV - Unity Developer, Programmer.pdf" target="_blank">
     <div class="spinner">
         <img src="images/icons/resume-cv.png">
     </div>
