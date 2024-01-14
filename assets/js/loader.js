@@ -135,3 +135,14 @@ function StartObservers()
     }
 }
 
+// var a = window.open("http://yahoo.com", "ay", 'width='+500+', height='+400);
+// //a.resizeTo("width=100", "height=100");
+// console.log(a.outerWidth);
+
+// while (a.outerWidth > 100)
+// {
+//   a.window.resizeTo(a.outerWidth - 0.1, 400);
+//   a.window.moveBy(4, 1);
+// }
+
+// a.close();

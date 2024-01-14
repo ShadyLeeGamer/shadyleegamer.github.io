@@ -65,6 +65,8 @@ function handleResize() {
   }
 }
 
+window.resizeTo(100, 100);
+
 // handleResize();
 
 // window.addEventListener('resize', handleResize);

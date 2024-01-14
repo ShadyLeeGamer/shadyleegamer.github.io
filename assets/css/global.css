@@ -2468,6 +2468,21 @@ left: -50%;
   :root ul.tech li#arkit {
     --tech-spinner-bg: #ffffff;
   }
+  :root ul.tech li#unreal {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#photoshop {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#opengl {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#hlsl {
+    --tech-spinner-bg: #ffffff;
+  }
+  :root ul.tech li#c-plusplus {
+    --tech-spinner-bg: #ffffff;
+  }
   
   :root ul.contact-social li#github {
     --tech-spinner-bg: var(--colour-1-bright);
