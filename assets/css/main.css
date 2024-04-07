@@ -1,3 +1,65 @@
+#highlight-projects .spotlights > section
+{
+	--plain-text-colour: var(--text-light)
+}
+
+#work-projects .spotlights > section
+{
+	--plain-text-colour: var(--text-light)
+}
+
+#projects .spotlights > section
+{
+	--plain-text-colour: var(--text-dark)
+}
+
+#highlight-projects
+{
+	--project-panel-1: #b8d2d4;
+	--project-panel-2: #468797;
+	/* --project-panel-1: #58888d;
+	--project-panel-2: #b8d2d4; */
+	--bg: var(--background-4);
+	--project-date: var(--nav-span);
+}
+
+#work-projects
+{
+	--project-panel-1: #b8d2d4;
+	--project-panel-2: #468797;
+	--bg: var(--background-3);
+	--project-date: var(--nav-span-2);
+}
+
+#projects
+{
+	--project-panel-1: #f3eee6;
+	--project-panel-2: #f3eee6;
+	--bg: var(--background-2);
+	--project-date: var(--project-text-special);
+}
+
+.spotlights > section.left
+{
+	--project-panel-a: var(--project-panel-1);
+	--project-panel-b: var(--project-panel-2);
+}
+
+.spotlights > section.right
+{
+	--project-panel-a: var(--project-panel-2);
+	--project-panel-b: var(--project-panel-1);
+}
+
+:root #highlight-projects {
+    --side-title: var(--nav-span);
+}
+
+:root #work-projects {
+    --side-title: var(--nav-span-2);
+}
+
+
 @media screen and (min-width: 980px) {
 	.project-reel-container {
     position: relative;
@@ -159,6 +221,8 @@
 	background-size: contain;
 }
 
+
+/* Read More Btn */
 @media screen and (min-width: 980px) {
  	#work-projects .read-more-button > div {
 	background-image: url(../../images/icons/read-more-2.png);
@@ -178,17 +242,15 @@
 
 /* Basic */
 	.spotlights .project-title {
-		font-family:'A-OTF Shin Go Pro M';
 		font-family: "A-OTF Shin Go Pro H";
 		writing-mode: vertical-lr;
 
 		text-transform: uppercase;
-			letter-spacing: 0.10em;
-			font-size: 2em;
-			position: relative;
-			white-space: nowrap;
-			/* line-height: 75%; */
-			/* background-color: #000000; */
+		letter-spacing: 0.10em;
+		font-size: 2em;
+		position: relative;
+		white-space: nowrap;
+		
 		color: var(--text-light);
 
 		}
@@ -273,76 +335,11 @@
 
 
 
-		#projects .side-title.projects-header.perspective,
-		#work-projects .side-title.projects-header.perspective
-		{
-			transform: translateX(-130px);
-
-		}
-
 		.side-title.projects-header.perspective
 		{
+			transform: translateX(-130px);
 			margin-top: 2em;
 		}
-
-
-			.work-experience-header {
-				position: absolute;
-				letter-spacing: 0.10em;
-				writing-mode: vertical-lr;
-
-				bottom: 0;
-				color: var(--work-experience);
-				font-size: 2.5em;
-				font-size: 4em;
-				
-				height: max-content;
-				top:50%;
-			}
-
-			
-			.work-experience-header.left {
-				left: 0;
-				transform: translateX(-60px) translateY(-50%);
-			}
-
-			.work-experience-header.right {
-				right: 0;
-				transform: translateX(135%) translateY(-50%);
-			}
-
-			@media screen and (max-width: 1350px) {
-				.work-experience-header.left {
-					transform: translateX(-22.5px) translateY(-50%);
-				}
-			}
-
-			@media screen and (max-width: 1080px) {
-				.work-experience-header.left {
-					/* position: relative; */
-					writing-mode:horizontal-tb;
-						transform: none;
-						padding: 0.5em;
-						top: 0;
-						left: 50%;
-						transform: translateX(-50%);
-						
-						text-align: center;
-					}
-		}
-
-
-
-	#work-projects .project-category
-	{
-		color: var(--colour-dark);
-	}
-	#projects .project-category
-	{
-		color: var(--project-text-special);
-		color: var(--colour-dark);
-	}
-
 
 
 	.spotlights .project-date {
@@ -356,47 +353,26 @@
 		transform: translateY(-50%);
 	}
 
-	#work-projects .project-date,
-	#project-header .project-date
+	.project-date
 	{
-		color: var(--nav-span-2);
+		color: var(--project-date);
 	}
+
 	#projects .project-date
 	{
 		color: var(--project-text-special);
 	}
 
 	@media screen and (max-width: 980px) {
-		.work-experience-header.left {
-		position: relative;
-		writing-mode:horizontal-tb;
-			transform: none;
-			left: 50%;
-			transform: translateX(-50%) translateY(100%);
-			margin-bottom: 3em;
-		}
-
-		.work-experience-header.right {
-				position: relative;
-				writing-mode:horizontal-tb;
-				transform: none;
-				top:0;
-			}
-
 		.spotlights .project-date {
 			right: -1em;
 		}
 
-		#work-projects .project-category
-		{
-			color: var(--text-light);
-		}
-		#projects .project-category
+		.project-category
 		{
 			color: var(--text-light);
 		}
 	}
-
 
 		.spotlights .description p {
 			text-align: justify;
@@ -408,20 +384,15 @@
 			height: 100%;
 			transform: none;
 		}
-		#work-projects .description{
-			color: var(--text-light);
-		}
-		#projects .description{
-			color: var(--text-dark);
-		}
 
-
+		.description{
+			color: var(--plain-text-colour);
+		}
 
 @media screen and (max-width: 980px) {
 	.spotlights .description {
 		display: flex;
 		grid-area: 1/-1;
-
 	
 		z-index: 1;
 	
@@ -449,8 +420,7 @@
 		text-shadow: 3px 3px 6px #000000;
 	}
 
-	#work-projects .description,
-	#projects .description{
+	.description{
 		color: var(--text-light);
 	}
 
@@ -493,26 +463,13 @@
 		margin-top: 80px;
 
 	}
-	#work-projects .spotlights > section.left {
-		background: linear-gradient(90deg,var(--project-panel-2), var(--project-panel-1));
-	}
-	#work-projects .spotlights > section.right {
-		background: linear-gradient(90deg,var(--project-panel-1), var(--project-panel-2));
-	}
-	#projects .spotlights > section.left {
-		background: linear-gradient(90deg,var(--project-panel-2), var(--project-panel-1));
-	}
-	#projects .spotlights > section.right {
-		background: linear-gradient(90deg,var(--project-panel-1), var(--project-panel-2));
+	.spotlights > section {
+		background: linear-gradient(90deg,var(--project-panel-a), var(--project-panel-b));
 	}
 
 	  .spotlights > section .project-bg video {
 		filter: sepia(100%) hue-rotate(var(--project-reel-filter-shift));
 	  }
-
-	  .spotlights > section .project-bg::after {
-
-	}
 
 	  .spotlights > section .project-bg video  {
 		box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.4);
@@ -627,13 +584,7 @@
 				align-items:normal;
 			}
 
-		    .spotlights > section.left .project-title {
-			}
-
-			#work-projects .spotlights > section.left,
-			#work-projects .spotlights > section.right,
-			#projects .spotlights > section.left,
-			#projects .spotlights > section.right {
+			.spotlights > section {
 				background: none;
 			}
 
@@ -672,18 +623,14 @@
 				
 		margin-top: 80px;
 			}
-			#work-projects .spotlights > section:nth-child(n) .ribbon-vertical
-			{
-				background:#00000000;
-			}
-			#projects .spotlights > section:nth-child(n) .ribbon-vertical
+			.spotlights > section:nth-child(n) .ribbon-vertical
 			{
 				background:#00000000;
 			}
 			.spotlights > section .ribbon-vertical::before,
-			 .spotlights > section .ribbon-vertical.left::before,
-				.spotlights > section .ribbon-vertical.right::before,
-				.spotlights > section .ribbon-vertical::after{
+			.spotlights > section .ribbon-vertical.left::before,
+			.spotlights > section .ribbon-vertical.right::before,
+			.spotlights > section .ribbon-vertical::after{
 				display: none;
 			}
 
@@ -717,11 +664,8 @@
 					transform: translateY(1em);
 
 				}
-
-
 		}
-		#work-projects .spotlights > section .project-bg video:hover,
-		#projects .spotlights > section .project-bg video:hover {
+		.spotlights > section .project-bg video:hover {
 		   filter: none;
 		 }
 
@@ -731,7 +675,6 @@
 			.spotlights > section.left .split {
 				display: flex;
 				flex-direction: column;
-				
 			}
 
 			.spotlights > section.left .split section:nth-child(2) {
@@ -827,7 +770,7 @@
 		background: var(--background-1);
 		z-index: 1;
 		padding-top: 2.5em;
-		padding-bottom: 5em;
+		/*padding-bottom: 5em;*/
 	}
 
 	#about-me-container h2,
@@ -873,8 +816,17 @@
 		margin: 0;
 	  }
 
+	  #highlight-projects::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		background: linear-gradient(var(--background-1), #00000000);
+		height: 100px;
+		width: 100%;
+	}
+
+
 		#work-projects {
-			background-color: var(--background-3);
 			z-index: 2;
 		font-family: "A-OTF Shin Go Pro L";
 		}
@@ -883,7 +835,7 @@
 			position: absolute;
 			content: "";
 			top: 0;
-			background: linear-gradient(var(--background-1), #00000000);
+			background: linear-gradient(var(--background-4), #00000000);
 			height: 100px;
 			width: 100%;
 		}
@@ -897,9 +849,9 @@
 			width: 100%;
 			transform: translateY(99%);
 		}
-		#projects {
-			background-color: var(--background-2);
-			padding-top: 2.5em;
+		
+		.project-section {
+			background-color: var(--bg);
 		}
 
 /* Featured */

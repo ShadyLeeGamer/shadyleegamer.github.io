@@ -1,0 +1,972 @@
+<!DOCTYPE HTML>
+<!--
+	Axiom by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Ariya Bayat | Game Dev, Programmer Portfolio - Master Hand VR</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="assets/css/loader.css" />
+
+		<link rel="stylesheet" href="assets/css/global.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+
+		<link rel="stylesheet" href="assets/css/slick.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+
+		<link rel="stylesheet" href="highlight/styles/base16/default-dark.min.css" />
+		<script src="highlight/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+	</head>
+	<body class="no-sidebar">
+		<div id="loader-wrapper">
+			<span id="loader-spinner">
+				<span id="loader-hover">
+				</span>
+			</span>
+		</div>
+
+		<div class="projects-header-wrapper">
+			<nav id="nav"></nav>
+
+		<div id="page-wrapper">
+
+			<header id="project-header">
+				<div id="big-reel">
+					<video class="main-video" src="videos/master-hand-vr/reel.mp4" autoplay muted loop></video>
+					<span id="filter"></span>
+					<span id="fade"></span>
+				</div>
+				<h2 class="project-title">Master Hand VR</h2>
+
+				<p id="master-hand-vr" class="project-date scroll-transition"></p>
+			</header>
+			
+			<div id="project-top" class="container">
+
+				<div class="slick-slider template">
+					<div class="slick-slide">
+						<video src="videos/master-hand-vr/master-hand-vr-gameplay.mp4" controls></video>
+					</div>
+					<div class="slick-slide">
+						<img src="images/master-hand-vr/hand-gun-screenshot.png">
+					</div>
+					<div class="slick-slide">
+						<img src="images/master-hand-vr/laser-fingers-screenshot.png">
+					</div>
+					<div class="slick-slide">
+						<video src="videos/master-hand-vr/physical-hand-interaction.mp4" controls></video>
+					</div>
+				</div>
+
+				<div class="description">
+					<!-- <ul class="spinner-list platform scroll-transition">
+						<div class="spinner" style="background: #ffffff;">
+							<a href="https://github.com/ShadyLeeGamer/ARrow-Simulator" target="_blank">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+							</a>
+						</div>
+					</ul> -->
+
+				<ul id="master-hand-vr" class="project-tech-list scroll-transition"></ul>
+
+				<p id="master-hand-vr" class="project-category"></p>
+
+				<p>Building on the latest XR Hands package to make an engaging and intuitive experience featuring advanced hand-tracking and complex entities you can interact with.</p>
+
+				</div>
+			</div>
+
+			<div class="popup-image">
+				<img src="images/okainos/back-end-user.png">
+			</div>
+
+			<div id="project-content-wrapper">
+			<div class="project-content">
+
+			<h1 class="projects-header side-title perspective vertical-sideways">MASTER HAND</h1>
+					<div class="row">
+						<div class="col-12">
+							<h3 class="project-heading">Hand Tracking</h3>
+
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header movement"><div>The Power of Scriptable Objects & Event Systems</div></div>
+									<div class="accordion-content">
+										<h3 class="project-heading">The Problem</h3>
+										<p>The Unity's Gestures sample for the XR Hands package includes the StaticHandGesture component, which compares hand tracking data with a hand shape or pose to notify event listeners of whether the gesture has been Performed or has Ended.</p>
+										<p>However, there are many tedious things about this system. For one, it uses a single XRHandTrackingEvents component per hand, meaning that tracking the same gesture for both hands requires two separate StaticHandGesture component with the same duplicate settings.</p>
+										<p>There's also no right-off the bat way for Instantiated objects to reference specific StaticHandGesture components in the scene.</p>
+									
+										<h3 class="project-heading">The Solution</h3>
+										<p>As a solution, I developed a much more flexible event system in the form of a Scriptable Object asset to allow easy reference of a specific hand gesture. Each asset handles events for both hands, using the same settings. This also makes it easier to add new and listen to tracking of future gestures.</p>
+
+										<div class="image-center scroll-transition">
+											<img data-src="images/master-hand-vr/hand-gesture-events-special-folder.png">
+											<img data-src="images/master-hand-vr/hand-gesture-events-inspector.png">
+										</div>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>HandGestureEvents</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Hands.Gestures;
+using UnityEngine.XR.Hands;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+/// <summary>
+/// Asset that handles hand gesture detection for both hands
+/// </summary>
+[CreateAssetMenu()]
+public class HandGestureEvents : ScriptableObject
+{
+	/// <summary>
+	/// Settings used in the hand detector
+	/// </summary>
+	[Serializable]
+	public class DetectionSettings
+	{
+		[SerializeField] ScriptableObject handShapeOrPose;
+		[SerializeField] Transform targetTransform;
+
+		public float minimumHoldTime = 0.2f;
+		public float detectionInterval = 0.1f;
+
+		public XRHandShape HandShape { get; private set; }
+		public XRHandPose HandPose { get; private set; }
+
+		public void Initialise()
+		{
+			HandShape = handShapeOrPose as XRHandShape;
+			HandPose = handShapeOrPose as XRHandPose;
+			if (HandPose != null && HandPose.relativeOrientation != null)
+			{
+				HandPose.relativeOrientation.targetTransform = targetTransform;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Captures specific hand gesture events on a single hand using detection settings
+	/// </summary>
+	public class HandDetector
+	{
+		DetectionSettings settings;
+		XRHandJointsUpdatedEventArgs handJointsUpdatedEventArgs;
+
+		public UnityEvent OnPerformed { get; private set; } = new();
+		public UnityEvent OnEnded { get; private set; } = new();
+
+		public void Initialise(DetectionSettings settings)
+		{
+			this.settings = settings;
+			handJointsUpdatedEventArgs = new XRHandJointsUpdatedEventArgs();
+		}
+
+		/// <summary>
+		/// Checks for hand gesture Performed and Ended events
+		/// </summary>
+		/// <param name="hand">Hand compared against target gesture hand pose/shape</param>
+		public void CheckGestureEvents(XRHand hand)
+		{
+			// Update event args
+			handJointsUpdatedEventArgs.hand = hand;
+
+			// Check by detection interval
+			if (Time.timeSinceLevelLoad < timeOfLastConditionCheck + settings.detectionInterval)
+				return;
+
+			// Compare updated hand against conditions of hand shape or hand pose
+			var detected =
+				settings.HandShape != null && settings.HandShape.CheckConditions(handJointsUpdatedEventArgs) ||
+				settings.HandPose != null && settings.HandPose.CheckConditions(handJointsUpdatedEventArgs);
+
+			// Set holdStartTime for tracking gesture hold duration
+			if (!wasDetected && detected)
+			{
+				holdStartTime = Time.timeSinceLevelLoad;
+			}
+			// Check if gesture ends after being performed
+			else if (wasDetected && !detected)
+			{
+				performedTriggered = false;
+				OnEnded?.Invoke();
+			}
+
+			wasDetected = detected;
+			if (!performedTriggered && detected)
+			{
+				// Wait until gesture is held for minimumHoldTime duration before firing Performed event
+				var holdTimer = Time.timeSinceLevelLoad - holdStartTime;
+				if (holdTimer > settings.minimumHoldTime)
+				{
+					OnPerformed?.Invoke();
+					performedTriggered = true;
+				}
+			}
+
+			timeOfLastConditionCheck = Time.timeSinceLevelLoad;
+		}
+		bool wasDetected;
+		bool performedTriggered;
+		float timeOfLastConditionCheck;
+		float holdStartTime;
+
+		public void Reset()
+		{
+			OnPerformed.RemoveAllListeners();
+			OnEnded.RemoveAllListeners();
+		}
+	}
+
+	[SerializeField] DetectionSettings detectionSettings;
+
+	public HandDetector leftHandDetector = new(), rightHandDetector = new();
+
+	XRHandSubsystem handSubsystem;
+	bool leftHandIsTracked, rightHandIsTracked;
+
+	protected void OnEnable()
+	{
+		ResetDetectors();
+
+		leftHandDetector = new();
+		rightHandDetector = new();
+		detectionSettings.Initialise();
+		leftHandDetector.Initialise(detectionSettings);
+		rightHandDetector.Initialise(detectionSettings);
+
+		GetHandSubsystem();
+	}
+
+	protected void OnDisable()
+	{
+		ResetDetectors();
+
+		// Dispose hand subsystem
+		if (handSubsystem != null)
+		{
+			handSubsystem.trackingAcquired -= OnTrackingAcquired;
+			handSubsystem.trackingLost -= OnTrackingLost;
+			handSubsystem.updatedHands -= OnUpdatedHands;
+			handSubsystem = null;
+		}
+	}
+
+	async void GetHandSubsystem()
+	{
+		// Get hand subsystem
+		List<XRHandSubsystem> handSubsystems = new();
+		while (handSubsystem == null)
+		{
+			SubsystemManager.GetSubsystems(handSubsystems);
+			for (var i = 0; i < handSubsystems.Count; ++i)
+			{
+				var handSubsystem = handSubsystems[i];
+				if (handSubsystem.running)
+				{
+					this.handSubsystem = handSubsystem;
+					break;
+				}
+			}
+			await Task.Yield();
+		}
+
+		// Subscribe to events
+		handSubsystem.trackingAcquired += OnTrackingAcquired;
+		handSubsystem.trackingLost += OnTrackingLost;
+		handSubsystem.updatedHands += OnUpdatedHands;
+	}
+
+	void OnTrackingAcquired(XRHand hand)
+	{
+		OnTrackingAcquiredOrLost(hand, true);
+	}
+
+	void OnTrackingLost(XRHand hand)
+	{
+		OnTrackingAcquiredOrLost(hand, false);
+	}
+
+	void OnTrackingAcquiredOrLost(XRHand hand, bool isTracked)
+	{
+		if (hand.handedness == Handedness.Left)
+		{
+			leftHandIsTracked = isTracked;
+		}
+		else if (hand.handedness == Handedness.Right)
+		{
+			rightHandIsTracked = isTracked;
+		}
+	}
+
+	/// <summary>
+	/// Passes new updated hand data to detectors to process
+	/// </summary>
+	/// <param name="subsystem"></param>
+	/// <param name="updateSuccessFlags"></param>
+	/// <param name="updateType"></param>
+	void OnUpdatedHands(XRHandSubsystem subsystem, XRHandSubsystem.UpdateSuccessFlags updateSuccessFlags, XRHandSubsystem.UpdateType updateType)
+	{
+		if (updateType != XRHandSubsystem.UpdateType.Dynamic)
+			return;
+
+		if (((updateSuccessFlags & XRHandSubsystem.UpdateSuccessFlags.LeftHandJoints)
+			!= XRHandSubsystem.UpdateSuccessFlags.None) &&
+			leftHandIsTracked)
+		{
+			leftHandDetector.CheckGestureEvents(subsystem.leftHand);
+		}
+
+		if (((updateSuccessFlags & XRHandSubsystem.UpdateSuccessFlags.RightHandJoints)
+			!= XRHandSubsystem.UpdateSuccessFlags.None) &&
+			rightHandIsTracked)
+		{
+			rightHandDetector.CheckGestureEvents(subsystem.rightHand);
+		}
+	}
+
+	public UnityEvent Performed(Handedness handedness) => GetHandDetector(handedness).OnPerformed;
+	public UnityEvent Ended(Handedness handedness) => GetHandDetector(handedness).OnEnded;
+
+	HandDetector GetHandDetector(Handedness handedness) =>
+		handedness switch
+		{
+			Handedness.Left => leftHandDetector,
+			Handedness.Right => rightHandDetector,
+			_ => null
+		};
+
+	void ResetDetectors()
+	{
+		leftHandDetector?.Reset();
+		rightHandDetector?.Reset();
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header movement"><div>Activating Special Abilities with Hand Gestures</div></div>
+									<div class="accordion-content">
+										<p>Asside from grabbing enemies and props, special hand gestures are used to perform special abilities.</p>
+
+										<div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+												<video data-src="videos/master-hand-vr/hand-gun.mp4" autoplay loop muted></video>
+											</div>
+											<div class="text-container">
+												<p>The Hand Gun ability uses motion tracking to fire bullets with the flick of your wrist. Aim is also stabilised using smoothing and a linked list of previous tracked poses before firing.</p>
+											</div>
+										</div>
+
+										<div class="image-and-text-container right">
+											<div class="image-container scroll-transition">
+												<video data-src="videos/master-hand-vr/laser-fingers.mp4" autoplay loop muted></video>
+											</div>
+											<div class="text-container">
+												<p>The Laser Fingers ability fires bolts of lasers from finger tips.</p>
+											</div>
+										</div>
+
+										<p>They both use the direction from the distal finger joint to the tip to get a more stable direction.</p>
+										
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>HandGun</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Hands;
+
+/// <summary>
+/// Scriptable Object which handles the hand gun ability
+/// </summary>
+[CreateAssetMenu(menuName = "Hand Special/Hand Gun")]
+public class HandGun : HandSpecial
+{
+	[Header("Aiming")]
+	// Fire ray visual
+	[SerializeField] LineRenderer firepointPrefab;
+	LineRenderer firepoint;
+	[SerializeField] float firepointRayLength = 1f;
+	Vector3 indexTipPos;
+
+	Vector3 aimDir;
+	Vector3 aimDirStabilised;
+	Vector3 aimDirSmoothVelocity;
+	[SerializeField] float aimDirSmoothTime;
+
+	// Used to select more stable fire orientations from past frames
+	struct Aim
+	{
+		public Vector3 Point { get; private set; }
+		public Vector3 Dir { get; private set; }
+		public Vector3 Up { get; private set; }
+
+		public Aim(Vector3 point, Vector3 dir, Vector3 up)
+		{
+			Point = point;
+			Dir = dir;
+			Up = up;
+		}
+	}
+	[SerializeField] int aimHistoryLength = 3;
+	LinkedList<Aim> aimHistory = new();
+	Vector3 FirePos => aimHistory.Last.Value.Point;
+	Vector3 FireDir => aimHistory.Last.Value.Dir;
+	Vector3 FireUp => aimHistory.Last.Value.Up;
+
+	[Header("Shooting")]
+	[SerializeField] float shootEnterAngularSpeedThreshold;
+	[SerializeField] Projectile bulletPrefab;
+	bool needToReload;
+
+	[Header("Reloading")]
+	[SerializeField, Range(-1, 1f)] float reloadEnterPointForwardThreshold;
+	[SerializeField] float timeToReload;
+	float timerToReload;
+
+	[Header("SFX")]
+	[SerializeField] AudioClipAsset shootAudioClipAsset;
+	[SerializeField] AudioClipAsset reloadAudioClipAsset;
+
+	/// <summary>
+	/// Initialises the hand gun
+	/// </summary>
+	/// <param name="trackingEvents">Used to subscribe to tracking events of the corresponding hand</param>
+	public override void Startup(XRHandTrackingEvents trackingEvents)
+	{
+		base.Startup(trackingEvents);
+
+		firepoint = objectPooler.Get(firepointPrefab);
+
+		AddOnJointsUpdatedListener();
+	}
+
+	/// <summary>
+	/// Called by the HandSpecialController
+	/// </summary>
+	public override void Update()
+	{
+		base.Update();
+
+		// Smooth aim dir visual
+		aimDirStabilised = Vector3.SmoothDamp(aimDirStabilised, aimDir, ref aimDirSmoothVelocity, aimDirSmoothTime);
+
+		UpdateFirepointRendering();
+
+		timerToReload += Time.deltaTime;
+
+	}
+
+	protected override void OnJointsUpdated(XRHandJointsUpdatedEventArgs eventArgs)
+	{
+		HandleShooting(eventArgs.hand);
+	}
+
+	/// <summary>
+	/// Handles shooting and reloading logic
+	/// </summary>
+	/// <param name="hand">Hand used to check for shooting</param>
+	void HandleShooting(XRHand hand)
+	{
+		// Capture wrist for flick detection
+		XRHandJoint wristJoint = hand.GetJoint(XRHandJointID.Wrist);
+		wristJoint.TryGetPose(out Pose wristPose);
+
+		// Capture finger joints (tip & distal) for fire orientation
+		indexTipPos = GetJointGlobalPos(XRHandJointID.IndexTip);
+		Vector3 indexDistalPos = GetJointGlobalPos(XRHandJointID.IndexDistal);
+		aimDir = (indexTipPos - indexDistalPos).normalized;
+
+		if (!needToReload)
+		{
+			// Check for wrist flick input for shooting
+			wristJoint.TryGetAngularVelocity(out Vector3 wristAngularVelocity);
+			if (wristAngularVelocity.magnitude >= shootEnterAngularSpeedThreshold && // Flicking fast enough
+				// Flicking vertically and upwards
+				((Mathf.Abs(wristAngularVelocity.x) > Mathf.Abs(wristAngularVelocity.y) && wristAngularVelocity.x < 0f) ||
+				(Mathf.Abs(wristAngularVelocity.z) > Mathf.Abs(wristAngularVelocity.y) && wristAngularVelocity.z < 0f)))
+			{
+				Shoot();
+			}
+			else
+			{
+				// Keep track of previous fire orientations for shooting
+				AddToAimHistory(indexTipPos, aimDir, -wristPose.right);
+			}
+		}
+		else if (timerToReload > timeToReload)
+		{
+			// No need to localise directions as they are still relative to each other and we are not seeing it
+			if (Vector3.Dot(-wristPose.right, FireUp) >= reloadEnterPointForwardThreshold)
+			{
+				Reload();
+			}
+		}
+
+
+		// Helpers
+		Vector3 GetJointGlobalPos(XRHandJointID jointId)
+		{
+			hand.GetJoint(jointId).TryGetPose(out Pose jointPose);
+			return originManager.LocalisePos(jointPose.position);
+		}
+	}
+
+	void UpdateFirepointRendering()
+	{
+		firepoint.SetPosition(0, indexTipPos);
+		firepoint.SetPosition(1, indexTipPos + aimDirStabilised * firepointRayLength);
+	}
+
+	void AddToAimHistory(Vector3 point, Vector3 dir, Vector3 up)
+	{
+		// Linked list with latest recordings at the start, and latest at the end
+		Aim latestAim = new(point, dir, up);
+		aimHistory.AddFirst(latestAim);
+		// Enforce length
+		if (aimHistory.Count > aimHistoryLength)
+		{
+			// Shift newer items towards the end by removing the last node
+			aimHistory.RemoveLast();
+		}
+	}
+
+	void Shoot()
+	{
+		needToReload = true;
+		timerToReload = 0f;
+
+		Projectile newBullet = objectPooler.Get(bulletPrefab, FirePos);
+		newBullet.Initialise(FireDir);
+
+		ApplyCost();
+
+		audioManager.PlaySound(shootAudioClipAsset, FirePos);
+	}
+
+	void Reload()
+	{
+		needToReload = false;
+
+		audioManager.PlaySound(reloadAudioClipAsset, aimDir);
+	}
+
+	/// <summary>
+	/// Disposal
+	/// </summary>
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		if (firepoint)
+		{
+			objectPooler.Return(firepoint);
+		}
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="accordion-item">
+									<div class="accordion-header movement"><div>Grabbing with Hand Gestures</div></div>
+									<div class="accordion-content">
+										<div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+												<video data-src="videos/master-hand-vr/physical-hand-interaction.mp4"  autoplay controls muted loop>
+											</div>
+											<div class="text-container">
+												<p>I made a script which extends the XRDirectInteractor to allow grabbing enemies and props using the grab hand gesture.</p>
+											</div>
+										</div>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>PhysicalHandInteractor</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Hands;
+using UnityEngine.XR.Interaction.Toolkit;
+
+/// <summary>
+/// Interactor that grabs interactables with a grab gesture while handing collisions with physical hand
+/// </summary>
+public class PhysicalHandInteractor : XRDirectInteractor
+{
+	[SerializeField] Handedness handedness; // Getting the corresponding physical hand and its selection events
+	PhysicalHand physicalHand; // For toggling hand collisions ignore
+
+	[Header("Grabbing")]
+	public HandGestureEvents grabGesture; // For special select input
+
+	[Header("Dropping")]
+	// Ignore hand collisions on drop for exit duration
+	[SerializeField] float dropExitTime;
+	float dropExitTimer;
+	HashSet<IXRInteractable> droppingInteractables = new();
+
+	// Map previously grabbed interactables with their colliders to avoid repeating get component operations
+	Dictionary<IXRInteractable, Collider[]> grabbedCollidersDict = new();
+
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+
+		grabGesture.Performed(handedness).AddListener(TryGrab);
+		grabGesture.Ended(handedness).AddListener(Drop);
+	}
+
+	protected override void OnDisable()
+	{
+		base.OnDisable();
+
+		grabGesture.Performed(handedness).RemoveListener(TryGrab);
+		grabGesture.Ended(handedness).RemoveListener(Drop);
+	}
+
+	protected override void Start()
+	{
+		base.Start();
+
+		physicalHand = Player.Instance.GetHand(handedness).physical;
+	}
+
+	private void Update()
+	{
+		if (droppingInteractables.Count > 0)
+		{
+			UpdateDroppingInteractables();
+		}
+	}
+
+	void TryGrab()
+	{
+		// Get interactables in select range
+		List<IXRInteractable> interactables = new(); // Buffer to fill
+		GetValidTargets(interactables);
+		// Check if there are any interactables found
+		if (interactables.Count > 0)
+		{
+			// Check if there is any match between interaction layer masks
+			if ((interactables[0].interactionLayers & interactionLayers) != 0)
+			{
+				Grab(interactables[0]);
+			}
+		}
+	}
+
+	public void Grab(IXRInteractable interactable)
+	{
+		// Drop current selection
+		if (interactablesSelected.Count > 0)
+		{
+			Drop(true);
+		}
+
+		SetIgnoreHandCollisionsWithInteractable(interactable, true); // Ignore hand collisions
+		StartManualInteraction((IXRSelectInteractable)interactable);
+	}
+
+	public void Drop() => Drop(true);
+
+	public void Drop(bool trackDropping)
+	{
+		// Check if there is a selection
+		if (interactablesSelected.Count == 0)
+			return;
+
+		IXRSelectInteractable currentSelection = interactablesSelected[0];
+		if (trackDropping)
+		{
+			droppingInteractables.Add(currentSelection);
+		}
+
+		EndManualInteraction();
+	}
+
+	void UpdateDroppingInteractables()
+	{
+		dropExitTimer += Time.deltaTime;
+		if (dropExitTimer >= dropExitTime)
+		{
+			foreach (var droppingInteractable in droppingInteractables)
+			{
+				SetIgnoreHandCollisionsWithInteractable(droppingInteractable, false);
+			}
+			droppingInteractables = new();
+			dropExitTimer = 0f;
+		}
+	}
+	
+	// Sets ignore with hand colliders via Physics.IgnoreCollision()
+	void SetIgnoreHandCollisionsWithInteractable(IXRInteractable interactable, bool ignore)
+		=> physicalHand.SetIgnoreCollisionWith(GetInteractableColliders(interactable), ignore);
+
+	Collider[] GetInteractableColliders(IXRInteractable interactable)
+	{
+		return grabbedCollidersDict.ContainsKey(interactable)
+			? grabbedCollidersDict[interactable]
+			: interactable.transform.GetComponentsInChildren<Collider>();
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+							<h3 class="project-heading">Enemy AI</h3>
+							<p>The enemy AI logic is split into separate modules for movement, attack and physics which is managed by the master, EnemyController.</p>
+
+							<div class="accordion">
+								<div class="accordion-item">
+									<div class="accordion-header movement"><div>Organic Movement with Context-Based Steering</div></div>
+									<div class="accordion-content">
+										<p>Context-based steering is used to guide the movement of enemies around the map in a way that's more organic compared to rigid path-finding algorithms like A*, while also being much more performant.</p>
+										
+										<div class="image-and-text-container left">
+											<div class="image-container scroll-transition">
+												<video data-src="videos/master-hand-vr/context-based steering.mp4"  autoplay controls muted loop>
+											</div>
+											<div class="text-container">
+												<p>It uses steering behaviours to weigh a set of directions based on nearby obstacles and target locations. The best direction is then selected, whether its the largest weighed direction or the average of multiple.</p>
+											</div>
+										</div>
+									
+										<p>This makes the movement more natural and present in the moment as it doesn't require heavy context processing of the whole map but instead it's detected surroundings.</p>
+
+										<div class="accordion">
+											<div class="accordion-item">
+												<div class="accordion-header c-sharp"><div>ContextSteeringSolver</div></div>
+												<div class="accordion-content">
+													<pre><code class="language-csharp hljs">using System;
+using System.Collections;
+using UnityEngine;
+
+/// <summary>
+/// Processes context steering behaviours to select a final best direction
+/// </summary>
+[RequireComponent(typeof(ContextSteeringData))]
+public class ContextSteeringSolver : MonoBehaviour
+{
+	// Data container holding weighted direcitons, detected obstacles and targets
+	ContextSteeringData data;
+	[SerializeField] SteeringBehaviour[] behaviours;
+
+	// Detects nearby obstacles to add to the steering data
+	[SerializeField] OverlapDetector obstacleDetector;
+
+	[SerializeField] float solveDelay;
+	Vector3 selectedDirection = Vector3.zero;
+	bool updatingDirection;
+
+	public event Action<Vector3> OnDirectionSelect;
+	public event Action OnDirectionEnd;
+
+	[Header("Gizmos")]
+	[SerializeField] bool drawGizmos = true;
+
+	bool firstTarget;
+
+	private void Awake()
+	{
+		data = GetComponent<ContextSteeringData>();
+
+		// Copy steering behaviour Scriptable Objects
+		for (int i = 0; i < behaviours.Length; i++)
+		{
+			behaviours[i] = Instantiate(behaviours[i]);
+		}
+	}
+
+	private void OnEnable()
+	{
+		obstacleDetector.OnDetectedColliders += OnDetectedObstacles;
+	}
+
+	private void OnDisable()
+	{
+		EndDirection();
+
+		obstacleDetector.OnDetectedColliders -= OnDetectedObstacles;
+	}
+
+	public void Initialise(float charRadius)
+	{
+		// Initialise steering behaviours with character radius to use in detection
+		for (int i = 0; i < behaviours.Length; i++)
+		{
+			behaviours[i].Initialise(charRadius);
+		}
+	}
+
+	private void Update()
+	{
+		if (data.CurrentTargetPoint != null)
+		{
+			if (!updatingDirection)
+			{
+				updatingDirection = true;
+				StartCoroutine(DirectionUpdate());
+			}
+		}
+		else if (data.TargetsCount > 0)
+		{
+			data.CurrentTargetPoint = data.TargetPoints[0];
+		}
+		else if (firstTarget)
+		{
+			EndDirection();
+		}
+	}
+
+	IEnumerator DirectionUpdate()
+	{
+		if (data.CurrentTargetPoint == null)
+		{
+			EndDirection();
+			yield break;
+		}
+		else
+		{
+			SelectDirection(SolveDirection());
+
+			yield return new WaitForSeconds(solveDelay);
+			StartCoroutine(DirectionUpdate());
+		}
+	}
+
+	public Vector3 SolveDirection()
+	{
+		data.ResetWeights();
+
+		// Apply influence of context steering behaviours to weights
+		for (int i = 0; i < behaviours.Length; i++)
+		{
+			behaviours[i].ApplySteering(ref data);
+		}
+
+		// Subtract avoid values from interest values to get final interest weights
+		for (int i = 0; i < data.weights.Length; i++)
+		{
+			data.weights[i].interest = Mathf.Clamp01(data.weights[i].interest - data.weights[i].avoid);
+		}
+
+		// Select the strongest interest direction
+		int strongestInterestIdx = 0;
+		for (int i = 0; i < data.weights.Length; i++)
+		{
+			if (data.weights[i].interest > data.weights[strongestInterestIdx].interest)
+			{
+				strongestInterestIdx = i;
+			}
+		}
+		return selectedDirection = data.weights[strongestInterestIdx].direction;
+	}
+
+	void SelectDirection(Vector3 newDirection)
+	{
+		OnDirectionSelect?.Invoke(newDirection);
+	}
+
+	void EndDirection()
+	{
+		updatingDirection = false;
+		OnDirectionEnd?.Invoke();
+	}
+
+	public void AddTarget(Vector3 point)
+	{
+		firstTarget = true;
+		data.TargetPoints.Add(point);
+	}
+
+	void OnDetectedObstacles(Collider[] obstacleColliders)
+	{
+		data.Obstacles = obstacleColliders;
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		if (!drawGizmos || !Application.isPlaying)
+			return;
+
+		// Selected Direction
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(transform.position, transform.position + selectedDirection * ContextSteeringData.GIZMOS_WEIGHT_LENGTH);
+
+		// Weights
+		for (int i = 0; i < data.weights.Length; i++)
+		{
+			// Avoid
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine(transform.position, transform.position + data.weights[i].AvoidVelocity * ContextSteeringData.GIZMOS_WEIGHT_LENGTH);
+
+			// Interest
+			Gizmos.color = Color.green;
+			Gizmos.DrawLine(transform.position, transform.position + data.weights[i].InterestVelocity * ContextSteeringData.GIZMOS_WEIGHT_LENGTH);
+		}
+
+		for (int i = 0; i < behaviours.Length; i++)
+		{
+			behaviours[i].OnDrawGizmosSelected();
+		}
+	}
+}</code></pre>
+												</div>
+											</div>
+										</div>
+
+										<p>Common steering behaviours include Obstacle Avoidance and Seek (for moving toward targets). We can make things more interesting by adding more unique behaviours like Strafing, which can then be replaced with Seek for charging towards the target during combat.</p>
+
+									</div>
+								</div>
+							</div>
+
+
+							<div class="space"></div>
+							<div class="space"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+
+		<script src="assets/js/loader.js"></script>
+
+		<script src="assets/js/navbar.js"></script>
+		<script src="assets/js/project-elements.js"></script>
+
+		<script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+		<script src="assets/js/image-slider.js"></script>
+
+		<script src="assets/js/popup-image.js"></script>
+		<script src="assets/js/accordion-single.js"></script>
+		</body>
+</html>

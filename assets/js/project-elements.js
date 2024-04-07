@@ -8,6 +8,18 @@ class ElementHTML {
 
 let elementsHTML = new Map();
 
+elementsHTML.set('master-hand-vr',
+new ElementHTML(
+    `VR Giant Simulator`,
+    `Feb 2024 — Present`,
+    `<li>OpenXR</li>
+    <li>XR Hands</li>
+    <li>XR Interaction Toolkit</li>
+    <li>Unity</li>
+    <li>C#</li>
+    <li>Git</li>
+    <li>URP</li>`));
+
 elementsHTML.set('hope',
 new ElementHTML(
     `Educational AR Game`,
@@ -22,7 +34,7 @@ new ElementHTML(
     <li>Git</li>
     <li>Trello</li>
     <li>Miro</li>
-    <li>Universal Render Pipeline</li>`));
+    <li>URP</li>`));
 
 elementsHTML.set('okainos',
 new ElementHTML(
@@ -46,7 +58,7 @@ new ElementHTML(
         <li>Unity</li>
         <li>C#</li>
         <li>Git</li>
-        <li>Universal Render Pipeline</li>`));
+        <li>URP</li>`));
 
 elementsHTML.set('edge-runner',
 new ElementHTML(
@@ -59,7 +71,7 @@ new ElementHTML(
     <li>Notion</li>
     <li>Cinemachine</li>
     <li>JSON</li>
-    <li>Universal Render Pipeline</li>`));
+    <li>URP</li>`));
 
 elementsHTML.set('game-jams',
 new ElementHTML(
